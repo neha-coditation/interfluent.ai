@@ -87,3 +87,16 @@ p { line-height: var(--leading-body); }
 .hide { display: none !important; }
 .overflow-hidden { overflow: hidden; }
 .position-relative { position: relative; }
+
+
+/* Unified site width — matches the shared navbar container */
+:root {
+  --site-content-width: calc(var(--container-large) - (var(--page-padding) * 2));
+}
+
+.site-container {
+  width: min(var(--site-content-width), calc(100% - (var(--page-padding) * 2)));
+  max-width: none;
+  margin-left: auto;
+  margin-right: auto;
+}
