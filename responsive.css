@@ -1,0 +1,68 @@
+/* CodeLens responsive layer. Inline styles win by default, so overrides use !important. */
+.rs-burger{display:none}
+.rs-burger input{position:absolute;opacity:0;pointer-events:none}
+img,svg,video{max-width:100%}
+
+/* ---------- Tablet & below: nav collapses to a menu ---------- */
+@media (max-width:980px){
+  .rs-nav{flex-wrap:wrap!important;gap:12px!important;padding:12px 20px!important}
+  .rs-burger{display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;margin-left:auto;border:1px solid rgba(30,28,25,.16);border-radius:12px;cursor:pointer;position:relative;-webkit-tap-highlight-color:transparent}
+  .rs-burger i,.rs-burger i:before,.rs-burger i:after{display:block;width:18px;height:2px;border-radius:2px;background:#1e1c19;content:"";position:relative;transition:transform .2s,background .2s}
+  .rs-burger i:before{position:absolute;top:-6px}
+  .rs-burger i:after{position:absolute;top:6px}
+  .rs-nav:has(.rs-burger input:checked) .rs-burger i{background:transparent}
+  .rs-nav:has(.rs-burger input:checked) .rs-burger i:before{top:0;transform:rotate(45deg)}
+  .rs-nav:has(.rs-burger input:checked) .rs-burger i:after{top:0;transform:rotate(-45deg)}
+  .rs-navlinks{display:none!important;width:100%;flex-direction:column;align-items:stretch!important;gap:0!important;padding:4px 0 8px;border-top:1px solid rgba(30,28,25,.08)}
+  .rs-nav:has(.rs-burger input:checked) .rs-navlinks{display:flex!important}
+  .rs-navlinks a{padding:13px 4px!important;font-size:16px!important;border-radius:0!important;border-bottom:1px solid rgba(30,28,25,.06)}
+  .rs-navlinks a[style*="background"]{margin-top:12px;text-align:center;border-bottom:0;border-radius:999px!important;padding:14px 16px!important}
+}
+
+/* ---------- Tablet ---------- */
+@media (max-width:900px){
+  .rs-grid4{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+  .rs-loop{display:none!important}
+  .rs-tp{grid-template-columns:minmax(0,1fr)!important;gap:14px!important}
+  .rs-tparrow{justify-self:center;transform:rotate(90deg)}
+  .rs-app{grid-template-columns:minmax(0,1fr)!important;min-height:0!important}
+  .rs-app>*:first-child{display:none!important}
+  .rs-appsearch{display:none!important}
+
+  /* pinned "shared context" stage: stack copy over graph */
+  .rs-pin2{grid-template-columns:minmax(0,1fr)!important;grid-template-rows:auto minmax(0,1fr);gap:12px!important;padding:72px 20px 16px!important;align-items:start!important}
+  .rs-pin2-left{min-height:0!important}
+  .rs-pin2-left h2{font-size:clamp(22px,6vw,32px)!important;margin-bottom:14px!important}
+  .rs-pin2-copy{height:clamp(120px,22vh,170px)!important}
+  .rs-pin2-copy p{font-size:14.5px!important;line-height:1.5!important}
+  .rs-pin2-graph{height:100%!important;min-height:0}
+  .rs-stage{height:100vh;height:100dvh!important}
+
+  /* pinned hero (original landing) */
+  .rs-pinhero{grid-template-columns:minmax(0,1fr)!important;grid-template-rows:auto minmax(0,1fr);gap:16px!important;padding:76px 20px 16px!important;align-items:start!important}
+}
+
+/* ---------- Phone ---------- */
+@media (max-width:720px){
+  .rs-diffhead{display:none!important}
+  .rs-diff{grid-template-columns:minmax(0,1fr)!important;gap:8px!important;padding:18px!important}
+  .rs-diff>span[data-l]:before{content:attr(data-l);display:block;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.12em;color:#8a847a;font-weight:400;margin-bottom:2px}
+  .rs-rolerow{grid-template-columns:minmax(0,1fr) auto!important;gap:8px 16px!important;padding:22px 4px!important}
+  .rs-rolerow>*:first-child{grid-column:1/-1}
+  .rs-footgrid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:28px 20px!important;padding-top:48px!important}
+  .rs-footgrid>*:first-child{grid-column:1/-1}
+  .rs-grid3{display:none!important}
+  .rs-pin2-graph>div{font-size:11px!important;padding:6px 9px!important}
+  .rs-heroviz{min-height:0!important}
+  .rs-gap{min-height:250px!important}
+  .rs-bub2{top:60%!important}
+  .rs-bub3{left:4%!important;bottom:6%!important}
+  .rs-split2{grid-template-columns:minmax(0,1fr)!important}
+}
+
+@media (max-width:520px){
+  .rs-grid4{grid-template-columns:minmax(0,1fr)!important}
+  .rs-riskrow{grid-template-columns:minmax(84px,110px) minmax(0,1fr)!important;gap:10px!important}
+  .rs-pin2-copy p{font-size:13.5px!important}
+  body{overflow-x:hidden}
+}

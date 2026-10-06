@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="./responsive.css">
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<script src="./site-config.js"></script>
+<style>body{margin:0;background:#f6f3ec;color:#1e1c19;font-family:Figtree,system-ui,sans-serif;-webkit-font-smoothing:antialiased}a{color:#1f4e3d;text-decoration:none}a:hover{color:#153628}*{box-sizing:border-box}input,select,textarea{font:inherit;color:inherit}</style>
+</helmet>
+<dc-import name="SiteNav" active="" beta-enabled="{{ beta }}" access-code-enabled="{{ code }}" hint-size="100%,64px" style="position:sticky;top:0;z-index:20"></dc-import>
+
+<sc-if value="{{ beta }}" hint-placeholder-val="{{ true }}">
+<section data-screen-label="Beta" style="max-width:1240px;margin:0 auto;padding:clamp(40px,8vw,80px) clamp(20px,5vw,40px) clamp(60px,12vw,120px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:64px;align-items:start">
+  <div>
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.14em;color:#1f4e3d;margin-bottom:18px">PRIVATE BETA</div>
+    <h1 style="font-size:clamp(36px,4.4vw,56px);line-height:1.04;letter-spacing:-.03em;font-weight:700;margin:0 0 20px;text-wrap:balance">Put your own codebase on the map.</h1>
+    <p style="font-size:18px;line-height:1.6;color:#514c44;margin:0 0 32px;text-wrap:pretty">We're onboarding a small number of teams while the agents are still being shaped. Tell us where you're starting from and we'll come back within a few days.</p>
+    <div style="display:flex;flex-direction:column;gap:14px;font-size:15px;line-height:1.5;color:#514c44">
+      <div style="display:flex;gap:12px"><span style="font-family:'IBM Plex Mono',monospace;color:#1f4e3d;flex:none">01</span><span>We connect one repository and one set of product documents.</span></div>
+      <div style="display:flex;gap:12px"><span style="font-family:'IBM Plex Mono',monospace;color:#1f4e3d;flex:none">02</span><span>You get a feature map, impact analysis and a docs diff on your own system within the first week.</span></div>
+      <div style="display:flex;gap:12px"><span style="font-family:'IBM Plex Mono',monospace;color:#1f4e3d;flex:none">03</span><span>Free for the length of the beta. Your feedback sets the roadmap.</span></div>
+    </div>
+  </div>
+
+  <div style="background:#fffdf9;border:1px solid rgba(30,28,25,.1);border-radius:20px;padding:32px;box-shadow:0 24px 60px rgba(30,28,25,.08)">
+    <sc-if value="{{ notSent }}" hint-placeholder-val="{{ true }}">
+      <form onSubmit="{{ submit }}" style="display:flex;flex-direction:column;gap:16px">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(180px,100%),1fr));gap:14px">
+          <label style="display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:600"><span>Name</span><input name="name" required="{{ true }}" placeholder="Asha Rao" style="padding:12px 14px;border-radius:10px;border:1px solid rgba(30,28,25,.16);background:#f6f3ec;font-size:15px;outline:none" style-focus="border-color:#1f4e3d"></label>
+          <label style="display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:600"><span>Work email</span><input name="email" type="email" required="{{ true }}" placeholder="asha@company.com" style="padding:12px 14px;border-radius:10px;border:1px solid rgba(30,28,25,.16);background:#f6f3ec;font-size:15px;outline:none" style-focus="border-color:#1f4e3d"></label>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(180px,100%),1fr));gap:14px">
+          <label style="display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:600"><span>Company</span><input name="company" required="{{ true }}" placeholder="Plant360" style="padding:12px 14px;border-radius:10px;border:1px solid rgba(30,28,25,.16);background:#f6f3ec;font-size:15px;outline:none" style-focus="border-color:#1f4e3d"></label>
+          <label style="display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:600"><span>Role</span><select name="role" style="padding:12px 14px;border-radius:10px;border:1px solid rgba(30,28,25,.16);background:#f6f3ec;font-size:15px;outline:none"><option>Business</option><option>Product</option><option>Engineering</option></select></label>
+        </div>
+        <label style="display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:600"><span>What are you trying to ship? <span style="font-weight:400;color:#8a847a">(optional)</span></span><textarea name="message" rows="{{ 4 }}" placeholder="The change you keep failing to price, or the docs nobody trusts." style="padding:12px 14px;border-radius:10px;border:1px solid rgba(30,28,25,.16);background:#f6f3ec;font-size:15px;outline:none;resize:vertical" style-focus="border-color:#1f4e3d"></textarea></label>
+        <sc-if value="{{ code }}" hint-placeholder-val="{{ true }}">
+          <label style="display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:600"><span>Referral code <span style="font-weight:400;color:#8a847a">(optional, skips the waitlist)</span></span><input name="referral" placeholder="e.g. PLANT-7K2Q" style="padding:12px 14px;border-radius:10px;border:1px solid rgba(30,28,25,.16);background:#f6f3ec;font-size:15px;outline:none;font-family:'IBM Plex Mono',monospace;letter-spacing:.06em;text-transform:uppercase" style-focus="border-color:#1f4e3d"></label>
+        </sc-if>
+        <button type="submit" style="margin-top:6px;background:#1f4e3d;color:#f6f3ec;padding:14px 22px;border-radius:999px;font-weight:600;font-size:15px;border:none;cursor:pointer" style-hover="background:#153628">Request beta access</button>
+        <div style="font-size:12.5px;color:#8a847a;line-height:1.5">We only use this to get in touch about the beta. See <a href="privacy.html">Privacy</a>.</div>
+      </form>
+    </sc-if>
+    <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex;flex-direction:column;gap:14px;min-height:320px;justify-content:center;text-align:center;padding:20px">
+        <div style="width:48px;height:48px;border-radius:50%;background:#e0a458;margin:0 auto;display:grid;place-items:center;font-weight:700;font-size:20px">✓</div>
+        <div style="font-size:24px;font-weight:700;letter-spacing:-.02em">{{ thanksTitle }}</div>
+        <div style="font-size:15px;line-height:1.55;color:#514c44;text-wrap:pretty">{{ thanksBody }}</div>
+        <a href="index.html" style="margin-top:10px;font-weight:600">Back to the story →</a>
+      </div>
+    </sc-if>
+  </div>
+</section>
+</sc-if>
+
+<sc-if value="{{ betaOff }}" hint-placeholder-val="{{ false }}">
+<section data-screen-label="Beta closed" style="max-width:720px;margin:0 auto;padding:clamp(60px,12vw,120px) clamp(20px,5vw,40px);text-align:center">
+  <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.14em;color:#1f4e3d;margin-bottom:18px">BETA</div>
+  <h1 style="font-size:clamp(32px,4vw,48px);line-height:1.06;letter-spacing:-.03em;font-weight:700;margin:0 0 18px;text-wrap:balance">The beta is closed for now.</h1>
+  <p style="font-size:17px;line-height:1.6;color:#514c44;margin:0 0 28px">We're working with the current cohort. If you'd like a walkthrough on your own codebase, get in touch.</p>
+  <a href="contact.html" style="display:inline-block;background:#1f4e3d;color:#f6f3ec;padding:14px 22px;border-radius:999px;font-weight:600;font-size:15px">Book a walkthrough</a>
+</section>
+</sc-if>
+
+<dc-import name="SiteFooter" beta-enabled="{{ beta }}" access-code-enabled="{{ code }}" hint-size="100%,320px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;betaEnabled&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Switches&quot;},&quot;accessCodeEnabled&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Switches&quot;}}">
+class Component extends DCLogic {
+  state = { sent: false, withCode: false };
+  renderVals() {
+    const cfg = window.CODELENS_CONFIG || {};
+    const beta = !!(this.props.betaEnabled ?? cfg.betaEnabled ?? true);
+    const code = !!(this.props.accessCodeEnabled ?? cfg.accessCodeEnabled ?? true);
+    const submit = e => { e.preventDefault(); const f = new FormData(e.target); this.setState({ sent: true, withCode: !!(f.get('referral') || '').trim() }); };
+    return { beta, betaOff: !beta, code, submit, sent: this.state.sent, notSent: !this.state.sent,
+      thanksTitle: this.state.withCode ? "You're in." : 'Request received.',
+      thanksBody: this.state.withCode ? 'Your referral code moves you ahead of the waitlist. Check your inbox for an invitation.' : 'Thanks. We read every request by hand and reply within a few days.' };
+  }
+}
+</script>
+</body>
+</html>

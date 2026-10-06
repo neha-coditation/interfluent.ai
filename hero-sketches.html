@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="design_doc_mode" content="canvas">
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#e9e4d8;color:#1e1c19;font-family:Figtree,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#1f4e3d;text-decoration:none}a:hover{color:#153628}
+*{box-sizing:border-box}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes spinr{to{transform:rotate(-360deg)}}
+@keyframes dash{to{stroke-dashoffset:-40}}
+</style>
+</helmet>
+<section style="padding:40px 40px 0;display:flex;gap:40px;flex-wrap:wrap;align-items:start">
+
+  <div id="2a" style="width:560px">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px"><a href="#2a" style="font-family:'IBM Plex Mono',monospace;font-size:12px;background:#1e1c19;color:#f6f3ec;padding:3px 8px;border-radius:6px">2a</a><span style="font-size:14px;font-weight:600">Two weeks of work, seven months of waiting</span></div>
+    <div style="position:relative;height:520px;border-radius:28px;background:linear-gradient(180deg,#efeae0,#f6f3ec);border:1px solid rgba(30,28,25,.08);padding:40px 44px;display:flex;flex-direction:column;justify-content:center">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;color:#514c44;margin-bottom:28px">ONE FEATURE · REVIEW SYMBOLS V2</div>
+      <div style="display:grid;grid-template-columns:110px 1fr;gap:22px 16px;align-items:center">
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.12em;color:#1f4e3d">BUSINESS</span><div style="position:relative;height:14px"><div style="position:absolute;left:0;width:6%;height:100%;border-radius:7px;background:#1f4e3d"></div><div style="position:absolute;left:6%;right:74%;top:6px;border-top:2px dotted #c4553a"></div></div>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.12em;color:#b07a2c">PRODUCT · BA</span><div style="position:relative;height:14px"><div style="position:absolute;left:26%;width:7%;height:100%;border-radius:7px;background:#e0a458"></div><div style="position:absolute;left:33%;right:38%;top:6px;border-top:2px dotted #c4553a"></div></div>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.12em;color:#1e1c19">ENGINEERING</span><div style="position:relative;height:14px"><div style="position:absolute;left:62%;width:8%;height:100%;border-radius:7px;background:#1e1c19"></div><div style="position:absolute;left:70%;right:2%;top:6px;border-top:2px dotted #c4553a"></div></div>
+      </div>
+      <div style="margin:30px 0 0 126px;position:relative;height:1px;background:rgba(30,28,25,.25)"><span style="position:absolute;left:0;top:8px;font-family:'IBM Plex Mono',monospace;font-size:10px;color:#8a847a">JAN</span><span style="position:absolute;right:0;top:8px;font-family:'IBM Plex Mono',monospace;font-size:10px;color:#8a847a">SEP</span></div>
+      <div style="display:flex;gap:40px;margin-top:48px">
+        <div><div style="font-size:40px;font-weight:700;letter-spacing:-.03em;line-height:1">2 wk</div><div style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#514c44;margin-top:6px">working, with AI</div></div>
+        <div><div style="font-size:40px;font-weight:700;letter-spacing:-.03em;line-height:1;color:#c4553a">7 mo</div><div style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#c4553a;margin-top:6px">waiting on each other</div></div>
+      </div>
+    </div>
+    <p style="font-size:13px;color:#514c44;line-height:1.5;margin:12px 0 0">One feature across a year. Each function's solid block is short (fast, AI-assisted). The red dotted stretches are the waits between them: estimate, clarification, scope check. Animation: blocks fill in quickly, dotted lines crawl; the two numbers count up.</p>
+  </div>
+
+  <div id="2b" style="width:560px">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px"><a href="#2b" style="font-family:'IBM Plex Mono',monospace;font-size:12px;background:#1e1c19;color:#f6f3ec;padding:3px 8px;border-radius:6px">2b</a><span style="font-size:14px;font-weight:600">Four heatmaps</span></div>
+    <div style="position:relative;height:520px;border-radius:28px;background:linear-gradient(180deg,#efeae0,#f6f3ec);border:1px solid rgba(30,28,25,.08);padding:40px 44px;display:grid;grid-template-columns:1fr 1fr;gap:28px 32px;align-content:center">
+      <div><div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.12em;color:#1f4e3d;margin-bottom:10px">ROADMAP EDITS · 214</div><div style="display:grid;grid-template-columns:repeat(13,1fr);gap:3px">{{ hmB }}</div></div>
+      <div><div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.12em;color:#b07a2c;margin-bottom:10px">PRD CHANGES · 388</div><div style="display:grid;grid-template-columns:repeat(13,1fr);gap:3px">{{ hmP }}</div></div>
+      <div><div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.12em;color:#1e1c19;margin-bottom:10px">COMMITS · 1,247</div><div style="display:grid;grid-template-columns:repeat(13,1fr);gap:3px">{{ hmE }}</div></div>
+      <div><div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.12em;color:#c4553a;margin-bottom:10px">CAPABILITIES SHIPPED · 2</div><div style="display:grid;grid-template-columns:repeat(13,1fr);gap:3px">{{ hmS }}</div></div>
+    </div>
+    <p style="font-size:13px;color:#514c44;line-height:1.5;margin:12px 0 0">Contribution-graph language everyone in software reads instantly. Three dense grids, one nearly empty. Animation: cells light up in real time on the first three; the fourth blinks once in a while.</p>
+  </div>
+
+  <div id="2c" style="width:560px">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px"><a href="#2c" style="font-family:'IBM Plex Mono',monospace;font-size:12px;background:#1e1c19;color:#f6f3ec;padding:3px 8px;border-radius:6px">2c</a><span style="font-size:14px;font-weight:600">The one thread nobody answers</span></div>
+    <div style="position:relative;height:520px;border-radius:28px;background:linear-gradient(180deg,#efeae0,#f6f3ec);border:1px solid rgba(30,28,25,.08);padding:34px 40px;display:grid;grid-template-columns:1fr 1fr;gap:24px">
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.12em;color:#514c44;margin-bottom:4px">#business · #product · #eng</div>
+        <div style="padding:9px 12px;border-radius:12px;background:#fffdf9;border:1px solid rgba(30,28,25,.1);font-size:12px"><span style="color:#1f4e3d;font-weight:600">Business</span> Roadmap v7 drafted, 40 items reprioritised</div>
+        <div style="padding:9px 12px;border-radius:12px;background:#fffdf9;border:1px solid rgba(30,28,25,.1);font-size:12px"><span style="color:#b07a2c;font-weight:600">Product</span> PRD-214 generated, review by Fri</div>
+        <div style="padding:9px 12px;border-radius:12px;background:#fffdf9;border:1px solid rgba(30,28,25,.1);font-size:12px"><span style="font-weight:600">Eng</span> classifier v2 merged, 47 commits today</div>
+        <div style="padding:9px 12px;border-radius:12px;background:#fffdf9;border:1px solid rgba(30,28,25,.1);font-size:12px"><span style="color:#b07a2c;font-weight:600">Product</span> PRD-215, 216 drafted</div>
+        <div style="padding:9px 12px;border-radius:12px;background:#fffdf9;border:1px solid rgba(30,28,25,.1);font-size:12px"><span style="font-weight:600">Eng</span> line-type review shipped to staging</div>
+        <div style="padding:9px 12px;border-radius:12px;background:#fffdf9;border:1px solid rgba(30,28,25,.1);font-size:12px"><span style="color:#1f4e3d;font-weight:600">Business</span> Q3 targets updated</div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:#8a847a;text-align:center;margin-top:4px">+ 312 messages today</div>
+      </div>
+      <div style="display:flex;flex-direction:column;justify-content:center;gap:12px;border-left:1px dashed rgba(30,28,25,.2);padding-left:24px">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.12em;color:#c4553a">#review-symbols-v2</div>
+        <div style="padding:12px 14px;border-radius:12px;background:#fffdf9;border:1px solid rgba(196,85,58,.35);font-size:13px;line-height:1.45"><span style="color:#1f4e3d;font-weight:600">Business</span> How big is this, and which services does it touch? Need a number for the board.</div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#c4553a">asked 11 days ago · no reply</div>
+        <div style="display:flex;gap:6px;margin-top:8px"><span style="width:8px;height:8px;border-radius:50%;background:#c4553a;opacity:.9"></span><span style="width:8px;height:8px;border-radius:50%;background:#c4553a;opacity:.5"></span><span style="width:8px;height:8px;border-radius:50%;background:#c4553a;opacity:.25"></span></div>
+      </div>
+    </div>
+    <p style="font-size:13px;color:#514c44;line-height:1.5;margin:12px 0 0">Left: three channels, each busy and productive. Right: the one cross-functional thread, a single question, unanswered for days. Animation: left column scrolls with new messages arriving; right side only advances its counter.</p>
+  </div>
+
+  <div id="2d" style="width:560px">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px"><a href="#2d" style="font-family:'IBM Plex Mono',monospace;font-size:12px;background:#1e1c19;color:#f6f3ec;padding:3px 8px;border-radius:6px">2d</a><span style="font-size:14px;font-weight:600">Same feature, three dialects</span></div>
+    <div style="position:relative;height:520px;border-radius:28px;background:linear-gradient(180deg,#efeae0,#f6f3ec);border:1px solid rgba(30,28,25,.08);padding:44px 48px;display:flex;flex-direction:column;justify-content:center;gap:26px">
+      <div><div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.12em;color:#1f4e3d;margin-bottom:8px">BUSINESS SAYS</div><div style="font-size:26px;font-weight:700;letter-spacing:-.02em;line-height:1.15">“Make symbol review faster for Q3.”</div></div>
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:14px;color:#c4553a;padding-left:2px">≠</div>
+      <div><div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.12em;color:#b07a2c;margin-bottom:8px">PRODUCT WRITES</div><div style="font-size:18px;font-weight:600;line-height:1.35;color:#3d382f">PRD-214 · The system shall support batch approval of classified symbols with a confidence threshold…</div></div>
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:14px;color:#c4553a;padding-left:2px">≠</div>
+      <div><div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.12em;color:#1e1c19;margin-bottom:8px">ENGINEERING SHIPS</div><div style="font-family:'IBM Plex Mono',monospace;font-size:14px;line-height:1.6;color:#1e1c19">feat(classifier): threshold gate in SymbolClassifierService<br>fix(review): pagination on ReviewQueue</div></div>
+    </div>
+    <p style="font-size:13px;color:#514c44;line-height:1.5;margin:12px 0 0">Purely typographic. One intent, rewritten three times, each version drafted fast with AI, none traceable to the other. Animation: each line types itself in; the ≠ marks pulse red once the third finishes.</p>
+  </div>
+
+</section>
+
+<section style="padding:40px;display:flex;gap:40px;flex-wrap:wrap;align-items:start">
+
+  <div id="1a" style="width:560px">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px"><a href="#1a" style="font-family:'IBM Plex Mono',monospace;font-size:12px;background:#1e1c19;color:#f6f3ec;padding:3px 8px;border-radius:6px">1a</a><span style="font-size:14px;font-weight:600">Three circles that should overlap, don't</span></div>
+    <div style="position:relative;height:520px;border-radius:28px;background:linear-gradient(180deg,#efeae0,#f6f3ec);border:1px solid rgba(30,28,25,.08);overflow:hidden">
+      <svg viewBox="0 0 560 520" style="position:absolute;inset:0;width:100%;height:100%">
+        <g transform="translate(200 200)"><circle r="120" fill="rgba(31,78,61,.10)" stroke="#1f4e3d" stroke-width="1.5"></circle><circle r="104" fill="none" stroke="#1f4e3d" stroke-width="1.2" stroke-dasharray="3 9" style="animation:spin 6s linear infinite"></circle></g>
+        <g transform="translate(372 232)"><circle r="120" fill="rgba(224,164,88,.16)" stroke="#b07a2c" stroke-width="1.5"></circle><circle r="104" fill="none" stroke="#b07a2c" stroke-width="1.2" stroke-dasharray="3 9" style="animation:spinr 9s linear infinite"></circle></g>
+        <g transform="translate(276 372)"><circle r="120" fill="rgba(30,28,25,.06)" stroke="#1e1c19" stroke-width="1.5"></circle><circle r="104" fill="none" stroke="#1e1c19" stroke-width="1.2" stroke-dasharray="3 9" style="animation:spin 3s linear infinite"></circle></g>
+        <circle cx="282" cy="270" r="20" fill="none" stroke="#c4553a" stroke-width="1.5" stroke-dasharray="4 4" style="animation:dash 2s linear infinite"></circle>
+        <text x="282" y="275" text-anchor="middle" font-family="IBM Plex Mono" font-size="14" fill="#c4553a">?</text>
+        <text x="200" y="120" text-anchor="middle" font-family="IBM Plex Mono" font-size="11" letter-spacing="1.5" fill="#1f4e3d">BUSINESS</text>
+        <text x="372" y="146" text-anchor="middle" font-family="IBM Plex Mono" font-size="11" letter-spacing="1.5" fill="#b07a2c">PRODUCT</text>
+        <text x="276" y="472" text-anchor="middle" font-family="IBM Plex Mono" font-size="11" letter-spacing="1.5" fill="#1e1c19">ENGINEERING</text>
+      </svg>
+      <div style="position:absolute;left:28px;bottom:24px;right:28px;display:flex;justify-content:space-between;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#514c44"><span>each one turning faster than ever</span><span style="color:#c4553a">no shared ground</span></div>
+    </div>
+    <p style="font-size:13px;color:#514c44;line-height:1.5;margin:12px 0 0">Three circles, each spinning at its own speed (inner dashed ring). They barely touch; the place where they should overlap is a red dashed hole. Animation: circles slowly drift apart over ~20s, the hole grows.</p>
+  </div>
+
+  <div id="1b" style="width:560px">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px"><a href="#1b" style="font-family:'IBM Plex Mono',monospace;font-size:12px;background:#1e1c19;color:#f6f3ec;padding:3px 8px;border-radius:6px">1b</a><span style="font-size:14px;font-weight:600">Three fast, together slow</span></div>
+    <div style="position:relative;height:520px;border-radius:28px;background:linear-gradient(180deg,#efeae0,#f6f3ec);border:1px solid rgba(30,28,25,.08);padding:40px 44px;display:flex;flex-direction:column;justify-content:center;gap:30px">
+      <div><div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px"><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;color:#514c44">BUSINESS</span><span style="font-size:34px;font-weight:700;letter-spacing:-.03em;color:#1f4e3d">3×</span></div><div style="height:10px;border-radius:5px;background:#e4ded1"><div style="height:100%;width:84%;border-radius:5px;background:#1f4e3d"></div></div></div>
+      <div><div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px"><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;color:#514c44">PRODUCT · BA</span><span style="font-size:34px;font-weight:700;letter-spacing:-.03em;color:#b07a2c">4×</span></div><div style="height:10px;border-radius:5px;background:#e4ded1"><div style="height:100%;width:90%;border-radius:5px;background:#e0a458"></div></div></div>
+      <div><div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px"><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;color:#514c44">ENGINEERING</span><span style="font-size:34px;font-weight:700;letter-spacing:-.03em;color:#1e1c19">5×</span></div><div style="height:10px;border-radius:5px;background:#e4ded1"><div style="height:100%;width:96%;border-radius:5px;background:#1e1c19"></div></div></div>
+      <div style="border-top:1px dashed rgba(30,28,25,.2);padding-top:26px"><div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px"><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;color:#c4553a">SHIPPED TOGETHER</span><span style="font-size:34px;font-weight:700;letter-spacing:-.03em;color:#c4553a">1.1×</span></div><div style="height:10px;border-radius:5px;background:#e4ded1"><div style="height:100%;width:14%;border-radius:5px;background:#c4553a"></div></div></div>
+    </div>
+    <p style="font-size:13px;color:#514c44;line-height:1.5;margin:12px 0 0">Nothing but four bars and four numbers. The first three fill quickly on load; the last one crawls and stalls. Cheapest to read, works at any size, no metaphor to decode.</p>
+  </div>
+
+  <div id="1c" style="width:560px">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px"><a href="#1c" style="font-family:'IBM Plex Mono',monospace;font-size:12px;background:#1e1c19;color:#f6f3ec;padding:3px 8px;border-radius:6px">1c</a><span style="font-size:14px;font-weight:600">Three directions</span></div>
+    <div style="position:relative;height:520px;border-radius:28px;background:linear-gradient(180deg,#efeae0,#f6f3ec);border:1px solid rgba(30,28,25,.08);overflow:hidden">
+      <svg viewBox="0 0 560 520" style="position:absolute;inset:0;width:100%;height:100%">
+        <g stroke-linecap="round">
+          <path d="M280 300 L110 130" stroke="#1f4e3d" stroke-width="14" opacity=".15"></path><path d="M280 300 L110 130" stroke="#1f4e3d" stroke-width="8" opacity=".35"></path><path d="M280 300 L110 130" stroke="#1f4e3d" stroke-width="3"></path><path d="M130 118 L106 126 L114 150" fill="none" stroke="#1f4e3d" stroke-width="3"></path>
+          <path d="M280 300 L470 150" stroke="#e0a458" stroke-width="14" opacity=".18"></path><path d="M280 300 L470 150" stroke="#e0a458" stroke-width="8" opacity=".4"></path><path d="M280 300 L470 150" stroke="#b07a2c" stroke-width="3"></path><path d="M450 142 L474 147 L466 170" fill="none" stroke="#b07a2c" stroke-width="3"></path>
+          <path d="M280 300 L300 470" stroke="#1e1c19" stroke-width="14" opacity=".1"></path><path d="M280 300 L300 470" stroke="#1e1c19" stroke-width="8" opacity=".25"></path><path d="M280 300 L300 470" stroke="#1e1c19" stroke-width="3"></path><path d="M284 456 L301 474 L316 454" fill="none" stroke="#1e1c19" stroke-width="3"></path>
+        </g>
+        <circle cx="280" cy="300" r="9" fill="#f6f3ec" stroke="#c4553a" stroke-width="2"></circle>
+        <text x="96" y="108" text-anchor="middle" font-family="IBM Plex Mono" font-size="11" letter-spacing="1.5" fill="#1f4e3d">BUSINESS</text>
+        <text x="484" y="132" text-anchor="middle" font-family="IBM Plex Mono" font-size="11" letter-spacing="1.5" fill="#b07a2c">PRODUCT</text>
+        <text x="302" y="500" text-anchor="middle" font-family="IBM Plex Mono" font-size="11" letter-spacing="1.5" fill="#1e1c19">ENGINEERING</text>
+        <text x="280" y="292" text-anchor="middle" font-family="IBM Plex Mono" font-size="10" fill="#c4553a" dy="-14">the product</text>
+      </svg>
+    </div>
+    <p style="font-size:13px;color:#514c44;line-height:1.5;margin:12px 0 0">Three strokes leaving one small point at speed, each in its own direction. Animation: strokes draw outward and keep extending; the point in the middle stays where it is. One shape, one message: velocity without a shared heading.</p>
+  </div>
+
+  <div id="1d" style="width:560px">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px"><a href="#1d" style="font-family:'IBM Plex Mono',monospace;font-size:12px;background:#1e1c19;color:#f6f3ec;padding:3px 8px;border-radius:6px">1d</a><span style="font-size:14px;font-weight:600">Three rooms, three whiteboards</span></div>
+    <div style="position:relative;height:520px;border-radius:28px;background:linear-gradient(180deg,#efeae0,#f6f3ec);border:1px solid rgba(30,28,25,.08);padding:36px;display:grid;grid-template-columns:repeat(3,1fr);gap:18px;align-items:stretch">
+      <div style="background:#fffdf9;border:1px solid rgba(30,28,25,.1);border-radius:16px;padding:18px;display:flex;flex-direction:column;gap:10px"><div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.14em;color:#1f4e3d">BUSINESS</div><div style="height:8px;border-radius:4px;background:#d9e6df;width:90%"></div><div style="height:8px;border-radius:4px;background:#d9e6df;width:70%"></div><div style="height:8px;border-radius:4px;background:#d9e6df;width:82%"></div><div style="height:8px;border-radius:4px;background:#d9e6df;width:55%"></div><div style="margin-top:auto;font-size:12px;color:#514c44">Review Symbols v2</div></div>
+      <div style="background:#fffdf9;border:1px solid rgba(30,28,25,.1);border-radius:16px;padding:18px;display:flex;flex-direction:column;gap:10px"><div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.14em;color:#b07a2c">PRODUCT</div><div style="height:8px;border-radius:4px;background:#f6e4c6;width:80%"></div><div style="height:8px;border-radius:4px;background:#f6e4c6;width:92%"></div><div style="height:8px;border-radius:4px;background:#f6e4c6;width:64%"></div><div style="height:8px;border-radius:4px;background:#f6e4c6;width:76%"></div><div style="height:8px;border-radius:4px;background:#f6e4c6;width:50%"></div><div style="margin-top:auto;font-size:12px;color:#514c44">Symbol review, phase 2</div></div>
+      <div style="background:#fffdf9;border:1px solid rgba(30,28,25,.1);border-radius:16px;padding:18px;display:flex;flex-direction:column;gap:10px"><div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.14em;color:#1e1c19">ENGINEERING</div><div style="height:8px;border-radius:4px;background:#e4ded1;width:96%"></div><div style="height:8px;border-radius:4px;background:#e4ded1;width:88%"></div><div style="height:8px;border-radius:4px;background:#e4ded1;width:94%"></div><div style="height:8px;border-radius:4px;background:#e4ded1;width:72%"></div><div style="height:8px;border-radius:4px;background:#e4ded1;width:90%"></div><div style="height:8px;border-radius:4px;background:#e4ded1;width:60%"></div><div style="margin-top:auto;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#514c44">classifier-v2</div></div>
+      <div style="grid-column:1/-1;text-align:center;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#c4553a;padding-top:6px">same feature · three names · three plans</div>
+    </div>
+    <p style="font-size:13px;color:#514c44;line-height:1.5;margin:12px 0 0">Three whiteboards filling up fast with AI-drafted lines. The same feature appears at the bottom of each under a different name. Animation: lines keep being added to all three; the names never converge.</p>
+  </div>
+
+</section>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    const rnd = s => () => { s = (s * 16807) % 2147483647; return s / 2147483647; };
+    const grid = (seed, density, color) => { const r = rnd(seed); return React.createElement(React.Fragment, null, Array.from({ length: 13 * 7 }, (_, i) => { const x = r(); const on = x < density; const a = on ? 0.25 + Math.min(0.75, (density - x) / density) : 0.06; return React.createElement('span', { key: i, style: { aspectRatio: '1', borderRadius: 3, background: color, opacity: a } }); })); };
+    return { hmB: grid(3, 0.62, '#1f4e3d'), hmP: grid(7, 0.74, '#e0a458'), hmE: grid(11, 0.92, '#1e1c19'), hmS: grid(5, 0.025, '#c4553a') };
+  }
+}
+</script>
+</body>
+</html>

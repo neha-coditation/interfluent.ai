@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="./responsive.css">
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<script src="./site-config.js"></script>
+<style>body{margin:0;background:#f6f3ec;color:#1e1c19;font-family:Figtree,system-ui,sans-serif;-webkit-font-smoothing:antialiased}a{color:#1f4e3d;text-decoration:none}a:hover{color:#153628}*{box-sizing:border-box}input,select,textarea{font:inherit;color:inherit}</style>
+</helmet>
+<dc-import name="SiteNav" active="contact" hint-size="100%,64px" style="position:sticky;top:0;z-index:20"></dc-import>
+
+<section data-screen-label="Contact" style="max-width:1240px;margin:0 auto;padding:clamp(40px,8vw,80px) clamp(20px,5vw,40px) clamp(60px,12vw,120px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:64px;align-items:start">
+  <div>
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.14em;color:#1f4e3d;margin-bottom:18px">CONTACT</div>
+    <h1 style="font-size:clamp(36px,4.4vw,56px);line-height:1.04;letter-spacing:-.03em;font-weight:700;margin:0 0 20px;text-wrap:balance">Book a walkthrough on your own codebase.</h1>
+    <p style="font-size:18px;line-height:1.6;color:#514c44;margin:0 0 40px;text-wrap:pretty">Forty-five minutes, live, from feature map to test plan. Bring the change you can't price and we'll price it in front of you.</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(200px,100%),1fr));gap:28px;font-size:15px;line-height:1.55;color:#514c44">
+      <div><div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.12em;color:#8a847a;margin-bottom:8px">EMAIL</div><a href="mailto:hello@codelens.ai" style="font-weight:600">hello@codelens.ai</a></div>
+      <div><div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.12em;color:#8a847a;margin-bottom:8px">RESPONSE TIME</div>Within two working days</div>
+    </div>
+  </div>
+
+  <div style="background:#fffdf9;border:1px solid rgba(30,28,25,.1);border-radius:20px;padding:32px;box-shadow:0 24px 60px rgba(30,28,25,.08)">
+    <sc-if value="{{ notSent }}" hint-placeholder-val="{{ true }}">
+      <form onSubmit="{{ submit }}" style="display:flex;flex-direction:column;gap:16px">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(180px,100%),1fr));gap:14px">
+          <label style="display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:600"><span>Name</span><input required="{{ true }}" placeholder="Asha Rao" style="padding:12px 14px;border-radius:10px;border:1px solid rgba(30,28,25,.16);background:#f6f3ec;font-size:15px;outline:none" style-focus="border-color:#1f4e3d"></label>
+          <label style="display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:600"><span>Work email</span><input type="email" required="{{ true }}" placeholder="asha@company.com" style="padding:12px 14px;border-radius:10px;border:1px solid rgba(30,28,25,.16);background:#f6f3ec;font-size:15px;outline:none" style-focus="border-color:#1f4e3d"></label>
+        </div>
+        <label style="display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:600"><span>I want to</span><select style="padding:12px 14px;border-radius:10px;border:1px solid rgba(30,28,25,.16);background:#f6f3ec;font-size:15px;outline:none"><option>Book a walkthrough</option><option>Ask about pricing</option><option>Talk about a role</option><option>Something else</option></select></label>
+        <label style="display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:600"><span>Message</span><textarea rows="{{ 5 }}" placeholder="Tell us about the system and the change you have in mind." style="padding:12px 14px;border-radius:10px;border:1px solid rgba(30,28,25,.16);background:#f6f3ec;font-size:15px;outline:none;resize:vertical" style-focus="border-color:#1f4e3d"></textarea></label>
+        <button type="submit" style="margin-top:6px;background:#1f4e3d;color:#f6f3ec;padding:14px 22px;border-radius:999px;font-weight:600;font-size:15px;border:none;cursor:pointer" style-hover="background:#153628">Send</button>
+      </form>
+    </sc-if>
+    <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex;flex-direction:column;gap:14px;min-height:320px;justify-content:center;text-align:center;padding:20px">
+        <div style="width:48px;height:48px;border-radius:50%;background:#e0a458;margin:0 auto;display:grid;place-items:center;font-weight:700;font-size:20px">✓</div>
+        <div style="font-size:24px;font-weight:700;letter-spacing:-.02em">Sent.</div>
+        <div style="font-size:15px;line-height:1.55;color:#514c44">A person will reply within two working days.</div>
+      </div>
+    </sc-if>
+  </div>
+</section>
+
+<dc-import name="SiteFooter" hint-size="100%,320px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { sent: false };
+  renderVals() { return { sent: this.state.sent, notSent: !this.state.sent, submit: e => { e.preventDefault(); this.setState({ sent: true }); } }; }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="./responsive.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+html{scroll-behavior:auto;overflow-x:hidden}
+body{margin:0;background:#f6f3ec;color:#1e1c19;font-family:Figtree,system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:#1f4e3d;text-decoration:none}a:hover{color:#153628}
+*{box-sizing:border-box}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes fill{0%{width:34%}70%{width:38%}100%{width:38%}}
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+@keyframes reach{0%{height:0;background:#1f4e3d}38%{height:34px;background:#1f4e3d}48%{height:34px;background:#c4553a;opacity:1}72%{height:34px;background:#c4553a;opacity:1}100%{height:34px;background:#c4553a;opacity:0}}
+@keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+</style>
+</helmet>
+
+<nav class="rs-nav" style="position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:18px clamp(16px,4vw,40px);background:rgba(246,243,236,.82);backdrop-filter:blur(12px);border-bottom:1px solid rgba(30,28,25,.06)">
+  <div style="display:flex;align-items:center;gap:10px">
+    <div style="width:26px;height:26px;border-radius:8px;background:#1f4e3d;position:relative"><div style="position:absolute;inset:7px;border-radius:50%;border:2.5px solid #e0a458"></div></div>
+    <span style="font-weight:700;font-size:18px;letter-spacing:-.01em">CodeLens</span>
+  </div>
+  <label class="rs-burger" aria-label="Menu"><input type="checkbox"><i></i></label>
+  <div class="rs-navlinks" style="display:flex;align-items:center;gap:28px;font-size:14px;font-weight:500;color:#514c44">
+    <a href="#codelens" style="color:#514c44">Product</a>
+    <a href="#" style="color:#514c44">About us</a>
+    <a href="#" style="color:#514c44">Blog</a>
+    <a href="#" style="color:#514c44">Careers</a>
+    <a href="#" style="color:#514c44">Contact</a>
+    <a href="#cta" style="background:#1f4e3d;color:#f6f3ec;padding:10px 16px;border-radius:999px;font-weight:600">Book a walkthrough</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section data-screen-label="Hero" style="max-width:1240px;margin:0 auto;padding:clamp(44px,8.8vw,88px) clamp(20px,5vw,40px) 40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:56px;align-items:center">
+  <div style="animation:rise .9s cubic-bezier(.2,.7,.2,1) both">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.14em;color:#1f4e3d;margin-bottom:22px">A SHARED CONTEXT LAYER FOR SOFTWARE TEAMS</div>
+    <h1 style="font-size:clamp(40px,5.2vw,68px);line-height:1.02;letter-spacing:-.03em;font-weight:700;margin:0 0 26px;text-wrap:balance">Everyone ships fast now.<br>Together, you still don't.</h1>
+    <p style="font-size:19px;line-height:1.55;color:#514c44;max-width:520px;margin:0 0 34px;text-wrap:pretty">AI made each function quicker: drafted roadmaps, generated PRDs, assisted code. The handoffs between them did not change. CodeLens gives business, product and engineering one picture of the system, so the gains compound instead of colliding.</p>
+    <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center">
+      <a href="#cta" style="background:#1f4e3d;color:#f6f3ec;padding:14px 22px;border-radius:999px;font-weight:600;font-size:15px" style-hover="background:#153628">Book a walkthrough</a>
+      <a href="#today" style="padding:14px 18px;border-radius:999px;font-weight:600;font-size:15px;border:1px solid rgba(30,28,25,.16);color:#1e1c19">Read the story ↓</a>
+    </div>
+  </div>
+
+  <!-- Hero illustration: three fast lanes, broken handoffs, then the CodeLens spine -->
+  <div class="rs-heroviz" style="position:relative;min-height:540px;animation:rise 1.1s .15s cubic-bezier(.2,.7,.2,1) both">
+    <div style="position:absolute;inset:0;border-radius:28px;background:linear-gradient(180deg,#efeae0 0%,#f6f3ec 100%);border:1px solid rgba(30,28,25,.08)"></div>
+    <div style="position:relative;padding:26px 28px 24px;display:flex;flex-direction:column;height:100%;min-height:540px">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:22px;position:relative;height:16px">
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;color:#514c44">THREE FUNCTIONS · EACH ON AI</span>
+        <span style="position:absolute;right:0;top:0;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#c4553a;opacity:{{ v.runO }};transition:opacity .6s">{{ v.handoffs }} open handoffs</span>
+        <span style="position:absolute;right:0;top:0;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#1f4e3d;opacity:{{ v.linkO }};transition:opacity .6s">connected through CodeLens</span>
+      </div>
+      <div style="display:grid;grid-template-columns:118px minmax(0,1fr);gap:14px;align-items:start">
+        <div style="padding-top:6px"><div style="display:flex;align-items:center;gap:6px;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.12em;color:#514c44"><span style="width:8px;height:8px;border-radius:50%;background:#1f4e3d"></span>BUSINESS</div><div style="margin-top:6px;display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:9.5px;padding:2px 6px;border-radius:4px;background:rgba(31,78,61,.08);color:#1f4e3d">AI-drafted roadmap</div></div>
+        <div style="overflow:hidden;mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);">
+          <div style="display:flex;gap:10px;width:max-content;animation:marquee 26s linear infinite">
+            <div style="display:flex;gap:10px;padding-right:10px"><span style="position:relative;font-size:12px;padding:8px 11px;border-radius:8px;background:#d9e6df;color:#1f4e3d;border:1px solid rgba(30,28,25,.1);white-space:nowrap;font-weight:600">Convert drawings</span><span style="position:relative;font-size:12px;padding:8px 11px;border-radius:8px;background:#d9e6df;color:#1f4e3d;border:1px solid rgba(30,28,25,.1);white-space:nowrap;font-weight:600">Review symbols v2</span><span style="position:relative;font-size:12px;padding:8px 11px;border-radius:8px;background:#d9e6df;color:#1f4e3d;border:1px solid rgba(30,28,25,.1);white-space:nowrap;font-weight:600">Classify symbols</span><span style="position:relative;font-size:12px;padding:8px 11px;border-radius:8px;background:#d9e6df;color:#1f4e3d;border:1px solid rgba(30,28,25,.1);white-space:nowrap;font-weight:600">Export graph</span><span style="position:relative;font-size:12px;padding:8px 11px;border-radius:8px;background:#d9e6df;color:#1f4e3d;border:1px solid rgba(30,28,25,.1);white-space:nowrap;font-weight:600">Line-type review</span><span style="position:relative;font-size:12px;padding:8px 11px;border-radius:8px;background:#d9e6df;color:#1f4e3d;border:1px solid rgba(30,28,25,.1);white-space:nowrap;font-weight:600">Batch import</span></div>
+            <div style="display:flex;gap:10px;padding-right:10px"><span style="position:relative;font-size:12px;padding:8px 11px;border-radius:8px;background:#d9e6df;color:#1f4e3d;border:1px solid rgba(30,28,25,.1);white-space:nowrap;font-weight:600">Convert drawings</span><span style="position:relative;font-size:12px;padding:8px 11px;border-radius:8px;background:#d9e6df;color:#1f4e3d;border:1px solid rgba(30,28,25,.1);white-space:nowrap;font-weight:600">Review symbols v2</span><span style="position:relative;font-size:12px;padding:8px 11px;border-radius:8px;background:#d9e6df;color:#1f4e3d;border:1px solid rgba(30,28,25,.1);white-space:nowrap;font-weight:600">Classify symbols</span><span style="position:relative;font-size:12px;padding:8px 11px;border-radius:8px;background:#d9e6df;color:#1f4e3d;border:1px solid rgba(30,28,25,.1);white-space:nowrap;font-weight:600">Export graph</span><span style="position:relative;font-size:12px;padding:8px 11px;border-radius:8px;background:#d9e6df;color:#1f4e3d;border:1px solid rgba(30,28,25,.1);white-space:nowrap;font-weight:600">Line-type review</span><span style="position:relative;font-size:12px;padding:8px 11px;border-radius:8px;background:#d9e6df;color:#1f4e3d;border:1px solid rgba(30,28,25,.1);white-space:nowrap;font-weight:600">Batch import</span></div>
+          </div>
+        </div>
+      </div>
+      <div style="position:relative;height:40px;margin-left:132px">
+        <div style="position:absolute;left:16%;top:0;bottom:0;width:1px">
+          <div style="position:absolute;left:0;top:0;height:34%;width:1px;border-left:1px dashed rgba(30,28,25,.35);opacity:{{ v.runO }};transition:opacity .6s"></div>
+          <div style="position:absolute;left:0;bottom:0;height:34%;width:1px;border-left:1px dashed rgba(30,28,25,.35);opacity:{{ v.runO }};transition:opacity .6s"></div>
+          <div style="position:absolute;left:-7px;top:50%;transform:translateY(-50%);display:flex;align-items:center;gap:6px;opacity:{{ v.runO }};transition:opacity .6s"><span style="width:14px;height:14px;border-radius:50%;background:#f4d9d1;color:#c4553a;font-size:10px;line-height:14px;text-align:center;font-weight:700">×</span><span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:#c4553a;white-space:nowrap">not estimated</span></div>
+          <div style="position:absolute;left:0;top:0;bottom:0;width:1px;background:#1f4e3d;opacity:{{ v.linkO }};transition:opacity .6s"></div>
+        </div>
+        <div style="position:absolute;left:50%;top:0;bottom:0;width:1px">
+          <div style="position:absolute;left:0;top:0;height:34%;width:1px;border-left:1px dashed rgba(30,28,25,.35);opacity:{{ v.runO }};transition:opacity .6s"></div>
+          <div style="position:absolute;left:0;bottom:0;height:34%;width:1px;border-left:1px dashed rgba(30,28,25,.35);opacity:{{ v.runO }};transition:opacity .6s"></div>
+          <div style="position:absolute;left:-7px;top:50%;transform:translateY(-50%);display:flex;align-items:center;gap:6px;opacity:{{ v.runO }};transition:opacity .6s"><span style="width:14px;height:14px;border-radius:50%;background:#f4d9d1;color:#c4553a;font-size:10px;line-height:14px;text-align:center;font-weight:700">×</span><span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:#c4553a;white-space:nowrap">capability renamed</span></div>
+          <div style="position:absolute;left:0;top:0;bottom:0;width:1px;background:#1f4e3d;opacity:{{ v.linkO }};transition:opacity .6s"></div>
+        </div>
+        <div style="position:absolute;left:84%;top:0;bottom:0;width:1px">
+          <div style="position:absolute;left:0;top:0;height:34%;width:1px;border-left:1px dashed rgba(30,28,25,.35);opacity:{{ v.runO }};transition:opacity .6s"></div>
+          <div style="position:absolute;left:0;bottom:0;height:34%;width:1px;border-left:1px dashed rgba(30,28,25,.35);opacity:{{ v.runO }};transition:opacity .6s"></div>
+          <div style="position:absolute;left:-7px;top:50%;transform:translateY(-50%);display:flex;align-items:center;gap:6px;opacity:{{ v.runO }};transition:opacity .6s"><span style="width:14px;height:14px;border-radius:50%;background:#f4d9d1;color:#c4553a;font-size:10px;line-height:14px;text-align:center;font-weight:700">×</span><span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:#c4553a;white-space:nowrap">no owner</span></div>
+          <div style="position:absolute;left:0;top:0;bottom:0;width:1px;background:#1f4e3d;opacity:{{ v.linkO }};transition:opacity .6s"></div>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:118px minmax(0,1fr);gap:14px;align-items:start">
+        <div style="padding-top:6px"><div style="display:flex;align-items:center;gap:6px;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.12em;color:#514c44"><span style="width:8px;height:8px;border-radius:50%;background:#e0a458"></span>PRODUCT · BA</div><div style="margin-top:6px;display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:9.5px;padding:2px 6px;border-radius:4px;background:rgba(31,78,61,.08);color:#1f4e3d">AI-drafted PRDs</div></div>
+        <div style="overflow:hidden;mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);">
+          <div style="display:flex;gap:10px;width:max-content;animation:marquee 21s linear infinite">
+            <div style="display:flex;gap:10px;padding-right:10px"><span style="position:relative;font-size:12px;padding:8px 11px;border-radius:8px;background:#f6e4c6;color:#6b4a16;border:1px solid rgba(30,28,25,.1);white-space:nowrap;font-weight:600">PRD · Review Symbols v2</span><span style="position:relative;font-size:12px;padding:8px 11px;border-radius:8px;background:#f6e4c6;color:#6b4a16;border:1px solid rgba(30,28,25,.1);white-space:nowrap;font-weight:600">PRD · Line types</span><span style="position:relative;font-size:12px;padding:8px 11px;border-radius:8px;background:#f6e4c6;color:#6b4a16;border:1px solid rgba(30,28,25,.1);white-space:nowrap;font-weight:600">PRD · DXF import</span><span style="position:relative;font-size:12px;padding:8px 11px;border-radius:8px;background:#f6e4c6;color:#6b4a16;border:1px solid rgba(30,28,25,.1);white-space:nowrap;font-weight:600">PRD · Graph export</span><span style="position:relative;font-size:12px;padding:8px 11px;border-radius:8px;background:#f6e4c6;color:#6b4a16;border:1px solid rgba(30,28,25,.1);white-space:nowrap;font-weight:600">PRD · Raster cleanup</span><span style="position:relative;font-size:12px;padding:8px 11px;border-radius:8px;background:#f6e4c6;color:#6b4a16;border:1px solid rgba(30,28,25,.1);white-space:nowrap;font-weight:600">PRD · Unit scaling</span></div>
+            <div style="display:flex;gap:10px;padding-right:10px"><span style="position:relative;font-size:12px;padding:8px 11px;border-radius:8px;background:#f6e4c6;color:#6b4a16;border:1px solid rgba(30,28,25,.1);white-space:nowrap;font-weight:600">PRD · Review Symbols v2</span><span style="position:relative;font-size:12px;padding:8px 11px;border-radius:8px;background:#f6e4c6;color:#6b4a16;border:1px solid rgba(30,28,25,.1);white-space:nowrap;font-weight:600">PRD · Line types</span><span style="position:relative;font-size:12px;padding:8px 11px;border-radius:8px;background:#f6e4c6;color:#6b4a16;border:1px solid rgba(30,28,25,.1);white-space:nowrap;font-weight:600">PRD · DXF import</span><span style="position:relative;font-size:12px;padding:8px 11px;border-radius:8px;background:#f6e4c6;color:#6b4a16;border:1px solid rgba(30,28,25,.1);white-space:nowrap;font-weight:600">PRD · Graph export</span><span style="position:relative;font-size:12px;padding:8px 11px;border-radius:8px;background:#f6e4c6;color:#6b4a16;border:1px solid rgba(30,28,25,.1);white-space:nowrap;font-weight:600">PRD · Raster cleanup</span><span style="position:relative;font-size:12px;padding:8px 11px;border-radius:8px;background:#f6e4c6;color:#6b4a16;border:1px solid rgba(30,28,25,.1);white-space:nowrap;font-weight:600">PRD · Unit scaling</span></div>
+          </div>
+        </div>
+      </div>
+      <div style="position:relative;height:40px;margin-left:132px">
+        <div style="position:absolute;left:16%;top:0;bottom:0;width:1px">
+          <div style="position:absolute;left:0;top:0;height:34%;width:1px;border-left:1px dashed rgba(30,28,25,.35);opacity:{{ v.runO }};transition:opacity .6s"></div>
+          <div style="position:absolute;left:0;bottom:0;height:34%;width:1px;border-left:1px dashed rgba(30,28,25,.35);opacity:{{ v.runO }};transition:opacity .6s"></div>
+          <div style="position:absolute;left:-7px;top:50%;transform:translateY(-50%);display:flex;align-items:center;gap:6px;opacity:{{ v.runO }};transition:opacity .6s"><span style="width:14px;height:14px;border-radius:50%;background:#f4d9d1;color:#c4553a;font-size:10px;line-height:14px;text-align:center;font-weight:700">×</span><span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:#c4553a;white-space:nowrap">services unknown</span></div>
+          <div style="position:absolute;left:0;top:0;bottom:0;width:1px;background:#1f4e3d;opacity:{{ v.linkO }};transition:opacity .6s"></div>
+        </div>
+        <div style="position:absolute;left:50%;top:0;bottom:0;width:1px">
+          <div style="position:absolute;left:0;top:0;height:34%;width:1px;border-left:1px dashed rgba(30,28,25,.35);opacity:{{ v.runO }};transition:opacity .6s"></div>
+          <div style="position:absolute;left:0;bottom:0;height:34%;width:1px;border-left:1px dashed rgba(30,28,25,.35);opacity:{{ v.runO }};transition:opacity .6s"></div>
+          <div style="position:absolute;left:-7px;top:50%;transform:translateY(-50%);display:flex;align-items:center;gap:6px;opacity:{{ v.runO }};transition:opacity .6s"><span style="width:14px;height:14px;border-radius:50%;background:#f4d9d1;color:#c4553a;font-size:10px;line-height:14px;text-align:center;font-weight:700">×</span><span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:#c4553a;white-space:nowrap">PRD stale</span></div>
+          <div style="position:absolute;left:0;top:0;bottom:0;width:1px;background:#1f4e3d;opacity:{{ v.linkO }};transition:opacity .6s"></div>
+        </div>
+        <div style="position:absolute;left:84%;top:0;bottom:0;width:1px">
+          <div style="position:absolute;left:0;top:0;height:34%;width:1px;border-left:1px dashed rgba(30,28,25,.35);opacity:{{ v.runO }};transition:opacity .6s"></div>
+          <div style="position:absolute;left:0;bottom:0;height:34%;width:1px;border-left:1px dashed rgba(30,28,25,.35);opacity:{{ v.runO }};transition:opacity .6s"></div>
+          <div style="position:absolute;left:-7px;top:50%;transform:translateY(-50%);display:flex;align-items:center;gap:6px;opacity:{{ v.runO }};transition:opacity .6s"><span style="width:14px;height:14px;border-radius:50%;background:#f4d9d1;color:#c4553a;font-size:10px;line-height:14px;text-align:center;font-weight:700">×</span><span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:#c4553a;white-space:nowrap">no test plan</span></div>
+          <div style="position:absolute;left:0;top:0;bottom:0;width:1px;background:#1f4e3d;opacity:{{ v.linkO }};transition:opacity .6s"></div>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:118px minmax(0,1fr);gap:14px;align-items:start">
+        <div style="padding-top:6px"><div style="display:flex;align-items:center;gap:6px;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.12em;color:#514c44"><span style="width:8px;height:8px;border-radius:50%;background:#1e1c19"></span>ENGINEERING</div><div style="margin-top:6px;display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:9.5px;padding:2px 6px;border-radius:4px;background:rgba(31,78,61,.08);color:#1f4e3d">AI-assisted code</div></div>
+        <div style="overflow:hidden;mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);">
+          <div style="display:flex;gap:10px;width:max-content;animation:marquee 12s linear infinite">
+            <div style="display:flex;gap:10px;padding-right:10px"><span style="position:relative;font-family:'IBM Plex Mono',monospace;font-size:12px;padding:8px 11px;border-radius:8px;background:#fffdf9;color:#1e1c19;border:1px solid rgba(30,28,25,.1);white-space:nowrap;font-weight:400">feat: symbol classifier v2</span><span style="position:relative;font-family:'IBM Plex Mono',monospace;font-size:12px;padding:8px 11px;border-radius:8px;background:#fffdf9;color:#1e1c19;border:1px solid rgba(30,28,25,.1);white-space:nowrap;font-weight:400">fix: pdf raster memory</span><span style="position:relative;font-family:'IBM Plex Mono',monospace;font-size:12px;padding:8px 11px;border-radius:8px;background:#fffdf9;color:#1e1c19;border:1px solid rgba(30,28,25,.1);white-space:nowrap;font-weight:400">chore: bump pdfjs-dist</span><span style="position:relative;font-family:'IBM Plex Mono',monospace;font-size:12px;padding:8px 11px;border-radius:8px;background:#fffdf9;color:#1e1c19;border:1px solid rgba(30,28,25,.1);white-space:nowrap;font-weight:400">feat: line-type review</span><span style="position:relative;font-family:'IBM Plex Mono',monospace;font-size:12px;padding:8px 11px;border-radius:8px;background:#fffdf9;color:#1e1c19;border:1px solid rgba(30,28,25,.1);white-space:nowrap;font-weight:400">refactor: graph export</span><span style="position:relative;font-family:'IBM Plex Mono',monospace;font-size:12px;padding:8px 11px;border-radius:8px;background:#fffdf9;color:#1e1c19;border:1px solid rgba(30,28,25,.1);white-space:nowrap;font-weight:400">fix: dwg unit scaling</span></div>
+            <div style="display:flex;gap:10px;padding-right:10px"><span style="position:relative;font-family:'IBM Plex Mono',monospace;font-size:12px;padding:8px 11px;border-radius:8px;background:#fffdf9;color:#1e1c19;border:1px solid rgba(30,28,25,.1);white-space:nowrap;font-weight:400">feat: symbol classifier v2</span><span style="position:relative;font-family:'IBM Plex Mono',monospace;font-size:12px;padding:8px 11px;border-radius:8px;background:#fffdf9;color:#1e1c19;border:1px solid rgba(30,28,25,.1);white-space:nowrap;font-weight:400">fix: pdf raster memory</span><span style="position:relative;font-family:'IBM Plex Mono',monospace;font-size:12px;padding:8px 11px;border-radius:8px;background:#fffdf9;color:#1e1c19;border:1px solid rgba(30,28,25,.1);white-space:nowrap;font-weight:400">chore: bump pdfjs-dist</span><span style="position:relative;font-family:'IBM Plex Mono',monospace;font-size:12px;padding:8px 11px;border-radius:8px;background:#fffdf9;color:#1e1c19;border:1px solid rgba(30,28,25,.1);white-space:nowrap;font-weight:400">feat: line-type review</span><span style="position:relative;font-family:'IBM Plex Mono',monospace;font-size:12px;padding:8px 11px;border-radius:8px;background:#fffdf9;color:#1e1c19;border:1px solid rgba(30,28,25,.1);white-space:nowrap;font-weight:400">refactor: graph export</span><span style="position:relative;font-family:'IBM Plex Mono',monospace;font-size:12px;padding:8px 11px;border-radius:8px;background:#fffdf9;color:#1e1c19;border:1px solid rgba(30,28,25,.1);white-space:nowrap;font-weight:400">fix: dwg unit scaling</span></div>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top:auto;padding-top:18px;border-top:1px dashed rgba(30,28,25,.16);display:grid;grid-template-columns:118px minmax(0,1fr);gap:8px 14px;align-items:center;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.08em;color:#514c44">
+        <span>BUSINESS</span><div style="height:6px;border-radius:3px;background:#ece7dc"><div style="height:100%;width:80%;border-radius:3px;background:#1f4e3d;opacity:.55"></div></div>
+        <span>PRODUCT · BA</span><div style="height:6px;border-radius:3px;background:#ece7dc"><div style="height:100%;width:86%;border-radius:3px;background:#e0a458"></div></div>
+        <span>ENGINEERING</span><div style="height:6px;border-radius:3px;background:#ece7dc"><div style="height:100%;width:92%;border-radius:3px;background:#1e1c19;opacity:.7"></div></div>
+        <span style="color:#1e1c19;font-weight:500">SHIPPED TOGETHER</span><div style="height:8px;border-radius:4px;background:#ece7dc"><div style="height:100%;width:{{ v.shipW }}%;border-radius:4px;background:#1f4e3d;transition:width 1.4s cubic-bezier(.2,.7,.2,1)"></div></div>
+      </div>
+    </div>
+    <div style="position:absolute;left:calc(132px + (100% - 132px - 56px) * .5);top:64px;bottom:118px;width:2px;background:#1f4e3d;opacity:{{ v.linkO }};transform:scaleY({{ v.linkO }});transform-origin:top;transition:opacity .6s,transform 1.1s cubic-bezier(.2,.7,.2,1);pointer-events:none"><div style="position:absolute;top:-14px;left:-13px;width:28px;height:28px;border-radius:8px;background:#1f4e3d;display:grid;place-items:center"><div style="width:11px;height:11px;border-radius:50%;border:2.5px solid #e0a458"></div></div></div>
+  </div>
+</section>
+
+<!-- ACT 1 · TODAY -->
+<section id="today" data-screen-label="Act 1 · Today" ref="{{ r1 }}" style="max-width:1240px;margin:0 auto;padding:clamp(60px,12vw,120px) clamp(20px,5vw,40px) clamp(40px,8vw,80px)">
+  <div style="max-width:720px">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.14em;color:#1f4e3d;margin-bottom:18px">01 · TODAY</div>
+    <h2 style="font-size:clamp(32px,4vw,52px);line-height:1.06;letter-spacing:-.025em;font-weight:700;margin:0 0 20px;text-wrap:balance">Three rooms. Three languages. One system nobody can see whole.</h2>
+    <p style="font-size:18px;line-height:1.6;color:#514c44;margin:0;text-wrap:pretty">Business talks in capabilities. Product talks in requirements. Engineering talks in repositories. Every planning conversation starts by redrawing the map by hand, and the map is stale by the time the meeting ends.</p>
+  </div>
+
+  <!-- three islands -->
+  <div style="position:relative;margin:64px 0 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:28px;align-items:start">
+    <div style="transform:translate({{ v.islandX1 }}px, {{ v.islandY1 }}px) rotate(-1.5deg);transition:transform .12s linear;background:#fffdf9;border:1px solid rgba(30,28,25,.1);border-radius:20px;padding:22px;box-shadow:0 20px 50px rgba(30,28,25,.07)">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px"><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;color:#514c44">BUSINESS</span><span style="width:10px;height:10px;border-radius:50%;background:#1f4e3d"></span></div>
+      <div style="font-size:14px;color:#514c44;margin-bottom:12px">Talks in capabilities</div>
+      <div style="display:flex;flex-wrap:wrap;gap:8px">
+        <span style="padding:8px 12px;border-radius:999px;background:#d9e6df;color:#1f4e3d;font-size:13px;font-weight:600">Convert drawings</span>
+        <span style="padding:8px 12px;border-radius:999px;background:#d9e6df;color:#1f4e3d;font-size:13px;font-weight:600">Review symbols</span>
+        <span style="padding:8px 12px;border-radius:999px;background:#d9e6df;color:#1f4e3d;font-size:13px;font-weight:600">Classify symbols</span>
+        <span style="padding:8px 12px;border-radius:999px;background:#d9e6df;color:#1f4e3d;font-size:13px;font-weight:600">Export graph</span>
+      </div>
+      <div style="margin-top:18px;padding-top:14px;border-top:1px dashed rgba(30,28,25,.16);font-size:13px;color:#c4553a;font-weight:500">“How big is Review Symbols v2?”</div>
+    </div>
+
+    <div style="transform:translate(0px, {{ v.islandY2 }}px);transition:transform .12s linear;background:#fffdf9;border:1px solid rgba(30,28,25,.1);border-radius:20px;padding:22px;box-shadow:0 20px 50px rgba(30,28,25,.07)">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px"><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;color:#514c44">PRODUCT / BA</span><span style="width:10px;height:10px;border-radius:50%;background:#e0a458"></span></div>
+      <div style="font-size:14px;color:#514c44;margin-bottom:12px">Talks in requirements</div>
+      <div style="border:1px solid rgba(30,28,25,.1);border-radius:12px;padding:14px;background:#f6f3ec">
+        <div style="font-size:13px;font-weight:600;margin-bottom:10px">PRD · Review Symbols v2 <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:#b07a2c;background:#f6e4c6;padding:2px 6px;border-radius:4px;margin-left:6px">DRAFT</span></div>
+        <div style="height:6px;border-radius:3px;background:#e4ded1;width:92%;margin-bottom:7px"></div>
+        <div style="height:6px;border-radius:3px;background:#e4ded1;width:78%;margin-bottom:7px"></div>
+        <div style="height:6px;border-radius:3px;background:#e4ded1;width:85%;margin-bottom:7px"></div>
+        <div style="height:6px;border-radius:3px;background:#e4ded1;width:40%"></div>
+      </div>
+      <div style="margin-top:18px;padding-top:14px;border-top:1px dashed rgba(30,28,25,.16);font-size:13px;color:#c4553a;font-weight:500">“Which services does this actually touch?”</div>
+    </div>
+
+    <div style="transform:translate({{ v.islandX3 }}px, {{ v.islandY3 }}px) rotate(1.5deg);transition:transform .12s linear;background:#fffdf9;border:1px solid rgba(30,28,25,.1);border-radius:20px;padding:22px;box-shadow:0 20px 50px rgba(30,28,25,.07)">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px"><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;color:#514c44">ENGINEERING</span><span style="width:10px;height:10px;border-radius:50%;background:#1e1c19"></span></div>
+      <div style="font-size:14px;color:#514c44;margin-bottom:12px">Talks in repositories</div>
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;line-height:1.9;color:#1e1c19;background:#f6f3ec;border:1px solid rgba(30,28,25,.1);border-radius:12px;padding:12px 14px;overflow:hidden;min-width:0">
+        <div style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis">classifier/<span style="color:#1f4e3d">SymbolClassifierService.ts</span></div>
+        <div style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis">conversion/<span style="color:#1f4e3d">DrawingConversionService.ts</span></div>
+        <div style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis">lines/<span style="color:#1f4e3d">LineTypeService.ts</span></div>
+        <div style="color:#8a847a;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">tests/classifier.spec.ts · 61%</div>
+      </div>
+      <div style="margin-top:18px;padding-top:14px;border-top:1px dashed rgba(30,28,25,.16);font-size:13px;color:#c4553a;font-weight:500">“Which capability is this debt under?”</div>
+    </div>
+  </div>
+
+  <!-- four leaks -->
+  <div style="margin-top:96px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr));gap:20px">
+    <sc-for list="{{ leaks }}" as="l" hint-placeholder-count="4">
+      <div style="opacity:{{ l.o }};transform:translateY({{ l.y }}px);transition:opacity .1s linear,transform .1s linear;padding:26px 24px;border-top:2px solid #1f4e3d">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#1f4e3d;margin-bottom:14px">{{ l.n }}</div>
+        <div style="font-size:19px;font-weight:600;letter-spacing:-.01em;margin-bottom:10px;line-height:1.25">{{ l.t }}</div>
+        <div style="font-size:15px;line-height:1.55;color:#514c44;text-wrap:pretty">{{ l.d }}</div>
+      </div>
+    </sc-for>
+  </div>
+</section>
+
+<!-- ACT 2 · SHARED CONTEXT (pinned stage) -->
+<section id="context" data-screen-label="Act 2 · Shared context" ref="{{ r2 }}" style="height:280vh;position:relative">
+  <div class="rs-stage" style="position:sticky;top:0;height:100vh;overflow:hidden;background:#1f4e3d;color:#f6f3ec">
+    <div class="rs-pin2" style="max-width:1240px;margin:0 auto;height:100%;padding:0 40px;display:grid;grid-template-columns:minmax(280px,420px) minmax(0,1fr);gap:48px;align-items:center">
+      <div class="rs-pin2-left" style="position:relative;min-height:320px">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.14em;color:#e0a458;margin-bottom:18px">02 · WHAT SHIPPING WELL NEEDS</div>
+        <h2 style="font-size:clamp(30px,3.6vw,46px);line-height:1.08;letter-spacing:-.025em;font-weight:700;margin:0 0 28px;text-wrap:balance">One picture of the system that all three rooms can read.</h2>
+        <div class="rs-pin2-copy" style="position:relative;height:150px">
+          <p style="position:absolute;inset:0;margin:0;font-size:17px;line-height:1.6;color:rgba(246,243,236,.85);opacity:{{ v.step1 }};transform:translateY({{ v.step1y }}px);text-wrap:pretty">Start with what the business actually cares about: product capabilities. Put them next to the services that implement them, instead of a slide that gets redrawn every quarter.</p>
+          <p style="position:absolute;inset:0;margin:0;font-size:17px;line-height:1.6;color:rgba(246,243,236,.85);opacity:{{ v.step2 }};transform:translateY({{ v.step2y }}px);text-wrap:pretty">Then add intent. Requirements, briefs and documentation become nodes in the same model as classes, methods and tests. A business question and a technical question now share an answer path.</p>
+          <p style="position:absolute;inset:0;margin:0;font-size:17px;line-height:1.6;color:rgba(246,243,236,.85);opacity:{{ v.step3 }};transform:translateY({{ v.step3y }}px);text-wrap:pretty">Once everything is connected, a change can be priced before a date is promised, and the record can be rewritten from the model when the system moves. The next change gets cheaper than the last.</p>
+        </div>
+        <div style="display:flex;gap:8px;margin-top:8px">
+          <span style="height:3px;width:34px;border-radius:2px;background:rgba(246,243,236,.25);position:relative;overflow:hidden"><span style="position:absolute;inset:0;background:#e0a458;transform-origin:left;transform:scaleX({{ v.bar1 }})"></span></span>
+          <span style="height:3px;width:34px;border-radius:2px;background:rgba(246,243,236,.25);position:relative;overflow:hidden"><span style="position:absolute;inset:0;background:#e0a458;transform-origin:left;transform:scaleX({{ v.bar2 }})"></span></span>
+          <span style="height:3px;width:34px;border-radius:2px;background:rgba(246,243,236,.25);position:relative;overflow:hidden"><span style="position:absolute;inset:0;background:#e0a458;transform-origin:left;transform:scaleX({{ v.bar3 }})"></span></span>
+        </div>
+      </div>
+
+      <!-- graph stage -->
+      <div class="rs-pin2-graph" style="position:relative;height:min(78vh,640px);min-width:0">
+        <svg viewBox="0 0 100 100" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%;overflow:visible">
+          <sc-for list="{{ edges }}" as="e" hint-placeholder-count="0">
+            <line x1="{{ e.x1 }}" y1="{{ e.y1 }}" x2="{{ e.x2 }}" y2="{{ e.y2 }}" pathLength="1" stroke="{{ e.c }}" stroke-width="1.5" vector-effect="non-scaling-stroke" stroke-linecap="round" style="stroke-dasharray:1;stroke-dashoffset:{{ e.off }};opacity:{{ e.o }}"></line>
+          </sc-for>
+        </svg>
+        <div style="position:absolute;left:0;right:0;top:50%;height:1px;background:rgba(246,243,236,.18);opacity:{{ v.divider }}"></div>
+        <div style="position:absolute;left:0;top:calc(50% - 20px);font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.14em;color:rgba(246,243,236,.55);opacity:{{ v.divider }}">PRODUCT · INTENT</div>
+        <div style="position:absolute;left:0;top:calc(50% + 8px);font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.14em;color:rgba(246,243,236,.55);opacity:{{ v.divider }}">CODE · ENTITIES</div>
+        <sc-for list="{{ nodes }}" as="n" hint-placeholder-count="0">
+          <div style="position:absolute;left:{{ n.x }}%;top:{{ n.y }}%;transform:translate(-50%,-50%) scale({{ n.s }});opacity:{{ n.o }};padding:8px 12px;border-radius:{{ n.r }};background:{{ n.bg }};color:{{ n.fg }};font-size:12.5px;font-weight:600;white-space:nowrap;box-shadow:0 10px 30px rgba(0,0,0,.18);font-family:{{ n.font }}">{{ n.l }}</div>
+        </sc-for>
+        <div style="position:absolute;left:50%;bottom:0;transform:translateX(-50%);opacity:{{ v.model }};padding:10px 16px;border-radius:999px;border:1px solid rgba(224,164,88,.6);color:#e0a458;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;white-space:nowrap">ONE CONNECTED MODEL · FEATURES · REQUIREMENTS · DOCS · CODE</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ACT 3 · CODELENS -->
+<section id="codelens" data-screen-label="Act 3 · CodeLens" ref="{{ r3 }}" style="max-width:1240px;margin:0 auto;padding:clamp(60px,12vw,120px) clamp(20px,5vw,40px) 40px">
+  <div style="max-width:760px">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.14em;color:#1f4e3d;margin-bottom:18px">03 · CODELENS</div>
+    <h2 style="font-size:clamp(32px,4vw,52px);line-height:1.06;letter-spacing:-.025em;font-weight:700;margin:0 0 20px;text-wrap:balance">CodeLens is that shared context. And the agents that work from it.</h2>
+    <p style="font-size:18px;line-height:1.6;color:#514c44;margin:0;text-wrap:pretty">Product capabilities above the line, the services that implement them below it. Every node carries what the agents currently know about it: requirement status, documentation, debt and coverage. Select one and everything known about it opens in one place.</p>
+  </div>
+
+  <!-- app window -->
+  <div style="margin-top:64px;position:relative;border-radius:22px;background:#fffdf9;border:1px solid rgba(30,28,25,.1);box-shadow:0 30px 80px rgba(30,28,25,.1);overflow:hidden;opacity:{{ v.appO }};transform:translateY({{ v.appY }}px) scale({{ v.appS }})">
+    <div style="display:flex;align-items:center;gap:8px;padding:12px 16px;border-bottom:1px solid rgba(30,28,25,.08);background:#f6f3ec">
+      <span style="width:10px;height:10px;border-radius:50%;background:#e4ded1"></span><span style="width:10px;height:10px;border-radius:50%;background:#e4ded1"></span><span style="width:10px;height:10px;border-radius:50%;background:#e4ded1"></span>
+      <span style="margin-left:14px;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#8a847a">Plant360 / Convert / Canvas</span>
+      <span class="rs-appsearch" style="margin-left:auto;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#8a847a;border:1px solid rgba(30,28,25,.12);padding:4px 10px;border-radius:6px">Search graph, docs, findings &nbsp;⌘K</span>
+    </div>
+    <div class="rs-app" style="display:grid;grid-template-columns:184px minmax(0,1fr);min-height:560px">
+      <div style="border-right:1px solid rgba(30,28,25,.08);padding:16px 12px;font-size:13px;color:#514c44;display:flex;flex-direction:column;gap:2px;background:#faf8f3">
+        <div style="padding:7px 10px;border-radius:8px">Pulse</div>
+        <div style="padding:7px 10px;border-radius:8px;background:#d9e6df;color:#1f4e3d;font-weight:600">Canvas</div>
+        <div style="padding:7px 10px;border-radius:8px">Context Graph</div>
+        <div style="padding:14px 10px 4px;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.12em;color:#8a847a">PRODUCT</div>
+        <div style="padding:7px 10px;border-radius:8px;display:flex;justify-content:space-between">PRDs <span style="font-size:11px;background:#f6e4c6;color:#b07a2c;padding:1px 6px;border-radius:4px">2</span></div>
+        <div style="padding:7px 10px;border-radius:8px">User Documentation</div>
+        <div style="padding:7px 10px;border-radius:8px">Engineering Briefs</div>
+        <div style="padding:14px 10px 4px;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.12em;color:#8a847a">ENGINEERING</div>
+        <div style="padding:7px 10px;border-radius:8px">Impact Analysis</div>
+        <div style="padding:7px 10px;border-radius:8px">Technical Debt</div>
+        <div style="padding:7px 10px;border-radius:8px;display:flex;justify-content:space-between">Security <span style="font-size:11px;background:#f4d9d1;color:#c4553a;padding:1px 6px;border-radius:4px">3</span></div>
+        <div style="padding:7px 10px;border-radius:8px">Test Coverage</div>
+        <div style="padding:7px 10px;border-radius:8px">Test Planning</div>
+        <div style="padding:7px 10px;border-radius:8px">Agent Builder</div>
+      </div>
+      <div style="position:relative;padding:22px 26px;background:radial-gradient(rgba(30,28,25,.09) 1px,transparent 1px) 0 0/18px 18px;overflow:hidden">
+        <div style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px;margin-bottom:22px">
+          <div><div style="font-weight:700;font-size:16px">Product feature map</div><div style="font-size:12px;color:#8a847a">10 features · 4 services · 23 linked documents</div></div>
+          <div style="display:flex;gap:6px;font-family:'IBM Plex Mono',monospace;font-size:10px;color:#514c44;flex-wrap:wrap"><span style="padding:4px 8px;border-radius:5px;border:1px solid rgba(30,28,25,.12)">PRD status</span><span style="padding:4px 8px;border-radius:5px;border:1px solid rgba(30,28,25,.12)">Docs</span><span style="padding:4px 8px;border-radius:5px;border:1px solid rgba(30,28,25,.12)">Debt &amp; security</span><span style="padding:4px 8px;border-radius:5px;border:1px solid rgba(30,28,25,.12)">Coverage</span></div>
+        </div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.12em;color:#8a847a;margin-bottom:10px">PRODUCT FEATURES</div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(150px,100%),1fr));gap:10px">
+          <sc-for list="{{ feats }}" as="f" hint-placeholder-count="6">
+            <div style="opacity:{{ f.o }};transform:translateY({{ f.y }}px);background:#fffdf9;border:1px solid {{ f.border }};border-radius:10px;padding:10px 11px;box-shadow:0 4px 14px rgba(30,28,25,.05)">
+              <div style="font-size:12.5px;font-weight:600;line-height:1.25;margin-bottom:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ f.n }}</div>
+              <div style="font-size:10.5px;color:#8a847a;margin-bottom:8px">{{ f.m }}</div>
+              <div style="display:flex;flex-wrap:wrap;gap:4px;opacity:{{ f.bo }};transform:scale({{ f.bs }});transform-origin:left">
+                <span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;padding:2px 6px;border-radius:4px;background:{{ f.prdBg }};color:{{ f.prdFg }}">{{ f.prd }}</span>
+                <span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;padding:2px 6px;border-radius:4px;background:#ece7dc;color:#514c44">{{ f.docs }}</span>
+                <span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;padding:2px 6px;border-radius:4px;background:{{ f.debtBg }};color:{{ f.debtFg }}">{{ f.debt }}</span>
+                <span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;padding:2px 6px;border-radius:4px;background:{{ f.covBg }};color:{{ f.covFg }}">{{ f.cov }}</span>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+        <div style="margin:22px 0 10px;display:flex;align-items:center;gap:12px"><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.12em;color:#8a847a">CODE ENTITIES · SERVICES</span><span style="flex:1;height:1px;background:rgba(30,28,25,.12)"></span></div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(170px,100%),1fr));gap:10px">
+          <sc-for list="{{ svcs }}" as="s" hint-placeholder-count="4">
+            <div style="opacity:{{ s.o }};transform:translateY({{ s.y }}px);background:#f6f3ec;border:1px solid rgba(30,28,25,.12);border-radius:10px;padding:10px 11px">
+              <div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;font-weight:500;margin-bottom:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ s.n }}</div>
+              <div style="font-size:10.5px;color:#8a847a;margin-bottom:8px">{{ s.m }}</div>
+              <div style="display:flex;gap:4px;opacity:{{ s.bo }}"><span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;padding:2px 6px;border-radius:4px;background:#ece7dc;color:#514c44">{{ s.debt }}</span><span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;padding:2px 6px;border-radius:4px;background:#ece7dc;color:#514c44">{{ s.cov }}</span></div>
+            </div>
+          </sc-for>
+        </div>
+
+        <!-- drawer -->
+        <div style="position:absolute;top:0;right:0;bottom:0;width:min(340px,80%);background:#fffdf9;border-left:1px solid rgba(30,28,25,.1);box-shadow:-20px 0 50px rgba(30,28,25,.08);transform:translateX({{ v.drawerX }}%);padding:22px 22px;display:flex;flex-direction:column;gap:14px;overflow:hidden">
+          <div><div style="font-size:11px;color:#8a847a;font-family:'IBM Plex Mono',monospace;letter-spacing:.1em;margin-bottom:6px">FEATURE</div><div style="font-size:18px;font-weight:700;letter-spacing:-.01em">Review Symbols</div></div>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px">
+            <div style="background:#f6f3ec;border-radius:8px;padding:10px"><div style="font-size:10px;color:#8a847a">Code entities</div><div style="font-size:18px;font-weight:700">15</div></div>
+            <div style="background:#f6f3ec;border-radius:8px;padding:10px"><div style="font-size:10px;color:#8a847a">High findings</div><div style="font-size:18px;font-weight:700;color:#c4553a">12</div></div>
+            <div style="background:#f6f3ec;border-radius:8px;padding:10px"><div style="font-size:10px;color:#8a847a">Coverage</div><div style="font-size:18px;font-weight:700">71%</div></div>
+          </div>
+          <div style="border-top:1px solid rgba(30,28,25,.08);padding-top:12px;display:flex;flex-direction:column;gap:10px;font-size:13px">
+            <div style="display:flex;justify-content:space-between"><span>Review Symbols V2</span><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:#b07a2c;background:#f6e4c6;padding:2px 6px;border-radius:4px">DRAFT</span></div>
+            <div style="display:flex;justify-content:space-between"><span>Review Symbols V1</span><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:#1f4e3d;background:#d9e6df;padding:2px 6px;border-radius:4px">PUBLISHED</span></div>
+            <div style="display:flex;justify-content:space-between"><span>Symbology docs</span><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:#c4553a;background:#f4d9d1;padding:2px 6px;border-radius:4px">OUT OF SYNC</span></div>
+            <div style="display:flex;justify-content:space-between"><span>Technical debt</span><span style="color:#514c44">41 findings</span></div>
+            <div style="display:flex;justify-content:space-between"><span>Security</span><span style="color:#c4553a">1 critical · 2 high</span></div>
+          </div>
+          <div style="margin-top:auto;display:flex;gap:8px"><span style="flex:1;text-align:center;padding:9px;border-radius:8px;background:#1f4e3d;color:#f6f3ec;font-size:12.5px;font-weight:600">Create PRD</span><span style="flex:1;text-align:center;padding:9px;border-radius:8px;border:1px solid rgba(30,28,25,.14);font-size:12.5px;font-weight:600">Analyse impact</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Act 3b · price the change -->
+<section data-screen-label="Act 3 · Impact" ref="{{ r4 }}" style="max-width:1240px;margin:0 auto;padding:clamp(50px,10vw,100px) clamp(20px,5vw,40px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:56px;align-items:center">
+  <div>
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.14em;color:#1f4e3d;margin-bottom:18px">PRICE THE CHANGE FIRST</div>
+    <h3 style="font-size:clamp(28px,3vw,40px);line-height:1.1;letter-spacing:-.02em;font-weight:700;margin:0 0 18px;text-wrap:balance">Describe the change in a sentence. Get the blast radius back before anyone promises a date.</h3>
+    <p style="font-size:17px;line-height:1.6;color:#514c44;margin:0;text-wrap:pretty">Files touched, tests affected and documents that will drift come back as a size band with the relationships behind it. Scope becomes evidence rather than a score to argue with.</p>
+  </div>
+  <div style="background:#fffdf9;border:1px solid rgba(30,28,25,.1);border-radius:20px;padding:24px;box-shadow:0 24px 60px rgba(30,28,25,.08);opacity:{{ v.impO }};transform:translateY({{ v.impY }}px)">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.12em;color:#8a847a;margin-bottom:10px">IMPACT ANALYSIS</div>
+    <div style="border:1px solid rgba(30,28,25,.14);border-radius:12px;padding:14px 16px;font-size:15px;line-height:1.5;min-height:74px;background:#f6f3ec">{{ v.typed }}<span style="display:inline-block;width:2px;height:1em;background:#1f4e3d;vertical-align:-2px;margin-left:1px;animation:blink 1s steps(1) infinite"></span></div>
+    <div style="display:flex;align-items:center;gap:14px;margin:18px 0 14px;opacity:{{ v.bandO }};transform:translateY({{ v.bandY }}px)">
+      <div style="width:56px;height:56px;border-radius:14px;background:#e0a458;display:grid;place-items:center;font-weight:700;font-size:24px;color:#1e1c19">M</div>
+      <div><div style="font-weight:700;font-size:16px">Medium change</div><div style="font-size:13px;color:#514c44">14 files · 6 tests · 3 documents to update</div></div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:8px;font-size:13px">
+      <div style="display:flex;justify-content:space-between;padding:9px 12px;border-radius:8px;background:#f6f3ec;opacity:{{ v.row1 }};transform:translateX({{ v.row1x }}px)"><span style="font-family:'IBM Plex Mono',monospace;font-size:12px">DrawingConversionService</span><span style="color:#8a847a">implements · Convert drawings</span></div>
+      <div style="display:flex;justify-content:space-between;padding:9px 12px;border-radius:8px;background:#f6f3ec;opacity:{{ v.row2 }};transform:translateX({{ v.row2x }}px)"><span style="font-family:'IBM Plex Mono',monospace;font-size:12px">dxf-parser.spec.ts</span><span style="color:#c4553a">untested path</span></div>
+      <div style="display:flex;justify-content:space-between;padding:9px 12px;border-radius:8px;background:#f6f3ec;opacity:{{ v.row3 }};transform:translateX({{ v.row3x }}px)"><span style="font-family:'IBM Plex Mono',monospace;font-size:12px">User docs · Importing DXF</span><span style="color:#b07a2c">will drift</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- Agents -->
+<section data-screen-label="Act 3 · Agents" ref="{{ r5 }}" style="max-width:1240px;margin:0 auto;padding:40px clamp(20px,5vw,40px) clamp(60px,12vw,120px)">
+  <div style="display:flex;justify-content:space-between;align-items:end;flex-wrap:wrap;gap:16px;margin-bottom:36px">
+    <div style="max-width:620px">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.14em;color:#1f4e3d;margin-bottom:14px">THE AGENT SUITE</div>
+      <h3 style="font-size:clamp(28px,3vw,40px);line-height:1.1;letter-spacing:-.02em;font-weight:700;margin:0;text-wrap:balance">Agents that read from the model and write back into it.</h3>
+    </div>
+    <p style="font-size:16px;line-height:1.55;color:#514c44;margin:0;max-width:420px;text-wrap:pretty">Each one leaves the system better described than it found it, so the value compounds with every cycle.</p>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(210px,100%),1fr));gap:14px">
+    <sc-for list="{{ agents }}" as="a" hint-placeholder-count="5">
+      <div style="opacity:{{ a.o }};transform:translateY({{ a.y }}px);background:#fffdf9;border:1px solid rgba(30,28,25,.1);border-radius:16px;padding:22px 20px;min-height:190px;display:flex;flex-direction:column;gap:10px" style-hover="border-color:#1f4e3d">
+        <div style="width:34px;height:34px;border-radius:10px;background:{{ a.bg }};display:grid;place-items:center;font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:500;color:{{ a.fg }}">{{ a.k }}</div>
+        <div style="font-weight:700;font-size:17px;letter-spacing:-.01em;margin-top:6px">{{ a.n }}</div>
+        <div style="font-size:14px;line-height:1.5;color:#514c44;text-wrap:pretty">{{ a.d }}</div>
+      </div>
+    </sc-for>
+  </div>
+</section>
+
+<!-- Docs sync -->
+<section data-screen-label="Docs sync" ref="{{ r6 }}" style="background:#efeae0;border-top:1px solid rgba(30,28,25,.06);border-bottom:1px solid rgba(30,28,25,.06)">
+  <div style="max-width:1240px;margin:0 auto;padding:clamp(55px,11vw,110px) clamp(20px,5vw,40px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:56px;align-items:center">
+    <div style="background:#fffdf9;border:1px solid rgba(30,28,25,.1);border-radius:20px;box-shadow:0 24px 60px rgba(30,28,25,.08);overflow:hidden;opacity:{{ v.docO }};transform:translateY({{ v.docY }}px)">
+      <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 18px;border-bottom:1px solid rgba(30,28,25,.08);font-size:13px"><span style="font-weight:600;min-width:0">User Documentation · Importing DXF</span><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:#c4553a;background:#f4d9d1;padding:3px 7px;border-radius:4px;white-space:nowrap;flex:none;margin-left:10px">OUT OF SYNC · 3 CHANGES</span></div>
+      <div style="padding:16px 18px;font-family:'IBM Plex Mono',monospace;font-size:12px;line-height:1.9">
+        <div style="color:#514c44">  Supported formats: DWG, DXF (R12–2018)</div>
+        <div style="background:#f4d9d1;color:#8a3a26;text-decoration:line-through;border-radius:4px;padding:0 6px;margin:0 -6px;opacity:{{ v.diff1 }};transform:translateX({{ v.diff1x }}px)">- Files are parsed by the legacy DXF parser</div>
+        <div style="background:#d9e6df;color:#1f4e3d;border-radius:4px;padding:0 6px;margin:0 -6px;opacity:{{ v.diff2 }};transform:translateX({{ v.diff2x }}px)">+ Files are routed through DrawingConversionService</div>
+        <div style="color:#514c44">  Unit scaling is detected from the header block</div>
+        <div style="background:#d9e6df;color:#1f4e3d;border-radius:4px;padding:0 6px;margin:0 -6px;opacity:{{ v.diff3 }};transform:translateX({{ v.diff3x }}px)">+ Unrecognised symbols are queued for classification</div>
+        <div style="color:#514c44">  Output: a reviewed P&amp;ID graph</div>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 18px;border-top:1px solid rgba(30,28,25,.08);background:#faf8f3;font-size:12.5px"><span style="color:#8a847a">Rewritten from the model · awaiting review</span><span style="display:flex;gap:8px;opacity:{{ v.diffBtn }}"><span style="padding:7px 12px;border-radius:7px;border:1px solid rgba(30,28,25,.14);font-weight:600">Reject</span><span style="padding:7px 12px;border-radius:7px;background:#1f4e3d;color:#f6f3ec;font-weight:600">Accept &amp; publish</span></span></div>
+    </div>
+    <div>
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.14em;color:#1f4e3d;margin-bottom:18px">THE RECORD STAYS TRUE</div>
+      <h3 style="font-size:clamp(28px,3vw,40px);line-height:1.1;letter-spacing:-.02em;font-weight:700;margin:0 0 18px;text-wrap:balance">Documentation is rewritten when the system moves, and held as a diff until a human accepts it.</h3>
+      <p style="font-size:17px;line-height:1.6;color:#514c44;margin:0;text-wrap:pretty">Added, changed and removed pages are marked before publishing. Nothing goes live unreviewed. Customer-facing and engineering narratives stay separate, moving at their own speed from the same model.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Risk by capability -->
+<section data-screen-label="Risk by capability" ref="{{ r7 }}" style="max-width:1240px;margin:0 auto;padding:clamp(55px,11vw,110px) clamp(20px,5vw,40px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:56px;align-items:center">
+  <div>
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.14em;color:#1f4e3d;margin-bottom:18px">RISK, IN THE BUSINESS'S LANGUAGE</div>
+    <h3 style="font-size:clamp(28px,3vw,40px);line-height:1.1;letter-spacing:-.02em;font-weight:700;margin:0 0 18px;text-wrap:balance">Debt, vulnerabilities and thin coverage, expressed as capabilities rather than files.</h3>
+    <p style="font-size:17px;line-height:1.6;color:#514c44;margin:0;text-wrap:pretty">Every finding resolves up to the product capability that carries it. That turns a report engineering triages alone into a list a business owner can prioritise and fund.</p>
+  </div>
+  <div style="background:#fffdf9;border:1px solid rgba(30,28,25,.1);border-radius:20px;padding:24px;box-shadow:0 24px 60px rgba(30,28,25,.08)">
+    <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px 20px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.12em;color:#8a847a;margin-bottom:18px"><span>CAPABILITY</span><span style="display:flex;gap:14px;flex-wrap:wrap"><span style="display:flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:2px;background:#1f4e3d"></span>DEBT</span><span style="display:flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:2px;background:#c4553a"></span>SECURITY</span><span style="display:flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:2px;background:#e0a458"></span>COVERAGE GAP</span></span></div>
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <sc-for list="{{ risks }}" as="k" hint-placeholder-count="5">
+        <div class="rs-riskrow" style="display:grid;grid-template-columns:minmax(120px,160px) minmax(0,1fr);gap:14px;align-items:center;opacity:{{ k.o }}">
+          <div style="font-size:13.5px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ k.n }}</div>
+          <div style="display:flex;gap:3px;height:22px">
+            <div style="width:{{ k.d }}%;background:#1f4e3d;border-radius:4px 0 0 4px;transition:width .1s linear"></div>
+            <div style="width:{{ k.s }}%;background:#c4553a;transition:width .1s linear"></div>
+            <div style="width:{{ k.c }}%;background:#e0a458;border-radius:0 4px 4px 0;transition:width .1s linear"></div>
+            <div style="align-self:center;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#8a847a;padding-left:8px;white-space:nowrap">{{ k.t }}</div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<!-- Test plans -->
+<section data-screen-label="Test plans" ref="{{ r8 }}" style="max-width:1240px;margin:0 auto;padding:40px clamp(20px,5vw,40px) clamp(55px,11vw,110px)">
+  <div style="max-width:720px;margin-bottom:48px">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.14em;color:#1f4e3d;margin-bottom:18px">A GAP BECOMES A PLAN</div>
+    <h3 style="font-size:clamp(28px,3vw,40px);line-height:1.1;letter-spacing:-.02em;font-weight:700;margin:0 0 18px;text-wrap:balance">Any weak capability turns into a drafted test plan from the row that flagged it.</h3>
+    <p style="font-size:17px;line-height:1.6;color:#514c44;margin:0;text-wrap:pretty">Written against what the change actually touched, editable, and read back into the model. The next planning cycle starts from the state the last one left behind.</p>
+  </div>
+  <div class="rs-tp" style="display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1.3fr);gap:20px;align-items:center">
+    <div style="background:#fffdf9;border:1px solid rgba(30,28,25,.1);border-radius:16px;padding:18px 20px;box-shadow:0 16px 40px rgba(30,28,25,.06);opacity:{{ v.tpA }};transform:translateX({{ v.tpAx }}px)">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.12em;color:#8a847a;margin-bottom:10px">TEST COVERAGE · FLAGGED</div>
+      <div style="font-weight:700;font-size:16px;margin-bottom:6px">Mark Unidentified Symbols</div>
+      <div style="display:flex;justify-content:space-between;font-size:13px;color:#514c44;margin-bottom:8px"><span>5 files · 0 tests on hot paths</span><span style="color:#c4553a;font-weight:600">44%</span></div>
+      <div style="height:8px;border-radius:999px;background:#ece7dc;overflow:hidden"><div style="height:100%;width:44%;background:#c4553a;border-radius:999px"></div></div>
+      <div style="margin-top:14px;display:inline-block;padding:8px 12px;border-radius:7px;background:#1f4e3d;color:#f6f3ec;font-size:12.5px;font-weight:600">Generate test plan</div>
+    </div>
+    <div class="rs-tparrow" style="display:flex;align-items:center;gap:0;opacity:{{ v.tpArrow }}"><div style="width:44px;height:2px;background:repeating-linear-gradient(90deg,#1f4e3d 0 6px,transparent 6px 11px)"></div><div style="width:0;height:0;border-left:8px solid #1f4e3d;border-top:6px solid transparent;border-bottom:6px solid transparent"></div></div>
+    <div style="background:#fffdf9;border:1px solid rgba(30,28,25,.1);border-radius:16px;padding:18px 20px;box-shadow:0 16px 40px rgba(30,28,25,.06);opacity:{{ v.tpB }};transform:translateX({{ v.tpBx }}px)">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px"><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.12em;color:#8a847a">TEST PLAN · DRAFT</span><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:#b07a2c;background:#f6e4c6;padding:2px 6px;border-radius:4px">EDITABLE</span></div>
+      <div style="font-weight:700;font-size:16px;margin-bottom:12px">Mark Unidentified Symbols · v1</div>
+      <div style="display:flex;flex-direction:column;gap:8px;font-size:13.5px">
+        <sc-for list="{{ tests }}" as="t" hint-placeholder-count="4">
+          <div style="display:flex;gap:10px;align-items:flex-start;opacity:{{ t.o }};transform:translateY({{ t.y }}px)"><span style="flex:none;width:16px;height:16px;border-radius:4px;border:1.5px solid #1f4e3d;margin-top:2px;background:{{ t.bg }}"></span><span style="line-height:1.4">{{ t.n }}</span></div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Audiences -->
+<section data-screen-label="Audiences" ref="{{ r9 }}" style="background:#1f4e3d;color:#f6f3ec">
+  <div style="max-width:1240px;margin:0 auto;padding:clamp(55px,11vw,110px) clamp(20px,5vw,40px)">
+    <div style="max-width:720px;margin-bottom:56px">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.14em;color:#e0a458;margin-bottom:18px">WHO IT PAYS OFF FOR</div>
+      <h3 style="font-size:clamp(28px,3.4vw,44px);line-height:1.08;letter-spacing:-.025em;font-weight:700;margin:0;text-wrap:balance">Three audiences, one model, different reads.</h3>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr));gap:20px">
+      <sc-for list="{{ audiences }}" as="u" hint-placeholder-count="3">
+        <div style="opacity:{{ u.o }};transform:translateY({{ u.y }}px);border:1px solid rgba(246,243,236,.18);border-radius:18px;padding:28px 26px;min-height:220px;display:flex;flex-direction:column;gap:12px">
+          <div style="width:12px;height:12px;border-radius:50%;background:{{ u.c }}"></div>
+          <div style="font-weight:700;font-size:20px;letter-spacing:-.01em;margin-top:8px">{{ u.n }}</div>
+          <div style="font-size:15.5px;line-height:1.55;color:rgba(246,243,236,.82);text-wrap:pretty">{{ u.d }}</div>
+          <div style="margin-top:auto;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.08em;color:#e0a458">{{ u.s }}</div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<!-- Where it sits -->
+<section data-screen-label="Where it sits" ref="{{ r10 }}" style="max-width:1240px;margin:0 auto;padding:clamp(55px,11vw,110px) clamp(20px,5vw,40px)">
+  <div style="max-width:720px;margin-bottom:56px">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.14em;color:#1f4e3d;margin-bottom:18px">WHERE IT SITS</div>
+    <h3 style="font-size:clamp(28px,3vw,40px);line-height:1.1;letter-spacing:-.02em;font-weight:700;margin:0 0 18px;text-wrap:balance">It wraps the IDE rather than competing with it.</h3>
+    <p style="font-size:17px;line-height:1.6;color:#514c44;margin:0;text-wrap:pretty">Nothing is displaced. CodeLens decides and governs the change; the developer's IDE still writes it; your pipelines, controls and monitoring stay exactly as they are.</p>
+  </div>
+  <div class="rs-grid4" style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;align-items:stretch">
+    <sc-for list="{{ flow }}" as="s" hint-placeholder-count="4">
+      <div style="opacity:{{ s.o }};transform:translateY({{ s.y }}px);border-radius:16px;padding:22px 20px;background:{{ s.bg }};color:{{ s.fg }};border:1px solid {{ s.bd }};min-height:200px;display:flex;flex-direction:column;gap:8px;position:relative;min-width:0">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.12em;opacity:.7">{{ s.k }}</div>
+        <div style="font-weight:700;font-size:clamp(14px,1.5vw,19px);letter-spacing:-.01em;line-height:1.25">{{ s.n }}</div>
+        <div style="font-size:clamp(12px,1.15vw,14px);line-height:1.5;opacity:.85;text-wrap:pretty">{{ s.d }}</div>
+      </div>
+    </sc-for>
+  </div>
+  <div class="rs-loop" style="margin-top:14px;height:34px;position:relative;opacity:{{ v.loopO }}">
+    <div style="position:absolute;left:12.5%;right:12.5%;top:16px;border:1.5px dashed rgba(31,78,61,.5);border-top:none;height:16px;border-radius:0 0 14px 14px"></div>
+    <div style="position:absolute;left:calc(12.5% - 6px);top:10px;width:0;height:0;border-bottom:9px solid #1f4e3d;border-left:6px solid transparent;border-right:6px solid transparent"></div>
+    <div style="position:absolute;left:50%;transform:translateX(-50%);top:22px;background:#f6f3ec;padding:0 10px;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.1em;color:#1f4e3d">THE GOVERNING LOOP FEEDS THE NEXT DECISION</div>
+  </div>
+</section>
+
+<!-- Differentiation -->
+<section data-screen-label="Differentiation" ref="{{ r11 }}" style="background:#efeae0;border-top:1px solid rgba(30,28,25,.06);border-bottom:1px solid rgba(30,28,25,.06)">
+  <div style="max-width:1240px;margin:0 auto;padding:clamp(55px,11vw,110px) clamp(20px,5vw,40px)">
+    <div style="max-width:720px;margin-bottom:48px">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.14em;color:#1f4e3d;margin-bottom:18px">WHAT YOU ALREADY OWN, AND WHAT IS MISSING</div>
+      <h3 style="font-size:clamp(28px,3vw,40px);line-height:1.1;letter-spacing:-.02em;font-weight:700;margin:0;text-wrap:balance">Your current tools are good at their job. CodeLens holds the part in between.</h3>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:1px;border-radius:16px;overflow:hidden;border:1px solid rgba(30,28,25,.1)">
+      <div class="rs-diff rs-diffhead" style="display:grid;grid-template-columns:minmax(140px,1fr) minmax(160px,1.3fr) minmax(160px,1.6fr);gap:20px;padding:12px 22px;background:#f6f3ec;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.12em;color:#8a847a"><span>CATEGORY</span><span>WHAT IT DOES WELL</span><span style="color:#1f4e3d">WHAT CODELENS HOLDS</span></div>
+      <sc-for list="{{ diff }}" as="d" hint-placeholder-count="4">
+        <div class="rs-diff" style="display:grid;grid-template-columns:minmax(140px,1fr) minmax(160px,1.3fr) minmax(160px,1.6fr);gap:20px;padding:20px 22px;background:#fffdf9;border-top:1px solid rgba(30,28,25,.08);font-size:14.5px;line-height:1.5;opacity:{{ d.o }};transform:translateY({{ d.y }}px)"><span data-l="CATEGORY" style="font-weight:700">{{ d.c }}</span><span data-l="WHAT IT DOES WELL" style="color:#514c44">{{ d.w }}</span><span data-l="WHAT CODELENS HOLDS" style="color:#1f4e3d;font-weight:500">{{ d.h }}</span></div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<!-- Social proof -->
+<section data-screen-label="Social proof" style="max-width:1240px;margin:0 auto;padding:clamp(45px,9vw,90px) clamp(20px,5vw,40px) 60px;text-align:center">
+  <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.14em;color:#8a847a;margin-bottom:28px">TEAMS BUILDING ON A SHARED PICTURE</div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(150px,100%),1fr));gap:14px">
+    <div style="height:56px;border-radius:10px;background:repeating-linear-gradient(135deg,#ece7dc 0 6px,#f3efe6 6px 12px);display:grid;place-items:center;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#8a847a">customer logo</div>
+    <div style="height:56px;border-radius:10px;background:repeating-linear-gradient(135deg,#ece7dc 0 6px,#f3efe6 6px 12px);display:grid;place-items:center;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#8a847a">customer logo</div>
+    <div style="height:56px;border-radius:10px;background:repeating-linear-gradient(135deg,#ece7dc 0 6px,#f3efe6 6px 12px);display:grid;place-items:center;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#8a847a">customer logo</div>
+    <div style="height:56px;border-radius:10px;background:repeating-linear-gradient(135deg,#ece7dc 0 6px,#f3efe6 6px 12px);display:grid;place-items:center;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#8a847a">customer logo</div>
+    <div style="height:56px;border-radius:10px;background:repeating-linear-gradient(135deg,#ece7dc 0 6px,#f3efe6 6px 12px);display:grid;place-items:center;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#8a847a">customer logo</div>
+    <div style="height:56px;border-radius:10px;background:repeating-linear-gradient(135deg,#ece7dc 0 6px,#f3efe6 6px 12px);display:grid;place-items:center;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#8a847a">customer logo</div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta" data-screen-label="CTA" style="max-width:1240px;margin:0 auto 100px;padding:0 40px">
+  <div style="border-radius:28px;background:#1f4e3d;color:#f6f3ec;padding:64px 48px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:28px">
+    <div style="max-width:560px">
+      <h3 style="font-size:clamp(28px,3.4vw,44px);line-height:1.08;letter-spacing:-.025em;font-weight:700;margin:0 0 14px;text-wrap:balance">See the whole loop on your own codebase.</h3>
+      <p style="font-size:17px;line-height:1.55;color:rgba(246,243,236,.8);margin:0">Every screen in this story is a working prototype. We'll walk it live, from feature map to test plan.</p>
+    </div>
+    <a href="#" style="background:#e0a458;color:#1e1c19;padding:16px 26px;border-radius:999px;font-weight:700;font-size:16px;white-space:nowrap">Book a walkthrough</a>
+  </div>
+  <footer class="rs-footgrid" style="display:grid;grid-template-columns:minmax(200px,1.4fr) repeat(auto-fit,minmax(min(140px,100%),1fr));gap:32px;padding:64px 8px 0;font-size:14px;color:#514c44">
+    <div>
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px"><div style="width:22px;height:22px;border-radius:7px;background:#1f4e3d;position:relative"><div style="position:absolute;inset:6px;border-radius:50%;border:2px solid #e0a458"></div></div><span style="font-weight:700;font-size:16px;color:#1e1c19">CodeLens</span></div>
+      <div style="max-width:300px;line-height:1.55;text-wrap:pretty">The shared context layer where business and engineering read the same system.</div>
+      <div style="margin-top:14px;font-family:'IBM Plex Mono',monospace;font-size:12px;color:#8a847a">A1004, Amar Business Park, Baner, Pune 411045</div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:10px"><div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.12em;color:#8a847a;margin-bottom:4px">PRODUCT</div><a href="#codelens" style="color:#514c44">Feature map</a><a href="#codelens" style="color:#514c44">Impact analysis</a><a href="#codelens" style="color:#514c44">Agents</a></div>
+    <div style="display:flex;flex-direction:column;gap:10px"><div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.12em;color:#8a847a;margin-bottom:4px">COMPANY</div><a href="#" style="color:#514c44">About us</a><a href="#" style="color:#514c44">Careers</a><a href="#" style="color:#514c44">Contact</a></div>
+    <div style="display:flex;flex-direction:column;gap:10px"><div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.12em;color:#8a847a;margin-bottom:4px">RESOURCES</div><a href="#" style="color:#514c44">Blog</a><a href="#cta" style="color:#514c44">Book a walkthrough</a></div>
+  </footer>
+  <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;padding:40px 8px 0;font-size:13px;color:#8a847a"><span>© 2026 CodeLens</span><span style="display:flex;gap:18px"><a href="#" style="color:#8a847a">Privacy</a><a href="#" style="color:#8a847a">Terms</a></span></div>
+</section>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { t: 0, p1: 0, p2: 0, p3: 0, p4: 0, p5: 0, p6: 0, p7: 0, p8: 0, p9: 0, p10: 0, p11: 0 };
+  r1 = React.createRef(); r2 = React.createRef(); r3 = React.createRef(); r4 = React.createRef(); r5 = React.createRef();
+  r6 = React.createRef(); r7 = React.createRef(); r8 = React.createRef(); r9 = React.createRef(); r10 = React.createRef(); r11 = React.createRef();
+  componentDidMount() {
+    this.onScroll = () => { if (this.raf) return; this.raf = requestAnimationFrame(() => { this.raf = 0; this.measure(); }); };
+    window.addEventListener('scroll', this.onScroll, { passive: true, capture: true });
+    document.addEventListener('scroll', this.onScroll, { passive: true, capture: true });
+    window.addEventListener('resize', this.onScroll);
+    this.tick = setInterval(this.measure, 250);
+    setTimeout(this.measure, 50); setTimeout(this.measure, 600);
+    this.t0 = Date.now(); this.cycle = setInterval(() => this.setState({ t: (Date.now() - this.t0) % 12000 }), 200);
+  }
+  componentWillUnmount() { clearInterval(this.cycle); window.removeEventListener('scroll', this.onScroll, true); document.removeEventListener('scroll', this.onScroll, true); window.removeEventListener('resize', this.onScroll); clearInterval(this.tick); }
+  measure = () => {
+    const vh = window.innerHeight, c = x => Math.max(0, Math.min(1, x));
+    const key = [this.r1, this.r2, this.r3, this.r4, this.r5, this.r6, this.r7, this.r8, this.r9, this.r10, this.r11].map(r => r.current ? Math.round(r.current.getBoundingClientRect().top) : 0).join(',');
+    if (key === this.lastKey) return; this.lastKey = key;
+    const flow = (ref, span) => { const el = ref.current; if (!el) return 0; const r = el.getBoundingClientRect(); return c((vh * 0.88 - r.top) / (span || vh * 0.9)); };
+    const pin = ref => { const el = ref.current; if (!el) return 0; const r = el.getBoundingClientRect(); return c(-r.top / (r.height - vh)); };
+    this.setState({ p1: flow(this.r1, vh * 1.3), p2: pin(this.r2), p3: flow(this.r3, vh * 1.1), p4: flow(this.r4, vh * 0.7), p5: flow(this.r5, vh * 0.6), p6: flow(this.r6, vh * 0.7), p7: flow(this.r7, vh * 0.7), p8: flow(this.r8, vh * 0.7), p9: flow(this.r9, vh * 0.6), p10: flow(this.r10, vh * 0.7), p11: flow(this.r11, vh * 0.7) });
+  };
+  renderVals() {
+    const { p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11 } = this.state;
+    const c = x => Math.max(0, Math.min(1, x)), seg = (p, a, b) => c((p - a) / (b - a)), ease = t => t * t * (3 - 2 * t), lerp = (a, b, t) => a + (b - a) * t;
+    const v = {};
+    // hero cycle: 0-7s lanes run and handoffs fail, 7-11.2s CodeLens connects, then reset
+    const t = this.state.t, linked = t > 7000 && t < 11200;
+    v.linkO = linked ? 1 : 0; v.runO = linked ? 0 : 1; v.shipW = linked ? 88 : 16; v.handoffs = linked ? 0 : Math.min(t, 7000) / 900 | 0;
+    // Act 1: islands drift apart, leaks reveal
+    const d = ease(seg(p1, 0, 0.45));
+    v.islandX1 = -d * 26; v.islandY1 = d * 14; v.islandY2 = -d * 10; v.islandX3 = d * 26; v.islandY3 = d * 14;
+    const leaksData = [
+      ['01', 'No shared picture of the product', 'Business talks in capabilities, engineering in repositories. Every planning conversation starts by rebuilding the map by hand.'],
+      ['02', 'Estimates are opinions', 'Scope is guessed before commitment and discovered during delivery. Overruns surface after the date is public.'],
+      ['03', 'The record goes stale on day one', 'Requirements and documentation stop matching the system, so the next change is planned against fiction.'],
+      ['04', 'Risk is invisible to the people who fund it', 'Debt, vulnerabilities and thin coverage are reported per file. Nobody can say which product capability is exposed.']
+    ];
+    const leaks = leaksData.map((l, i) => { const t = ease(seg(p1, 0.42 + i * 0.1, 0.62 + i * 0.1)); return { n: l[0], t: l[1], d: l[2], o: t, y: (1 - t) * 28 }; });
+
+    // Act 2: convergence
+    const conv = ease(seg(p2, 0.12, 0.55)), intent = ease(seg(p2, 0.4, 0.7)), link = ease(seg(p2, 0.55, 0.92));
+    v.step1 = 1 - seg(p2, 0.3, 0.4); v.step1y = -seg(p2, 0.3, 0.4) * 12;
+    v.step2 = seg(p2, 0.36, 0.46) * (1 - seg(p2, 0.66, 0.76)); v.step2y = (1 - seg(p2, 0.36, 0.46)) * 12 - seg(p2, 0.66, 0.76) * 12;
+    v.step3 = seg(p2, 0.72, 0.82); v.step3y = (1 - seg(p2, 0.72, 0.82)) * 12;
+    v.bar1 = seg(p2, 0, 0.36); v.bar2 = seg(p2, 0.36, 0.72); v.bar3 = seg(p2, 0.72, 1);
+    v.divider = ease(seg(p2, 0.15, 0.35)); v.model = ease(seg(p2, 0.8, 0.95));
+    const teal = { bg: '#d9e6df', fg: '#1f4e3d', r: '999px', font: 'Figtree,sans-serif' }, amber = { bg: '#e0a458', fg: '#1e1c19', r: '8px', font: 'Figtree,sans-serif' }, ink = { bg: '#f6f3ec', fg: '#1e1c19', r: '6px', font: "'IBM Plex Mono',monospace" };
+    // [label, kind, spread x,y, converged x,y, isIntent]
+    const N = [
+      ['Convert drawings', teal, 14, 16, 22, 26], ['Review symbols', teal, 22, 30, 50, 22], ['Classify symbols', teal, 12, 44, 78, 28],
+      ['PRD · Review Symbols v2', amber, 50, 12, 36, 42, 1], ['Brief · Classifier', amber, 58, 26, 66, 42, 1], ['Docs · Symbology', amber, 46, 40, 88, 40, 1],
+      ['SymbolClassifierService', ink, 84, 62, 62, 70], ['DrawingConversionService', ink, 76, 78, 22, 66], ['LineTypeService', ink, 88, 90, 40, 86], ['classifier.spec.ts', ink, 66, 92, 84, 82]
+    ];
+    const nodes = N.map(n => { const t = conv; const o = n[6] ? lerp(0.35, 1, intent) : 1; return { l: n[0], ...n[1], x: lerp(n[2], n[4], t), y: lerp(n[3], n[5], t), s: lerp(0.92, 1, t), o }; });
+    const E = [[0, 7, 0], [1, 6, 0], [2, 6, 0], [3, 1, 1], [3, 6, 1], [4, 6, 1], [4, 9, 1], [5, 2, 1], [1, 9, 0], [0, 8, 0]];
+    const edges = E.map(e => { const a = nodes[e[0]], b = nodes[e[1]]; const t = ease(seg(link, e[2] ? 0.3 : 0, e[2] ? 1 : 0.7)); return { x1: a.x, y1: a.y, x2: b.x, y2: b.y, off: 1 - t, o: t > 0 ? 1 : 0, c: e[2] ? 'rgba(224,164,88,.85)' : 'rgba(246,243,236,.55)' }; });
+
+    // Act 3: app reveal
+    const app = ease(seg(p3, 0, 0.35));
+    v.appO = app; v.appY = (1 - app) * 40; v.appS = lerp(0.97, 1, app);
+    const F = [
+      ['Plant360 Convert', 'Product root · 4 modules', 'No PRD', '1 docs', '258 debt · 3 crit', '71%', 'r'],
+      ['Manage Org Units', '6 files · 2 docs', 'No PRD', '0 docs', '6 debt', '90%', 'g'],
+      ['Administration', '9 files · 4 docs', 'No PRD', '2 docs', '31 debt', '88%', 'g'],
+      ['DWG/DXF Conversion', '14 files · 3 docs', 'PRD draft', '0 docs', '37 debt', '69%', 'a'],
+      ['PDF/Image Conversion', '18 files · 5 docs', 'PRD', '1 docs', '67 debt · 1 crit', '76%', 'r'],
+      ['Review Line Types', '7 files · 1 doc', 'PRD building', '1 docs', '24 debt', '58%', 'a'],
+      ['Review Symbols', '14 files · 6 docs', 'PRD draft', '2 docs', '41 debt · 1 crit', '71%', 'sel'],
+      ['Mark Unidentified', '5 files', 'No PRD', '0 docs', '15 debt', '44%', 'a']
+    ];
+    const prdStyle = s => s === 'PRD' ? ['#d9e6df', '#1f4e3d'] : s === 'No PRD' ? ['#ece7dc', '#8a847a'] : ['#f6e4c6', '#b07a2c'];
+    const feats = F.map((f, i) => { const t = ease(seg(p3, 0.2 + i * 0.03, 0.4 + i * 0.03)); const b = ease(seg(p3, 0.45 + i * 0.03, 0.6 + i * 0.03)); const crit = f[4].includes('crit'); const low = parseInt(f[5]) < 60; const [prdBg, prdFg] = prdStyle(f[2]);
+      return { n: f[0], m: f[1], prd: f[2], docs: f[3], debt: f[4], cov: f[5], o: t, y: (1 - t) * 16, bo: b, bs: lerp(0.9, 1, b), prdBg, prdFg, debtBg: crit ? '#f4d9d1' : '#ece7dc', debtFg: crit ? '#c4553a' : '#514c44', covBg: low ? '#f4d9d1' : '#d9e6df', covFg: low ? '#c4553a' : '#1f4e3d', border: f[6] === 'sel' && p3 > 0.7 ? '#1f4e3d' : 'rgba(30,28,25,.12)' }; });
+    const S = [['DrawingConversionService', 'services/conversion · 11k LOC', '55 debt · 1 crit', '74%'], ['SymbolClassifierService', 'services/classifier · 4.8k LOC', '35 debt', '61%'], ['LineTypeService', 'services/lines · 3.1k LOC', '24 debt', '55%'], ['GraphExportService', 'services/graph · 2.2k LOC', '15 debt · 1 crit', '80%']];
+    const svcs = S.map((s, i) => { const t = ease(seg(p3, 0.3 + i * 0.04, 0.5 + i * 0.04)); const b = ease(seg(p3, 0.5 + i * 0.03, 0.65 + i * 0.03)); return { n: s[0], m: s[1], debt: s[2], cov: s[3], o: t, y: (1 - t) * 16, bo: b }; });
+    v.drawerX = (1 - ease(seg(p3, 0.72, 0.95))) * 108;
+
+    // Act 3b: impact typing
+    const sentence = 'Retire the legacy DXF parser and route all imports through DrawingConversionService.';
+    const ty = ease(seg(p4, 0.05, 0.5));
+    v.impO = ease(seg(p4, 0, 0.2)); v.impY = (1 - v.impO) * 30;
+    v.typed = sentence.slice(0, Math.round(ty * sentence.length));
+    const band = ease(seg(p4, 0.55, 0.7)); v.bandO = band; v.bandY = (1 - band) * 10;
+    [1, 2, 3].forEach(i => { const t = ease(seg(p4, 0.62 + i * 0.08, 0.78 + i * 0.08)); v['row' + i] = t; v['row' + i + 'x'] = (1 - t) * 16; });
+
+    // Agents
+    const A = [
+      ['PRD', 'PRD Agent', 'Drafts requirements against the real system, reviewed and approved in place.', '#d9e6df', '#1f4e3d'],
+      ['BRF', 'Brief Agent', 'Turns an approved PRD into an engineering brief: what to change, where, what to watch.', '#f6e4c6', '#b07a2c'],
+      ['IMP', 'Impact Agent', 'Prices a change as a blast radius with the relationships as evidence.', '#e0a458', '#1e1c19'],
+      ['DOC', 'Docs Agent', 'Rewrites user and engineering docs from the model and holds them as a reviewable diff.', '#d9e6df', '#1f4e3d'],
+      ['TST', 'Test Plan Agent', 'Turns a thin capability into a drafted test plan written against what changed.', '#f6f3ec', '#1e1c19']
+    ];
+    const agents = A.map((a, i) => { const t = ease(seg(p5, 0.1 + i * 0.1, 0.4 + i * 0.1)); return { k: a[0], n: a[1], d: a[2], bg: a[3], fg: a[4], o: t, y: (1 - t) * 24 }; });
+
+    // Docs sync
+    v.docO = ease(seg(p6, 0, 0.25)); v.docY = (1 - v.docO) * 30;
+    [1, 2, 3].forEach(i => { const t = ease(seg(p6, 0.25 + i * 0.12, 0.4 + i * 0.12)); v['diff' + i] = t; v['diff' + i + 'x'] = (1 - t) * -14; });
+    v.diffBtn = ease(seg(p6, 0.75, 0.9));
+    // Risk bars: [name, debt, security, coverage gap]
+    const R = [['Plant360 Convert', 42, 14, 12], ['PDF/Image Conversion', 30, 10, 10], ['Review Symbols', 24, 12, 12], ['DWG/DXF Conversion', 22, 4, 13], ['Mark Unidentified', 10, 2, 24]];
+    const risks = R.map((r, i) => { const t = ease(seg(p7, 0.1 + i * 0.08, 0.45 + i * 0.08)); return { n: r[0], d: r[1] * t, s: r[2] * t, c: r[3] * t, o: seg(p7, 0.05 + i * 0.08, 0.2 + i * 0.08), t: (r[1] + r[2]) + ' findings · ' + (100 - r[3] * 2.5) + '%' }; });
+    // Test plan
+    v.tpA = ease(seg(p8, 0, 0.25)); v.tpAx = (1 - v.tpA) * -20; v.tpArrow = ease(seg(p8, 0.3, 0.45)); v.tpB = ease(seg(p8, 0.4, 0.6)); v.tpBx = (1 - v.tpB) * 20;
+    const T = ['Unrecognised symbol is queued, not dropped', 'Queue survives a conversion restart', 'Manual mark round-trips into the classifier', 'Export excludes unresolved symbols with a warning'];
+    const tests = T.map((n, i) => { const t = ease(seg(p8, 0.55 + i * 0.08, 0.7 + i * 0.08)); return { n, o: t, y: (1 - t) * 8, bg: i < 2 && p8 > 0.95 ? '#1f4e3d' : 'transparent' }; });
+    // Audiences
+    const U = [['Business and product', 'Reads the state of the product and the cost of a change without reading code.', 'FEATURE MAP · IMPACT · PULSE', '#e0a458'], ['Business analysts', 'Turns a request into a specified change with the evidence already attached.', 'PRDS · BRIEFS · CONTEXT GRAPH', '#f6f3ec'], ['Engineering', 'Enters the IDE knowing what to change, what it touches, and what to test.', 'BRIEFS · DEBT · COVERAGE · TEST PLANS', '#8fd3c7']];
+    const audiences = U.map((u, i) => { const t = ease(seg(p9, 0.1 + i * 0.12, 0.4 + i * 0.12)); return { n: u[0], d: u[1], s: u[2], c: u[3], o: t, y: (1 - t) * 24 }; });
+    // Where it sits
+    const W = [['INTENT', 'A business decision', 'A requirement, a defect, a modernisation mandate or a regulatory change.', '#fffdf9', '#1e1c19', 'rgba(30,28,25,.12)'], ['CODELENS · DECIDE', 'Feature map, context graph, impact analysis, requirements, engineering brief.', 'Priced and approved before anyone commits.', '#1f4e3d', '#f6f3ec', '#1f4e3d'], ['EXECUTE', "The developer's IDE", 'Cursor or its equivalent writes the change, working from approved context.', '#fffdf9', '#1e1c19', 'rgba(30,28,25,.12)'], ['CODELENS · GOVERN', 'Documentation sync, debt and security, coverage and test plans, activity feed.', 'The record is kept true after it ships.', '#1f4e3d', '#f6f3ec', '#1f4e3d']];
+    const flow = W.map((w, i) => { const t = ease(seg(p10, 0.05 + i * 0.12, 0.35 + i * 0.12)); return { k: w[0], n: w[1], d: w[2], bg: w[3], fg: w[4], bd: w[5], o: t, y: (1 - t) * 20 }; });
+    v.loopO = ease(seg(p10, 0.6, 0.85));
+    // Differentiation
+    const D = [['AI coding assistants', 'Produce the change quickly inside the editor', 'The approved requirement and the priced blast radius that make the change the right one'], ['Code intelligence platforms', 'Search and navigate code across repositories', 'Intent as first-class nodes, so search and impact cross from code into requirements and documentation'], ['Quality and security tools', 'Detect issues accurately at the file level', 'The line from a finding up to the product capability, which is what gets it funded'], ['Documentation tooling', 'Publishes and hosts what people write', 'Pages rewritten from the live model and held as a reviewable diff, so the record does not decay']];
+    const diff = D.map((d, i) => { const t = ease(seg(p11, 0.05 + i * 0.1, 0.35 + i * 0.1)); return { c: d[0], w: d[1], h: d[2], o: t, y: (1 - t) * 14 }; });
+
+    return { v, leaks, nodes, edges, feats, svcs, agents, risks, tests, audiences, flow, diff, r1: this.r1, r2: this.r2, r3: this.r3, r4: this.r4, r5: this.r5, r6: this.r6, r7: this.r7, r8: this.r8, r9: this.r9, r10: this.r10, r11: this.r11 };
+  }
+}
+</script>
+</body>
+</html>

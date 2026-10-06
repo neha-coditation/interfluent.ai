@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="./responsive.css">
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<script src="./site-config.js"></script>
+<style>body{margin:0;background:#f6f3ec;color:#1e1c19;font-family:Figtree,system-ui,sans-serif;-webkit-font-smoothing:antialiased}a{color:#1f4e3d;text-decoration:none}a:hover{color:#153628}*{box-sizing:border-box}</style>
+</helmet>
+<dc-import name="SiteNav" active="pricing" beta-enabled="{{ beta }}" hint-size="100%,64px" style="position:sticky;top:0;z-index:20"></dc-import>
+
+<section data-screen-label="Pricing · Intro" style="max-width:1240px;margin:0 auto;padding:clamp(48px,9.6vw,96px) clamp(20px,5vw,40px) 56px;text-align:center">
+  <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.14em;color:#1f4e3d;margin-bottom:18px">PRICING</div>
+  <h1 style="font-size:clamp(38px,5vw,64px);line-height:1.03;letter-spacing:-.03em;font-weight:700;margin:0 auto 20px;max-width:760px;text-wrap:balance">Priced per system, not per seat.</h1>
+  <p style="font-size:18px;line-height:1.6;color:#514c44;margin:0 auto;max-width:600px;text-wrap:pretty">Business, product and engineering all need to read the same map. Charging per reader would defeat the point.</p>
+</section>
+
+<section data-screen-label="Pricing · Plans" style="max-width:1240px;margin:0 auto;padding:0 40px 96px">
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr));gap:20px;align-items:stretch">
+    <sc-for list="{{ plans }}" as="p" hint-placeholder-count="3">
+      <div style="border-radius:20px;padding:32px 28px;background:{{ p.bg }};color:{{ p.fg }};border:1px solid {{ p.bd }};display:flex;flex-direction:column;gap:18px;box-shadow:{{ p.sh }}">
+        <div style="display:flex;justify-content:space-between;align-items:center"><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;opacity:.75">{{ p.k }}</span><sc-if value="{{ p.tag }}" hint-placeholder-val="{{ false }}"><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.1em;background:#e0a458;color:#1e1c19;padding:3px 8px;border-radius:4px">{{ p.tag }}</span></sc-if></div>
+        <div><div style="font-size:28px;font-weight:700;letter-spacing:-.02em;margin-bottom:6px">{{ p.n }}</div><div style="font-size:15px;line-height:1.5;opacity:.85;text-wrap:pretty">{{ p.d }}</div></div>
+        <div style="font-size:22px;font-weight:700;letter-spacing:-.01em">{{ p.price }}<span style="font-size:14px;font-weight:500;opacity:.7;margin-left:6px">{{ p.unit }}</span></div>
+        <div style="display:flex;flex-direction:column;gap:10px;font-size:14.5px;line-height:1.45;padding-top:6px;border-top:1px solid {{ p.line }}">
+          <sc-for list="{{ p.f }}" as="x" hint-placeholder-count="4"><div style="display:flex;gap:10px"><span style="flex:none;width:6px;height:6px;border-radius:50%;background:#e0a458;margin-top:8px"></span><span>{{ x }}</span></div></sc-for>
+        </div>
+        <a href="{{ p.href }}" style="margin-top:auto;text-align:center;padding:13px 20px;border-radius:999px;font-weight:600;font-size:15px;background:{{ p.btnBg }};color:{{ p.btnFg }};border:1px solid {{ p.btnBd }}">{{ p.cta }}</a>
+      </div>
+    </sc-for>
+  </div>
+</section>
+
+<section data-screen-label="Pricing · FAQ" style="background:#efeae0;border-top:1px solid rgba(30,28,25,.06)">
+  <div style="max-width:1240px;margin:0 auto;padding:clamp(48px,9.6vw,96px) clamp(20px,5vw,40px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:48px">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.14em;color:#1f4e3d">COMMON QUESTIONS</div>
+    <div style="display:flex;flex-direction:column;gap:32px;grid-column:span 2">
+      <div><div style="font-size:18px;font-weight:700;margin-bottom:8px">What counts as a system?</div><p style="margin:0;font-size:15.5px;line-height:1.6;color:#514c44">One product and the repositories, documents and requirements that describe it. Most teams have one. A platform company may have several.</p></div>
+      <div><div style="font-size:18px;font-weight:700;margin-bottom:8px">Does our code leave our environment?</div><p style="margin:0;font-size:15.5px;line-height:1.6;color:#514c44">Team runs in our cloud with encryption at rest and no training on your data. Enterprise can run in your VPC.</p></div>
+      <div><div style="font-size:18px;font-weight:700;margin-bottom:8px">Which IDE do we need?</div><p style="margin:0;font-size:15.5px;line-height:1.6;color:#514c44">Any. CodeLens decides and governs the change; your IDE and pipelines write and ship it as they do today.</p></div>
+    </div>
+  </div>
+</section>
+
+<dc-import name="SiteFooter" beta-enabled="{{ beta }}" hint-size="100%,320px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;betaEnabled&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Switches&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    const cfg = window.CODELENS_CONFIG || {};
+    const beta = !!(this.props.betaEnabled ?? cfg.betaEnabled ?? true);
+    const light = { bg: '#fffdf9', fg: '#1e1c19', bd: 'rgba(30,28,25,.1)', sh: 'none', line: 'rgba(30,28,25,.1)', btnBg: 'transparent', btnFg: '#1e1c19', btnBd: 'rgba(30,28,25,.18)' };
+    const dark = { bg: '#1f4e3d', fg: '#f6f3ec', bd: '#1f4e3d', sh: '0 24px 60px rgba(31,78,61,.25)', line: 'rgba(246,243,236,.2)', btnBg: '#e0a458', btnFg: '#1e1c19', btnBd: '#e0a458' };
+    const plans = [
+      { ...light, k: 'PILOT', n: 'Pilot', d: 'One system, one team, the full loop on your own code.', price: beta ? 'Free' : 'Talk to us', unit: beta ? 'during beta' : '', f: ['1 repository, 1 document set', 'Feature map, context graph, impact analysis', 'PRD, Brief and Docs agents', 'Shared Slack channel with our team'], cta: beta ? 'Request beta access' : 'Book a walkthrough', href: beta ? 'beta.html' : 'contact.html', tag: beta ? 'BETA' : '' },
+      { ...dark, k: 'TEAM', n: 'Team', d: 'For a product organisation that ships every week and wants the record to stay true.', price: 'Per system', unit: 'billed annually', f: ['Unlimited repositories per system', 'Unlimited readers across business, product and engineering', 'Debt, security and coverage by capability', 'Test plans and the governing loop', 'SSO and audit log'], cta: 'Talk to us', href: 'contact.html', tag: '' },
+      { ...light, k: 'ENTERPRISE', n: 'Enterprise', d: 'Several systems, your cloud, your controls.', price: 'Custom', unit: '', f: ['Runs in your VPC', 'Cross-system feature map', 'Custom agents via Agent Builder', 'Dedicated customer engineer'], cta: 'Talk to us', href: 'contact.html', tag: '' }
+    ];
+    return { beta, plans };
+  }
+}
+</script>
+</body>
+</html>
