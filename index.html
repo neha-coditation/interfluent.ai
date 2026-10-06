@@ -25,24 +25,7 @@ a{color:#1f4e3d;text-decoration:none}a:hover{color:#153628}
 </style>
 </helmet>
 
-<nav class="rs-nav" style="position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:18px clamp(16px,4vw,40px);background:rgba(246,243,236,.82);backdrop-filter:blur(12px);border-bottom:1px solid rgba(30,28,25,.06)">
-  <div style="display:flex;align-items:center;gap:10px">
-    <div style="width:26px;height:26px;border-radius:8px;background:#1f4e3d;position:relative"><div style="position:absolute;inset:7px;border-radius:50%;border:2.5px solid #e0a458"></div></div>
-    <span style="font-weight:700;font-size:18px;letter-spacing:-.01em">CodeLens</span>
-  </div>
-  <label class="rs-burger" aria-label="Menu"><input type="checkbox"><i></i></label>
-  <div class="rs-navlinks" style="display:flex;align-items:center;gap:28px;font-size:14px;font-weight:500;color:#514c44">
-    <a href="#codelens" style="color:#514c44">Product</a>
-    <a href="./pricing/" style="color:#514c44">Pricing</a>
-    <a href="./about/" style="color:#514c44">About us</a>
-    <a href="./blog/" style="color:#514c44">Blog</a>
-    <a href="./careers/" style="color:#514c44">Careers</a>
-    <a href="./contact/" style="color:#514c44">Contact</a>
-    <sc-if value="{{ showSignIn }}" hint-placeholder-val="{{ true }}"><a href="./signin/" style="color:#1f4e3d;font-weight:600">Sign in</a></sc-if>
-    <sc-if value="{{ showBeta }}" hint-placeholder-val="{{ true }}"><a href="./beta/" style="background:#1f4e3d;color:#f6f3ec;padding:10px 16px;border-radius:999px;font-weight:600">Request beta access</a></sc-if>
-    <sc-if value="{{ showWalk }}" hint-placeholder-val="{{ false }}"><a href="#cta" style="background:#1f4e3d;color:#f6f3ec;padding:10px 16px;border-radius:999px;font-weight:600">Book a walkthrough</a></sc-if>
-  </div>
-</nav>
+<dc-import name="SiteNav" active="" beta-enabled="{{ showBeta }}" access-code-enabled="{{ showSignIn }}" hint-size="100%,64px" style="position:sticky;top:0;z-index:20"></dc-import>
 
 <!-- HERO -->
 <section data-screen-label="Hero" style="max-width: 1240px; margin: 0 auto; padding:64px clamp(20px,5vw,40px) 40px; display: grid; grid-template-columns: repeat(auto-fit,minmax(min(320px,100%),1fr)); gap: 56px; align-items: center">
@@ -491,18 +474,9 @@ a{color:#1f4e3d;text-decoration:none}a:hover{color:#153628}
       <sc-if value="{{ showBeta }}" hint-placeholder-val="{{ true }}"><a href="./beta/" style="padding:16px 22px;border-radius:999px;font-weight:600;font-size:16px;white-space:nowrap;border:1px solid rgba(246,243,236,.4);color:#f6f3ec">Request beta access</a></sc-if>
     </div>
   </div>
-  <footer class="rs-footgrid" style="display:grid;grid-template-columns:minmax(200px,1.4fr) repeat(auto-fit,minmax(min(140px,100%),1fr));gap:32px;padding:64px 8px 0;font-size:14px;color:#514c44">
-    <div>
-      <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px"><div style="width:22px;height:22px;border-radius:7px;background:#1f4e3d;position:relative"><div style="position:absolute;inset:6px;border-radius:50%;border:2px solid #e0a458"></div></div><span style="font-weight:700;font-size:16px;color:#1e1c19">CodeLens</span></div>
-      <div style="max-width:300px;line-height:1.55;text-wrap:pretty">The shared context layer where business and engineering read the same system.</div>
-      <div style="margin-top:14px;font-family:'IBM Plex Mono',monospace;font-size:12px;color:#8a847a">A1004, Amar Business Park, Baner, Pune 411045</div>
-    </div>
-    <div style="display:flex;flex-direction:column;gap:10px"><div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.12em;color:#8a847a;margin-bottom:4px">PRODUCT</div><a href="#codelens" style="color:#514c44">Feature map</a><a href="#codelens" style="color:#514c44">Impact analysis</a><a href="./pricing/" style="color:#514c44">Pricing</a><sc-if value="{{ showBeta }}" hint-placeholder-val="{{ true }}"><a href="./beta/" style="color:#514c44">Beta access</a></sc-if></div>
-    <div style="display:flex;flex-direction:column;gap:10px"><div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.12em;color:#8a847a;margin-bottom:4px">COMPANY</div><a href="./about/" style="color:#514c44">About us</a><a href="./careers/" style="color:#514c44">Careers</a><a href="./contact/" style="color:#514c44">Contact</a></div>
-    <div style="display:flex;flex-direction:column;gap:10px"><div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.12em;color:#8a847a;margin-bottom:4px">RESOURCES</div><a href="./blog/" style="color:#514c44">Blog</a><a href="./contact/" style="color:#514c44">Book a walkthrough</a><sc-if value="{{ showSignIn }}" hint-placeholder-val="{{ true }}"><a href="./signin/" style="color:#514c44">Sign in</a></sc-if></div>
-  </footer>
-  <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;padding:40px 8px 0;font-size:13px;color:#8a847a"><span>© 2026 CodeLens</span><span style="display:flex;gap:18px"><a href="./privacy/" style="color:#8a847a">Privacy</a><a href="./terms/" style="color:#8a847a">Terms</a></span></div>
-</section>
+  </section>
+
+<dc-import name="SiteFooter" beta-enabled="{{ showBeta }}" access-code-enabled="{{ showSignIn }}" hint-size="100%,320px"></dc-import>
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;betaEnabled&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Switches&quot;},&quot;accessCodeEnabled&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Switches&quot;}}">
 class Component extends DCLogic {
