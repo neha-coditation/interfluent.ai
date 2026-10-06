@@ -3,14 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="./support.js"></script>
 </head>
 <body>
 <x-dc>
 <helmet>
-<link rel="stylesheet" href="./responsive.css">
 <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
-<script src="./site-config.js"></script>
 <style>body{margin:0;font-family:Figtree,system-ui,sans-serif;-webkit-font-smoothing:antialiased}a{color:#1f4e3d;text-decoration:none}a:hover{color:#153628}*{box-sizing:border-box}</style>
 </helmet>
 <div style="max-width:1240px;margin:0 auto;padding:0 40px 40px;font-family:Figtree,system-ui,sans-serif">
@@ -20,18 +17,25 @@
       <div style="max-width:300px;line-height:1.55;text-wrap:pretty">The shared context layer where business and engineering read the same system.</div>
       <div style="margin-top:14px;font-family:'IBM Plex Mono',monospace;font-size:12px;color:#8a847a">A1004, Amar Business Park, Baner, Pune 411045</div>
     </div>
-    <div style="display:flex;flex-direction:column;gap:10px"><div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.12em;color:#8a847a;margin-bottom:4px">PRODUCT</div><a href="index.html#codelens" style="color:#514c44">Feature map</a><a href="index.html#codelens" style="color:#514c44">Impact analysis</a><a href="pricing.html" style="color:#514c44">Pricing</a><sc-if value="{{ showBeta }}" hint-placeholder-val="{{ true }}"><a href="beta.html" style="color:#514c44">Beta access</a></sc-if></div>
-    <div style="display:flex;flex-direction:column;gap:10px"><div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.12em;color:#8a847a;margin-bottom:4px">COMPANY</div><a href="about.html" style="color:#514c44">About us</a><a href="careers.html" style="color:#514c44">Careers</a><a href="contact.html" style="color:#514c44">Contact</a></div>
-    <div style="display:flex;flex-direction:column;gap:10px"><div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.12em;color:#8a847a;margin-bottom:4px">RESOURCES</div><a href="blog.html" style="color:#514c44">Blog</a><a href="contact.html" style="color:#514c44">Book a walkthrough</a><sc-if value="{{ showSignIn }}" hint-placeholder-val="{{ true }}"><a href="signin.html" style="color:#514c44">Sign in</a></sc-if></div>
+    <div style="display:flex;flex-direction:column;gap:10px"><div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.12em;color:#8a847a;margin-bottom:4px">PRODUCT</div><a href="{{ r.product }}" style="color:#514c44">Feature map</a><a href="{{ r.product }}" style="color:#514c44">Impact analysis</a><a href="{{ r.pricing }}" style="color:#514c44">Pricing</a><sc-if value="{{ showBeta }}" hint-placeholder-val="{{ true }}"><a href="{{ r.beta }}" style="color:#514c44">Beta access</a></sc-if></div>
+    <div style="display:flex;flex-direction:column;gap:10px"><div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.12em;color:#8a847a;margin-bottom:4px">COMPANY</div><a href="{{ r.about }}" style="color:#514c44">About us</a><a href="{{ r.careers }}" style="color:#514c44">Careers</a><a href="{{ r.contact }}" style="color:#514c44">Contact</a></div>
+    <div style="display:flex;flex-direction:column;gap:10px"><div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.12em;color:#8a847a;margin-bottom:4px">RESOURCES</div><a href="{{ r.blog }}" style="color:#514c44">Blog</a><a href="{{ r.contact }}" style="color:#514c44">Book a walkthrough</a><sc-if value="{{ showSignIn }}" hint-placeholder-val="{{ true }}"><a href="{{ r.signin }}" style="color:#514c44">Sign in</a></sc-if></div>
   </footer>
-  <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;padding:40px 8px 0;font-size:13px;color:#8a847a"><span>© 2026 CodeLens</span><span style="display:flex;gap:18px"><a href="privacy.html" style="color:#8a847a">Privacy</a><a href="terms.html" style="color:#8a847a">Terms</a></span></div>
+  <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;padding:40px 8px 0;font-size:13px;color:#8a847a"><span>© 2026 CodeLens</span><span style="display:flex;gap:18px"><a href="{{ r.privacy }}" style="color:#8a847a">Privacy</a><a href="{{ r.terms }}" style="color:#8a847a">Terms</a></span></div>
 </div>
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1200,&quot;height&quot;:320},&quot;betaEnabled&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;},&quot;accessCodeEnabled&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
 class Component extends DCLogic {
   renderVals() {
     const cfg = window.CODELENS_CONFIG || {};
-    return { showBeta: !!(this.props.betaEnabled ?? cfg.betaEnabled ?? true), showSignIn: !!(this.props.accessCodeEnabled ?? cfg.accessCodeEnabled ?? true) };
+    const isProjectPages = location.hostname.endsWith('github.io') && location.pathname.startsWith('/interfluent.ai');
+    const base = isProjectPages ? '/interfluent.ai/' : '/';
+    const r = {
+      product: base + '#codelens', pricing: base + 'pricing/', beta: base + 'beta/',
+      about: base + 'about/', careers: base + 'careers/', contact: base + 'contact/',
+      blog: base + 'blog/', signin: base + 'signin/', privacy: base + 'privacy/', terms: base + 'terms/'
+    };
+    return { r, showBeta: !!(this.props.betaEnabled ?? cfg.betaEnabled ?? true), showSignIn: !!(this.props.accessCodeEnabled ?? cfg.accessCodeEnabled ?? true) };
   }
 }
 </script>
