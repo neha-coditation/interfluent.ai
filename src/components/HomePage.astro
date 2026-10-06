@@ -449,16 +449,128 @@
     </div>
   </div>
   </section>
-
-
 <script is:inline>
-  // Native lightweight scroll polish; layout does not depend on JS.
-  const reveal = new IntersectionObserver((entries)=>entries.forEach((entry)=>{
-    if(entry.isIntersecting) entry.target.classList.add("is-visible");
-  }),{threshold:.08});
-  document.querySelectorAll("[data-screen-label]").forEach((el)=>reveal.observe(el));
+(() => {
+  const clamp = (n, a=0, b=1) => Math.min(b, Math.max(a, n));
+  const ease = t => t * t * (3 - 2 * t);
+  const seg = (p,a,b) => clamp((p-a)/(b-a));
+  const progress = (el, span=0.9) => {
+    if (!el) return 0;
+    const r = el.getBoundingClientRect();
+    return clamp((innerHeight * .88 - r.top) / (innerHeight * span));
+  };
+  const pinProgress = el => {
+    if (!el) return 0;
+    const r = el.getBoundingClientRect();
+    return clamp(-r.top / Math.max(1, r.height - innerHeight));
+  };
+
+  const today = document.querySelector(".home_act-1-today_section");
+  const todayCards = [...document.querySelectorAll(".home_act-1-today_div-3 > div")];
+  const leaks = [...document.querySelectorAll(".home_act-1-today_div-25 > div")];
+
+  const context = document.querySelector(".home_act-2-shared-context_section");
+  const contextCopy = [...document.querySelectorAll(".home_act-2-shared-context_div-5 > p")];
+  const contextBars = [...document.querySelectorAll(".home_act-2-shared-context_div-6 > span > span")];
+
+  const app = document.querySelector(".home_act-3-interfluent_section");
+  const appWindow = app?.querySelector(":scope > div:nth-of-type(2)");
+
+  const impact = document.querySelector(".home_act-3-impact_section");
+  const impactCard = impact?.querySelector(":scope > div:nth-of-type(2)");
+  const impactText = impact?.querySelector(".home_act-3-impact_div-3");
+  const impactSentence = "Retire the legacy DXF parser and route all imports through DrawingConversionService.";
+
+  const agents = [...document.querySelectorAll(".home_act-3-agents_div-4 > div")];
+  const docs = document.querySelector(".home_docs-sync_section");
+  const docsCard = docs?.querySelector(".home_docs-sync_div > div:first-child");
+  const diffRows = docsCard ? [...docsCard.querySelectorAll(".home_docs-sync_div-3 > div")] : [];
+
+  const riskSection = document.querySelector(".home_risk-by-capability_section");
+  const riskRows = [...document.querySelectorAll(".home_risk-by-capability_div-4 .rs-riskrow")];
+  const riskWidths = riskRows.map(row => [...row.querySelectorAll(".home_risk-by-capability_div-6 > div")].slice(0,3).map(x => parseFloat(x.style.width)||0));
+
+  const testSection = document.querySelector(".home_test-plans_section");
+  const testCards = [...document.querySelectorAll(".home_test-plans_div-3 > div")];
+
+  const audienceSection = document.querySelector(".home_audiences_section");
+  const audienceCards = [...document.querySelectorAll(".home_audiences_div-4 > div")];
+
+  const flowSection = document.querySelector(".home_where-it-sits_section");
+  const flowCards = [...document.querySelectorAll(".home_where-it-sits_div-3 > div")];
+
+  const diffSection = document.querySelector(".home_differentiation_section");
+  const diffTableRows = [...document.querySelectorAll(".home_differentiation_div-4 > .rs-diff:not(.rs-diffhead)")];
+
+  let ticking = false;
+  function frame(){
+    ticking = false;
+
+    const p1 = progress(today, 1.3);
+    if (todayCards[0]) todayCards[0].style.transform = `translate(${(1-ease(seg(p1,.05,.42)))*-42}px,${(1-ease(seg(p1,.05,.42)))*24}px) rotate(-1.5deg)`;
+    if (todayCards[1]) todayCards[1].style.transform = `translateY(${(1-ease(seg(p1,.12,.5)))*34}px)`;
+    if (todayCards[2]) todayCards[2].style.transform = `translate(${(1-ease(seg(p1,.18,.56)))*42}px,${(1-ease(seg(p1,.18,.56)))*24}px) rotate(1.5deg)`;
+    leaks.forEach((el,idx)=>{
+      const t=ease(seg(p1,.42+idx*.1,.62+idx*.1));
+      el.style.opacity=String(t); el.style.transform=`translateY(${(1-t)*28}px)`;
+    });
+
+    const p2 = pinProgress(context);
+    const s1 = 1-seg(p2,.30,.40);
+    const s2 = seg(p2,.36,.46)*(1-seg(p2,.66,.76));
+    const s3 = seg(p2,.72,.82);
+    [s1,s2,s3].forEach((v,idx)=>{
+      if(!contextCopy[idx]) return;
+      contextCopy[idx].style.opacity=String(v);
+      contextCopy[idx].style.transform=`translateY(${idx===0?-seg(p2,.30,.40)*12:idx===1?(1-seg(p2,.36,.46))*12-seg(p2,.66,.76)*12:(1-seg(p2,.72,.82))*12}px)`;
+    });
+    const bars=[seg(p2,0,.36),seg(p2,.36,.72),seg(p2,.72,1)];
+    contextBars.forEach((el,idx)=>el.style.transform=`scaleX(${bars[idx]||0})`);
+
+    const p3 = progress(app,1.1);
+    const ar=ease(seg(p3,0,.35));
+    if(appWindow){appWindow.style.opacity=String(ar);appWindow.style.transform=`translateY(${(1-ar)*40}px) scale(${.97+.03*ar})`;}
+
+    const p4 = progress(impact,.7);
+    const ir=ease(seg(p4,0,.2));
+    if(impactCard){impactCard.style.opacity=String(ir);impactCard.style.transform=`translateY(${(1-ir)*30}px)`;}
+    if(impactText){const ty=ease(seg(p4,.05,.5));impactText.firstChild && (impactText.firstChild.textContent=impactSentence.slice(0,Math.round(ty*impactSentence.length)));}
+
+    const p5 = progress(document.querySelector(".home_act-3-agents_section"),.6);
+    agents.forEach((el,idx)=>{const t=ease(seg(p5,.1+idx*.1,.4+idx*.1));el.style.opacity=String(t);el.style.transform=`translateY(${(1-t)*24}px)`;});
+
+    const p6 = progress(docs,.7);
+    const dr=ease(seg(p6,0,.25));
+    if(docsCard){docsCard.style.opacity=String(dr);docsCard.style.transform=`translateY(${(1-dr)*30}px)`;}
+    diffRows.forEach((el,idx)=>{if(idx===0||idx===3||idx===5)return;const j=Math.min(3,Math.max(1,idx));const t=ease(seg(p6,.25+j*.12,.4+j*.12));el.style.opacity=String(t);el.style.transform=`translateX(${(1-t)*-14}px)`;});
+
+    const p7 = progress(riskSection,.7);
+    riskRows.forEach((row,idx)=>{const t=ease(seg(p7,.1+idx*.08,.45+idx*.08));row.style.opacity=String(seg(p7,.05+idx*.08,.2+idx*.08));[...row.querySelectorAll(".home_risk-by-capability_div-6 > div")].slice(0,3).forEach((bar,j)=>bar.style.width=`${(riskWidths[idx]?.[j]||0)*t}%`);});
+
+    const p8 = progress(testSection,.7);
+    if(testCards[0]){const t=ease(seg(p8,0,.25));testCards[0].style.opacity=String(t);testCards[0].style.transform=`translateX(${(1-t)*-20}px)`;}
+    if(testCards.at(-1)){const t=ease(seg(p8,.4,.6));testCards.at(-1).style.opacity=String(t);testCards.at(-1).style.transform=`translateX(${(1-t)*20}px)`;}
+
+    const p9 = progress(audienceSection,.6);
+    audienceCards.forEach((el,idx)=>{const t=ease(seg(p9,.1+idx*.12,.4+idx*.12));el.style.opacity=String(t);el.style.transform=`translateY(${(1-t)*24}px)`;});
+
+    const p10 = progress(flowSection,.7);
+    flowCards.forEach((el,idx)=>{const t=ease(seg(p10,.05+idx*.12,.35+idx*.12));el.style.opacity=String(t);el.style.transform=`translateY(${(1-t)*20}px)`;});
+
+    const p11 = progress(diffSection,.7);
+    diffTableRows.forEach((el,idx)=>{const t=ease(seg(p11,.05+idx*.1,.35+idx*.1));el.style.opacity=String(t);el.style.transform=`translateY(${(1-t)*14}px)`;});
+  }
+  function request(){ if(ticking) return; ticking=true; requestAnimationFrame(frame); }
+  addEventListener("scroll",request,{passive:true}); addEventListener("resize",request); request();
+})();
 </script>
 <style>
-  [data-screen-label]{transition:opacity .35s ease,transform .35s ease}
-  @media (prefers-reduced-motion:no-preference){[data-screen-label]{opacity:.985}.is-visible{opacity:1}}
+@media (prefers-reduced-motion: reduce){
+  .home_act-1-today_div-3 > div,
+  .home_act-1-today_div-25 > div,
+  .home_act-3-agents_div-4 > div,
+  .home_audiences_div-4 > div,
+  .home_where-it-sits_div-3 > div,
+  .home_differentiation_div-4 > .rs-diff{transform:none!important;opacity:1!important}
+}
 </style>
