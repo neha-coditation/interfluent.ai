@@ -13,7 +13,7 @@
 <div style="max-width:1240px;margin:0 auto;padding:0 40px 40px;font-family:Figtree,system-ui,sans-serif">
   <footer class="rs-footgrid" style="display:grid;grid-template-columns:minmax(200px,1.4fr) repeat(auto-fit,minmax(min(140px,100%),1fr));gap:32px;padding:64px 8px 0;border-top:1px solid rgba(30,28,25,.08);font-size:14px;color:#514c44">
     <div>
-      <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px"><div style="width:22px;height:22px;border-radius:7px;background:#1f4e3d;position:relative"><div style="position:absolute;inset:6px;border-radius:50%;border:2px solid #e0a458"></div></div><span style="font-weight:700;font-size:16px;color:#1e1c19">CodeLens</span></div>
+      <div style="margin-bottom:12px"><a href="{{ r.home }}" aria-label="Interfluent home"><img src="{{ r.logo }}" alt="Interfluent" style="display:block;width:158px;max-width:100%;height:auto"></a></div>
       <div style="max-width:300px;line-height:1.55;text-wrap:pretty">The shared context layer where business and engineering read the same system.</div>
       <div style="margin-top:14px;font-family:'IBM Plex Mono',monospace;font-size:12px;color:#8a847a">A1004, Amar Business Park, Baner, Pune 411045</div>
     </div>
@@ -33,7 +33,8 @@ class Component extends DCLogic {
     const r = {
       product: base + '#codelens', pricing: base + 'pricing/', beta: base + 'beta/',
       about: base + 'about/', careers: base + 'careers/', contact: base + 'contact/',
-      blog: base + 'blog/', signin: base + 'signin/', privacy: base + 'privacy/', terms: base + 'terms/'
+      home: base, blog: base + 'blog/', signin: base + 'signin/', privacy: base + 'privacy/', terms: base + 'terms/',
+      logo: base + 'assets/interfluent-logo.svg'
     };
     return { r, showBeta: !!(this.props.betaEnabled ?? cfg.betaEnabled ?? true), showSignIn: !!(this.props.accessCodeEnabled ?? cfg.accessCodeEnabled ?? true) };
   }
