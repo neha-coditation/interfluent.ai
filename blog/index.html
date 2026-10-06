@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="./support.js"></script>
+<script src="../support.js"></script>
 </head>
 <body>
 <x-dc>
 <helmet>
-<link rel="stylesheet" href="./responsive.css">
+<link rel="stylesheet" href="../responsive.css">
 <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
-<script src="./site-config.js"></script>
+<script src="../site-config.js"></script>
 <style>body{margin:0;background:#f6f3ec;color:#1e1c19;font-family:Figtree,system-ui,sans-serif;-webkit-font-smoothing:antialiased}a{color:#1f4e3d;text-decoration:none}a:hover{color:#153628}*{box-sizing:border-box}</style>
 </helmet>
 <dc-import name="SiteNav" active="blog" hint-size="100%,64px" style="position:sticky;top:0;z-index:20"></dc-import>
@@ -21,7 +21,7 @@
 </section>
 
 <section data-screen-label="Blog · Featured" style="max-width:1240px;margin:0 auto;padding:0 40px 24px">
-  <a href="blog-post.html" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:40px;align-items:center;background:#1f4e3d;color:#f6f3ec;border-radius:24px;padding:clamp(22px,5vw,40px);color:#f6f3ec">
+  <a href="../blog-post/" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:40px;align-items:center;background:#1f4e3d;color:#f6f3ec;border-radius:24px;padding:clamp(22px,5vw,40px);color:#f6f3ec">
     <div style="aspect-ratio:16/10;border-radius:16px;background:repeating-linear-gradient(135deg,rgba(246,243,236,.08) 0 6px,rgba(246,243,236,.04) 6px 12px);display:grid;place-items:center;font-family:'IBM Plex Mono',monospace;font-size:11px;color:rgba(246,243,236,.6)">cover image</div>
     <div>
       <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;color:#e0a458;margin-bottom:16px">ESSAY · 8 MIN</div>
@@ -35,7 +35,7 @@
 <section data-screen-label="Blog · Posts" style="max-width:1240px;margin:0 auto;padding:24px clamp(20px,5vw,40px) clamp(60px,12vw,120px)">
   <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr));gap:24px">
     <sc-for list="{{ posts }}" as="p" hint-placeholder-count="3">
-      <a href="blog-post.html" style="display:flex;flex-direction:column;gap:14px;color:#1e1c19;padding:22px;border-radius:18px;background:#fffdf9;border:1px solid rgba(30,28,25,.1)" style-hover="border-color:#1f4e3d">
+      <a href="../blog-post/" style="display:flex;flex-direction:column;gap:14px;color:#1e1c19;padding:22px;border-radius:18px;background:#fffdf9;border:1px solid rgba(30,28,25,.1)" style-hover="border-color:#1f4e3d">
         <div style="aspect-ratio:16/9;border-radius:12px;background:repeating-linear-gradient(135deg,#ece7dc 0 6px,#f3efe6 6px 12px)"></div>
         <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.12em;color:#8a847a">{{ p.k }}</div>
         <div style="font-size:20px;font-weight:700;letter-spacing:-.015em;line-height:1.2;text-wrap:balance">{{ p.t }}</div>
