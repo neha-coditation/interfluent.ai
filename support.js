@@ -1619,7 +1619,12 @@
   }
 
   // src/runtime.ts
-  var COMPONENT_DIR = ".";
+  var COMPONENT_DIR = (() => {
+    const current = document.currentScript && document.currentScript.src;
+    if (current) return new URL(".", current).href.replace(/\/$/, "");
+    const script = [...document.scripts].find((s) => /\/support\.js(?:\?|$)/.test(s.src));
+    return script ? new URL(".", script.src).href.replace(/\/$/, "") : ".";
+  })();
   function createRuntime(doc = document) {
     const registry = createRegistry();
     const pseudoClass = createPseudoSheet(doc);
