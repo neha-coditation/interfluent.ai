@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="./support.js"></script>
+<script src="../support.js"></script>
 </head>
 <body>
 <x-dc>
 <helmet>
-<link rel="stylesheet" href="./responsive.css">
+<link rel="stylesheet" href="../responsive.css">
 <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
-<script src="./site-config.js"></script>
+<script src="../site-config.js"></script>
 <style>body{margin:0;background:#f6f3ec;color:#1e1c19;font-family:Figtree,system-ui,sans-serif;-webkit-font-smoothing:antialiased}a{color:#1f4e3d;text-decoration:none}a:hover{color:#153628}*{box-sizing:border-box}input{font:inherit;color:inherit}@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}</style>
 </helmet>
 <dc-import name="SiteNav" active="" beta-enabled="{{ beta }}" access-code-enabled="{{ code }}" hint-size="100%,64px" style="position:sticky;top:0;z-index:20"></dc-import>
@@ -30,7 +30,7 @@
             <sc-if value="{{ hasError }}" hint-placeholder-val="{{ false }}"><div style="font-size:13px;color:#c4553a;text-align:center">{{ error }}</div></sc-if>
             <button type="submit" style="background:#1f4e3d;color:#f6f3ec;padding:14px 22px;border-radius:999px;font-weight:600;font-size:15px;border:none;cursor:pointer" style-hover="background:#153628">Continue</button>
           </form>
-          <sc-if value="{{ beta }}" hint-placeholder-val="{{ true }}"><div style="margin-top:22px;padding-top:18px;border-top:1px solid rgba(30,28,25,.08);font-size:13.5px;color:#514c44;text-align:center">No code yet? <a href="beta.html" style="font-weight:600">Request beta access</a></div></sc-if>
+          <sc-if value="{{ beta }}" hint-placeholder-val="{{ true }}"><div style="margin-top:22px;padding-top:18px;border-top:1px solid rgba(30,28,25,.08);font-size:13.5px;color:#514c44;text-align:center">No code yet? <a href="../beta/" style="font-weight:600">Request beta access</a></div></sc-if>
         </div>
       </sc-if>
       <sc-if value="{{ open }}" hint-placeholder-val="{{ false }}">
@@ -48,7 +48,7 @@
       <div style="background:#fffdf9;border:1px solid rgba(30,28,25,.1);border-radius:20px;padding:36px 32px;box-shadow:0 24px 60px rgba(30,28,25,.08);text-align:center">
         <h1 style="font-size:26px;line-height:1.15;letter-spacing:-.02em;font-weight:700;margin:0 0 8px">Sign-in is invite only.</h1>
         <p style="font-size:14.5px;line-height:1.55;color:#514c44;margin:0 0 20px">We're not accepting access codes right now. Get in touch for a walkthrough on your own codebase.</p>
-        <a href="contact.html" style="display:inline-block;background:#1f4e3d;color:#f6f3ec;padding:14px 22px;border-radius:999px;font-weight:600;font-size:15px">Contact us</a>
+        <a href="../contact/" style="display:inline-block;background:#1f4e3d;color:#f6f3ec;padding:14px 22px;border-radius:999px;font-weight:600;font-size:15px">Contact us</a>
       </div>
     </sc-if>
   </div>
