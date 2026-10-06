@@ -1,0 +1,126 @@
+@import url("./variables.css");
+
+html { box-sizing: border-box; }
+*, *::before, *::after { box-sizing: inherit; }
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+img, svg, video { display: block; max-width: 100%; }
+a { color: var(--color-primary); text-decoration: none; }
+a:hover { color: var(--color-primary-hover); }
+
+h1, h2, h3, h4, p { margin-top: 0; }
+h1, h2, h3, h4 { letter-spacing: var(--tracking-tight); }
+p { line-height: var(--leading-body); }
+
+.page-wrapper { min-height: 100vh; overflow: clip; }
+.padding-global { padding-inline: var(--page-padding); }
+.container-large { width: 100%; max-width: var(--container-large); margin-inline: auto; }
+.container-medium { width: 100%; max-width: var(--container-medium); margin-inline: auto; }
+.container-small { width: 100%; max-width: var(--container-small); margin-inline: auto; }
+.section-padding { padding-block: var(--section-padding); }
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: var(--tracking-label);
+  color: var(--color-primary);
+  text-transform: uppercase;
+}
+
+.text-muted { color: var(--color-text-soft); }
+.text-subtle { color: var(--color-text-muted); }
+
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+}
+
+
+/* Client-First-style layout utilities */
+.main-wrapper { width: 100%; }
+.padding-global { padding-left: var(--page-padding); padding-right: var(--page-padding); }
+.container-small { width: 100%; max-width: var(--container-small); margin-left: auto; margin-right: auto; }
+.container-medium { width: 100%; max-width: var(--container-medium); margin-left: auto; margin-right: auto; }
+.container-large { width: 100%; max-width: var(--container-large); margin-left: auto; margin-right: auto; }
+
+.padding-section-small { padding-top: var(--space-12); padding-bottom: var(--space-12); }
+.padding-section-medium { padding-top: var(--space-20); padding-bottom: var(--space-20); }
+.padding-section-large { padding-top: var(--section-padding); padding-bottom: var(--section-padding); }
+
+.margin-top-auto { margin-top: auto; }
+.margin-bottom-0 { margin-bottom: 0; }
+.margin-bottom-small { margin-bottom: var(--space-4); }
+.margin-bottom-medium { margin-bottom: var(--space-8); }
+.margin-bottom-large { margin-bottom: var(--space-12); }
+
+.text-size-small { font-size: var(--text-sm); }
+.text-size-regular { font-size: var(--text-base); }
+.text-size-medium { font-size: var(--text-md); }
+.text-size-large { font-size: var(--text-lg); }
+.text-style-muted { color: var(--color-text-soft); }
+.text-style-subtle { color: var(--color-text-muted); }
+.text-style-mono { font-family: var(--font-mono); }
+
+.heading-style-h1 { font-size: var(--text-display); line-height: var(--leading-tight); letter-spacing: var(--tracking-tight); font-weight: var(--font-weight-bold); }
+.heading-style-h2 { font-size: clamp(1.75rem, 3vw, 2.5rem); line-height: 1.1; letter-spacing: -0.02em; font-weight: var(--font-weight-bold); }
+.heading-style-h3 { font-size: var(--text-xl); line-height: 1.2; font-weight: var(--font-weight-bold); }
+
+.display-flex { display: flex; }
+.display-grid { display: grid; }
+.align-center { align-items: center; }
+.justify-between { justify-content: space-between; }
+.flex-vertical { flex-direction: column; }
+.flex-wrap { flex-wrap: wrap; }
+
+.gap-small { gap: var(--space-3); }
+.gap-medium { gap: var(--space-6); }
+.gap-large { gap: var(--space-10); }
+
+.hide { display: none !important; }
+.overflow-hidden { overflow: hidden; }
+.position-relative { position: relative; }
+
+
+/* Unified site width — matches the shared navbar container */
+:root {
+  --site-content-width: calc(var(--container-large) - (var(--page-padding) * 2));
+}
+
+.site-container {
+  width: min(var(--site-content-width), calc(100% - (var(--page-padding) * 2)));
+  max-width: none;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+/* Shared first-section combo class — matched to Webflow hero spacing */
+.is-first-section {
+  padding-top: 4rem !important;
+}
+
+@media (max-width: 991px) {
+  .is-first-section {
+    padding-top: 3rem !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .is-first-section {
+    padding-top: 2.5rem !important;
+  }
+}
+
+@media (max-width: 479px) {
+  .is-first-section {
+    padding-top: 2rem !important;
+  }
+}

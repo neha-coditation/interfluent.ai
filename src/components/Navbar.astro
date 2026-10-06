@@ -1,0 +1,44 @@
+---
+const { active = "" } = Astro.props;
+
+const links = [
+  { label: "Product", href: "/#codelens", key: "product" },
+  { label: "Pricing", href: "/pricing/", key: "pricing" },
+  { label: "About us", href: "/about/", key: "about" },
+  { label: "Blog", href: "/blog/", key: "blog" },
+  { label: "Careers", href: "/careers/", key: "careers" },
+  { label: "Contact", href: "/contact/", key: "contact" },
+];
+---
+
+<nav class="rs-nav site-nav_site-nav_nav" aria-label="Primary navigation">
+  <div class="padding-global site-nav_padding-global">
+    <div class="container-large site-nav_container">
+      <a href="/" aria-label="Interfluent home" class="site-nav_site-nav_a">
+        <img src="/assets/images/interfluent-logo.svg" alt="Interfluent" class="site-nav_site-nav_img" />
+      </a>
+
+      <label class="rs-burger" aria-label="Menu">
+        <input type="checkbox" />
+        <i></i>
+      </label>
+
+      <div class="rs-navlinks site-nav_site-nav_div">
+        {links.map((link) => (
+          <a
+            href={link.href}
+            class:list={[
+              "nav_link",
+              link.key === active && "is-active",
+            ]}
+            aria-current={link.key === active ? "page" : undefined}
+          >
+            {link.label}
+          </a>
+        ))}
+        <a href="/signin/" class="site-nav_site-nav_a-3">Sign in</a>
+        <a href="/beta/" class="site-nav_site-nav_a-4">Request beta access</a>
+      </div>
+    </div>
+  </div>
+</nav>

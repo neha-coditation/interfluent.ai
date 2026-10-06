@@ -1,0 +1,49 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="Interfluent — Shared context for product and engineering"
+  description="Interfluent connects product intent, requirements, documentation and code into one shared system model."
+  canonical="/"
+>
+  <Fragment slot="head">
+    <link rel="stylesheet" href="/assets/css/pages/home.css" />
+  </Fragment>
+
+  <section class="home_hero_section is-first-section">
+    <div class="home_hero_div">
+      <h1 class="home_hero_h1">
+        <span>Code ships fast now.</span><br />
+        <span>Products still don't.</span>
+      </h1>
+      <div class="home_hero_div-2">
+        <p>AI made teams faster. Handoffs became the bottleneck.</p>
+        <p>Interfluent gives business, product, and engineering one shared understanding of the system.</p>
+      </div>
+      <div class="home_hero_div-3">
+        <a class="home_hero_a" href="/beta/">Request beta access</a>
+        <a class="home_hero_a-2" href="/#codelens">See how it works</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="astro-migration-note">
+    <div>
+      <div class="eyebrow">ASTRO MIGRATION</div>
+      <h2 class="heading-style-h2">Astro foundation is ready.</h2>
+      <p class="text-style-muted">
+        The current static site remains intact while pages are migrated into reusable Astro components.
+      </p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .astro-migration-note {
+    width: min(var(--site-content-width), calc(100% - (var(--page-padding) * 2)));
+    margin: 0 auto;
+    padding: 4rem 0 6rem;
+  }
+  .astro-migration-note > div { max-width: 44rem; }
+</style>

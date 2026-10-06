@@ -1,0 +1,403 @@
+/* CodeLens responsive layer. Inline styles win by default, so overrides use !important. */
+.rs-burger{display:none}
+.rs-burger input{position:absolute;opacity:0;pointer-events:none}
+img,svg,video{max-width:100%}
+
+/* ---------- Tablet & below: nav collapses to a menu ---------- */
+@media (max-width:980px){
+  .rs-nav{flex-wrap:wrap!important;gap:12px!important;padding:12px 20px!important}
+  .rs-burger{display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;margin-left:auto;border:1px solid rgba(30,28,25,.16);border-radius:12px;cursor:pointer;position:relative;-webkit-tap-highlight-color:transparent}
+  .rs-burger i,.rs-burger i:before,.rs-burger i:after{display:block;width:18px;height:2px;border-radius:2px;background:#1e1c19;content:"";position:relative;transition:transform .2s,background .2s}
+  .rs-burger i:before{position:absolute;top:-6px}
+  .rs-burger i:after{position:absolute;top:6px}
+  .rs-nav:has(.rs-burger input:checked) .rs-burger i{background:transparent}
+  .rs-nav:has(.rs-burger input:checked) .rs-burger i:before{top:0;transform:rotate(45deg)}
+  .rs-nav:has(.rs-burger input:checked) .rs-burger i:after{top:0;transform:rotate(-45deg)}
+  .rs-navlinks{display:none!important;width:100%;flex-direction:column;align-items:stretch!important;gap:0!important;padding:4px 0 8px;border-top:1px solid rgba(30,28,25,.08)}
+  .rs-nav:has(.rs-burger input:checked) .rs-navlinks{display:flex!important}
+  .rs-navlinks a{padding:13px 4px!important;font-size:16px!important;border-radius:0!important;border-bottom:1px solid rgba(30,28,25,.06)}
+  .rs-navlinks a[style*="background"]{margin-top:12px;text-align:center;border-bottom:0;border-radius:999px!important;padding:14px 16px!important}
+}
+
+/* ---------- Tablet ---------- */
+@media (max-width:900px){
+  .rs-grid4{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+  .rs-loop{display:none!important}
+  .rs-tp{grid-template-columns:minmax(0,1fr)!important;gap:14px!important}
+  .rs-tparrow{justify-self:center;transform:rotate(90deg)}
+  .rs-app{grid-template-columns:minmax(0,1fr)!important;min-height:0!important}
+  .rs-app>*:first-child{display:none!important}
+  .rs-appsearch{display:none!important}
+
+  /* pinned "shared context" stage: stack copy over graph */
+  .rs-pin2{grid-template-columns:minmax(0,1fr)!important;grid-template-rows:auto minmax(0,1fr);gap:12px!important;padding:72px 20px 16px!important;align-items:start!important}
+  .rs-pin2-left{min-height:0!important}
+  .rs-pin2-left h2{font-size:clamp(22px,6vw,32px)!important;margin-bottom:14px!important}
+  .rs-pin2-copy{height:clamp(120px,22vh,170px)!important}
+  .rs-pin2-copy p{font-size:14.5px!important;line-height:1.5!important}
+  .rs-pin2-graph{height:100%!important;min-height:0}
+  .rs-stage{height:100vh;height:100dvh!important}
+
+  /* pinned hero (original landing) */
+  .rs-pinhero{grid-template-columns:minmax(0,1fr)!important;grid-template-rows:auto minmax(0,1fr);gap:16px!important;padding:76px 20px 16px!important;align-items:start!important}
+}
+
+/* ---------- Phone ---------- */
+@media (max-width:720px){
+  .rs-diffhead{display:none!important}
+  .rs-diff{grid-template-columns:minmax(0,1fr)!important;gap:8px!important;padding:18px!important}
+  .rs-diff>span[data-l]:before{content:attr(data-l);display:block;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.12em;color:#8a847a;font-weight:400;margin-bottom:2px}
+  .rs-rolerow{grid-template-columns:minmax(0,1fr) auto!important;gap:8px 16px!important;padding:22px 4px!important}
+  .rs-rolerow>*:first-child{grid-column:1/-1}
+  .rs-footgrid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:28px 20px!important;padding-top:48px!important}
+  .rs-footgrid>*:first-child{grid-column:1/-1}
+  .rs-grid3{display:none!important}
+  .rs-pin2-graph>div{font-size:11px!important;padding:6px 9px!important}
+  .rs-heroviz{min-height:0!important}
+  .rs-gap{min-height:250px!important}
+  .rs-bub2{top:60%!important}
+  .rs-bub3{left:4%!important;bottom:6%!important}
+  .rs-split2{grid-template-columns:minmax(0,1fr)!important}
+}
+
+@media (max-width:520px){
+  .rs-grid4{grid-template-columns:minmax(0,1fr)!important}
+  .rs-riskrow{grid-template-columns:minmax(84px,110px) minmax(0,1fr)!important;gap:10px!important}
+  .rs-pin2-copy p{font-size:13.5px!important}
+  body{overflow-x:hidden}
+}
+
+
+/* =========================================================
+   Client-First responsive pass — aligned to Webflow breakpoints
+   Desktop stays unchanged; overrides begin at 991px.
+   ========================================================= */
+
+html, body { width:100%; max-width:100%; }
+body { overflow-x:clip; }
+main, section, article, footer, nav, div { min-width:0; }
+input, select, textarea, button { max-width:100%; }
+input, select, textarea { width:100%; }
+
+/* ---------- Tablet landscape / Webflow tablet ---------- */
+@media (max-width:991px){
+  :root{
+    --page-padding:24px;
+    --section-padding:72px;
+  }
+
+  .padding-global{padding-left:var(--page-padding)!important;padding-right:var(--page-padding)!important}
+  .padding-section-large{padding-top:72px!important;padding-bottom:72px!important}
+  .padding-section-medium{padding-top:56px!important;padding-bottom:56px!important}
+
+  /* Shared navigation */
+  .rs-nav{
+    width:100%!important;
+    padding:12px var(--page-padding)!important;
+    background:rgba(246,243,236,.96)!important;
+  }
+  .rs-navlinks{
+    max-height:calc(100dvh - 68px);
+    overflow-y:auto;
+    overscroll-behavior:contain;
+  }
+
+  /* Shared footer */
+  .rs-footgrid{
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    gap:32px 28px!important;
+  }
+
+  /* Home hero */
+  .home_hero_section{
+    grid-template-columns:minmax(0,1fr)!important;
+    gap:40px!important;
+    padding-top:56px!important;
+    padding-bottom:32px!important;
+  }
+  .home_hero_div,
+  .home_hero_div-4{min-width:0!important}
+  .home_hero_div-4{min-height:460px!important}
+  .home_hero_h1{max-width:760px}
+  .home_hero_div-2{max-width:640px}
+
+  /* Standard content sections */
+  [class$="_section"],
+  [class*="_section "],
+  [class$="_article"]{
+    max-width:100%!important;
+  }
+
+  /* About / contact / beta multi-column content */
+  .contact_contact_section,
+  .beta_beta_section{
+    grid-template-columns:minmax(0,1fr)!important;
+    gap:40px!important;
+  }
+
+  /* Careers */
+  .careers_careers-roles_section{padding-left:var(--page-padding)!important;padding-right:var(--page-padding)!important}
+  .careers_careers-roles_a{
+    grid-template-columns:minmax(0,1.7fr) minmax(110px,.8fr) auto!important;
+  }
+  .careers_careers-roles_div-8{display:none}
+
+  /* General cards / grids */
+  .rs-grid4{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+  .rs-split2{grid-template-columns:minmax(0,1fr)!important}
+  .rs-tp{grid-template-columns:minmax(0,1fr)!important}
+}
+
+/* ---------- Webflow mobile landscape ---------- */
+@media (max-width:767px){
+  :root{
+    --page-padding:20px;
+    --section-padding:56px;
+  }
+
+  body{font-size:16px}
+  .padding-section-large{padding-top:56px!important;padding-bottom:56px!important}
+  .padding-section-medium{padding-top:44px!important;padding-bottom:44px!important}
+
+  /* Typography */
+  .heading-style-h1,
+  .home_hero_h1,
+  .about_about-intro_h1,
+  .blog_blog-intro_h1,
+  .careers_careers-intro_h1,
+  .contact_contact_h1,
+  .beta_beta_h1{
+    font-size:clamp(34px,9vw,48px)!important;
+    line-height:1.04!important;
+  }
+
+  h2{overflow-wrap:anywhere}
+
+  /* Navigation: compact, full-width dropdown */
+  .rs-nav{padding:10px var(--page-padding)!important}
+  .rs-nav img{width:142px!important;max-width:54vw!important}
+  .rs-navlinks{padding:8px 0 12px!important}
+  .rs-navlinks a{padding:12px 2px!important}
+
+  /* Home */
+  .home_hero_section{
+    padding-top:40px!important;
+    gap:28px!important;
+  }
+  .home_hero_div-2{font-size:17px!important;margin-bottom:26px!important}
+  .home_hero_div-3{align-items:stretch!important}
+  .home_hero_div-3>a{
+    width:100%!important;
+    justify-content:center!important;
+    text-align:center!important;
+  }
+  .home_hero_div-4{min-height:390px!important}
+  .home_hero_div-6{padding-top:24px!important;padding-bottom:24px!important}
+  .home_hero_div-7,
+  .home_hero_div-18{padding-left:20px!important;padding-right:20px!important}
+  .home_hero_div-12{margin-left:20px!important;margin-right:20px!important}
+  .home_hero_div-19{margin-left:20px!important;margin-right:20px!important}
+
+  /* The old responsive layer hid this entire group on phone.
+     Webflow keeps the content visible, so stack it instead. */
+  .rs-grid3{
+    display:grid!important;
+    grid-template-columns:minmax(0,1fr)!important;
+    gap:16px!important;
+  }
+  .rs-grid4{grid-template-columns:minmax(0,1fr)!important}
+
+  /* Avoid angled/overflowing cards on mobile */
+  .rs-grid3 > *,
+  .rs-grid4 > *,
+  [class*="_card"],
+  [class*="cards_"]{
+    transform:none!important;
+    min-width:0!important;
+    max-width:100%!important;
+  }
+
+  /* App / diagrams */
+  .rs-app{grid-template-columns:minmax(0,1fr)!important}
+  .rs-heroviz{min-height:0!important}
+  .rs-pinhero,
+  .rs-pin2{
+    padding-left:var(--page-padding)!important;
+    padding-right:var(--page-padding)!important;
+  }
+
+  /* Forms */
+  .contact_contact_div-5,
+  .beta_beta_div-6{
+    padding:24px!important;
+    border-radius:18px!important;
+  }
+  .contact_contact_div-6,
+  .beta_beta_div-7,
+  .beta_beta_div-8{
+    grid-template-columns:minmax(0,1fr)!important;
+  }
+
+  /* Careers cards/rows */
+  .careers_careers-roles_a{
+    grid-template-columns:minmax(0,1fr)!important;
+    gap:10px!important;
+    padding:22px 4px!important;
+  }
+  .careers_careers-roles_div-7,
+  .careers_careers-roles_div-9{justify-self:start}
+  .careers_careers-how-we-work_div{
+    grid-template-columns:minmax(0,1fr)!important;
+    gap:28px!important;
+  }
+
+  /* Legal/blog/article measure */
+  .privacy_privacy_article,
+  .terms_terms_article,
+  .blog-post_post_article{
+    width:100%!important;
+    max-width:100%!important;
+  }
+
+  /* Footer */
+  .site-footer_site-footer_div{
+    padding-left:var(--page-padding)!important;
+    padding-right:var(--page-padding)!important;
+  }
+  .rs-footgrid{
+    grid-template-columns:minmax(0,1fr)!important;
+    gap:28px!important;
+    padding-top:44px!important;
+  }
+  .rs-footgrid>*:first-child{grid-column:auto!important}
+  .site-footer_site-footer_div-11{
+    flex-direction:column!important;
+    align-items:flex-start!important;
+    padding-top:28px!important;
+  }
+}
+
+/* ---------- Webflow mobile portrait ---------- */
+@media (max-width:479px){
+  :root{
+    --page-padding:16px;
+    --section-padding:48px;
+  }
+
+  .padding-section-large{padding-top:48px!important;padding-bottom:48px!important}
+  .padding-section-medium{padding-top:40px!important;padding-bottom:40px!important}
+
+  .home_hero_h1,
+  .heading-style-h1{
+    font-size:clamp(32px,10vw,42px)!important;
+  }
+
+  .home_hero_div-4{min-height:350px!important}
+  .home_hero_div-14,
+  .home_hero_div-15,
+  .home_hero_div-16{
+    font-size:11.5px!important;
+    padding:8px 10px!important;
+  }
+
+  .contact_contact_div-5,
+  .beta_beta_div-6,
+  .signin_sign-in_div-8,
+  .signin_sign-in_div-11{
+    padding:20px!important;
+  }
+
+  .button,
+  .home_hero_div-3>a,
+  .contact_contact_button,
+  .beta_beta_button{
+    min-height:46px!important;
+  }
+
+  .rs-riskrow{
+    grid-template-columns:minmax(76px,96px) minmax(0,1fr)!important;
+  }
+
+  .rs-diff{padding:14px!important}
+  .rs-pin2{padding-top:68px!important}
+  .rs-pinhero{padding-top:68px!important}
+}
+
+
+/* =========================================================
+   One site width everywhere — navbar is the source of truth
+   ========================================================= */
+
+:root{
+  --site-content-width: calc(var(--container-large) - (var(--page-padding) * 2));
+}
+
+/* Contained sections: same visible content width as navbar */
+.home_hero_section,
+.home_act-1-today_section,
+.home_act-3-interfluent_section,
+.about_about-intro_section,
+.about_about-beliefs_section,
+.blog_blog-intro_section,
+.blog_blog-featured_section,
+.blog_blog-posts_section,
+.blog-post_post_article,
+.pricing_pricing-intro_section,
+.pricing_pricing-plans_section,
+.contact_contact_section,
+.careers_careers-intro_section,
+.careers_careers-roles_section,
+.privacy_privacy_article,
+.signin_sign-in_section,
+.beta_beta_section,
+.beta_beta-closed_section,
+.terms_terms_article{
+  width:min(var(--site-content-width),calc(100% - (var(--page-padding) * 2)))!important;
+  max-width:none!important;
+  margin-left:auto!important;
+  margin-right:auto!important;
+  padding-left:0!important;
+  padding-right:0!important;
+}
+
+/* Full-bleed sections keep their background, but inner content aligns with nav */
+.home_act-2-shared-context_div-2,
+.careers_careers-how-we-work_div,
+.site-footer_site-footer_div{
+  width:min(var(--site-content-width),calc(100% - (var(--page-padding) * 2)))!important;
+  max-width:none!important;
+  margin-left:auto!important;
+  margin-right:auto!important;
+  padding-left:0!important;
+  padding-right:0!important;
+}
+
+/* Make legacy 40px gutters subordinate to the shared site width */
+@media (max-width:1199px){
+  .home_hero_section,
+  .home_act-1-today_section,
+  .home_act-3-interfluent_section,
+  .about_about-intro_section,
+  .about_about-beliefs_section,
+  .blog_blog-intro_section,
+  .blog_blog-featured_section,
+  .blog_blog-posts_section,
+  .blog-post_post_article,
+  .pricing_pricing-intro_section,
+  .pricing_pricing-plans_section,
+  .contact_contact_section,
+  .careers_careers-intro_section,
+  .careers_careers-roles_section,
+  .privacy_privacy_article,
+  .signin_sign-in_section,
+  .beta_beta_section,
+  .beta_beta-closed_section,
+  .terms_terms_article,
+  .home_act-2-shared-context_div-2,
+  .careers_careers-how-we-work_div,
+  .site-footer_site-footer_div{
+    width:min(var(--site-content-width),calc(100% - (var(--page-padding) * 2)))!important;
+    padding-left:0!important;
+    padding-right:0!important;
+  }
+}
