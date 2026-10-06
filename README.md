@@ -1,58 +1,91 @@
-# Interfluent / CodeLens Website
+# Interfluent Website
 
-Static GitHub-ready build created from the supplied `Landing_Page_Responsive.zip` export.
+Astro-based marketing site for Interfluent.
 
-## Live reference
+## Development
 
-The current Webflow implementation remains the visual/content reference:
+Requirements:
+- Node.js 22.12+
+- npm
 
-- https://interfluent.webflow.io/
-
-## Main pages
-
-- `index.html` — current landing page (based on the supplied **CodeLens Landing v1** export, which most closely matches the live Webflow homepage)
-- `about.html`
-- `pricing.html`
-- `blog.html`
-- `blog-post.html`
-- `careers.html`
-- `contact.html`
-- `beta.html`
-- `signin.html`
-- `privacy.html`
-- `terms.html`
-
-## Design/prototype pages
-
-- `landing-original.html`
-- `landing-diagrammatic.html`
-- `landing-kinetic.html`
-- `hero-sketches.html`
-
-## Shared files
-
-- `SiteNav.dc.html` — shared navigation component
-- `SiteFooter.dc.html` — shared footer component
-- `responsive.css` — responsive layout rules
-- `site-config.js` — site-wide switches and landing route
-- `support.js` — runtime required by the exported Design Components and scroll interactions
-- `uploads/` — supplied PDF references
-- `source/` — untouched unpacked `.dc.html` source exports for reference
-
-## Run locally
-
-Because the pages load shared components with `fetch()`, serve the folder over HTTP rather than opening `index.html` directly from Finder.
+Install dependencies and run locally:
 
 ```bash
-python3 -m http.server 3000
+npm install
+npm run dev
 ```
 
-Then open `http://localhost:3000/`.
+Production build:
 
-## GitHub Pages
+```bash
+npm run build
+npm run preview
+```
 
-This repository is ready for GitHub Pages. In GitHub, choose **Settings → Pages → Deploy from a branch**, then select the `main` branch and `/ (root)`.
+Astro outputs the static production site to `dist/`.
 
-## Notes
+## Project structure
 
-The supplied pages are exported Design Components rather than conventional standalone HTML. The repository keeps their runtime so the interactive/scroll-driven sections continue to work, while exposing normal public filenames such as `about.html`, `careers.html`, and `contact.html`.
+```text
+src/
+├── components/
+│   ├── Navbar.astro
+│   ├── Footer.astro
+│   └── HomePage.astro
+├── layouts/
+│   └── BaseLayout.astro
+├── pages/
+│   ├── index.astro
+│   ├── about.astro
+│   ├── pricing.astro
+│   ├── contact.astro
+│   ├── careers.astro
+│   ├── privacy.astro
+│   ├── signin.astro
+│   ├── beta.astro
+│   ├── terms.astro
+│   └── blog/
+│       ├── index.astro
+│       └── [slug].astro
+├── content/
+│   └── blog/
+└── config/
+    └── site.ts
+
+public/
+└── assets/
+    ├── css/
+    └── images/
+```
+
+## Blog CMS-like workflow
+
+Add a Markdown file under:
+
+```text
+src/content/blog/
+```
+
+Example:
+
+```md
+---
+title: "New blog title"
+description: "Short description"
+publishDate: 2026-10-06
+author: "Interfluent team"
+category: "Product"
+readTime: "5 min"
+featured: false
+---
+
+Article content.
+```
+
+The blog listing and individual `/blog/<slug>/` page are generated automatically.
+
+## Hosting
+
+The project builds to static files, so it can be deployed to AWS S3 + CloudFront, Cloudflare, or another static host.
+
+The current migration work is on the `astro-migration` branch.
