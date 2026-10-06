@@ -1,6 +1,6 @@
 .site-nav_site-nav_nav{position:fixed;top:0;left:0;right:0;width:100%;z-index:9999;background:rgba(246,243,236,.86);backdrop-filter:blur(12px);border-bottom:1px solid rgba(30,28,25,.06);font-family:var(--font-sans)}
 .site-nav_padding-global{width:100%}
-.site-nav_container{display:flex;align-items:center;justify-content:space-between;gap:24px;min-height:64px}
+.site-nav_container{display:flex;align-items:center;justify-content:space-between;gap:24px;min-height:64px;max-width:calc(var(--container-large) - (var(--page-padding) * 2))}
 .site-nav_site-nav_a{display:flex;align-items:center;color:var(--color-text);flex:none}
 .site-nav_site-nav_img{display:block;width:158px;max-width:42vw;height:auto}
 .site-nav_site-nav_div{display:flex;align-items:center;gap:28px;font-size:14px;font-weight:500;flex-wrap:wrap;justify-content:flex-end}
