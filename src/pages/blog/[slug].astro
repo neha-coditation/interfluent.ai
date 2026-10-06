@@ -1,0 +1,10 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getCollection, render } from "astro:content";
+export async function getStaticPaths(){const posts=await getCollection("blog");return posts.map(post=>({params:{slug:post.id.replace(/\.(md|mdx)$/,"")},props:{post}}))}
+const {post}=Astro.props; const {Content}=await render(post); const slug=post.id.replace(/\.(md|mdx)$/,"");
+---
+<BaseLayout title={`${post.data.title} | Interfluent`} description={post.data.description} canonical={`/blog/${slug}/`} active="blog">
+<Fragment slot="head"><link rel="stylesheet" href="/assets/css/pages/blog-post.css" /></Fragment>
+<article class="blog-post_post_article is-first-section"><a href="/blog/" class="blog-post_post_a">← All posts</a><div class="blog-post_post_div">{post.data.category.toUpperCase()} · {post.data.readTime.toUpperCase()}</div><h1 class="blog-post_post_h1">{post.data.title}</h1><p class="blog-post_post_p">{post.data.description}</p><div class="blog-post_post_div-2">cover image</div><div class="blog-post_post_div-3"><Content /></div><div class="blog-post_post_div-4"><div class="blog-post_post_div-5">Written by {post.data.author}.</div><a href="/blog/" class="blog-post_post_a-3">More posts →</a></div></article>
+</BaseLayout>
