@@ -1,49 +1,464 @@
 ---
-const rooms=[["BUSINESS","Talks in capabilities","Improve onboarding time · Improve pilot conversion"],["PRODUCT / BA","Talks in requirements","PRD · Review Symbols v2 · DRAFT"],["ENGINEERING","Talks in repositories","SymbolClassifierService.ts · DrawingConversionService.ts"]];
-const agents=[["PRD","PRD Agent","Turns product intent into a reviewable requirement from shared context."],["BRF","Brief Agent","Produces an engineering brief with affected entities attached."],["IMP","Impact Agent","Prices change as a blast radius with evidence."],["DOC","Docs Agent","Rewrites documentation from the model as a reviewable diff."]];
-const audiences=[["Business and product","Reads product state and cost of change without reading code."],["Business analysts","Turns a request into a specified change with evidence attached."],["Engineering","Enters the IDE knowing what to change, what it touches, and what to test."]];
+// Static Astro port of the original homepage structure. Existing class names are preserved so home.css remains the source of truth.
 ---
-<section class="home_hero_section is-first-section">
-  <div class="home_hero_div"><h1 class="home_hero_h1"><span>Code ships fast now.</span><br/><span>Products still don't.</span></h1><div class="home_hero_div-2"><p>AI made teams faster. Handoffs became the bottleneck.</p><p>Interfluent gives business, product, and engineering one shared understanding of the system and AI agents that can reason, coordinate, and act across it.</p><p>Instead of isolated productivity gains, Interfluent makes the whole organization compound.</p></div><div class="home_hero_div-3"><a href="#cta" class="home_hero_a">Book a walkthrough</a><a href="#today" class="home_hero_a-2">Read the story ↓</a></div></div>
-  <div class="rs-heroviz home_hero_div-4"><div class="home_hero_div-6"><div class="home_hero_div-7"><span>CODE</span><span>47 changes today</span></div><div class="home-native-stream"><span>feat: symbol classifier v2</span><span>fix: pdf raster memory</span><span>feat: line-type review</span><span>refactor: graph export</span></div><div class="rs-gap home_hero_div-12"><div>Which feature does this touch?</div><div>What will it cost?</div><div>Is the documentation still true?</div></div><div class="home_hero_div-18"><span>PRODUCT</span><span>1 capability this quarter</span></div></div></div>
+<!-- HERO -->
+<section data-screen-label="Hero" class="home_hero_section is-first-section">
+  <div class="home_hero_div">
+    
+    <h1 class="home_hero_h1"><div><span class="home_hero_span">Code ships fast now.</span></div><div><span class="home_hero_span-2">Products still don't.</span></div></h1>
+    <div class="home_hero_div-2"><p class="isSelectedEnd">AI made teams faster. Handoffs became the bottleneck.</p><p class="isSelectedEnd">Interfluent gives business, product, and engineering one shared understanding of the system and AI agents that can reason, coordinate, and act across it.</p><p>Instead of isolated productivity gains, Interfluent makes the whole organization compound.</p></div>
+    <div class="home_hero_div-3">
+      <a href="#cta" class="home_hero_a">Book a walkthrough</a>
+      <a href="#today" class="home_hero_a-2">Read the story ↓</a>
+    </div>
+  </div>
+
+  <!-- Hero illustration: two lanes -->
+  <div class="rs-heroviz home_hero_div-4">
+    <div class="home_hero_div-5"></div>
+    <div class="home_hero_div-6">
+      <div class="home_hero_div-7">
+        <span class="home_hero_span-3">CODE</span>
+        <span class="home_hero_span-4">47 changes today</span>
+      </div>
+      <div class="home_hero_div-8">
+        <div class="home_hero_div-9">
+          <div class="home_hero_div-10">
+            <span class="home_hero_span-5">feat: symbol classifier v2</span>
+            <span class="home_hero_span-6">fix: pdf raster memory</span>
+            <span class="home_hero_span-7">chore: bump pdfjs-dist</span>
+            <span class="home_hero_span-8">feat: line-type review</span>
+            <span class="home_hero_span-9">refactor: graph export</span>
+            <span class="home_hero_span-10">fix: dwg unit scaling</span>
+          </div>
+          <div class="home_hero_div-11">
+            <span class="home_hero_span-11">feat: symbol classifier v2</span>
+            <span class="home_hero_span-12">fix: pdf raster memory</span>
+            <span class="home_hero_span-13">chore: bump pdfjs-dist</span>
+            <span class="home_hero_span-14">feat: line-type review</span>
+            <span class="home_hero_span-15">refactor: graph export</span>
+            <span class="home_hero_span-16">fix: dwg unit scaling</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- the gap between -->
+      <div class="rs-gap home_hero_div-12">
+        <div class="home_hero_div-13"></div>
+        <div class="home_hero_div-14">Which feature does this touch?</div>
+        <div class="rs-bub2 home_hero_div-15">What will it cost?</div>
+        <div class="rs-bub3 home_hero_div-16">Is the documentation still true?</div>
+        <div class="home_hero_div-17">?</div>
+      </div>
+
+      <div class="home_hero_div-18">
+        <span class="home_hero_span-17">PRODUCT</span>
+        <span class="home_hero_span-18">1 capability this quarter</span>
+      </div>
+      <div class="home_hero_div-19">
+        <div class="home_hero_div-20"><span>Review Symbols v2</span><span class="home_hero_span-19">waiting on estimate</span></div>
+        <div class="home_hero_div-21"><div class="home_hero_div-22"></div></div>
+      </div>
+    </div>
+  </div>
 </section>
 
-<section id="today" class="home_act-1-today_section"><div class="home_act-1-today_div"><div class="home_act-1-today_div-2">01 · TODAY</div><h2 class="home_act-1-today_h2">Three rooms. Three languages. One system nobody can see whole.</h2><p class="home_act-1-today_p">Every planning conversation starts by redrawing the map by hand, and the map is stale by the time the meeting ends.</p></div><div class="home_act-1-today_div-3">{rooms.map(([k,n,d])=><article class="home-native-card"><div class="home-native-label">{k}</div><h3>{n}</h3><p>{d}</p></article>)}</div></section>
+<!-- ACT 1 · TODAY -->
+<section id="today" data-screen-label="Act 1 · Today" class="home_act-1-today_section">
+  <div class="home_act-1-today_div">
+    <div class="home_act-1-today_div-2">01 · TODAY</div>
+    <h2 class="home_act-1-today_h2">Three rooms. Three languages. One system nobody can see whole.</h2>
+    <p class="home_act-1-today_p">Business talks in capabilities. Product talks in requirements. Engineering talks in repositories. Every planning conversation starts by redrawing the map by hand, and the map is stale by the time the meeting ends.</p>
+  </div>
 
-<section id="context" class="home_act-2-shared-context_section"><div class="home-native-context"><div><div class="home_act-2-shared-context_div-4">02 · WHAT SHIPPING WELL NEEDS</div><h2 class="home_act-2-shared-context_h2">One picture of the system that all three rooms can read.</h2><p>Capabilities, requirements, documentation, code and tests belong in one connected model.</p></div><div class="home-native-model"><div>PRODUCT CAPABILITIES</div><div>REQUIREMENTS + DOCS</div><div>CODE + TESTS</div><strong>ONE CONNECTED MODEL</strong></div></div></section>
+  <!-- three islands -->
+  <div class="home_act-1-today_div-3">
+    <div style="transform:translate(0px, 0px) rotate(-1.5deg);transition:transform .12s linear;background:var(--color-surface);border:1px solid rgba(30,28,25,.1);border-radius:20px;padding:22px;box-shadow:0 20px 50px rgba(30,28,25,.07)">
+      <div class="home_act-1-today_div-4"><span class="home_act-1-today_span">BUSINESS</span><span class="home_act-1-today_span-2"></span></div>
+      <div class="home_act-1-today_div-5">Talks in capabilities</div>
+      <div class="home_act-1-today_div-6">
+        <span class="home_act-1-today_span-3">Improve On-boarding Time</span>
+        <span class="home_act-1-today_span-4">Improve Pilot Conversion Rate</span>
+        
+        
+      </div>
+      <div class="home_act-1-today_div-7">How big is change in Review Symbols?</div>
+    </div>
 
-<section id="codelens" class="home_act-3-interfluent_section"><div class="home_act-3-interfluent_div"><div class="home_act-3-interfluent_div-2">03 · INTERFLUENT</div><h2 class="home_act-3-interfluent_h2">Interfluent is that shared context. And the agents that work from it.</h2><p class="home_act-3-interfluent_p">Every node carries what the agents currently know about it.</p></div><div class="home-native-app"><aside>Pulse<br/>Canvas<br/>Context Graph<br/>PRDs<br/>Impact Analysis<br/>Technical Debt<br/>Security<br/>Test Planning</aside><div><h3>Product feature map</h3><div class="home-native-feature-grid">{["Convert drawings","Review symbols","Classify unknowns","Export graph","Sync docs","Test planning"].map(x=><div>{x}</div>)}</div></div></div></section>
+    <div style="transform:translate(0px, 0px);transition:transform .12s linear;background:var(--color-surface);border:1px solid rgba(30,28,25,.1);border-radius:20px;padding:22px;box-shadow:0 20px 50px rgba(30,28,25,.07)">
+      <div class="home_act-1-today_div-8"><span class="home_act-1-today_span-5">PRODUCT / BA</span><span class="home_act-1-today_span-6"></span></div>
+      <div class="home_act-1-today_div-9">Talks in requirements</div>
+      <div class="home_act-1-today_div-10">
+        <div class="home_act-1-today_div-11">PRD · Review Symbols v2 <span class="home_act-1-today_span-7">DRAFT</span></div>
+        <div class="home_act-1-today_div-12"></div>
+        <div class="home_act-1-today_div-13"></div>
+        <div class="home_act-1-today_div-14"></div>
+        <div class="home_act-1-today_div-15"></div>
+      </div>
+      <div class="home_act-1-today_div-16">“Which services does this actually touch?”</div>
+    </div>
 
-<section class="home_act-3-impact_section"><div><div class="home_act-3-impact_div">PRICE THE CHANGE FIRST</div><h3 class="home_act-3-impact_h3">Describe the change in a sentence. Get the blast radius back before anyone promises a date.</h3><p class="home_act-3-impact_p">Scope becomes evidence rather than a score to argue with.</p></div><div class="home-native-card"><strong>IMPACT ANALYSIS</strong><h3>Add DXF support to Review Symbols</h3><p>Medium change · 14 files · 6 tests · 3 documents to update</p></div></section>
+    <div style="transform:translate(0px, 0px) rotate(1.5deg);transition:transform .12s linear;background:var(--color-surface);border:1px solid rgba(30,28,25,.1);border-radius:20px;padding:22px;box-shadow:0 20px 50px rgba(30,28,25,.07)">
+      <div class="home_act-1-today_div-17"><span class="home_act-1-today_span-8">ENGINEERING</span><span class="home_act-1-today_span-9"></span></div>
+      <div class="home_act-1-today_div-18">Talks in repositories</div>
+      <div class="home_act-1-today_div-19">
+        <div class="home_act-1-today_div-20">classifier/<span class="home_act-1-today_span-10">SymbolClassifierService.ts</span></div>
+        <div class="home_act-1-today_div-21">conversion/<span class="home_act-1-today_span-11">DrawingConversionService.ts</span></div>
+        <div class="home_act-1-today_div-22">lines/<span class="home_act-1-today_span-12">LineTypeService.ts</span></div>
+        <div class="home_act-1-today_div-23">tests/classifier.spec.ts · 61%</div>
+      </div>
+      <div class="home_act-1-today_div-24">“Which capability is this debt under?”</div>
+    </div>
+  </div>
 
-<section class="home_act-3-agents_section"><div class="home_act-3-agents_div"><div><div class="home_act-3-agents_div-3">THE AGENT SUITE</div><h3 class="home_act-3-agents_h3">Agents that read from the model and write back into it.</h3></div></div><div class="home_act-3-agents_div-4">{agents.map(([k,n,d])=><article class="home-native-card"><div class="home-native-agent-key">{k}</div><h3>{n}</h3><p>{d}</p></article>)}</div></section>
+  <!-- four leaks -->
+  <div class="home_act-1-today_div-25">
+    
+      <div style="opacity:;transform:translateY(px);transition:opacity .1s linear,transform .1s linear;padding:26px 24px;border-top:2px solid var(--color-primary)">
+        <div class="home_act-1-today_div-26"></div>
+        <div class="home_act-1-today_div-27"></div>
+        <div class="home_act-1-today_div-28"></div>
+      </div>
+    
+  </div>
+</section>
 
-<section class="home_docs-sync_section"><div class="home_docs-sync_div"><div class="home-native-card"><strong>USER DOCUMENTATION · OUT OF SYNC</strong><p class="home-native-remove">- Files are parsed by the legacy DXF parser</p><p class="home-native-add">+ Files are routed through DrawingConversionService</p><p class="home-native-add">+ Unrecognised symbols are queued for classification</p></div><div><div class="home_docs-sync_div-8">THE RECORD STAYS TRUE</div><h3 class="home_docs-sync_h3">Documentation is rewritten when the system moves, and held as a diff until a human accepts it.</h3></div></div></section>
+<!-- ACT 2 · SHARED CONTEXT (pinned stage) -->
+<section id="context" data-screen-label="Act 2 · Shared context" class="home_act-2-shared-context_section">
+  <div class="rs-stage home_act-2-shared-context_div">
+    <div class="rs-pin2 home_act-2-shared-context_div-2">
+      <div class="rs-pin2-left home_act-2-shared-context_div-3">
+        <div class="home_act-2-shared-context_div-4">02 · WHAT SHIPPING WELL NEEDS</div>
+        <h2 class="home_act-2-shared-context_h2">One picture of the system that all three rooms can read.</h2>
+        <div class="rs-pin2-copy home_act-2-shared-context_div-5">
+          <p style="position:absolute;inset:0;margin:0;font-size:17px;line-height:1.6;color:rgba(246,243,236,.85);opacity:1;transform:translateY(0px);text-wrap:pretty">Start with what the business actually cares about: product capabilities. Put them next to the services that implement them, instead of a slide that gets redrawn every quarter.</p>
+          <p style="position:absolute;inset:0;margin:0;font-size:17px;line-height:1.6;color:rgba(246,243,236,.85);opacity:0;transform:translateY(0px);text-wrap:pretty">Then add intent. Requirements, briefs and documentation become nodes in the same model as classes, methods and tests. A business question and a technical question now share an answer path.</p>
+          <p style="position:absolute;inset:0;margin:0;font-size:17px;line-height:1.6;color:rgba(246,243,236,.85);opacity:0;transform:translateY(0px);text-wrap:pretty">Once everything is connected, a change can be priced before a date is promised, and the record can be rewritten from the model when the system moves. The next change gets cheaper than the last.</p>
+        </div>
+        <div class="home_act-2-shared-context_div-6">
+          <span class="home_act-2-shared-context_span"><span style="position:absolute;inset:0;background:var(--color-accent);transform-origin:left;transform:scaleX(1)"></span></span>
+          <span class="home_act-2-shared-context_span-2"><span style="position:absolute;inset:0;background:var(--color-accent);transform-origin:left;transform:scaleX(0)"></span></span>
+          <span class="home_act-2-shared-context_span-3"><span style="position:absolute;inset:0;background:var(--color-accent);transform-origin:left;transform:scaleX(0)"></span></span>
+        </div>
+      </div>
 
-<section class="home_risk-by-capability_section"><div><div class="home_risk-by-capability_div">RISK, IN THE BUSINESS'S LANGUAGE</div><h3 class="home_risk-by-capability_h3">Debt, vulnerabilities and thin coverage, expressed as capabilities rather than files.</h3></div><div class="home-native-risk-list">{["Plant360 Convert","PDF/Image Conversion","Review Symbols","DWG/DXF Conversion","Mark Unidentified"].map((x,i)=><div><span>{x}</span><div><i style={`width:${70-i*9}%`}></i></div></div>)}</div></section>
+      <!-- graph stage -->
+      <div class="rs-pin2-graph home_act-2-shared-context_div-7">
+        <svg viewBox="0 0 100 100" preserveAspectRatio="none" class="home_act-2-shared-context_svg">
+          
+            <line x1="" y1="" x2="" y2="" pathLength="1" stroke="" stroke-width="1.5" vector-effect="non-scaling-stroke" stroke-linecap="round" style="stroke-dasharray:1;stroke-dashoffset:;opacity:"></line>
+          
+        </svg>
+        <div style="position:absolute;left:0;right:0;top:50%;height:1px;background:rgba(246,243,236,.18);opacity:1"></div>
+        <div style="position:absolute;left:0;top:calc(50% - 20px);font-family:var(--font-mono);font-size:10px;letter-spacing:.14em;color:rgba(246,243,236,.55);opacity:1">PRODUCT · INTENT</div>
+        <div style="position:absolute;left:0;top:calc(50% + 8px);font-family:var(--font-mono);font-size:10px;letter-spacing:.14em;color:rgba(246,243,236,.55);opacity:1">CODE · ENTITIES</div>
+        
+          <div style="position:absolute;left:%;top:%;transform:translate(-50%,-50%) scale();opacity:;padding:8px 12px;border-radius:;background:;color:;font-size:12.5px;font-weight:600;white-space:nowrap;box-shadow:0 10px 30px rgba(0,0,0,.18);font-family:"></div>
+        
+        <div style="position:absolute;left:50%;bottom:0;transform:translateX(-50%);opacity:1;padding:10px 16px;border-radius:999px;border:1px solid rgba(224,164,88,.6);color:var(--color-accent);font-family:var(--font-mono);font-size:11px;letter-spacing:.1em;white-space:nowrap">ONE CONNECTED MODEL · FEATURES · REQUIREMENTS · DOCS · CODE</div>
+      </div>
+    </div>
+  </div>
+</section>
 
-<section class="home_test-plans_section"><div class="home_test-plans_div"><div class="home_test-plans_div-2">A GAP BECOMES A PLAN</div><h3 class="home_test-plans_h3">Any weak capability turns into a drafted test plan from the row that flagged it.</h3></div><div class="home-native-two-col"><div class="home-native-card"><strong>TEST COVERAGE · FLAGGED</strong><h3>Mark Unidentified Symbols</h3><p>44% coverage</p></div><div class="home-native-card"><strong>TEST PLAN · DRAFT</strong><p>□ Unrecognised symbol is queued, not dropped</p><p>□ Queue survives a conversion restart</p><p>□ Manual mark round-trips into the classifier</p></div></div></section>
+<!-- ACT 3 · CODELENS -->
+<section id="codelens" data-screen-label="Act 3 · Interfluent" class="home_act-3-interfluent_section">
+  <div class="home_act-3-interfluent_div">
+    <div class="home_act-3-interfluent_div-2">03 · CODELENS</div>
+    <h2 class="home_act-3-interfluent_h2">Interfluent is that shared context. And the agents that work from it.</h2>
+    <p class="home_act-3-interfluent_p">Product capabilities above the line, the services that implement them below it. Every node carries what the agents currently know about it: requirement status, documentation, debt and coverage. Select one and everything known about it opens in one place.</p>
+  </div>
 
-<section class="home_audiences_section"><div class="home_audiences_div"><div class="home_audiences_div-2"><div class="home_audiences_div-3">WHO IT PAYS OFF FOR</div><h3 class="home_audiences_h3">Three audiences, one model, different reads.</h3></div><div class="home_audiences_div-4">{audiences.map(([n,d])=><article class="home-native-dark-card"><h3>{n}</h3><p>{d}</p></article>)}</div></div></section>
+  <!-- app window -->
+  <div style="margin-top:64px;position:relative;border-radius:22px;background:var(--color-surface);border:1px solid rgba(30,28,25,.1);box-shadow:0 30px 80px rgba(30,28,25,.1);overflow:hidden;opacity:1;transform:translateY(0px) scale(1)">
+    <div class="home_act-3-interfluent_div-3">
+      <span class="home_act-3-interfluent_span"></span><span class="home_act-3-interfluent_span-2"></span><span class="home_act-3-interfluent_span-3"></span>
+      <span class="home_act-3-interfluent_span-4">Plant360 / Convert / Canvas</span>
+      <span class="rs-appsearch home_act-3-interfluent_span-5">Search graph, docs, findings &nbsp;⌘K</span>
+    </div>
+    <div class="rs-app home_act-3-interfluent_div-4">
+      <div class="home_act-3-interfluent_div-5">
+        <div class="home_act-3-interfluent_div-6">Pulse</div>
+        <div class="home_act-3-interfluent_div-7">Canvas</div>
+        <div class="home_act-3-interfluent_div-8">Context Graph</div>
+        <div class="home_act-3-interfluent_div-9">PRODUCT</div>
+        <div class="home_act-3-interfluent_div-10">PRDs <span class="home_act-3-interfluent_span-6">2</span></div>
+        <div class="home_act-3-interfluent_div-11">User Documentation</div>
+        <div class="home_act-3-interfluent_div-12">Engineering Briefs</div>
+        <div class="home_act-3-interfluent_div-13">ENGINEERING</div>
+        <div class="home_act-3-interfluent_div-14">Impact Analysis</div>
+        <div class="home_act-3-interfluent_div-15">Technical Debt</div>
+        <div class="home_act-3-interfluent_div-16">Security <span class="home_act-3-interfluent_span-7">3</span></div>
+        <div class="home_act-3-interfluent_div-17">Test Coverage</div>
+        <div class="home_act-3-interfluent_div-18">Test Planning</div>
+        <div class="home_act-3-interfluent_div-19">Agent Builder</div>
+      </div>
+      <div class="home_act-3-interfluent_div-20">
+        <div class="home_act-3-interfluent_div-21">
+          <div><div class="home_act-3-interfluent_div-22">Product feature map</div><div class="home_act-3-interfluent_div-23">10 features · 4 services · 23 linked documents</div></div>
+          <div class="home_act-3-interfluent_div-24"><span class="home_act-3-interfluent_span-8">PRD status</span><span class="home_act-3-interfluent_span-9">Docs</span><span class="home_act-3-interfluent_span-10">Debt &amp; security</span><span class="home_act-3-interfluent_span-11">Coverage</span></div>
+        </div>
+        <div class="home_act-3-interfluent_div-25">PRODUCT FEATURES</div>
+        <div class="home_act-3-interfluent_div-26">
+          
+            <div style="opacity:;transform:translateY(px);background:var(--color-surface);border:1px solid ;border-radius:10px;padding:10px 11px;box-shadow:0 4px 14px rgba(30,28,25,.05)">
+              <div class="home_act-3-interfluent_div-27"></div>
+              <div class="home_act-3-interfluent_div-28"></div>
+              <div style="display:flex;flex-wrap:wrap;gap:4px;opacity:;transform:scale();transform-origin:left">
+                <span style="font-family:var(--font-mono);font-size:9.5px;padding:2px 6px;border-radius:4px;background:;color:"></span>
+                <span class="home_act-3-interfluent_span-12"></span>
+                <span style="font-family:var(--font-mono);font-size:9.5px;padding:2px 6px;border-radius:4px;background:;color:"></span>
+                <span style="font-family:var(--font-mono);font-size:9.5px;padding:2px 6px;border-radius:4px;background:;color:"></span>
+              </div>
+            </div>
+          
+        </div>
+        <div class="home_act-3-interfluent_div-29"><span class="home_act-3-interfluent_span-13">CODE ENTITIES · SERVICES</span><span class="home_act-3-interfluent_span-14"></span></div>
+        <div class="home_act-3-interfluent_div-30">
+          
+            <div style="opacity:;transform:translateY(px);background:var(--color-bg);border:1px solid rgba(30,28,25,.12);border-radius:10px;padding:10px 11px">
+              <div class="home_act-3-interfluent_div-31"></div>
+              <div class="home_act-3-interfluent_div-32"></div>
+              <div style="display:flex;gap:4px;opacity:"><span class="home_act-3-interfluent_span-15"></span><span class="home_act-3-interfluent_span-16"></span></div>
+            </div>
+          
+        </div>
 
-<section class="home_where-it-sits_section"><div class="home_where-it-sits_div"><div class="home_where-it-sits_div-2">WHERE IT SITS</div><h3 class="home_where-it-sits_h3">It wraps the IDE rather than competing with it.</h3><p class="home_where-it-sits_p">Nothing is displaced. Interfluent decides and governs the change; the developer's IDE still writes it.</p></div><div class="rs-grid4 home_where-it-sits_div-3">{["INTENT","INTERFLUENT · DECIDE","EXECUTE","INTERFLUENT · GOVERN"].map(x=><div class="home-native-card"><strong>{x}</strong></div>)}</div></section>
+        <!-- drawer -->
+        <div style="position:absolute;top:0;right:0;bottom:0;width:min(340px,80%);background:var(--color-surface);border-left:1px solid rgba(30,28,25,.1);box-shadow:-20px 0 50px rgba(30,28,25,.08);transform:translateX(0%);padding:22px 22px;display:flex;flex-direction:column;gap:14px;overflow:hidden">
+          <div><div class="home_act-3-interfluent_div-33">FEATURE</div><div class="home_act-3-interfluent_div-34">Review Symbols</div></div>
+          <div class="home_act-3-interfluent_div-35">
+            <div class="home_act-3-interfluent_div-36"><div class="home_act-3-interfluent_div-37">Code entities</div><div class="home_act-3-interfluent_div-38">15</div></div>
+            <div class="home_act-3-interfluent_div-39"><div class="home_act-3-interfluent_div-40">High findings</div><div class="home_act-3-interfluent_div-41">12</div></div>
+            <div class="home_act-3-interfluent_div-42"><div class="home_act-3-interfluent_div-43">Coverage</div><div class="home_act-3-interfluent_div-44">71%</div></div>
+          </div>
+          <div class="home_act-3-interfluent_div-45">
+            <div class="home_act-3-interfluent_div-46"><span>Review Symbols V2</span><span class="home_act-3-interfluent_span-17">DRAFT</span></div>
+            <div class="home_act-3-interfluent_div-47"><span>Review Symbols V1</span><span class="home_act-3-interfluent_span-18">PUBLISHED</span></div>
+            <div class="home_act-3-interfluent_div-48"><span>Symbology docs</span><span class="home_act-3-interfluent_span-19">OUT OF SYNC</span></div>
+            <div class="home_act-3-interfluent_div-49"><span>Technical debt</span><span class="home_act-3-interfluent_span-20">41 findings</span></div>
+            <div class="home_act-3-interfluent_div-50"><span>Security</span><span class="home_act-3-interfluent_span-21">1 critical · 2 high</span></div>
+          </div>
+          <div class="home_act-3-interfluent_div-51"><span class="home_act-3-interfluent_span-22">Create PRD</span><span class="home_act-3-interfluent_span-23">Analyse impact</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-<section class="home_differentiation_section"><div class="home_differentiation_div"><div class="home_differentiation_div-2"><div class="home_differentiation_div-3">WHAT YOU ALREADY OWN, AND WHAT IS MISSING</div><h3 class="home_differentiation_h3">Your current tools are good at their job. Interfluent holds the part in between.</h3></div><div class="home-native-diff">{["AI coding assistants","Code intelligence platforms","Quality and security tools","Documentation tooling"].map(x=><div><strong>{x}</strong><span>Existing tool capability</span><span>Shared context across intent, code and documentation</span></div>)}</div></div></section>
+<!-- Act 3b · price the change -->
+<section data-screen-label="Act 3 · Impact" class="home_act-3-impact_section">
+  <div>
+    <div class="home_act-3-impact_div">PRICE THE CHANGE FIRST</div>
+    <h3 class="home_act-3-impact_h3">Describe the change in a sentence. Get the blast radius back before anyone promises a date.</h3>
+    <p class="home_act-3-impact_p">Files touched, tests affected and documents that will drift come back as a size band with the relationships behind it. Scope becomes evidence rather than a score to argue with.</p>
+  </div>
+  <div style="background:var(--color-surface);border:1px solid rgba(30,28,25,.1);border-radius:20px;padding:24px;box-shadow:0 24px 60px rgba(30,28,25,.08);opacity:1;transform:translateY(0px)">
+    <div class="home_act-3-impact_div-2">IMPACT ANALYSIS</div>
+    <div class="home_act-3-impact_div-3">Retire the legacy DXF parser and route all imports through DrawingConversionService.<span class="home_act-3-impact_span"></span></div>
+    <div style="display:flex;align-items:center;gap:14px;margin:18px 0 14px;opacity:1;transform:translateY(0px)">
+      <div class="home_act-3-impact_div-4">M</div>
+      <div><div class="home_act-3-impact_div-5">Medium change</div><div class="home_act-3-impact_div-6">14 files · 6 tests · 3 documents to update</div></div>
+    </div>
+    <div class="home_act-3-impact_div-7">
+      <div style="display:flex;justify-content:space-between;padding:9px 12px;border-radius:8px;background:var(--color-bg);opacity:1;transform:translateX(0px)"><span class="home_act-3-impact_span-2">DrawingConversionService</span><span class="home_act-3-impact_span-3">implements · Convert drawings</span></div>
+      <div style="display:flex;justify-content:space-between;padding:9px 12px;border-radius:8px;background:var(--color-bg);opacity:1;transform:translateX(0px)"><span class="home_act-3-impact_span-4">dxf-parser.spec.ts</span><span class="home_act-3-impact_span-5">untested path</span></div>
+      <div style="display:flex;justify-content:space-between;padding:9px 12px;border-radius:8px;background:var(--color-bg);opacity:1;transform:translateX(0px)"><span class="home_act-3-impact_span-6">User docs · Importing DXF</span><span class="home_act-3-impact_span-7">will drift</span></div>
+    </div>
+  </div>
+</section>
 
-<section class="home_social-proof_section"><div class="home_social-proof_div">TEAMS BUILDING ON A SHARED PICTURE</div><div class="home_social-proof_div-2">{Array.from({length:6}).map(()=> <div class="home_social-proof_div-3">customer logo</div>)}</div></section>
-<section id="cta" class="home_cta_section"><div class="home_cta_div"><div class="home_cta_div-2"><h3 class="home_cta_h3">See the whole loop on your own codebase.</h3><p class="home_cta_p">We'll walk it live, from feature map to test plan.</p></div><div class="home_cta_div-3"><a href="/contact/" class="home_cta_a">Book a walkthrough</a><a href="/beta/" class="home_cta_a-2">Request beta access</a></div></div></section>
+<!-- Agents -->
+<section data-screen-label="Act 3 · Agents" class="home_act-3-agents_section">
+  <div class="home_act-3-agents_div">
+    <div class="home_act-3-agents_div-2">
+      <div class="home_act-3-agents_div-3">THE AGENT SUITE</div>
+      <h3 class="home_act-3-agents_h3">Agents that read from the model and write back into it.</h3>
+    </div>
+    <p class="home_act-3-agents_p">Each one leaves the system better described than it found it, so the value compounds with every cycle.</p>
+  </div>
+  <div class="home_act-3-agents_div-4">
+    
+      <div style="opacity:;transform:translateY(px);background:var(--color-surface);border:1px solid rgba(30,28,25,.1);border-radius:16px;padding:22px 20px;min-height:190px;display:flex;flex-direction:column;gap:10px">
+        <div style="width:34px;height:34px;border-radius:10px;background:;display:grid;place-items:center;font-family:var(--font-mono);font-size:12px;font-weight:500;color:"></div>
+        <div class="home_act-3-agents_div-5"></div>
+        <div class="home_act-3-agents_div-6"></div>
+      </div>
+    
+  </div>
+</section>
 
+<!-- Docs sync -->
+<section data-screen-label="Docs sync" class="home_docs-sync_section">
+  <div class="home_docs-sync_div">
+    <div style="background:var(--color-surface);border:1px solid rgba(30,28,25,.1);border-radius:20px;box-shadow:0 24px 60px rgba(30,28,25,.08);overflow:hidden;opacity:1;transform:translateY(0px)">
+      <div class="home_docs-sync_div-2"><span class="home_docs-sync_span">User Documentation · Importing DXF</span><span class="home_docs-sync_span-2">OUT OF SYNC · 3 CHANGES</span></div>
+      <div class="home_docs-sync_div-3">
+        <div class="home_docs-sync_div-4">  Supported formats: DWG, DXF (R12–2018)</div>
+        <div style="background:#f4d9d1;color:#8a3a26;text-decoration:line-through;border-radius:4px;padding:0 6px;margin:0 -6px;opacity:1;transform:translateX(0px)">- Files are parsed by the legacy DXF parser</div>
+        <div style="background:#d9e6df;color:var(--color-primary);border-radius:4px;padding:0 6px;margin:0 -6px;opacity:1;transform:translateX(0px)">+ Files are routed through DrawingConversionService</div>
+        <div class="home_docs-sync_div-5">  Unit scaling is detected from the header block</div>
+        <div style="background:#d9e6df;color:var(--color-primary);border-radius:4px;padding:0 6px;margin:0 -6px;opacity:1;transform:translateX(0px)">+ Unrecognised symbols are queued for classification</div>
+        <div class="home_docs-sync_div-6">  Output: a reviewed P&amp;ID graph</div>
+      </div>
+      <div class="home_docs-sync_div-7"><span class="home_docs-sync_span-3">Rewritten from the model · awaiting review</span><span style="display:flex;gap:8px;opacity:1"><span class="home_docs-sync_span-4">Reject</span><span class="home_docs-sync_span-5">Accept &amp; publish</span></span></div>
+    </div>
+    <div>
+      <div class="home_docs-sync_div-8">THE RECORD STAYS TRUE</div>
+      <h3 class="home_docs-sync_h3">Documentation is rewritten when the system moves, and held as a diff until a human accepts it.</h3>
+      <p class="home_docs-sync_p">Added, changed and removed pages are marked before publishing. Nothing goes live unreviewed. Customer-facing and engineering narratives stay separate, moving at their own speed from the same model.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Risk by capability -->
+<section data-screen-label="Risk by capability" class="home_risk-by-capability_section">
+  <div>
+    <div class="home_risk-by-capability_div">RISK, IN THE BUSINESS'S LANGUAGE</div>
+    <h3 class="home_risk-by-capability_h3">Debt, vulnerabilities and thin coverage, expressed as capabilities rather than files.</h3>
+    <p class="home_risk-by-capability_p">Every finding resolves up to the product capability that carries it. That turns a report engineering triages alone into a list a business owner can prioritise and fund.</p>
+  </div>
+  <div class="home_risk-by-capability_div-2">
+    <div class="home_risk-by-capability_div-3"><span>CAPABILITY</span><span class="home_risk-by-capability_span"><span class="home_risk-by-capability_span-2"><span class="home_risk-by-capability_span-3"></span>DEBT</span><span class="home_risk-by-capability_span-4"><span class="home_risk-by-capability_span-5"></span>SECURITY</span><span class="home_risk-by-capability_span-6"><span class="home_risk-by-capability_span-7"></span>COVERAGE GAP</span></span></div>
+    <div class="home_risk-by-capability_div-4">
+      
+        <div class="rs-riskrow" style="display:grid;grid-template-columns:minmax(120px,160px) minmax(0,1fr);gap:14px;align-items:center;opacity:">
+          <div class="home_risk-by-capability_div-5"></div>
+          <div class="home_risk-by-capability_div-6">
+            <div style="width:%;background:var(--color-primary);border-radius:4px 0 0 4px;transition:width .1s linear"></div>
+            <div style="width:%;background:#c4553a;transition:width .1s linear"></div>
+            <div style="width:%;background:var(--color-accent);border-radius:0 4px 4px 0;transition:width .1s linear"></div>
+            <div class="home_risk-by-capability_div-7"></div>
+          </div>
+        </div>
+      
+    </div>
+  </div>
+</section>
+
+<!-- Test plans -->
+<section data-screen-label="Test plans" class="home_test-plans_section">
+  <div class="home_test-plans_div">
+    <div class="home_test-plans_div-2">A GAP BECOMES A PLAN</div>
+    <h3 class="home_test-plans_h3">Any weak capability turns into a drafted test plan from the row that flagged it.</h3>
+    <p class="home_test-plans_p">Written against what the change actually touched, editable, and read back into the model. The next planning cycle starts from the state the last one left behind.</p>
+  </div>
+  <div class="rs-tp home_test-plans_div-3">
+    <div style="background:var(--color-surface);border:1px solid rgba(30,28,25,.1);border-radius:16px;padding:18px 20px;box-shadow:0 16px 40px rgba(30,28,25,.06);opacity:1;transform:translateX(0px)">
+      <div class="home_test-plans_div-4">TEST COVERAGE · FLAGGED</div>
+      <div class="home_test-plans_div-5">Mark Unidentified Symbols</div>
+      <div class="home_test-plans_div-6"><span>5 files · 0 tests on hot paths</span><span class="home_test-plans_span">44%</span></div>
+      <div class="home_test-plans_div-7"><div class="home_test-plans_div-8"></div></div>
+      <div class="home_test-plans_div-9">Generate test plan</div>
+    </div>
+    <div class="rs-tparrow" style="display:flex;align-items:center;gap:0;opacity:1"><div class="home_test-plans_div-10"></div><div class="home_test-plans_div-11"></div></div>
+    <div style="background:var(--color-surface);border:1px solid rgba(30,28,25,.1);border-radius:16px;padding:18px 20px;box-shadow:0 16px 40px rgba(30,28,25,.06);opacity:1;transform:translateX(0px)">
+      <div class="home_test-plans_div-12"><span class="home_test-plans_span-2">TEST PLAN · DRAFT</span><span class="home_test-plans_span-3">EDITABLE</span></div>
+      <div class="home_test-plans_div-13">Mark Unidentified Symbols · v1</div>
+      <div class="home_test-plans_div-14">
+        
+          <div style="display:flex;gap:10px;align-items:flex-start;opacity:;transform:translateY(px)"><span style="flex:none;width:16px;height:16px;border-radius:4px;border:1.5px solid var(--color-primary);margin-top:2px;background:"></span><span class="home_test-plans_span-4"></span></div>
+        
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Audiences -->
+<section data-screen-label="Audiences" class="home_audiences_section">
+  <div class="home_audiences_div">
+    <div class="home_audiences_div-2">
+      <div class="home_audiences_div-3">WHO IT PAYS OFF FOR</div>
+      <h3 class="home_audiences_h3">Three audiences, one model, different reads.</h3>
+    </div>
+    <div class="home_audiences_div-4">
+      
+        <div style="opacity:;transform:translateY(px);border:1px solid rgba(246,243,236,.18);border-radius:18px;padding:28px 26px;min-height:220px;display:flex;flex-direction:column;gap:12px">
+          <div style="width:12px;height:12px;border-radius:50%;background:"></div>
+          <div class="home_audiences_div-5"></div>
+          <div class="home_audiences_div-6"></div>
+          <div class="home_audiences_div-7"></div>
+        </div>
+      
+    </div>
+  </div>
+</section>
+
+<!-- Where it sits -->
+<section data-screen-label="Where it sits" class="home_where-it-sits_section">
+  <div class="home_where-it-sits_div">
+    <div class="home_where-it-sits_div-2">WHERE IT SITS</div>
+    <h3 class="home_where-it-sits_h3">It wraps the IDE rather than competing with it.</h3>
+    <p class="home_where-it-sits_p">Nothing is displaced. Interfluent decides and governs the change; the developer's IDE still writes it; your pipelines, controls and monitoring stay exactly as they are.</p>
+  </div>
+  <div class="rs-grid4 home_where-it-sits_div-3">
+    
+      <div style="opacity:;transform:translateY(px);border-radius:16px;padding:22px 20px;background:;color:;border:1px solid ;min-height:200px;display:flex;flex-direction:column;gap:8px;position:relative;min-width:0">
+        <div class="home_where-it-sits_div-4"></div>
+        <div class="home_where-it-sits_div-5"></div>
+        <div class="home_where-it-sits_div-6"></div>
+      </div>
+    
+  </div>
+  <div class="rs-loop" style="margin-top:14px;height:34px;position:relative;opacity:1">
+    <div class="home_where-it-sits_div-7"></div>
+    <div class="home_where-it-sits_div-8"></div>
+    <div class="home_where-it-sits_div-9">THE GOVERNING LOOP FEEDS THE NEXT DECISION</div>
+  </div>
+</section>
+
+<!-- Differentiation -->
+<section data-screen-label="Differentiation" class="home_differentiation_section">
+  <div class="home_differentiation_div">
+    <div class="home_differentiation_div-2">
+      <div class="home_differentiation_div-3">WHAT YOU ALREADY OWN, AND WHAT IS MISSING</div>
+      <h3 class="home_differentiation_h3">Your current tools are good at their job. Interfluent holds the part in between.</h3>
+    </div>
+    <div class="home_differentiation_div-4">
+      <div class="rs-diff rs-diffhead home_differentiation_div-5"><span>CATEGORY</span><span>WHAT IT DOES WELL</span><span class="home_differentiation_span">WHAT CODELENS HOLDS</span></div>
+      
+        <div class="rs-diff" style="display:grid;grid-template-columns:minmax(140px,1fr) minmax(160px,1.3fr) minmax(160px,1.6fr);gap:20px;padding:20px 22px;background:var(--color-surface);border-top:1px solid rgba(30,28,25,.08);font-size:14.5px;line-height:1.5;opacity:;transform:translateY(px)"><span data-l="CATEGORY" class="home_differentiation_span-2"></span><span data-l="WHAT IT DOES WELL" class="home_differentiation_span-3"></span><span data-l="WHAT CODELENS HOLDS" class="home_differentiation_span-4"></span></div>
+      
+    </div>
+  </div>
+</section>
+
+<!-- Social proof -->
+<section data-screen-label="Social proof" class="home_social-proof_section">
+  <div class="home_social-proof_div">TEAMS BUILDING ON A SHARED PICTURE</div>
+  <div class="home_social-proof_div-2">
+    <div class="home_social-proof_div-3">customer logo</div>
+    <div class="home_social-proof_div-4">customer logo</div>
+    <div class="home_social-proof_div-5">customer logo</div>
+    <div class="home_social-proof_div-6">customer logo</div>
+    <div class="home_social-proof_div-7">customer logo</div>
+    <div class="home_social-proof_div-8">customer logo</div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta" data-screen-label="CTA" class="home_cta_section">
+  <div class="home_cta_div">
+    <div class="home_cta_div-2">
+      <h3 class="home_cta_h3">See the whole loop on your own codebase.</h3>
+      <p class="home_cta_p">Every screen in this story is a working prototype. We'll walk it live, from feature map to test plan.</p>
+    </div>
+    <div class="home_cta_div-3">
+      <a href="./contact/" class="home_cta_a">Book a walkthrough</a>
+      <a href="./beta/" class="home_cta_a-2">Request beta access</a>
+    </div>
+  </div>
+  </section>
+
+
+<script is:inline>
+  // Native lightweight scroll polish; layout does not depend on JS.
+  const reveal = new IntersectionObserver((entries)=>entries.forEach((entry)=>{
+    if(entry.isIntersecting) entry.target.classList.add("is-visible");
+  }),{threshold:.08});
+  document.querySelectorAll("[data-screen-label]").forEach((el)=>reveal.observe(el));
+</script>
 <style>
-.home-native-card{background:var(--color-surface);border:1px solid var(--color-border);border-radius:18px;padding:22px;box-shadow:var(--shadow-soft)}
-.home-native-label,.home-native-agent-key{font-family:var(--font-mono);font-size:12px;letter-spacing:.08em;color:var(--color-primary);margin-bottom:12px}
-.home-native-stream{display:grid;gap:10px;padding:24px;font-family:var(--font-mono);font-size:13px}
-.home-native-context{width:min(var(--site-content-width),calc(100% - (var(--page-padding)*2)));margin:auto;display:grid;grid-template-columns:.8fr 1.2fr;gap:48px;padding:96px 0}
-.home-native-model{min-height:420px;border:1px solid rgba(246,243,236,.2);border-radius:20px;display:grid;place-items:center;color:var(--color-bg)}
-.home-native-model>div{padding:12px 18px;border-radius:999px;background:rgba(246,243,236,.1)}.home-native-model strong{color:var(--color-accent)}
-.home-native-app{margin-top:56px;display:grid;grid-template-columns:220px 1fr;background:var(--color-surface);border:1px solid var(--color-border);border-radius:20px;overflow:hidden;box-shadow:var(--shadow-soft)}
-.home-native-app aside{padding:24px;border-right:1px solid var(--color-border);line-height:2}.home-native-app>div{padding:24px}.home-native-feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.home-native-feature-grid>div{padding:16px;border:1px solid var(--color-border);border-radius:10px}
-.home-native-remove{background:#f4d9d1;color:#8a3a26;text-decoration:line-through;padding:6px}.home-native-add{background:#d9e6df;color:var(--color-primary);padding:6px}
-.home-native-risk-list{display:grid;gap:14px}.home-native-risk-list>div{display:grid;grid-template-columns:180px 1fr;gap:16px;align-items:center}.home-native-risk-list div div{height:12px;background:var(--color-surface-soft);border-radius:999px;overflow:hidden}.home-native-risk-list i{display:block;height:100%;background:var(--color-primary)}
-.home-native-two-col{display:grid;grid-template-columns:1fr 1fr;gap:24px}.home-native-dark-card{border:1px solid rgba(246,243,236,.18);border-radius:18px;padding:28px 26px}.home-native-diff>div{display:grid;grid-template-columns:1fr 1.3fr 1.6fr;gap:20px;padding:20px 22px;border-top:1px solid var(--color-border);background:var(--color-surface)}
-@media(max-width:767px){.home-native-context,.home-native-app,.home-native-two-col{grid-template-columns:1fr}.home-native-app aside{display:none}.home-native-feature-grid{grid-template-columns:1fr}.home-native-risk-list>div,.home-native-diff>div{grid-template-columns:1fr}}
+  [data-screen-label]{transition:opacity .35s ease,transform .35s ease}
+  @media (prefers-reduced-motion:no-preference){[data-screen-label]{opacity:.985}.is-visible{opacity:1}}
 </style>
