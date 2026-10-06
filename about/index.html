@@ -4,29 +4,31 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script data-site-base>document.write('<base href="'+(location.hostname.endsWith('.github.io')?'/interfluent.ai/':'/')+'">')</script>
-<script src="../support.js"></script>
+<script src="support.js"></script>
 </head>
 <body>
 <x-dc>
 <helmet>
-<link rel="stylesheet" href="../responsive.css">
+<link rel="stylesheet" href="responsive.css">
+<link rel="stylesheet" href="assets/css/global.css">
+<link rel="stylesheet" href="assets/css/components.css">
 <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
-<script src="../site-config.js"></script>
-<style>body{margin:0;background:#f6f3ec;color:#1e1c19;font-family:Figtree,system-ui,sans-serif;-webkit-font-smoothing:antialiased}a{color:#1f4e3d;text-decoration:none}a:hover{color:#153628}*{box-sizing:border-box}</style>
+<script src="site-config.js"></script>
+<style>body{margin:0;background:var(--color-bg);color:var(--color-text);font-family:var(--font-sans);-webkit-font-smoothing:antialiased}a{color:var(--color-primary);text-decoration:none}a:hover{color:var(--color-primary-hover)}*{box-sizing:border-box}</style>
 </helmet>
 <dc-import name="SiteNav" active="about" hint-size="100%,64px" style="position:sticky;top:0;z-index:20"></dc-import>
 
-<section data-screen-label="About · Intro" style="max-width:1240px;margin:0 auto;padding:clamp(48px,9.6vw,96px) clamp(20px,5vw,40px) 64px">
+<section data-screen-label="About · Intro" style="max-width:var(--container-large);margin:0 auto;padding:clamp(48px,9.6vw,96px) var(--page-padding) 64px">
   <div style="max-width:780px">
-    <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.14em;color:#1f4e3d;margin-bottom:18px">ABOUT US</div>
+    <div style="font-family:var(--font-mono);font-size:12px;letter-spacing:.14em;color:var(--color-primary);margin-bottom:18px">ABOUT US</div>
     <h1 style="font-size:clamp(38px,5vw,64px);line-height:1.03;letter-spacing:-.03em;font-weight:700;margin:0 0 24px;text-wrap:balance">We got tired of redrawing the map by hand.</h1>
-    <p style="font-size:19px;line-height:1.6;color:#514c44;margin:0;text-wrap:pretty">Every product organisation we've worked in began planning the same way: someone senior spent weeks reading the codebase so they could tell the business what it actually did. The map was stale before the first sprint ended. We built the tool we wished we'd had.</p>
+    <p style="font-size:19px;line-height:1.6;color:var(--color-text-soft);margin:0;text-wrap:pretty">Every product organisation we've worked in began planning the same way: someone senior spent weeks reading the codebase so they could tell the business what it actually did. The map was stale before the first sprint ended. We built the tool we wished we'd had.</p>
   </div>
 </section>
 
-<section data-screen-label="About · Beliefs" style="background:#1f4e3d;color:#f6f3ec">
-  <div style="max-width:1240px;margin:0 auto;padding:clamp(48px,9.6vw,96px) clamp(20px,5vw,40px)">
-    <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.14em;color:#e0a458;margin-bottom:40px">WHAT WE BELIEVE</div>
+<section data-screen-label="About · Beliefs" style="background:var(--color-primary);color:var(--color-bg)">
+  <div style="max-width:var(--container-large);margin:0 auto;padding:clamp(48px,9.6vw,96px) var(--page-padding)">
+    <div style="font-family:var(--font-mono);font-size:12px;letter-spacing:.14em;color:var(--color-accent);margin-bottom:40px">WHAT WE BELIEVE</div>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr));gap:40px">
       <div><div style="font-size:22px;font-weight:700;letter-spacing:-.015em;margin-bottom:12px;line-height:1.25">Intent is part of the system.</div><p style="margin:0;font-size:16px;line-height:1.6;color:rgba(246,243,236,.82);text-wrap:pretty">Requirements, briefs and documentation belong in the same model as classes and tests. If they live elsewhere, they drift.</p></div>
       <div><div style="font-size:22px;font-weight:700;letter-spacing:-.015em;margin-bottom:12px;line-height:1.25">Price before you promise.</div><p style="margin:0;font-size:16px;line-height:1.6;color:rgba(246,243,236,.82);text-wrap:pretty">A change should come back as a blast radius with evidence, not a t-shirt size argued over in a meeting.</p></div>
@@ -35,28 +37,28 @@
   </div>
 </section>
 
-<section data-screen-label="About · Team" style="max-width:1240px;margin:0 auto;padding:clamp(48px,9.6vw,96px) clamp(20px,5vw,40px)">
+<section data-screen-label="About · Team" style="max-width:var(--container-large);margin:0 auto;padding:clamp(48px,9.6vw,96px) var(--page-padding)">
   <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:56px;align-items:start">
     <div>
-      <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.14em;color:#1f4e3d;margin-bottom:18px">THE TEAM</div>
+      <div style="font-family:var(--font-mono);font-size:12px;letter-spacing:.14em;color:var(--color-primary);margin-bottom:18px">THE TEAM</div>
       <h2 style="font-size:clamp(28px,3.4vw,44px);line-height:1.08;letter-spacing:-.025em;font-weight:700;margin:0 0 18px;text-wrap:balance">Built by people who have sat in all three rooms.</h2>
-      <p style="font-size:17px;line-height:1.6;color:#514c44;margin:0;text-wrap:pretty">Product leads, analysts and engineers who have each been the one asked "how big is this change?" without a good answer. We're a small team and we ship every week.</p>
+      <p style="font-size:17px;line-height:1.6;color:var(--color-text-soft);margin:0;text-wrap:pretty">Product leads, analysts and engineers who have each been the one asked "how big is this change?" without a good answer. We're a small team and we ship every week.</p>
     </div>
     <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(150px,100%),1fr));gap:16px">
       <sc-for list="{{ team }}" as="m" hint-placeholder-count="6">
         <div style="display:flex;flex-direction:column;gap:10px">
-          <div style="aspect-ratio:1;border-radius:14px;background:repeating-linear-gradient(135deg,#ece7dc 0 6px,#f3efe6 6px 12px);display:grid;place-items:center;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#8a847a">photo</div>
-          <div><div style="font-weight:600;font-size:15px">{{ m.n }}</div><div style="font-size:13px;color:#514c44">{{ m.r }}</div></div>
+          <div style="aspect-ratio:1;border-radius:14px;background:repeating-linear-gradient(135deg,var(--color-surface-soft) 0 6px,#f3efe6 6px 12px);display:grid;place-items:center;font-family:var(--font-mono);font-size:11px;color:var(--color-text-muted)">photo</div>
+          <div><div style="font-weight:600;font-size:15px">{{ m.n }}</div><div style="font-size:13px;color:var(--color-text-soft)">{{ m.r }}</div></div>
         </div>
       </sc-for>
     </div>
   </div>
 </section>
 
-<section data-screen-label="About · CTA" style="max-width:1240px;margin:0 auto 60px;padding:0 40px">
+<section data-screen-label="About · CTA" style="max-width:var(--container-large);margin:0 auto 60px;padding:0 40px">
   <div style="border-radius:24px;background:#efeae0;border:1px solid rgba(30,28,25,.08);padding:clamp(22px,5vw,48px);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:24px">
     <div style="font-size:clamp(22px,2.4vw,30px);font-weight:700;letter-spacing:-.02em;max-width:520px;text-wrap:balance">Want to help build it? We're hiring.</div>
-    <a href="../careers/" style="background:#1f4e3d;color:#f6f3ec;padding:14px 22px;border-radius:999px;font-weight:600;font-size:15px">See open roles</a>
+    <a href="../careers/" style="background:var(--color-primary);color:var(--color-bg);padding:14px 22px;border-radius:999px;font-weight:600;font-size:15px">See open roles</a>
   </div>
 </section>
 

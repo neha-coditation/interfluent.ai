@@ -4,46 +4,48 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script data-site-base>document.write('<base href="'+(location.hostname.endsWith('.github.io')?'/interfluent.ai/':'/')+'">')</script>
-<script src="../support.js"></script>
+<script src="support.js"></script>
 </head>
 <body>
 <x-dc>
 <helmet>
-<link rel="stylesheet" href="../responsive.css">
+<link rel="stylesheet" href="responsive.css">
+<link rel="stylesheet" href="assets/css/global.css">
+<link rel="stylesheet" href="assets/css/components.css">
 <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
-<script src="../site-config.js"></script>
-<style>body{margin:0;background:#f6f3ec;color:#1e1c19;font-family:Figtree,system-ui,sans-serif;-webkit-font-smoothing:antialiased}a{color:#1f4e3d;text-decoration:none}a:hover{color:#153628}*{box-sizing:border-box}input,select,textarea{font:inherit;color:inherit}</style>
+<script src="site-config.js"></script>
+<style>body{margin:0;background:var(--color-bg);color:var(--color-text);font-family:var(--font-sans);-webkit-font-smoothing:antialiased}a{color:var(--color-primary);text-decoration:none}a:hover{color:var(--color-primary-hover)}*{box-sizing:border-box}input,select,textarea{font:inherit;color:inherit}</style>
 </helmet>
 <dc-import name="SiteNav" active="contact" hint-size="100%,64px" style="position:sticky;top:0;z-index:20"></dc-import>
 
-<section data-screen-label="Contact" style="max-width:1240px;margin:0 auto;padding:clamp(40px,8vw,80px) clamp(20px,5vw,40px) clamp(60px,12vw,120px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:64px;align-items:start">
+<section data-screen-label="Contact" style="max-width:var(--container-large);margin:0 auto;padding:clamp(40px,8vw,80px) var(--page-padding) clamp(60px,12vw,120px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:64px;align-items:start">
   <div>
-    <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.14em;color:#1f4e3d;margin-bottom:18px">CONTACT</div>
+    <div style="font-family:var(--font-mono);font-size:12px;letter-spacing:.14em;color:var(--color-primary);margin-bottom:18px">CONTACT</div>
     <h1 style="font-size:clamp(36px,4.4vw,56px);line-height:1.04;letter-spacing:-.03em;font-weight:700;margin:0 0 20px;text-wrap:balance">Book a walkthrough on your own codebase.</h1>
-    <p style="font-size:18px;line-height:1.6;color:#514c44;margin:0 0 40px;text-wrap:pretty">Forty-five minutes, live, from feature map to test plan. Bring the change you can't price and we'll price it in front of you.</p>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(200px,100%),1fr));gap:28px;font-size:15px;line-height:1.55;color:#514c44">
-      <div><div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.12em;color:#8a847a;margin-bottom:8px">EMAIL</div><a href="mailto:hello@codelens.ai" style="font-weight:600">hello@codelens.ai</a></div>
-      <div><div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.12em;color:#8a847a;margin-bottom:8px">RESPONSE TIME</div>Within two working days</div>
+    <p style="font-size:18px;line-height:1.6;color:var(--color-text-soft);margin:0 0 40px;text-wrap:pretty">Forty-five minutes, live, from feature map to test plan. Bring the change you can't price and we'll price it in front of you.</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(200px,100%),1fr));gap:28px;font-size:15px;line-height:1.55;color:var(--color-text-soft)">
+      <div><div style="font-family:var(--font-mono);font-size:11px;letter-spacing:.12em;color:var(--color-text-muted);margin-bottom:8px">EMAIL</div><a href="mailto:hello@codelens.ai" style="font-weight:600">hello@codelens.ai</a></div>
+      <div><div style="font-family:var(--font-mono);font-size:11px;letter-spacing:.12em;color:var(--color-text-muted);margin-bottom:8px">RESPONSE TIME</div>Within two working days</div>
     </div>
   </div>
 
-  <div style="background:#fffdf9;border:1px solid rgba(30,28,25,.1);border-radius:20px;padding:32px;box-shadow:0 24px 60px rgba(30,28,25,.08)">
+  <div style="background:var(--color-surface);border:1px solid rgba(30,28,25,.1);border-radius:20px;padding:32px;box-shadow:0 24px 60px rgba(30,28,25,.08)">
     <sc-if value="{{ notSent }}" hint-placeholder-val="{{ true }}">
       <form onSubmit="{{ submit }}" style="display:flex;flex-direction:column;gap:16px">
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(180px,100%),1fr));gap:14px">
-          <label style="display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:600"><span>Name</span><input required="{{ true }}" placeholder="Asha Rao" style="padding:12px 14px;border-radius:10px;border:1px solid rgba(30,28,25,.16);background:#f6f3ec;font-size:15px;outline:none" style-focus="border-color:#1f4e3d"></label>
-          <label style="display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:600"><span>Work email</span><input type="email" required="{{ true }}" placeholder="asha@company.com" style="padding:12px 14px;border-radius:10px;border:1px solid rgba(30,28,25,.16);background:#f6f3ec;font-size:15px;outline:none" style-focus="border-color:#1f4e3d"></label>
+          <label style="display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:600"><span>Name</span><input required="{{ true }}" placeholder="Asha Rao" style="padding:12px 14px;border-radius:10px;border:1px solid rgba(30,28,25,.16);background:var(--color-bg);font-size:15px;outline:none" style-focus="border-color:var(--color-primary)"></label>
+          <label style="display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:600"><span>Work email</span><input type="email" required="{{ true }}" placeholder="asha@company.com" style="padding:12px 14px;border-radius:10px;border:1px solid rgba(30,28,25,.16);background:var(--color-bg);font-size:15px;outline:none" style-focus="border-color:var(--color-primary)"></label>
         </div>
-        <label style="display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:600"><span>I want to</span><select style="padding:12px 14px;border-radius:10px;border:1px solid rgba(30,28,25,.16);background:#f6f3ec;font-size:15px;outline:none"><option>Book a walkthrough</option><option>Ask about pricing</option><option>Talk about a role</option><option>Something else</option></select></label>
-        <label style="display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:600"><span>Message</span><textarea rows="{{ 5 }}" placeholder="Tell us about the system and the change you have in mind." style="padding:12px 14px;border-radius:10px;border:1px solid rgba(30,28,25,.16);background:#f6f3ec;font-size:15px;outline:none;resize:vertical" style-focus="border-color:#1f4e3d"></textarea></label>
-        <button type="submit" style="margin-top:6px;background:#1f4e3d;color:#f6f3ec;padding:14px 22px;border-radius:999px;font-weight:600;font-size:15px;border:none;cursor:pointer" style-hover="background:#153628">Send</button>
+        <label style="display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:600"><span>I want to</span><select style="padding:12px 14px;border-radius:10px;border:1px solid rgba(30,28,25,.16);background:var(--color-bg);font-size:15px;outline:none"><option>Book a walkthrough</option><option>Ask about pricing</option><option>Talk about a role</option><option>Something else</option></select></label>
+        <label style="display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:600"><span>Message</span><textarea rows="{{ 5 }}" placeholder="Tell us about the system and the change you have in mind." style="padding:12px 14px;border-radius:10px;border:1px solid rgba(30,28,25,.16);background:var(--color-bg);font-size:15px;outline:none;resize:vertical" style-focus="border-color:var(--color-primary)"></textarea></label>
+        <button type="submit" style="margin-top:6px;background:var(--color-primary);color:var(--color-bg);padding:14px 22px;border-radius:999px;font-weight:600;font-size:15px;border:none;cursor:pointer" style-hover="background:var(--color-primary-hover)">Send</button>
       </form>
     </sc-if>
     <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
       <div style="display:flex;flex-direction:column;gap:14px;min-height:320px;justify-content:center;text-align:center;padding:20px">
-        <div style="width:48px;height:48px;border-radius:50%;background:#e0a458;margin:0 auto;display:grid;place-items:center;font-weight:700;font-size:20px">✓</div>
+        <div style="width:48px;height:48px;border-radius:50%;background:var(--color-accent);margin:0 auto;display:grid;place-items:center;font-weight:700;font-size:20px">✓</div>
         <div style="font-size:24px;font-weight:700;letter-spacing:-.02em">Sent.</div>
-        <div style="font-size:15px;line-height:1.55;color:#514c44">A person will reply within two working days.</div>
+        <div style="font-size:15px;line-height:1.55;color:var(--color-text-soft)">A person will reply within two working days.</div>
       </div>
     </sc-if>
   </div>

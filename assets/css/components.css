@@ -1,0 +1,51 @@
+@import url("./variables.css");
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: 0.875rem 1.375rem;
+  border: 1px solid transparent;
+  border-radius: var(--radius-pill);
+  font: inherit;
+  font-weight: var(--font-weight-semibold);
+  line-height: 1;
+  cursor: pointer;
+  transition: background-color var(--transition-fast), color var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast);
+}
+
+.button:hover { transform: translateY(-1px); }
+.button-primary { background: var(--color-primary); color: var(--color-on-dark); }
+.button-primary:hover { background: var(--color-primary-hover); color: var(--color-on-dark); }
+.button-secondary { color: var(--color-text); border-color: var(--color-border-strong); background: transparent; }
+.button-accent { background: var(--color-accent); color: var(--color-text); }
+
+.card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+}
+
+.card-elevated { box-shadow: var(--shadow-soft); }
+
+.site-nav {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+
+.site-logo {
+  display: block;
+  width: 158px;
+  max-width: 42vw;
+  height: auto;
+}
+
+.stack-4 > * + * { margin-top: var(--space-4); }
+.stack-6 > * + * { margin-top: var(--space-6); }
+.stack-8 > * + * { margin-top: var(--space-8); }
+
+@media (max-width: 767px) {
+  .button { min-height: 44px; }
+}
