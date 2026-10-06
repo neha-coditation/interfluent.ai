@@ -322,3 +322,82 @@ input, select, textarea { width:100%; }
   .rs-pin2{padding-top:68px!important}
   .rs-pinhero{padding-top:68px!important}
 }
+
+
+/* =========================================================
+   One site width everywhere — navbar is the source of truth
+   ========================================================= */
+
+:root{
+  --site-content-width: calc(var(--container-large) - (var(--page-padding) * 2));
+}
+
+/* Contained sections: same visible content width as navbar */
+.home_hero_section,
+.home_act-1-today_section,
+.home_act-3-interfluent_section,
+.about_about-intro_section,
+.about_about-beliefs_section,
+.blog_blog-intro_section,
+.blog_blog-featured_section,
+.blog_blog-posts_section,
+.blog-post_post_article,
+.pricing_pricing-intro_section,
+.pricing_pricing-plans_section,
+.contact_contact_section,
+.careers_careers-intro_section,
+.careers_careers-roles_section,
+.privacy_privacy_article,
+.signin_sign-in_section,
+.beta_beta_section,
+.beta_beta-closed_section,
+.terms_terms_article{
+  width:min(var(--site-content-width),calc(100% - (var(--page-padding) * 2)))!important;
+  max-width:none!important;
+  margin-left:auto!important;
+  margin-right:auto!important;
+  padding-left:0!important;
+  padding-right:0!important;
+}
+
+/* Full-bleed sections keep their background, but inner content aligns with nav */
+.home_act-2-shared-context_div-2,
+.careers_careers-how-we-work_div,
+.site-footer_site-footer_div{
+  width:min(var(--site-content-width),calc(100% - (var(--page-padding) * 2)))!important;
+  max-width:none!important;
+  margin-left:auto!important;
+  margin-right:auto!important;
+  padding-left:0!important;
+  padding-right:0!important;
+}
+
+/* Make legacy 40px gutters subordinate to the shared site width */
+@media (max-width:1199px){
+  .home_hero_section,
+  .home_act-1-today_section,
+  .home_act-3-interfluent_section,
+  .about_about-intro_section,
+  .about_about-beliefs_section,
+  .blog_blog-intro_section,
+  .blog_blog-featured_section,
+  .blog_blog-posts_section,
+  .blog-post_post_article,
+  .pricing_pricing-intro_section,
+  .pricing_pricing-plans_section,
+  .contact_contact_section,
+  .careers_careers-intro_section,
+  .careers_careers-roles_section,
+  .privacy_privacy_article,
+  .signin_sign-in_section,
+  .beta_beta_section,
+  .beta_beta-closed_section,
+  .terms_terms_article,
+  .home_act-2-shared-context_div-2,
+  .careers_careers-how-we-work_div,
+  .site-footer_site-footer_div{
+    width:min(var(--site-content-width),calc(100% - (var(--page-padding) * 2)))!important;
+    padding-left:0!important;
+    padding-right:0!important;
+  }
+}
