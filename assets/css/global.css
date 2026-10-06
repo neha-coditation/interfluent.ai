@@ -100,3 +100,27 @@ p { line-height: var(--leading-body); }
   margin-left: auto;
   margin-right: auto;
 }
+
+
+/* Shared first-section combo class */
+.is-first-section {
+  padding-top: 6rem !important;
+}
+
+@media (max-width: 991px) {
+  .is-first-section {
+    padding-top: 4.5rem !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .is-first-section {
+    padding-top: 3.5rem !important;
+  }
+}
+
+@media (max-width: 479px) {
+  .is-first-section {
+    padding-top: 3rem !important;
+  }
+}
