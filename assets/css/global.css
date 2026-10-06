@@ -102,25 +102,25 @@ p { line-height: var(--leading-body); }
 }
 
 
-/* Shared first-section combo class */
+/* Shared first-section combo class — matched to Webflow hero spacing */
 .is-first-section {
-  padding-top: 6rem !important;
+  padding-top: 4rem !important;
 }
 
 @media (max-width: 991px) {
   .is-first-section {
-    padding-top: 4.5rem !important;
+    padding-top: 3rem !important;
   }
 }
 
 @media (max-width: 767px) {
   .is-first-section {
-    padding-top: 3.5rem !important;
+    padding-top: 2.5rem !important;
   }
 }
 
 @media (max-width: 479px) {
   .is-first-section {
-    padding-top: 3rem !important;
+    padding-top: 2rem !important;
   }
 }
