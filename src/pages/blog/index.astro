@@ -1,0 +1,13 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+const posts=(await getCollection("blog")).sort((a,b)=>b.data.publishDate.valueOf()-a.data.publishDate.valueOf());
+const featured=posts.find(p=>p.data.featured)||posts[0]; const rest=posts.filter(p=>p.id!==featured?.id);
+const slug=(id)=>id.replace(/\.(md|mdx)$/,"");
+---
+<BaseLayout title="Blog | Interfluent" description="Notes from Interfluent on shared context, product intent and engineering systems." canonical="/blog/" active="blog">
+<Fragment slot="head"><link rel="stylesheet" href="/assets/css/pages/blog.css" /></Fragment>
+<section class="blog_blog-intro_section is-first-section"><div class="blog_blog-intro_div">BLOG</div><h1 class="blog_blog-intro_h1">Notes from the part in between.</h1></section>
+{featured&&<section class="blog_blog-featured_section"><a href={`/blog/${slug(featured.id)}/`} class="blog_blog-featured_a"><div class="blog_blog-featured_div">cover image</div><div><div class="blog_blog-featured_div-2">{featured.data.category.toUpperCase()} · {featured.data.readTime.toUpperCase()}</div><div class="blog_blog-featured_div-3">{featured.data.title}</div><p class="blog_blog-featured_p">{featured.data.description}</p></div></a></section>}
+<section class="blog_blog-posts_section"><div class="blog_blog-posts_div">{rest.map(p=><a href={`/blog/${slug(p.id)}/`} class="blog_blog-posts_a"><div class="blog_blog-posts_div-2"></div><div class="blog_blog-posts_div-3">{p.data.category.toUpperCase()} · {p.data.readTime.toUpperCase()}</div><div class="blog_blog-posts_div-4">{p.data.title}</div><p class="blog_blog-posts_p">{p.data.description}</p></a>)}</div></section>
+</BaseLayout>
