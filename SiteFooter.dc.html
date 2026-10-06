@@ -10,21 +10,22 @@
 <helmet>
 <link rel="stylesheet" href="assets/css/global.css">
 <link rel="stylesheet" href="assets/css/components.css">
+<link rel="stylesheet" href="assets/css/pages/site-footer.css">
 <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
 <style>body{margin:0;font-family:var(--font-sans);-webkit-font-smoothing:antialiased}a{color:var(--color-primary);text-decoration:none}a:hover{color:var(--color-primary-hover)}*{box-sizing:border-box}</style>
 </helmet>
-<div style="max-width:1240px;margin:0 auto;padding:0 40px 40px;font-family:var(--font-sans)">
-  <footer class="rs-footgrid" style="display:grid;grid-template-columns:minmax(200px,1.4fr) repeat(auto-fit,minmax(min(140px,100%),1fr));gap:32px;padding:64px 8px 0;border-top:1px solid rgba(30,28,25,.08);font-size:14px;color:var(--color-text-soft)">
+<div class="site-footer_site-footer_div">
+  <footer class="rs-footgrid site-footer_site-footer_footer">
     <div>
-      <div style="margin-bottom:12px"><a href="{{ r.home }}" aria-label="Interfluent home"><img src="{{ r.logo }}" alt="Interfluent" style="display:block;width:158px;max-width:100%;height:auto"></a></div>
-      <div style="max-width:300px;line-height:1.55;text-wrap:pretty">The shared context layer where business and engineering read the same system.</div>
-      <div style="margin-top:14px;font-family:var(--font-mono);font-size:12px;color:var(--color-text-muted)">A1004, Amar Business Park, Baner, Pune 411045</div>
+      <div class="site-footer_site-footer_div-2"><a href="{{ r.home }}" aria-label="Interfluent home"><img src="{{ r.logo }}" alt="Interfluent" class="site-footer_site-footer_img"></a></div>
+      <div class="site-footer_site-footer_div-3">The shared context layer where business and engineering read the same system.</div>
+      <div class="site-footer_site-footer_div-4">A1004, Amar Business Park, Baner, Pune 411045</div>
     </div>
-    <div style="display:flex;flex-direction:column;gap:10px"><div style="font-family:var(--font-mono);font-size:11px;letter-spacing:.12em;color:var(--color-text-muted);margin-bottom:4px">PRODUCT</div><a href="{{ r.product }}" style="color:var(--color-text-soft)">Feature map</a><a href="{{ r.product }}" style="color:var(--color-text-soft)">Impact analysis</a><a href="{{ r.pricing }}" style="color:var(--color-text-soft)">Pricing</a><sc-if value="{{ showBeta }}" hint-placeholder-val="{{ true }}"><a href="{{ r.beta }}" style="color:var(--color-text-soft)">Beta access</a></sc-if></div>
-    <div style="display:flex;flex-direction:column;gap:10px"><div style="font-family:var(--font-mono);font-size:11px;letter-spacing:.12em;color:var(--color-text-muted);margin-bottom:4px">COMPANY</div><a href="{{ r.about }}" style="color:var(--color-text-soft)">About us</a><a href="{{ r.careers }}" style="color:var(--color-text-soft)">Careers</a><a href="{{ r.contact }}" style="color:var(--color-text-soft)">Contact</a></div>
-    <div style="display:flex;flex-direction:column;gap:10px"><div style="font-family:var(--font-mono);font-size:11px;letter-spacing:.12em;color:var(--color-text-muted);margin-bottom:4px">RESOURCES</div><a href="{{ r.blog }}" style="color:var(--color-text-soft)">Blog</a><a href="{{ r.contact }}" style="color:var(--color-text-soft)">Book a walkthrough</a><sc-if value="{{ showSignIn }}" hint-placeholder-val="{{ true }}"><a href="{{ r.signin }}" style="color:var(--color-text-soft)">Sign in</a></sc-if></div>
+    <div class="site-footer_site-footer_div-5"><div class="site-footer_site-footer_div-6">PRODUCT</div><a href="{{ r.product }}" class="site-footer_site-footer_a">Feature map</a><a href="{{ r.product }}" class="site-footer_site-footer_a-2">Impact analysis</a><a href="{{ r.pricing }}" class="site-footer_site-footer_a-3">Pricing</a><sc-if value="{{ showBeta }}" hint-placeholder-val="{{ true }}"><a href="{{ r.beta }}" class="site-footer_site-footer_a-4">Beta access</a></sc-if></div>
+    <div class="site-footer_site-footer_div-7"><div class="site-footer_site-footer_div-8">COMPANY</div><a href="{{ r.about }}" class="site-footer_site-footer_a-5">About us</a><a href="{{ r.careers }}" class="site-footer_site-footer_a-6">Careers</a><a href="{{ r.contact }}" class="site-footer_site-footer_a-7">Contact</a></div>
+    <div class="site-footer_site-footer_div-9"><div class="site-footer_site-footer_div-10">RESOURCES</div><a href="{{ r.blog }}" class="site-footer_site-footer_a-8">Blog</a><a href="{{ r.contact }}" class="site-footer_site-footer_a-9">Book a walkthrough</a><sc-if value="{{ showSignIn }}" hint-placeholder-val="{{ true }}"><a href="{{ r.signin }}" class="site-footer_site-footer_a-10">Sign in</a></sc-if></div>
   </footer>
-  <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;padding:40px 8px 0;font-size:13px;color:var(--color-text-muted)"><span>© 2026 Interfluent</span><span style="display:flex;gap:18px"><a href="{{ r.privacy }}" style="color:var(--color-text-muted)">Privacy</a><a href="{{ r.terms }}" style="color:var(--color-text-muted)">Terms</a></span></div>
+  <div class="site-footer_site-footer_div-11"><span>© 2026 Interfluent</span><span class="site-footer_site-footer_span"><a href="{{ r.privacy }}" class="site-footer_site-footer_a-11">Privacy</a><a href="{{ r.terms }}" class="site-footer_site-footer_a-12">Terms</a></span></div>
 </div>
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1200,&quot;height&quot;:320},&quot;betaEnabled&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;},&quot;accessCodeEnabled&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">

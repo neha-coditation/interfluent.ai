@@ -7,32 +7,34 @@
 <script src="support.js"></script>
 </head>
 <body>
-<x-dc>
+<x-dc class="page-wrapper">
 <helmet>
 <link rel="stylesheet" href="responsive.css">
 <link rel="stylesheet" href="assets/css/global.css">
 <link rel="stylesheet" href="assets/css/components.css">
+<link rel="stylesheet" href="assets/css/pages/pricing.css">
 <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
 <script src="site-config.js"></script>
 <style>body{margin:0;background:var(--color-bg);color:var(--color-text);font-family:var(--font-sans);-webkit-font-smoothing:antialiased}a{color:var(--color-primary);text-decoration:none}a:hover{color:var(--color-primary-hover)}*{box-sizing:border-box}</style>
 </helmet>
-<dc-import name="SiteNav" active="pricing" beta-enabled="{{ beta }}" hint-size="100%,64px" style="position:sticky;top:0;z-index:20"></dc-import>
+<dc-import name="SiteNav" active="pricing" beta-enabled="{{ beta }}" hint-size="100%,64px" class="pricing_pricing_dc-import"></dc-import>
+<main class="main-wrapper">
 
-<section data-screen-label="Pricing · Intro" style="max-width:var(--container-large);margin:0 auto;padding:clamp(48px,9.6vw,96px) var(--page-padding) 56px;text-align:center">
-  <div style="font-family:var(--font-mono);font-size:12px;letter-spacing:.14em;color:var(--color-primary);margin-bottom:18px">PRICING</div>
-  <h1 style="font-size:clamp(38px,5vw,64px);line-height:1.03;letter-spacing:-.03em;font-weight:700;margin:0 auto 20px;max-width:760px;text-wrap:balance">Priced per system, not per seat.</h1>
-  <p style="font-size:18px;line-height:1.6;color:var(--color-text-soft);margin:0 auto;max-width:600px;text-wrap:pretty">Business, product and engineering all need to read the same map. Charging per reader would defeat the point.</p>
+<section data-screen-label="Pricing · Intro" class="pricing_pricing-intro_section">
+  <div class="pricing_pricing-intro_div">PRICING</div>
+  <h1 class="pricing_pricing-intro_h1">Priced per system, not per seat.</h1>
+  <p class="pricing_pricing-intro_p">Business, product and engineering all need to read the same map. Charging per reader would defeat the point.</p>
 </section>
 
-<section data-screen-label="Pricing · Plans" style="max-width:var(--container-large);margin:0 auto;padding:0 40px 96px">
-  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr));gap:20px;align-items:stretch">
+<section data-screen-label="Pricing · Plans" class="pricing_pricing-plans_section">
+  <div class="pricing_pricing-plans_div">
     <sc-for list="{{ plans }}" as="p" hint-placeholder-count="3">
       <div style="border-radius:20px;padding:32px 28px;background:{{ p.bg }};color:{{ p.fg }};border:1px solid {{ p.bd }};display:flex;flex-direction:column;gap:18px;box-shadow:{{ p.sh }}">
-        <div style="display:flex;justify-content:space-between;align-items:center"><span style="font-family:var(--font-mono);font-size:11px;letter-spacing:.14em;opacity:.75">{{ p.k }}</span><sc-if value="{{ p.tag }}" hint-placeholder-val="{{ false }}"><span style="font-family:var(--font-mono);font-size:10px;letter-spacing:.1em;background:var(--color-accent);color:var(--color-text);padding:3px 8px;border-radius:4px">{{ p.tag }}</span></sc-if></div>
-        <div><div style="font-size:28px;font-weight:700;letter-spacing:-.02em;margin-bottom:6px">{{ p.n }}</div><div style="font-size:15px;line-height:1.5;opacity:.85;text-wrap:pretty">{{ p.d }}</div></div>
-        <div style="font-size:22px;font-weight:700;letter-spacing:-.01em">{{ p.price }}<span style="font-size:14px;font-weight:500;opacity:.7;margin-left:6px">{{ p.unit }}</span></div>
+        <div class="pricing_pricing-plans_div-2"><span class="pricing_pricing-plans_span">{{ p.k }}</span><sc-if value="{{ p.tag }}" hint-placeholder-val="{{ false }}"><span class="pricing_pricing-plans_span-2">{{ p.tag }}</span></sc-if></div>
+        <div><div class="pricing_pricing-plans_div-3">{{ p.n }}</div><div class="pricing_pricing-plans_div-4">{{ p.d }}</div></div>
+        <div class="pricing_pricing-plans_div-5">{{ p.price }}<span class="pricing_pricing-plans_span-3">{{ p.unit }}</span></div>
         <div style="display:flex;flex-direction:column;gap:10px;font-size:14.5px;line-height:1.45;padding-top:6px;border-top:1px solid {{ p.line }}">
-          <sc-for list="{{ p.f }}" as="x" hint-placeholder-count="4"><div style="display:flex;gap:10px"><span style="flex:none;width:6px;height:6px;border-radius:50%;background:var(--color-accent);margin-top:8px"></span><span>{{ x }}</span></div></sc-for>
+          <sc-for list="{{ p.f }}" as="x" hint-placeholder-count="4"><div class="pricing_pricing-plans_div-6"><span class="pricing_pricing-plans_span-4"></span><span>{{ x }}</span></div></sc-for>
         </div>
         <a href="{{ p.href }}" style="margin-top:auto;text-align:center;padding:13px 20px;border-radius:999px;font-weight:600;font-size:15px;background:{{ p.btnBg }};color:{{ p.btnFg }};border:1px solid {{ p.btnBd }}">{{ p.cta }}</a>
       </div>
@@ -40,17 +42,18 @@
   </div>
 </section>
 
-<section data-screen-label="Pricing · FAQ" style="background:#efeae0;border-top:1px solid rgba(30,28,25,.06)">
-  <div style="max-width:var(--container-large);margin:0 auto;padding:clamp(48px,9.6vw,96px) var(--page-padding);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:48px">
-    <div style="font-family:var(--font-mono);font-size:12px;letter-spacing:.14em;color:var(--color-primary)">COMMON QUESTIONS</div>
-    <div style="display:flex;flex-direction:column;gap:32px;grid-column:span 2">
-      <div><div style="font-size:18px;font-weight:700;margin-bottom:8px">What counts as a system?</div><p style="margin:0;font-size:15.5px;line-height:1.6;color:var(--color-text-soft)">One product and the repositories, documents and requirements that describe it. Most teams have one. A platform company may have several.</p></div>
-      <div><div style="font-size:18px;font-weight:700;margin-bottom:8px">Does our code leave our environment?</div><p style="margin:0;font-size:15.5px;line-height:1.6;color:var(--color-text-soft)">Team runs in our cloud with encryption at rest and no training on your data. Enterprise can run in your VPC.</p></div>
-      <div><div style="font-size:18px;font-weight:700;margin-bottom:8px">Which IDE do we need?</div><p style="margin:0;font-size:15.5px;line-height:1.6;color:var(--color-text-soft)">Any. Interfluent decides and governs the change; your IDE and pipelines write and ship it as they do today.</p></div>
+<section data-screen-label="Pricing · FAQ" class="pricing_pricing-faq_section">
+  <div class="pricing_pricing-faq_div">
+    <div class="pricing_pricing-faq_div-2">COMMON QUESTIONS</div>
+    <div class="pricing_pricing-faq_div-3">
+      <div><div class="pricing_pricing-faq_div-4">What counts as a system?</div><p class="pricing_pricing-faq_p">One product and the repositories, documents and requirements that describe it. Most teams have one. A platform company may have several.</p></div>
+      <div><div class="pricing_pricing-faq_div-5">Does our code leave our environment?</div><p class="pricing_pricing-faq_p-2">Team runs in our cloud with encryption at rest and no training on your data. Enterprise can run in your VPC.</p></div>
+      <div><div class="pricing_pricing-faq_div-6">Which IDE do we need?</div><p class="pricing_pricing-faq_p-3">Any. Interfluent decides and governs the change; your IDE and pipelines write and ship it as they do today.</p></div>
     </div>
   </div>
 </section>
 
+</main>
 <dc-import name="SiteFooter" beta-enabled="{{ beta }}" hint-size="100%,320px"></dc-import>
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;betaEnabled&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Switches&quot;}}">

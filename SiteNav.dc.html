@@ -9,27 +9,28 @@
 <helmet>
 <link rel="stylesheet" href="assets/css/global.css">
 <link rel="stylesheet" href="assets/css/components.css">
+<link rel="stylesheet" href="assets/css/pages/site-nav.css">
 <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
 <link rel="icon" media="(prefers-color-scheme: light)" href="{{ r.faviconLight }}">
 <link rel="icon" media="(prefers-color-scheme: dark)" href="{{ r.faviconDark }}">
 <link rel="apple-touch-icon" href="{{ r.webclip }}">
 <style>body{margin:0;font-family:var(--font-sans);-webkit-font-smoothing:antialiased}a{color:var(--color-primary);text-decoration:none}a:hover{color:var(--color-primary-hover)}*{box-sizing:border-box}</style>
 </helmet>
-<nav class="rs-nav" style="position:fixed;top:0;left:0;right:0;width:100%;z-index:9999;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:18px clamp(16px,4vw,40px);background:rgba(246,243,236,.86);backdrop-filter:blur(12px);border-bottom:1px solid rgba(30,28,25,.06);font-family:var(--font-sans)">
-  <a href="{{ r.home }}" aria-label="Interfluent home" style="display:flex;align-items:center;color:var(--color-text)">
-    <img src="{{ r.logo }}" alt="Interfluent" style="display:block;width:158px;max-width:42vw;height:auto">
+<nav class="rs-nav site-nav_site-nav_nav">
+  <a href="{{ r.home }}" aria-label="Interfluent home" class="site-nav_site-nav_a">
+    <img src="{{ r.logo }}" alt="Interfluent" class="site-nav_site-nav_img">
   </a>
   <label class="rs-burger" aria-label="Menu"><input type="checkbox"><i></i></label>
-  <div class="rs-navlinks" style="display:flex;align-items:center;gap:28px;font-size:14px;font-weight:500;flex-wrap:wrap;justify-content:flex-end">
-    <a href="{{ r.product }}" style="color:var(--color-text-soft)">Product</a>
+  <div class="rs-navlinks site-nav_site-nav_div">
+    <a href="{{ r.product }}" class="site-nav_site-nav_a-2">Product</a>
     <a href="{{ r.pricing }}" style="color:{{ c.pricing }}">Pricing</a>
     <a href="{{ r.about }}" style="color:{{ c.about }}">About us</a>
     <a href="{{ r.blog }}" style="color:{{ c.blog }}">Blog</a>
     <a href="{{ r.careers }}" style="color:{{ c.careers }}">Careers</a>
     <a href="{{ r.contact }}" style="color:{{ c.contact }}">Contact</a>
-    <sc-if value="{{ showSignIn }}" hint-placeholder-val="{{ true }}"><a href="{{ r.signin }}" style="color:var(--color-primary);font-weight:600">Sign in</a></sc-if>
-    <sc-if value="{{ showBeta }}" hint-placeholder-val="{{ true }}"><a href="{{ r.beta }}" style="background:var(--color-primary);color:var(--color-bg);padding:10px 16px;border-radius:999px;font-weight:600" style-hover="background:var(--color-primary-hover)">Request beta access</a></sc-if>
-    <sc-if value="{{ showWalk }}" hint-placeholder-val="{{ false }}"><a href="{{ r.contact }}" style="background:var(--color-primary);color:var(--color-bg);padding:10px 16px;border-radius:999px;font-weight:600" style-hover="background:var(--color-primary-hover)">Book a walkthrough</a></sc-if>
+    <sc-if value="{{ showSignIn }}" hint-placeholder-val="{{ true }}"><a href="{{ r.signin }}" class="site-nav_site-nav_a-3">Sign in</a></sc-if>
+    <sc-if value="{{ showBeta }}" hint-placeholder-val="{{ true }}"><a href="{{ r.beta }}" style-hover="background:var(--color-primary-hover)" class="site-nav_site-nav_a-4">Request beta access</a></sc-if>
+    <sc-if value="{{ showWalk }}" hint-placeholder-val="{{ false }}"><a href="{{ r.contact }}" style-hover="background:var(--color-primary-hover)" class="site-nav_site-nav_a-5">Book a walkthrough</a></sc-if>
   </div>
 </nav>
 </x-dc>

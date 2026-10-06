@@ -7,11 +7,12 @@
 <script src="support.js"></script>
 </head>
 <body>
-<x-dc>
+<x-dc class="page-wrapper">
 <helmet>
 <link rel="stylesheet" href="responsive.css">
 <link rel="stylesheet" href="assets/css/global.css">
 <link rel="stylesheet" href="assets/css/components.css">
+<link rel="stylesheet" href="assets/css/pages/home.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <script src="site-config.js"></script>
 <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
@@ -28,152 +29,152 @@ a{color:var(--color-primary);text-decoration:none}a:hover{color:var(--color-prim
 </style>
 </helmet>
 
-<dc-import name="SiteNav" active="" beta-enabled="{{ showBeta }}" access-code-enabled="{{ showSignIn }}" hint-size="100%,64px" style="position:sticky;top:0;z-index:20"></dc-import>
+<dc-import name="SiteNav" active="" beta-enabled="{{ showBeta }}" access-code-enabled="{{ showSignIn }}" hint-size="100%,64px" class="home_home_dc-import"></dc-import>
 
 <!-- HERO -->
-<section data-screen-label="Hero" style="max-width: 1240px; margin: 0 auto; padding:64px var(--page-padding) 40px; display: grid; grid-template-columns: repeat(auto-fit,minmax(min(320px,100%),1fr)); gap: 56px; align-items: center">
-  <div style="animation:rise .9s cubic-bezier(.2,.7,.2,1) both">
+<section data-screen-label="Hero" class="home_hero_section">
+  <div class="home_hero_div">
     
-    <h1 style="font-size:clamp(40px,5.2vw,68px);line-height:1.02;letter-spacing:-.03em;font-weight:700;margin:0 0 26px;text-wrap:balance"><div><span style="font-size:clamp(38px,5vw,60.528px);">Code ships fast now.</span></div><div><span style="font-size:clamp(38px,5vw,60.528px);">Products still don't.</span></div></h1>
-    <div style="font-size: 18px; line-height: 1.55; color: var(--color-text-soft); max-width: 520px; margin: 0 0 34px; text-wrap: pretty"><p class="isSelectedEnd">AI made teams faster. Handoffs became the bottleneck.</p><p class="isSelectedEnd">Interfluent gives business, product, and engineering one shared understanding of the system and AI agents that can reason, coordinate, and act across it.</p><p>Instead of isolated productivity gains, Interfluent makes the whole organization compound.</p></div>
-    <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center">
-      <a href="#cta" style="background:var(--color-primary);color:var(--color-bg);padding:14px 22px;border-radius:999px;font-weight:600;font-size:15px" style-hover="background:var(--color-primary-hover)">Book a walkthrough</a>
-      <a href="#today" style="padding:14px 18px;border-radius:999px;font-weight:600;font-size:15px;border:1px solid rgba(30,28,25,.16);color:var(--color-text)">Read the story ↓</a>
+    <h1 class="home_hero_h1"><div><span class="home_hero_span">Code ships fast now.</span></div><div><span class="home_hero_span-2">Products still don't.</span></div></h1>
+    <div class="home_hero_div-2"><p class="isSelectedEnd">AI made teams faster. Handoffs became the bottleneck.</p><p class="isSelectedEnd">Interfluent gives business, product, and engineering one shared understanding of the system and AI agents that can reason, coordinate, and act across it.</p><p>Instead of isolated productivity gains, Interfluent makes the whole organization compound.</p></div>
+    <div class="home_hero_div-3">
+      <a href="#cta" style-hover="background:var(--color-primary-hover)" class="home_hero_a">Book a walkthrough</a>
+      <a href="#today" class="home_hero_a-2">Read the story ↓</a>
     </div>
   </div>
 
   <!-- Hero illustration: two lanes -->
-  <div class="rs-heroviz" style="position:relative;min-height:520px;animation:rise 1.1s .15s cubic-bezier(.2,.7,.2,1) both">
-    <div style="position:absolute;inset:0;border-radius:28px;background:linear-gradient(180deg,#efeae0 0%,var(--color-bg) 100%);border:1px solid rgba(30,28,25,.08)"></div>
-    <div style="position:relative;padding:34px 0 34px;display:flex;flex-direction:column;gap:0;height:100%">
-      <div style="display:flex;justify-content:space-between;align-items:baseline;padding:0 34px 14px">
-        <span style="font-family:var(--font-mono);font-size:11px;letter-spacing:.14em;color:var(--color-text-soft)">CODE</span>
-        <span style="font-family:var(--font-mono);font-size:11px;color:var(--color-primary)">47 changes today</span>
+  <div class="rs-heroviz home_hero_div-4">
+    <div class="home_hero_div-5"></div>
+    <div class="home_hero_div-6">
+      <div class="home_hero_div-7">
+        <span class="home_hero_span-3">CODE</span>
+        <span class="home_hero_span-4">47 changes today</span>
       </div>
-      <div style="overflow:hidden;mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)">
-        <div style="display:flex;gap:10px;width:max-content;animation:marquee 14s linear infinite">
-          <div style="display:flex;gap:10px;padding-right:10px">
-            <span style="font-family:var(--font-mono);font-size:12px;padding:9px 12px;border-radius:8px;background:var(--color-surface);border:1px solid rgba(30,28,25,.1);white-space:nowrap">feat: symbol classifier v2</span>
-            <span style="font-family:var(--font-mono);font-size:12px;padding:9px 12px;border-radius:8px;background:var(--color-surface);border:1px solid rgba(30,28,25,.1);white-space:nowrap">fix: pdf raster memory</span>
-            <span style="font-family:var(--font-mono);font-size:12px;padding:9px 12px;border-radius:8px;background:var(--color-surface);border:1px solid rgba(30,28,25,.1);white-space:nowrap">chore: bump pdfjs-dist</span>
-            <span style="font-family:var(--font-mono);font-size:12px;padding:9px 12px;border-radius:8px;background:var(--color-surface);border:1px solid rgba(30,28,25,.1);white-space:nowrap">feat: line-type review</span>
-            <span style="font-family:var(--font-mono);font-size:12px;padding:9px 12px;border-radius:8px;background:var(--color-surface);border:1px solid rgba(30,28,25,.1);white-space:nowrap">refactor: graph export</span>
-            <span style="font-family:var(--font-mono);font-size:12px;padding:9px 12px;border-radius:8px;background:var(--color-surface);border:1px solid rgba(30,28,25,.1);white-space:nowrap">fix: dwg unit scaling</span>
+      <div class="home_hero_div-8">
+        <div class="home_hero_div-9">
+          <div class="home_hero_div-10">
+            <span class="home_hero_span-5">feat: symbol classifier v2</span>
+            <span class="home_hero_span-6">fix: pdf raster memory</span>
+            <span class="home_hero_span-7">chore: bump pdfjs-dist</span>
+            <span class="home_hero_span-8">feat: line-type review</span>
+            <span class="home_hero_span-9">refactor: graph export</span>
+            <span class="home_hero_span-10">fix: dwg unit scaling</span>
           </div>
-          <div style="display:flex;gap:10px;padding-right:10px">
-            <span style="font-family:var(--font-mono);font-size:12px;padding:9px 12px;border-radius:8px;background:var(--color-surface);border:1px solid rgba(30,28,25,.1);white-space:nowrap">feat: symbol classifier v2</span>
-            <span style="font-family:var(--font-mono);font-size:12px;padding:9px 12px;border-radius:8px;background:var(--color-surface);border:1px solid rgba(30,28,25,.1);white-space:nowrap">fix: pdf raster memory</span>
-            <span style="font-family:var(--font-mono);font-size:12px;padding:9px 12px;border-radius:8px;background:var(--color-surface);border:1px solid rgba(30,28,25,.1);white-space:nowrap">chore: bump pdfjs-dist</span>
-            <span style="font-family:var(--font-mono);font-size:12px;padding:9px 12px;border-radius:8px;background:var(--color-surface);border:1px solid rgba(30,28,25,.1);white-space:nowrap">feat: line-type review</span>
-            <span style="font-family:var(--font-mono);font-size:12px;padding:9px 12px;border-radius:8px;background:var(--color-surface);border:1px solid rgba(30,28,25,.1);white-space:nowrap">refactor: graph export</span>
-            <span style="font-family:var(--font-mono);font-size:12px;padding:9px 12px;border-radius:8px;background:var(--color-surface);border:1px solid rgba(30,28,25,.1);white-space:nowrap">fix: dwg unit scaling</span>
+          <div class="home_hero_div-11">
+            <span class="home_hero_span-11">feat: symbol classifier v2</span>
+            <span class="home_hero_span-12">fix: pdf raster memory</span>
+            <span class="home_hero_span-13">chore: bump pdfjs-dist</span>
+            <span class="home_hero_span-14">feat: line-type review</span>
+            <span class="home_hero_span-15">refactor: graph export</span>
+            <span class="home_hero_span-16">fix: dwg unit scaling</span>
           </div>
         </div>
       </div>
 
       <!-- the gap between -->
-      <div class="rs-gap" style="flex:1;position:relative;margin:26px 34px;border-top:1px dashed rgba(30,28,25,.22);border-bottom:1px dashed rgba(30,28,25,.22);min-height:190px">
-        <div style="position:absolute;left:50%;top:-1px;bottom:-1px;width:1px;background:repeating-linear-gradient(180deg,rgba(31,78,61,.35) 0 6px,transparent 6px 12px)"></div>
-        <div style="position:absolute;left:6%;top:18%;padding:10px 14px;border-radius:12px;background:var(--color-surface);border:1px solid rgba(30,28,25,.1);box-shadow:0 8px 24px rgba(30,28,25,.06);font-size:13px;font-weight:500;animation:floaty 5s ease-in-out infinite">Which feature does this touch?</div>
-        <div class="rs-bub2" style="position:absolute;right:6%;top:40%;padding:10px 14px;border-radius:12px;background:var(--color-surface);border:1px solid rgba(30,28,25,.1);box-shadow:0 8px 24px rgba(30,28,25,.06);font-size:13px;font-weight:500;animation:floaty 6s .8s ease-in-out infinite">What will it cost?</div>
-        <div class="rs-bub3" style="position:absolute;left:18%;bottom:14%;padding:10px 14px;border-radius:12px;background:var(--color-surface);border:1px solid rgba(30,28,25,.1);box-shadow:0 8px 24px rgba(30,28,25,.06);font-size:13px;font-weight:500;animation:floaty 5.5s 1.6s ease-in-out infinite">Is the documentation still true?</div>
-        <div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:34px;height:34px;border-radius:50%;background:var(--color-accent);display:grid;place-items:center;font-weight:700;color:var(--color-text);font-size:16px">?</div>
+      <div class="rs-gap home_hero_div-12">
+        <div class="home_hero_div-13"></div>
+        <div class="home_hero_div-14">Which feature does this touch?</div>
+        <div class="rs-bub2 home_hero_div-15">What will it cost?</div>
+        <div class="rs-bub3 home_hero_div-16">Is the documentation still true?</div>
+        <div class="home_hero_div-17">?</div>
       </div>
 
-      <div style="display:flex;justify-content:space-between;align-items:baseline;padding:0 34px 12px">
-        <span style="font-family:var(--font-mono);font-size:11px;letter-spacing:.14em;color:var(--color-text-soft)">PRODUCT</span>
-        <span style="font-family:var(--font-mono);font-size:11px;color:#c4553a">1 capability this quarter</span>
+      <div class="home_hero_div-18">
+        <span class="home_hero_span-17">PRODUCT</span>
+        <span class="home_hero_span-18">1 capability this quarter</span>
       </div>
-      <div style="margin:0 34px;padding:14px 16px;border-radius:12px;background:var(--color-surface);border:1px solid rgba(30,28,25,.1)">
-        <div style="display:flex;justify-content:space-between;font-size:13px;font-weight:600;margin-bottom:10px"><span>Review Symbols v2</span><span style="color:var(--color-text-soft);font-weight:500">waiting on estimate</span></div>
-        <div style="height:8px;border-radius:999px;background:var(--color-surface-soft);overflow:hidden"><div style="height:100%;border-radius:999px;background:var(--color-primary);animation:fill 9s ease-in-out infinite alternate"></div></div>
+      <div class="home_hero_div-19">
+        <div class="home_hero_div-20"><span>Review Symbols v2</span><span class="home_hero_span-19">waiting on estimate</span></div>
+        <div class="home_hero_div-21"><div class="home_hero_div-22"></div></div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ACT 1 · TODAY -->
-<section id="today" data-screen-label="Act 1 · Today" ref="{{ r1 }}" style="max-width:var(--container-large);margin:0 auto;padding:clamp(60px,12vw,120px) var(--page-padding) clamp(40px,8vw,80px)">
-  <div style="max-width:720px">
-    <div style="font-family:var(--font-mono);font-size:12px;letter-spacing:.14em;color:var(--color-primary);margin-bottom:18px">01 · TODAY</div>
-    <h2 style="font-size:clamp(32px,4vw,52px);line-height:1.06;letter-spacing:-.025em;font-weight:700;margin:0 0 20px;text-wrap:balance">Three rooms. Three languages. One system nobody can see whole.</h2>
-    <p style="font-size:18px;line-height:1.6;color:var(--color-text-soft);margin:0;text-wrap:pretty">Business talks in capabilities. Product talks in requirements. Engineering talks in repositories. Every planning conversation starts by redrawing the map by hand, and the map is stale by the time the meeting ends.</p>
+<section id="today" data-screen-label="Act 1 · Today" ref="{{ r1 }}" class="home_act-1-today_section">
+  <div class="home_act-1-today_div">
+    <div class="home_act-1-today_div-2">01 · TODAY</div>
+    <h2 class="home_act-1-today_h2">Three rooms. Three languages. One system nobody can see whole.</h2>
+    <p class="home_act-1-today_p">Business talks in capabilities. Product talks in requirements. Engineering talks in repositories. Every planning conversation starts by redrawing the map by hand, and the map is stale by the time the meeting ends.</p>
   </div>
 
   <!-- three islands -->
-  <div style="position:relative;margin:64px 0 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:28px;align-items:start">
+  <div class="home_act-1-today_div-3">
     <div style="transform:translate({{ v.islandX1 }}px, {{ v.islandY1 }}px) rotate(-1.5deg);transition:transform .12s linear;background:var(--color-surface);border:1px solid rgba(30,28,25,.1);border-radius:20px;padding:22px;box-shadow:0 20px 50px rgba(30,28,25,.07)">
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px"><span style="font-family:var(--font-mono);font-size:11px;letter-spacing:.14em;color:var(--color-text-soft)">BUSINESS</span><span style="width:10px;height:10px;border-radius:50%;background:var(--color-primary)"></span></div>
-      <div style="font-size:14px;color:var(--color-text-soft);margin-bottom:12px">Talks in capabilities</div>
-      <div style="display:flex;flex-wrap:wrap;gap:8px">
-        <span style="padding:8px 12px;border-radius:999px;background:#d9e6df;color:var(--color-primary);font-size:13px;font-weight:600">Improve On-boarding Time</span>
-        <span style="padding:8px 12px;border-radius:999px;background:#d9e6df;color:var(--color-primary);font-size:13px;font-weight:600">Improve Pilot Conversion Rate</span>
+      <div class="home_act-1-today_div-4"><span class="home_act-1-today_span">BUSINESS</span><span class="home_act-1-today_span-2"></span></div>
+      <div class="home_act-1-today_div-5">Talks in capabilities</div>
+      <div class="home_act-1-today_div-6">
+        <span class="home_act-1-today_span-3">Improve On-boarding Time</span>
+        <span class="home_act-1-today_span-4">Improve Pilot Conversion Rate</span>
         
         
       </div>
-      <div style="margin-top:18px;padding-top:14px;border-top:1px dashed rgba(30,28,25,.16);font-size:13px;color:#c4553a;font-weight:500">How big is change in Review Symbols?</div>
+      <div class="home_act-1-today_div-7">How big is change in Review Symbols?</div>
     </div>
 
     <div style="transform:translate(0px, {{ v.islandY2 }}px);transition:transform .12s linear;background:var(--color-surface);border:1px solid rgba(30,28,25,.1);border-radius:20px;padding:22px;box-shadow:0 20px 50px rgba(30,28,25,.07)">
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px"><span style="font-family:var(--font-mono);font-size:11px;letter-spacing:.14em;color:var(--color-text-soft)">PRODUCT / BA</span><span style="width:10px;height:10px;border-radius:50%;background:var(--color-accent)"></span></div>
-      <div style="font-size:14px;color:var(--color-text-soft);margin-bottom:12px">Talks in requirements</div>
-      <div style="border:1px solid rgba(30,28,25,.1);border-radius:12px;padding:14px;background:var(--color-bg)">
-        <div style="font-size:13px;font-weight:600;margin-bottom:10px">PRD · Review Symbols v2 <span style="font-family:var(--font-mono);font-size:10px;color:#b07a2c;background:#f6e4c6;padding:2px 6px;border-radius:4px;margin-left:6px">DRAFT</span></div>
-        <div style="height:6px;border-radius:3px;background:#e4ded1;width:92%;margin-bottom:7px"></div>
-        <div style="height:6px;border-radius:3px;background:#e4ded1;width:78%;margin-bottom:7px"></div>
-        <div style="height:6px;border-radius:3px;background:#e4ded1;width:85%;margin-bottom:7px"></div>
-        <div style="height:6px;border-radius:3px;background:#e4ded1;width:40%"></div>
+      <div class="home_act-1-today_div-8"><span class="home_act-1-today_span-5">PRODUCT / BA</span><span class="home_act-1-today_span-6"></span></div>
+      <div class="home_act-1-today_div-9">Talks in requirements</div>
+      <div class="home_act-1-today_div-10">
+        <div class="home_act-1-today_div-11">PRD · Review Symbols v2 <span class="home_act-1-today_span-7">DRAFT</span></div>
+        <div class="home_act-1-today_div-12"></div>
+        <div class="home_act-1-today_div-13"></div>
+        <div class="home_act-1-today_div-14"></div>
+        <div class="home_act-1-today_div-15"></div>
       </div>
-      <div style="margin-top:18px;padding-top:14px;border-top:1px dashed rgba(30,28,25,.16);font-size:13px;color:#c4553a;font-weight:500">“Which services does this actually touch?”</div>
+      <div class="home_act-1-today_div-16">“Which services does this actually touch?”</div>
     </div>
 
     <div style="transform:translate({{ v.islandX3 }}px, {{ v.islandY3 }}px) rotate(1.5deg);transition:transform .12s linear;background:var(--color-surface);border:1px solid rgba(30,28,25,.1);border-radius:20px;padding:22px;box-shadow:0 20px 50px rgba(30,28,25,.07)">
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px"><span style="font-family:var(--font-mono);font-size:11px;letter-spacing:.14em;color:var(--color-text-soft)">ENGINEERING</span><span style="width:10px;height:10px;border-radius:50%;background:var(--color-text)"></span></div>
-      <div style="font-size:14px;color:var(--color-text-soft);margin-bottom:12px">Talks in repositories</div>
-      <div style="font-family:var(--font-mono);font-size:12px;line-height:1.9;color:var(--color-text);background:var(--color-bg);border:1px solid rgba(30,28,25,.1);border-radius:12px;padding:12px 14px;overflow:hidden;min-width:0">
-        <div style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis">classifier/<span style="color:var(--color-primary)">SymbolClassifierService.ts</span></div>
-        <div style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis">conversion/<span style="color:var(--color-primary)">DrawingConversionService.ts</span></div>
-        <div style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis">lines/<span style="color:var(--color-primary)">LineTypeService.ts</span></div>
-        <div style="color:var(--color-text-muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">tests/classifier.spec.ts · 61%</div>
+      <div class="home_act-1-today_div-17"><span class="home_act-1-today_span-8">ENGINEERING</span><span class="home_act-1-today_span-9"></span></div>
+      <div class="home_act-1-today_div-18">Talks in repositories</div>
+      <div class="home_act-1-today_div-19">
+        <div class="home_act-1-today_div-20">classifier/<span class="home_act-1-today_span-10">SymbolClassifierService.ts</span></div>
+        <div class="home_act-1-today_div-21">conversion/<span class="home_act-1-today_span-11">DrawingConversionService.ts</span></div>
+        <div class="home_act-1-today_div-22">lines/<span class="home_act-1-today_span-12">LineTypeService.ts</span></div>
+        <div class="home_act-1-today_div-23">tests/classifier.spec.ts · 61%</div>
       </div>
-      <div style="margin-top:18px;padding-top:14px;border-top:1px dashed rgba(30,28,25,.16);font-size:13px;color:#c4553a;font-weight:500">“Which capability is this debt under?”</div>
+      <div class="home_act-1-today_div-24">“Which capability is this debt under?”</div>
     </div>
   </div>
 
   <!-- four leaks -->
-  <div style="margin-top:96px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr));gap:20px">
+  <div class="home_act-1-today_div-25">
     <sc-for list="{{ leaks }}" as="l" hint-placeholder-count="3">
       <div style="opacity:{{ l.o }};transform:translateY({{ l.y }}px);transition:opacity .1s linear,transform .1s linear;padding:26px 24px;border-top:2px solid var(--color-primary)">
-        <div style="font-family:var(--font-mono);font-size:12px;color:var(--color-primary);margin-bottom:14px">{{ l.n }}</div>
-        <div style="font-size:19px;font-weight:600;letter-spacing:-.01em;margin-bottom:10px;line-height:1.25">{{ l.t }}</div>
-        <div style="font-size:15px;line-height:1.55;color:var(--color-text-soft);text-wrap:pretty">{{ l.d }}</div>
+        <div class="home_act-1-today_div-26">{{ l.n }}</div>
+        <div class="home_act-1-today_div-27">{{ l.t }}</div>
+        <div class="home_act-1-today_div-28">{{ l.d }}</div>
       </div>
     </sc-for>
   </div>
 </section>
 
 <!-- ACT 2 · SHARED CONTEXT (pinned stage) -->
-<section id="context" data-screen-label="Act 2 · Shared context" ref="{{ r2 }}" style="height:280vh;position:relative">
-  <div class="rs-stage" style="position:sticky;top:0;height:100vh;overflow:hidden;background:var(--color-primary);color:var(--color-bg)">
-    <div class="rs-pin2" style="max-width:var(--container-large);margin:0 auto;height:100%;padding:0 40px;display:grid;grid-template-columns:minmax(280px,420px) minmax(0,1fr);gap:48px;align-items:center">
-      <div class="rs-pin2-left" style="position:relative;min-height:320px">
-        <div style="font-family:var(--font-mono);font-size:12px;letter-spacing:.14em;color:var(--color-accent);margin-bottom:18px">02 · WHAT SHIPPING WELL NEEDS</div>
-        <h2 style="font-size:clamp(30px,3.6vw,46px);line-height:1.08;letter-spacing:-.025em;font-weight:700;margin:0 0 28px;text-wrap:balance">One picture of the system that all three rooms can read.</h2>
-        <div class="rs-pin2-copy" style="position:relative;height:150px">
+<section id="context" data-screen-label="Act 2 · Shared context" ref="{{ r2 }}" class="home_act-2-shared-context_section">
+  <div class="rs-stage home_act-2-shared-context_div">
+    <div class="rs-pin2 home_act-2-shared-context_div-2">
+      <div class="rs-pin2-left home_act-2-shared-context_div-3">
+        <div class="home_act-2-shared-context_div-4">02 · WHAT SHIPPING WELL NEEDS</div>
+        <h2 class="home_act-2-shared-context_h2">One picture of the system that all three rooms can read.</h2>
+        <div class="rs-pin2-copy home_act-2-shared-context_div-5">
           <p style="position:absolute;inset:0;margin:0;font-size:17px;line-height:1.6;color:rgba(246,243,236,.85);opacity:{{ v.step1 }};transform:translateY({{ v.step1y }}px);text-wrap:pretty">Start with what the business actually cares about: product capabilities. Put them next to the services that implement them, instead of a slide that gets redrawn every quarter.</p>
           <p style="position:absolute;inset:0;margin:0;font-size:17px;line-height:1.6;color:rgba(246,243,236,.85);opacity:{{ v.step2 }};transform:translateY({{ v.step2y }}px);text-wrap:pretty">Then add intent. Requirements, briefs and documentation become nodes in the same model as classes, methods and tests. A business question and a technical question now share an answer path.</p>
           <p style="position:absolute;inset:0;margin:0;font-size:17px;line-height:1.6;color:rgba(246,243,236,.85);opacity:{{ v.step3 }};transform:translateY({{ v.step3y }}px);text-wrap:pretty">Once everything is connected, a change can be priced before a date is promised, and the record can be rewritten from the model when the system moves. The next change gets cheaper than the last.</p>
         </div>
-        <div style="display:flex;gap:8px;margin-top:8px">
-          <span style="height:3px;width:34px;border-radius:2px;background:rgba(246,243,236,.25);position:relative;overflow:hidden"><span style="position:absolute;inset:0;background:var(--color-accent);transform-origin:left;transform:scaleX({{ v.bar1 }})"></span></span>
-          <span style="height:3px;width:34px;border-radius:2px;background:rgba(246,243,236,.25);position:relative;overflow:hidden"><span style="position:absolute;inset:0;background:var(--color-accent);transform-origin:left;transform:scaleX({{ v.bar2 }})"></span></span>
-          <span style="height:3px;width:34px;border-radius:2px;background:rgba(246,243,236,.25);position:relative;overflow:hidden"><span style="position:absolute;inset:0;background:var(--color-accent);transform-origin:left;transform:scaleX({{ v.bar3 }})"></span></span>
+        <div class="home_act-2-shared-context_div-6">
+          <span class="home_act-2-shared-context_span"><span style="position:absolute;inset:0;background:var(--color-accent);transform-origin:left;transform:scaleX({{ v.bar1 }})"></span></span>
+          <span class="home_act-2-shared-context_span-2"><span style="position:absolute;inset:0;background:var(--color-accent);transform-origin:left;transform:scaleX({{ v.bar2 }})"></span></span>
+          <span class="home_act-2-shared-context_span-3"><span style="position:absolute;inset:0;background:var(--color-accent);transform-origin:left;transform:scaleX({{ v.bar3 }})"></span></span>
         </div>
       </div>
 
       <!-- graph stage -->
-      <div class="rs-pin2-graph" style="position:relative;height:min(78vh,640px);min-width:0">
-        <svg viewBox="0 0 100 100" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%;overflow:visible">
+      <div class="rs-pin2-graph home_act-2-shared-context_div-7">
+        <svg viewBox="0 0 100 100" preserveAspectRatio="none" class="home_act-2-shared-context_svg">
           <sc-for list="{{ edges }}" as="e" hint-placeholder-count="0">
             <line x1="{{ e.x1 }}" y1="{{ e.y1 }}" x2="{{ e.x2 }}" y2="{{ e.y2 }}" pathLength="1" stroke="{{ e.c }}" stroke-width="1.5" vector-effect="non-scaling-stroke" stroke-linecap="round" style="stroke-dasharray:1;stroke-dashoffset:{{ e.off }};opacity:{{ e.o }}"></line>
           </sc-for>
@@ -191,84 +192,84 @@ a{color:var(--color-primary);text-decoration:none}a:hover{color:var(--color-prim
 </section>
 
 <!-- ACT 3 · CODELENS -->
-<section id="codelens" data-screen-label="Act 3 · Interfluent" ref="{{ r3 }}" style="max-width:var(--container-large);margin:0 auto;padding:clamp(60px,12vw,120px) var(--page-padding) 40px">
-  <div style="max-width:760px">
-    <div style="font-family:var(--font-mono);font-size:12px;letter-spacing:.14em;color:var(--color-primary);margin-bottom:18px">03 · CODELENS</div>
-    <h2 style="font-size:clamp(32px,4vw,52px);line-height:1.06;letter-spacing:-.025em;font-weight:700;margin:0 0 20px;text-wrap:balance">Interfluent is that shared context. And the agents that work from it.</h2>
-    <p style="font-size:18px;line-height:1.6;color:var(--color-text-soft);margin:0;text-wrap:pretty">Product capabilities above the line, the services that implement them below it. Every node carries what the agents currently know about it: requirement status, documentation, debt and coverage. Select one and everything known about it opens in one place.</p>
+<section id="codelens" data-screen-label="Act 3 · Interfluent" ref="{{ r3 }}" class="home_act-3-interfluent_section">
+  <div class="home_act-3-interfluent_div">
+    <div class="home_act-3-interfluent_div-2">03 · CODELENS</div>
+    <h2 class="home_act-3-interfluent_h2">Interfluent is that shared context. And the agents that work from it.</h2>
+    <p class="home_act-3-interfluent_p">Product capabilities above the line, the services that implement them below it. Every node carries what the agents currently know about it: requirement status, documentation, debt and coverage. Select one and everything known about it opens in one place.</p>
   </div>
 
   <!-- app window -->
   <div style="margin-top:64px;position:relative;border-radius:22px;background:var(--color-surface);border:1px solid rgba(30,28,25,.1);box-shadow:0 30px 80px rgba(30,28,25,.1);overflow:hidden;opacity:{{ v.appO }};transform:translateY({{ v.appY }}px) scale({{ v.appS }})">
-    <div style="display:flex;align-items:center;gap:8px;padding:12px 16px;border-bottom:1px solid rgba(30,28,25,.08);background:var(--color-bg)">
-      <span style="width:10px;height:10px;border-radius:50%;background:#e4ded1"></span><span style="width:10px;height:10px;border-radius:50%;background:#e4ded1"></span><span style="width:10px;height:10px;border-radius:50%;background:#e4ded1"></span>
-      <span style="margin-left:14px;font-family:var(--font-mono);font-size:11px;color:var(--color-text-muted)">Plant360 / Convert / Canvas</span>
-      <span class="rs-appsearch" style="margin-left:auto;font-family:var(--font-mono);font-size:11px;color:var(--color-text-muted);border:1px solid rgba(30,28,25,.12);padding:4px 10px;border-radius:6px">Search graph, docs, findings &nbsp;⌘K</span>
+    <div class="home_act-3-interfluent_div-3">
+      <span class="home_act-3-interfluent_span"></span><span class="home_act-3-interfluent_span-2"></span><span class="home_act-3-interfluent_span-3"></span>
+      <span class="home_act-3-interfluent_span-4">Plant360 / Convert / Canvas</span>
+      <span class="rs-appsearch home_act-3-interfluent_span-5">Search graph, docs, findings &nbsp;⌘K</span>
     </div>
-    <div class="rs-app" style="display:grid;grid-template-columns:184px minmax(0,1fr);min-height:560px">
-      <div style="border-right:1px solid rgba(30,28,25,.08);padding:16px 12px;font-size:13px;color:var(--color-text-soft);display:flex;flex-direction:column;gap:2px;background:#faf8f3">
-        <div style="padding:7px 10px;border-radius:8px">Pulse</div>
-        <div style="padding:7px 10px;border-radius:8px;background:#d9e6df;color:var(--color-primary);font-weight:600">Canvas</div>
-        <div style="padding:7px 10px;border-radius:8px">Context Graph</div>
-        <div style="padding:14px 10px 4px;font-family:var(--font-mono);font-size:10px;letter-spacing:.12em;color:var(--color-text-muted)">PRODUCT</div>
-        <div style="padding:7px 10px;border-radius:8px;display:flex;justify-content:space-between">PRDs <span style="font-size:11px;background:#f6e4c6;color:#b07a2c;padding:1px 6px;border-radius:4px">2</span></div>
-        <div style="padding:7px 10px;border-radius:8px">User Documentation</div>
-        <div style="padding:7px 10px;border-radius:8px">Engineering Briefs</div>
-        <div style="padding:14px 10px 4px;font-family:var(--font-mono);font-size:10px;letter-spacing:.12em;color:var(--color-text-muted)">ENGINEERING</div>
-        <div style="padding:7px 10px;border-radius:8px">Impact Analysis</div>
-        <div style="padding:7px 10px;border-radius:8px">Technical Debt</div>
-        <div style="padding:7px 10px;border-radius:8px;display:flex;justify-content:space-between">Security <span style="font-size:11px;background:#f4d9d1;color:#c4553a;padding:1px 6px;border-radius:4px">3</span></div>
-        <div style="padding:7px 10px;border-radius:8px">Test Coverage</div>
-        <div style="padding:7px 10px;border-radius:8px">Test Planning</div>
-        <div style="padding:7px 10px;border-radius:8px">Agent Builder</div>
+    <div class="rs-app home_act-3-interfluent_div-4">
+      <div class="home_act-3-interfluent_div-5">
+        <div class="home_act-3-interfluent_div-6">Pulse</div>
+        <div class="home_act-3-interfluent_div-7">Canvas</div>
+        <div class="home_act-3-interfluent_div-8">Context Graph</div>
+        <div class="home_act-3-interfluent_div-9">PRODUCT</div>
+        <div class="home_act-3-interfluent_div-10">PRDs <span class="home_act-3-interfluent_span-6">2</span></div>
+        <div class="home_act-3-interfluent_div-11">User Documentation</div>
+        <div class="home_act-3-interfluent_div-12">Engineering Briefs</div>
+        <div class="home_act-3-interfluent_div-13">ENGINEERING</div>
+        <div class="home_act-3-interfluent_div-14">Impact Analysis</div>
+        <div class="home_act-3-interfluent_div-15">Technical Debt</div>
+        <div class="home_act-3-interfluent_div-16">Security <span class="home_act-3-interfluent_span-7">3</span></div>
+        <div class="home_act-3-interfluent_div-17">Test Coverage</div>
+        <div class="home_act-3-interfluent_div-18">Test Planning</div>
+        <div class="home_act-3-interfluent_div-19">Agent Builder</div>
       </div>
-      <div style="position:relative;padding:22px 26px;background:radial-gradient(rgba(30,28,25,.09) 1px,transparent 1px) 0 0/18px 18px;overflow:hidden">
-        <div style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px;margin-bottom:22px">
-          <div><div style="font-weight:700;font-size:16px">Product feature map</div><div style="font-size:12px;color:var(--color-text-muted)">10 features · 4 services · 23 linked documents</div></div>
-          <div style="display:flex;gap:6px;font-family:var(--font-mono);font-size:10px;color:var(--color-text-soft);flex-wrap:wrap"><span style="padding:4px 8px;border-radius:5px;border:1px solid rgba(30,28,25,.12)">PRD status</span><span style="padding:4px 8px;border-radius:5px;border:1px solid rgba(30,28,25,.12)">Docs</span><span style="padding:4px 8px;border-radius:5px;border:1px solid rgba(30,28,25,.12)">Debt &amp; security</span><span style="padding:4px 8px;border-radius:5px;border:1px solid rgba(30,28,25,.12)">Coverage</span></div>
+      <div class="home_act-3-interfluent_div-20">
+        <div class="home_act-3-interfluent_div-21">
+          <div><div class="home_act-3-interfluent_div-22">Product feature map</div><div class="home_act-3-interfluent_div-23">10 features · 4 services · 23 linked documents</div></div>
+          <div class="home_act-3-interfluent_div-24"><span class="home_act-3-interfluent_span-8">PRD status</span><span class="home_act-3-interfluent_span-9">Docs</span><span class="home_act-3-interfluent_span-10">Debt &amp; security</span><span class="home_act-3-interfluent_span-11">Coverage</span></div>
         </div>
-        <div style="font-family:var(--font-mono);font-size:10px;letter-spacing:.12em;color:var(--color-text-muted);margin-bottom:10px">PRODUCT FEATURES</div>
-        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(150px,100%),1fr));gap:10px">
+        <div class="home_act-3-interfluent_div-25">PRODUCT FEATURES</div>
+        <div class="home_act-3-interfluent_div-26">
           <sc-for list="{{ feats }}" as="f" hint-placeholder-count="6">
             <div style="opacity:{{ f.o }};transform:translateY({{ f.y }}px);background:var(--color-surface);border:1px solid {{ f.border }};border-radius:10px;padding:10px 11px;box-shadow:0 4px 14px rgba(30,28,25,.05)">
-              <div style="font-size:12.5px;font-weight:600;line-height:1.25;margin-bottom:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ f.n }}</div>
-              <div style="font-size:10.5px;color:var(--color-text-muted);margin-bottom:8px">{{ f.m }}</div>
+              <div class="home_act-3-interfluent_div-27">{{ f.n }}</div>
+              <div class="home_act-3-interfluent_div-28">{{ f.m }}</div>
               <div style="display:flex;flex-wrap:wrap;gap:4px;opacity:{{ f.bo }};transform:scale({{ f.bs }});transform-origin:left">
                 <span style="font-family:var(--font-mono);font-size:9.5px;padding:2px 6px;border-radius:4px;background:{{ f.prdBg }};color:{{ f.prdFg }}">{{ f.prd }}</span>
-                <span style="font-family:var(--font-mono);font-size:9.5px;padding:2px 6px;border-radius:4px;background:var(--color-surface-soft);color:var(--color-text-soft)">{{ f.docs }}</span>
+                <span class="home_act-3-interfluent_span-12">{{ f.docs }}</span>
                 <span style="font-family:var(--font-mono);font-size:9.5px;padding:2px 6px;border-radius:4px;background:{{ f.debtBg }};color:{{ f.debtFg }}">{{ f.debt }}</span>
                 <span style="font-family:var(--font-mono);font-size:9.5px;padding:2px 6px;border-radius:4px;background:{{ f.covBg }};color:{{ f.covFg }}">{{ f.cov }}</span>
               </div>
             </div>
           </sc-for>
         </div>
-        <div style="margin:22px 0 10px;display:flex;align-items:center;gap:12px"><span style="font-family:var(--font-mono);font-size:10px;letter-spacing:.12em;color:var(--color-text-muted)">CODE ENTITIES · SERVICES</span><span style="flex:1;height:1px;background:rgba(30,28,25,.12)"></span></div>
-        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(170px,100%),1fr));gap:10px">
+        <div class="home_act-3-interfluent_div-29"><span class="home_act-3-interfluent_span-13">CODE ENTITIES · SERVICES</span><span class="home_act-3-interfluent_span-14"></span></div>
+        <div class="home_act-3-interfluent_div-30">
           <sc-for list="{{ svcs }}" as="s" hint-placeholder-count="4">
             <div style="opacity:{{ s.o }};transform:translateY({{ s.y }}px);background:var(--color-bg);border:1px solid rgba(30,28,25,.12);border-radius:10px;padding:10px 11px">
-              <div style="font-family:var(--font-mono);font-size:11.5px;font-weight:500;margin-bottom:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ s.n }}</div>
-              <div style="font-size:10.5px;color:var(--color-text-muted);margin-bottom:8px">{{ s.m }}</div>
-              <div style="display:flex;gap:4px;opacity:{{ s.bo }}"><span style="font-family:var(--font-mono);font-size:9.5px;padding:2px 6px;border-radius:4px;background:var(--color-surface-soft);color:var(--color-text-soft)">{{ s.debt }}</span><span style="font-family:var(--font-mono);font-size:9.5px;padding:2px 6px;border-radius:4px;background:var(--color-surface-soft);color:var(--color-text-soft)">{{ s.cov }}</span></div>
+              <div class="home_act-3-interfluent_div-31">{{ s.n }}</div>
+              <div class="home_act-3-interfluent_div-32">{{ s.m }}</div>
+              <div style="display:flex;gap:4px;opacity:{{ s.bo }}"><span class="home_act-3-interfluent_span-15">{{ s.debt }}</span><span class="home_act-3-interfluent_span-16">{{ s.cov }}</span></div>
             </div>
           </sc-for>
         </div>
 
         <!-- drawer -->
         <div style="position:absolute;top:0;right:0;bottom:0;width:min(340px,80%);background:var(--color-surface);border-left:1px solid rgba(30,28,25,.1);box-shadow:-20px 0 50px rgba(30,28,25,.08);transform:translateX({{ v.drawerX }}%);padding:22px 22px;display:flex;flex-direction:column;gap:14px;overflow:hidden">
-          <div><div style="font-size:11px;color:var(--color-text-muted);font-family:var(--font-mono);letter-spacing:.1em;margin-bottom:6px">FEATURE</div><div style="font-size:18px;font-weight:700;letter-spacing:-.01em">Review Symbols</div></div>
-          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px">
-            <div style="background:var(--color-bg);border-radius:8px;padding:10px"><div style="font-size:10px;color:var(--color-text-muted)">Code entities</div><div style="font-size:18px;font-weight:700">15</div></div>
-            <div style="background:var(--color-bg);border-radius:8px;padding:10px"><div style="font-size:10px;color:var(--color-text-muted)">High findings</div><div style="font-size:18px;font-weight:700;color:#c4553a">12</div></div>
-            <div style="background:var(--color-bg);border-radius:8px;padding:10px"><div style="font-size:10px;color:var(--color-text-muted)">Coverage</div><div style="font-size:18px;font-weight:700">71%</div></div>
+          <div><div class="home_act-3-interfluent_div-33">FEATURE</div><div class="home_act-3-interfluent_div-34">Review Symbols</div></div>
+          <div class="home_act-3-interfluent_div-35">
+            <div class="home_act-3-interfluent_div-36"><div class="home_act-3-interfluent_div-37">Code entities</div><div class="home_act-3-interfluent_div-38">15</div></div>
+            <div class="home_act-3-interfluent_div-39"><div class="home_act-3-interfluent_div-40">High findings</div><div class="home_act-3-interfluent_div-41">12</div></div>
+            <div class="home_act-3-interfluent_div-42"><div class="home_act-3-interfluent_div-43">Coverage</div><div class="home_act-3-interfluent_div-44">71%</div></div>
           </div>
-          <div style="border-top:1px solid rgba(30,28,25,.08);padding-top:12px;display:flex;flex-direction:column;gap:10px;font-size:13px">
-            <div style="display:flex;justify-content:space-between"><span>Review Symbols V2</span><span style="font-family:var(--font-mono);font-size:10px;color:#b07a2c;background:#f6e4c6;padding:2px 6px;border-radius:4px">DRAFT</span></div>
-            <div style="display:flex;justify-content:space-between"><span>Review Symbols V1</span><span style="font-family:var(--font-mono);font-size:10px;color:var(--color-primary);background:#d9e6df;padding:2px 6px;border-radius:4px">PUBLISHED</span></div>
-            <div style="display:flex;justify-content:space-between"><span>Symbology docs</span><span style="font-family:var(--font-mono);font-size:10px;color:#c4553a;background:#f4d9d1;padding:2px 6px;border-radius:4px">OUT OF SYNC</span></div>
-            <div style="display:flex;justify-content:space-between"><span>Technical debt</span><span style="color:var(--color-text-soft)">41 findings</span></div>
-            <div style="display:flex;justify-content:space-between"><span>Security</span><span style="color:#c4553a">1 critical · 2 high</span></div>
+          <div class="home_act-3-interfluent_div-45">
+            <div class="home_act-3-interfluent_div-46"><span>Review Symbols V2</span><span class="home_act-3-interfluent_span-17">DRAFT</span></div>
+            <div class="home_act-3-interfluent_div-47"><span>Review Symbols V1</span><span class="home_act-3-interfluent_span-18">PUBLISHED</span></div>
+            <div class="home_act-3-interfluent_div-48"><span>Symbology docs</span><span class="home_act-3-interfluent_span-19">OUT OF SYNC</span></div>
+            <div class="home_act-3-interfluent_div-49"><span>Technical debt</span><span class="home_act-3-interfluent_span-20">41 findings</span></div>
+            <div class="home_act-3-interfluent_div-50"><span>Security</span><span class="home_act-3-interfluent_span-21">1 critical · 2 high</span></div>
           </div>
-          <div style="margin-top:auto;display:flex;gap:8px"><span style="flex:1;text-align:center;padding:9px;border-radius:8px;background:var(--color-primary);color:var(--color-bg);font-size:12.5px;font-weight:600">Create PRD</span><span style="flex:1;text-align:center;padding:9px;border-radius:8px;border:1px solid rgba(30,28,25,.14);font-size:12.5px;font-weight:600">Analyse impact</span></div>
+          <div class="home_act-3-interfluent_div-51"><span class="home_act-3-interfluent_span-22">Create PRD</span><span class="home_act-3-interfluent_span-23">Analyse impact</span></div>
         </div>
       </div>
     </div>
@@ -276,88 +277,88 @@ a{color:var(--color-primary);text-decoration:none}a:hover{color:var(--color-prim
 </section>
 
 <!-- Act 3b · price the change -->
-<section data-screen-label="Act 3 · Impact" ref="{{ r4 }}" style="max-width:var(--container-large);margin:0 auto;padding:clamp(50px,10vw,100px) var(--page-padding);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:56px;align-items:center">
+<section data-screen-label="Act 3 · Impact" ref="{{ r4 }}" class="home_act-3-impact_section">
   <div>
-    <div style="font-family:var(--font-mono);font-size:12px;letter-spacing:.14em;color:var(--color-primary);margin-bottom:18px">PRICE THE CHANGE FIRST</div>
-    <h3 style="font-size:clamp(28px,3vw,40px);line-height:1.1;letter-spacing:-.02em;font-weight:700;margin:0 0 18px;text-wrap:balance">Describe the change in a sentence. Get the blast radius back before anyone promises a date.</h3>
-    <p style="font-size:17px;line-height:1.6;color:var(--color-text-soft);margin:0;text-wrap:pretty">Files touched, tests affected and documents that will drift come back as a size band with the relationships behind it. Scope becomes evidence rather than a score to argue with.</p>
+    <div class="home_act-3-impact_div">PRICE THE CHANGE FIRST</div>
+    <h3 class="home_act-3-impact_h3">Describe the change in a sentence. Get the blast radius back before anyone promises a date.</h3>
+    <p class="home_act-3-impact_p">Files touched, tests affected and documents that will drift come back as a size band with the relationships behind it. Scope becomes evidence rather than a score to argue with.</p>
   </div>
   <div style="background:var(--color-surface);border:1px solid rgba(30,28,25,.1);border-radius:20px;padding:24px;box-shadow:0 24px 60px rgba(30,28,25,.08);opacity:{{ v.impO }};transform:translateY({{ v.impY }}px)">
-    <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:.12em;color:var(--color-text-muted);margin-bottom:10px">IMPACT ANALYSIS</div>
-    <div style="border:1px solid rgba(30,28,25,.14);border-radius:12px;padding:14px 16px;font-size:15px;line-height:1.5;min-height:74px;background:var(--color-bg)">{{ v.typed }}<span style="display:inline-block;width:2px;height:1em;background:var(--color-primary);vertical-align:-2px;margin-left:1px;animation:blink 1s steps(1) infinite"></span></div>
+    <div class="home_act-3-impact_div-2">IMPACT ANALYSIS</div>
+    <div class="home_act-3-impact_div-3">{{ v.typed }}<span class="home_act-3-impact_span"></span></div>
     <div style="display:flex;align-items:center;gap:14px;margin:18px 0 14px;opacity:{{ v.bandO }};transform:translateY({{ v.bandY }}px)">
-      <div style="width:56px;height:56px;border-radius:14px;background:var(--color-accent);display:grid;place-items:center;font-weight:700;font-size:24px;color:var(--color-text)">M</div>
-      <div><div style="font-weight:700;font-size:16px">Medium change</div><div style="font-size:13px;color:var(--color-text-soft)">14 files · 6 tests · 3 documents to update</div></div>
+      <div class="home_act-3-impact_div-4">M</div>
+      <div><div class="home_act-3-impact_div-5">Medium change</div><div class="home_act-3-impact_div-6">14 files · 6 tests · 3 documents to update</div></div>
     </div>
-    <div style="display:flex;flex-direction:column;gap:8px;font-size:13px">
-      <div style="display:flex;justify-content:space-between;padding:9px 12px;border-radius:8px;background:var(--color-bg);opacity:{{ v.row1 }};transform:translateX({{ v.row1x }}px)"><span style="font-family:var(--font-mono);font-size:12px">DrawingConversionService</span><span style="color:var(--color-text-muted)">implements · Convert drawings</span></div>
-      <div style="display:flex;justify-content:space-between;padding:9px 12px;border-radius:8px;background:var(--color-bg);opacity:{{ v.row2 }};transform:translateX({{ v.row2x }}px)"><span style="font-family:var(--font-mono);font-size:12px">dxf-parser.spec.ts</span><span style="color:#c4553a">untested path</span></div>
-      <div style="display:flex;justify-content:space-between;padding:9px 12px;border-radius:8px;background:var(--color-bg);opacity:{{ v.row3 }};transform:translateX({{ v.row3x }}px)"><span style="font-family:var(--font-mono);font-size:12px">User docs · Importing DXF</span><span style="color:#b07a2c">will drift</span></div>
+    <div class="home_act-3-impact_div-7">
+      <div style="display:flex;justify-content:space-between;padding:9px 12px;border-radius:8px;background:var(--color-bg);opacity:{{ v.row1 }};transform:translateX({{ v.row1x }}px)"><span class="home_act-3-impact_span-2">DrawingConversionService</span><span class="home_act-3-impact_span-3">implements · Convert drawings</span></div>
+      <div style="display:flex;justify-content:space-between;padding:9px 12px;border-radius:8px;background:var(--color-bg);opacity:{{ v.row2 }};transform:translateX({{ v.row2x }}px)"><span class="home_act-3-impact_span-4">dxf-parser.spec.ts</span><span class="home_act-3-impact_span-5">untested path</span></div>
+      <div style="display:flex;justify-content:space-between;padding:9px 12px;border-radius:8px;background:var(--color-bg);opacity:{{ v.row3 }};transform:translateX({{ v.row3x }}px)"><span class="home_act-3-impact_span-6">User docs · Importing DXF</span><span class="home_act-3-impact_span-7">will drift</span></div>
     </div>
   </div>
 </section>
 
 <!-- Agents -->
-<section data-screen-label="Act 3 · Agents" ref="{{ r5 }}" style="max-width:var(--container-large);margin:0 auto;padding:40px var(--page-padding) clamp(60px,12vw,120px)">
-  <div style="display:flex;justify-content:space-between;align-items:end;flex-wrap:wrap;gap:16px;margin-bottom:36px">
-    <div style="max-width:620px">
-      <div style="font-family:var(--font-mono);font-size:12px;letter-spacing:.14em;color:var(--color-primary);margin-bottom:14px">THE AGENT SUITE</div>
-      <h3 style="font-size:clamp(28px,3vw,40px);line-height:1.1;letter-spacing:-.02em;font-weight:700;margin:0;text-wrap:balance">Agents that read from the model and write back into it.</h3>
+<section data-screen-label="Act 3 · Agents" ref="{{ r5 }}" class="home_act-3-agents_section">
+  <div class="home_act-3-agents_div">
+    <div class="home_act-3-agents_div-2">
+      <div class="home_act-3-agents_div-3">THE AGENT SUITE</div>
+      <h3 class="home_act-3-agents_h3">Agents that read from the model and write back into it.</h3>
     </div>
-    <p style="font-size:16px;line-height:1.55;color:var(--color-text-soft);margin:0;max-width:420px;text-wrap:pretty">Each one leaves the system better described than it found it, so the value compounds with every cycle.</p>
+    <p class="home_act-3-agents_p">Each one leaves the system better described than it found it, so the value compounds with every cycle.</p>
   </div>
-  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(210px,100%),1fr));gap:14px">
+  <div class="home_act-3-agents_div-4">
     <sc-for list="{{ agents }}" as="a" hint-placeholder-count="4">
       <div style="opacity:{{ a.o }};transform:translateY({{ a.y }}px);background:var(--color-surface);border:1px solid rgba(30,28,25,.1);border-radius:16px;padding:22px 20px;min-height:190px;display:flex;flex-direction:column;gap:10px" style-hover="border-color:var(--color-primary)">
         <div style="width:34px;height:34px;border-radius:10px;background:{{ a.bg }};display:grid;place-items:center;font-family:var(--font-mono);font-size:12px;font-weight:500;color:{{ a.fg }}">{{ a.k }}</div>
-        <div style="font-weight:700;font-size:17px;letter-spacing:-.01em;margin-top:6px">{{ a.n }}</div>
-        <div style="font-size:14px;line-height:1.5;color:var(--color-text-soft);text-wrap:pretty">{{ a.d }}</div>
+        <div class="home_act-3-agents_div-5">{{ a.n }}</div>
+        <div class="home_act-3-agents_div-6">{{ a.d }}</div>
       </div>
     </sc-for>
   </div>
 </section>
 
 <!-- Docs sync -->
-<section data-screen-label="Docs sync" ref="{{ r6 }}" style="background:#efeae0;border-top:1px solid rgba(30,28,25,.06);border-bottom:1px solid rgba(30,28,25,.06)">
-  <div style="max-width:var(--container-large);margin:0 auto;padding:clamp(55px,11vw,110px) var(--page-padding);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:56px;align-items:center">
+<section data-screen-label="Docs sync" ref="{{ r6 }}" class="home_docs-sync_section">
+  <div class="home_docs-sync_div">
     <div style="background:var(--color-surface);border:1px solid rgba(30,28,25,.1);border-radius:20px;box-shadow:0 24px 60px rgba(30,28,25,.08);overflow:hidden;opacity:{{ v.docO }};transform:translateY({{ v.docY }}px)">
-      <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 18px;border-bottom:1px solid rgba(30,28,25,.08);font-size:13px"><span style="font-weight:600;min-width:0">User Documentation · Importing DXF</span><span style="font-family:var(--font-mono);font-size:10px;color:#c4553a;background:#f4d9d1;padding:3px 7px;border-radius:4px;white-space:nowrap;flex:none;margin-left:10px">OUT OF SYNC · 3 CHANGES</span></div>
-      <div style="padding:16px 18px;font-family:var(--font-mono);font-size:12px;line-height:1.9">
-        <div style="color:var(--color-text-soft)">  Supported formats: DWG, DXF (R12–2018)</div>
+      <div class="home_docs-sync_div-2"><span class="home_docs-sync_span">User Documentation · Importing DXF</span><span class="home_docs-sync_span-2">OUT OF SYNC · 3 CHANGES</span></div>
+      <div class="home_docs-sync_div-3">
+        <div class="home_docs-sync_div-4">  Supported formats: DWG, DXF (R12–2018)</div>
         <div style="background:#f4d9d1;color:#8a3a26;text-decoration:line-through;border-radius:4px;padding:0 6px;margin:0 -6px;opacity:{{ v.diff1 }};transform:translateX({{ v.diff1x }}px)">- Files are parsed by the legacy DXF parser</div>
         <div style="background:#d9e6df;color:var(--color-primary);border-radius:4px;padding:0 6px;margin:0 -6px;opacity:{{ v.diff2 }};transform:translateX({{ v.diff2x }}px)">+ Files are routed through DrawingConversionService</div>
-        <div style="color:var(--color-text-soft)">  Unit scaling is detected from the header block</div>
+        <div class="home_docs-sync_div-5">  Unit scaling is detected from the header block</div>
         <div style="background:#d9e6df;color:var(--color-primary);border-radius:4px;padding:0 6px;margin:0 -6px;opacity:{{ v.diff3 }};transform:translateX({{ v.diff3x }}px)">+ Unrecognised symbols are queued for classification</div>
-        <div style="color:var(--color-text-soft)">  Output: a reviewed P&amp;ID graph</div>
+        <div class="home_docs-sync_div-6">  Output: a reviewed P&amp;ID graph</div>
       </div>
-      <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 18px;border-top:1px solid rgba(30,28,25,.08);background:#faf8f3;font-size:12.5px"><span style="color:var(--color-text-muted)">Rewritten from the model · awaiting review</span><span style="display:flex;gap:8px;opacity:{{ v.diffBtn }}"><span style="padding:7px 12px;border-radius:7px;border:1px solid rgba(30,28,25,.14);font-weight:600">Reject</span><span style="padding:7px 12px;border-radius:7px;background:var(--color-primary);color:var(--color-bg);font-weight:600">Accept &amp; publish</span></span></div>
+      <div class="home_docs-sync_div-7"><span class="home_docs-sync_span-3">Rewritten from the model · awaiting review</span><span style="display:flex;gap:8px;opacity:{{ v.diffBtn }}"><span class="home_docs-sync_span-4">Reject</span><span class="home_docs-sync_span-5">Accept &amp; publish</span></span></div>
     </div>
     <div>
-      <div style="font-family:var(--font-mono);font-size:12px;letter-spacing:.14em;color:var(--color-primary);margin-bottom:18px">THE RECORD STAYS TRUE</div>
-      <h3 style="font-size:clamp(28px,3vw,40px);line-height:1.1;letter-spacing:-.02em;font-weight:700;margin:0 0 18px;text-wrap:balance">Documentation is rewritten when the system moves, and held as a diff until a human accepts it.</h3>
-      <p style="font-size:17px;line-height:1.6;color:var(--color-text-soft);margin:0;text-wrap:pretty">Added, changed and removed pages are marked before publishing. Nothing goes live unreviewed. Customer-facing and engineering narratives stay separate, moving at their own speed from the same model.</p>
+      <div class="home_docs-sync_div-8">THE RECORD STAYS TRUE</div>
+      <h3 class="home_docs-sync_h3">Documentation is rewritten when the system moves, and held as a diff until a human accepts it.</h3>
+      <p class="home_docs-sync_p">Added, changed and removed pages are marked before publishing. Nothing goes live unreviewed. Customer-facing and engineering narratives stay separate, moving at their own speed from the same model.</p>
     </div>
   </div>
 </section>
 
 <!-- Risk by capability -->
-<section data-screen-label="Risk by capability" ref="{{ r7 }}" style="max-width:var(--container-large);margin:0 auto;padding:clamp(55px,11vw,110px) var(--page-padding);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:56px;align-items:center">
+<section data-screen-label="Risk by capability" ref="{{ r7 }}" class="home_risk-by-capability_section">
   <div>
-    <div style="font-family:var(--font-mono);font-size:12px;letter-spacing:.14em;color:var(--color-primary);margin-bottom:18px">RISK, IN THE BUSINESS'S LANGUAGE</div>
-    <h3 style="font-size:clamp(28px,3vw,40px);line-height:1.1;letter-spacing:-.02em;font-weight:700;margin:0 0 18px;text-wrap:balance">Debt, vulnerabilities and thin coverage, expressed as capabilities rather than files.</h3>
-    <p style="font-size:17px;line-height:1.6;color:var(--color-text-soft);margin:0;text-wrap:pretty">Every finding resolves up to the product capability that carries it. That turns a report engineering triages alone into a list a business owner can prioritise and fund.</p>
+    <div class="home_risk-by-capability_div">RISK, IN THE BUSINESS'S LANGUAGE</div>
+    <h3 class="home_risk-by-capability_h3">Debt, vulnerabilities and thin coverage, expressed as capabilities rather than files.</h3>
+    <p class="home_risk-by-capability_p">Every finding resolves up to the product capability that carries it. That turns a report engineering triages alone into a list a business owner can prioritise and fund.</p>
   </div>
-  <div style="background:var(--color-surface);border:1px solid rgba(30,28,25,.1);border-radius:20px;padding:24px;box-shadow:0 24px 60px rgba(30,28,25,.08)">
-    <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px 20px;font-family:var(--font-mono);font-size:11px;letter-spacing:.12em;color:var(--color-text-muted);margin-bottom:18px"><span>CAPABILITY</span><span style="display:flex;gap:14px;flex-wrap:wrap"><span style="display:flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:2px;background:var(--color-primary)"></span>DEBT</span><span style="display:flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:2px;background:#c4553a"></span>SECURITY</span><span style="display:flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:2px;background:var(--color-accent)"></span>COVERAGE GAP</span></span></div>
-    <div style="display:flex;flex-direction:column;gap:14px">
+  <div class="home_risk-by-capability_div-2">
+    <div class="home_risk-by-capability_div-3"><span>CAPABILITY</span><span class="home_risk-by-capability_span"><span class="home_risk-by-capability_span-2"><span class="home_risk-by-capability_span-3"></span>DEBT</span><span class="home_risk-by-capability_span-4"><span class="home_risk-by-capability_span-5"></span>SECURITY</span><span class="home_risk-by-capability_span-6"><span class="home_risk-by-capability_span-7"></span>COVERAGE GAP</span></span></div>
+    <div class="home_risk-by-capability_div-4">
       <sc-for list="{{ risks }}" as="k" hint-placeholder-count="5">
         <div class="rs-riskrow" style="display:grid;grid-template-columns:minmax(120px,160px) minmax(0,1fr);gap:14px;align-items:center;opacity:{{ k.o }}">
-          <div style="font-size:13.5px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ k.n }}</div>
-          <div style="display:flex;gap:3px;height:22px">
+          <div class="home_risk-by-capability_div-5">{{ k.n }}</div>
+          <div class="home_risk-by-capability_div-6">
             <div style="width:{{ k.d }}%;background:var(--color-primary);border-radius:4px 0 0 4px;transition:width .1s linear"></div>
             <div style="width:{{ k.s }}%;background:#c4553a;transition:width .1s linear"></div>
             <div style="width:{{ k.c }}%;background:var(--color-accent);border-radius:0 4px 4px 0;transition:width .1s linear"></div>
-            <div style="align-self:center;font-family:var(--font-mono);font-size:11px;color:var(--color-text-muted);padding-left:8px;white-space:nowrap">{{ k.t }}</div>
+            <div class="home_risk-by-capability_div-7">{{ k.t }}</div>
           </div>
         </div>
       </sc-for>
@@ -366,27 +367,27 @@ a{color:var(--color-primary);text-decoration:none}a:hover{color:var(--color-prim
 </section>
 
 <!-- Test plans -->
-<section data-screen-label="Test plans" ref="{{ r8 }}" style="max-width:var(--container-large);margin:0 auto;padding:40px var(--page-padding) clamp(55px,11vw,110px)">
-  <div style="max-width:720px;margin-bottom:48px">
-    <div style="font-family:var(--font-mono);font-size:12px;letter-spacing:.14em;color:var(--color-primary);margin-bottom:18px">A GAP BECOMES A PLAN</div>
-    <h3 style="font-size:clamp(28px,3vw,40px);line-height:1.1;letter-spacing:-.02em;font-weight:700;margin:0 0 18px;text-wrap:balance">Any weak capability turns into a drafted test plan from the row that flagged it.</h3>
-    <p style="font-size:17px;line-height:1.6;color:var(--color-text-soft);margin:0;text-wrap:pretty">Written against what the change actually touched, editable, and read back into the model. The next planning cycle starts from the state the last one left behind.</p>
+<section data-screen-label="Test plans" ref="{{ r8 }}" class="home_test-plans_section">
+  <div class="home_test-plans_div">
+    <div class="home_test-plans_div-2">A GAP BECOMES A PLAN</div>
+    <h3 class="home_test-plans_h3">Any weak capability turns into a drafted test plan from the row that flagged it.</h3>
+    <p class="home_test-plans_p">Written against what the change actually touched, editable, and read back into the model. The next planning cycle starts from the state the last one left behind.</p>
   </div>
-  <div class="rs-tp" style="display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1.3fr);gap:20px;align-items:center">
+  <div class="rs-tp home_test-plans_div-3">
     <div style="background:var(--color-surface);border:1px solid rgba(30,28,25,.1);border-radius:16px;padding:18px 20px;box-shadow:0 16px 40px rgba(30,28,25,.06);opacity:{{ v.tpA }};transform:translateX({{ v.tpAx }}px)">
-      <div style="font-family:var(--font-mono);font-size:10px;letter-spacing:.12em;color:var(--color-text-muted);margin-bottom:10px">TEST COVERAGE · FLAGGED</div>
-      <div style="font-weight:700;font-size:16px;margin-bottom:6px">Mark Unidentified Symbols</div>
-      <div style="display:flex;justify-content:space-between;font-size:13px;color:var(--color-text-soft);margin-bottom:8px"><span>5 files · 0 tests on hot paths</span><span style="color:#c4553a;font-weight:600">44%</span></div>
-      <div style="height:8px;border-radius:999px;background:var(--color-surface-soft);overflow:hidden"><div style="height:100%;width:44%;background:#c4553a;border-radius:999px"></div></div>
-      <div style="margin-top:14px;display:inline-block;padding:8px 12px;border-radius:7px;background:var(--color-primary);color:var(--color-bg);font-size:12.5px;font-weight:600">Generate test plan</div>
+      <div class="home_test-plans_div-4">TEST COVERAGE · FLAGGED</div>
+      <div class="home_test-plans_div-5">Mark Unidentified Symbols</div>
+      <div class="home_test-plans_div-6"><span>5 files · 0 tests on hot paths</span><span class="home_test-plans_span">44%</span></div>
+      <div class="home_test-plans_div-7"><div class="home_test-plans_div-8"></div></div>
+      <div class="home_test-plans_div-9">Generate test plan</div>
     </div>
-    <div class="rs-tparrow" style="display:flex;align-items:center;gap:0;opacity:{{ v.tpArrow }}"><div style="width:44px;height:2px;background:repeating-linear-gradient(90deg,var(--color-primary) 0 6px,transparent 6px 11px)"></div><div style="width:0;height:0;border-left:8px solid var(--color-primary);border-top:6px solid transparent;border-bottom:6px solid transparent"></div></div>
+    <div class="rs-tparrow" style="display:flex;align-items:center;gap:0;opacity:{{ v.tpArrow }}"><div class="home_test-plans_div-10"></div><div class="home_test-plans_div-11"></div></div>
     <div style="background:var(--color-surface);border:1px solid rgba(30,28,25,.1);border-radius:16px;padding:18px 20px;box-shadow:0 16px 40px rgba(30,28,25,.06);opacity:{{ v.tpB }};transform:translateX({{ v.tpBx }}px)">
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px"><span style="font-family:var(--font-mono);font-size:10px;letter-spacing:.12em;color:var(--color-text-muted)">TEST PLAN · DRAFT</span><span style="font-family:var(--font-mono);font-size:10px;color:#b07a2c;background:#f6e4c6;padding:2px 6px;border-radius:4px">EDITABLE</span></div>
-      <div style="font-weight:700;font-size:16px;margin-bottom:12px">Mark Unidentified Symbols · v1</div>
-      <div style="display:flex;flex-direction:column;gap:8px;font-size:13.5px">
+      <div class="home_test-plans_div-12"><span class="home_test-plans_span-2">TEST PLAN · DRAFT</span><span class="home_test-plans_span-3">EDITABLE</span></div>
+      <div class="home_test-plans_div-13">Mark Unidentified Symbols · v1</div>
+      <div class="home_test-plans_div-14">
         <sc-for list="{{ tests }}" as="t" hint-placeholder-count="4">
-          <div style="display:flex;gap:10px;align-items:flex-start;opacity:{{ t.o }};transform:translateY({{ t.y }}px)"><span style="flex:none;width:16px;height:16px;border-radius:4px;border:1.5px solid var(--color-primary);margin-top:2px;background:{{ t.bg }}"></span><span style="line-height:1.4">{{ t.n }}</span></div>
+          <div style="display:flex;gap:10px;align-items:flex-start;opacity:{{ t.o }};transform:translateY({{ t.y }}px)"><span style="flex:none;width:16px;height:16px;border-radius:4px;border:1.5px solid var(--color-primary);margin-top:2px;background:{{ t.bg }}"></span><span class="home_test-plans_span-4">{{ t.n }}</span></div>
         </sc-for>
       </div>
     </div>
@@ -394,19 +395,19 @@ a{color:var(--color-primary);text-decoration:none}a:hover{color:var(--color-prim
 </section>
 
 <!-- Audiences -->
-<section data-screen-label="Audiences" ref="{{ r9 }}" style="background:var(--color-primary);color:var(--color-bg)">
-  <div style="max-width:var(--container-large);margin:0 auto;padding:clamp(55px,11vw,110px) var(--page-padding)">
-    <div style="max-width:720px;margin-bottom:56px">
-      <div style="font-family:var(--font-mono);font-size:12px;letter-spacing:.14em;color:var(--color-accent);margin-bottom:18px">WHO IT PAYS OFF FOR</div>
-      <h3 style="font-size:clamp(28px,3.4vw,44px);line-height:1.08;letter-spacing:-.025em;font-weight:700;margin:0;text-wrap:balance">Three audiences, one model, different reads.</h3>
+<section data-screen-label="Audiences" ref="{{ r9 }}" class="home_audiences_section">
+  <div class="home_audiences_div">
+    <div class="home_audiences_div-2">
+      <div class="home_audiences_div-3">WHO IT PAYS OFF FOR</div>
+      <h3 class="home_audiences_h3">Three audiences, one model, different reads.</h3>
     </div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr));gap:20px">
+    <div class="home_audiences_div-4">
       <sc-for list="{{ audiences }}" as="u" hint-placeholder-count="3">
         <div style="opacity:{{ u.o }};transform:translateY({{ u.y }}px);border:1px solid rgba(246,243,236,.18);border-radius:18px;padding:28px 26px;min-height:220px;display:flex;flex-direction:column;gap:12px">
           <div style="width:12px;height:12px;border-radius:50%;background:{{ u.c }}"></div>
-          <div style="font-weight:700;font-size:20px;letter-spacing:-.01em;margin-top:8px">{{ u.n }}</div>
-          <div style="font-size:15.5px;line-height:1.55;color:rgba(246,243,236,.82);text-wrap:pretty">{{ u.d }}</div>
-          <div style="margin-top:auto;font-family:var(--font-mono);font-size:11px;letter-spacing:.08em;color:var(--color-accent)">{{ u.s }}</div>
+          <div class="home_audiences_div-5">{{ u.n }}</div>
+          <div class="home_audiences_div-6">{{ u.d }}</div>
+          <div class="home_audiences_div-7">{{ u.s }}</div>
         </div>
       </sc-for>
     </div>
@@ -414,67 +415,67 @@ a{color:var(--color-primary);text-decoration:none}a:hover{color:var(--color-prim
 </section>
 
 <!-- Where it sits -->
-<section data-screen-label="Where it sits" ref="{{ r10 }}" style="max-width:var(--container-large);margin:0 auto;padding:clamp(55px,11vw,110px) var(--page-padding)">
-  <div style="max-width:720px;margin-bottom:56px">
-    <div style="font-family:var(--font-mono);font-size:12px;letter-spacing:.14em;color:var(--color-primary);margin-bottom:18px">WHERE IT SITS</div>
-    <h3 style="font-size:clamp(28px,3vw,40px);line-height:1.1;letter-spacing:-.02em;font-weight:700;margin:0 0 18px;text-wrap:balance">It wraps the IDE rather than competing with it.</h3>
-    <p style="font-size:17px;line-height:1.6;color:var(--color-text-soft);margin:0;text-wrap:pretty">Nothing is displaced. Interfluent decides and governs the change; the developer's IDE still writes it; your pipelines, controls and monitoring stay exactly as they are.</p>
+<section data-screen-label="Where it sits" ref="{{ r10 }}" class="home_where-it-sits_section">
+  <div class="home_where-it-sits_div">
+    <div class="home_where-it-sits_div-2">WHERE IT SITS</div>
+    <h3 class="home_where-it-sits_h3">It wraps the IDE rather than competing with it.</h3>
+    <p class="home_where-it-sits_p">Nothing is displaced. Interfluent decides and governs the change; the developer's IDE still writes it; your pipelines, controls and monitoring stay exactly as they are.</p>
   </div>
-  <div class="rs-grid4" style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;align-items:stretch">
+  <div class="rs-grid4 home_where-it-sits_div-3">
     <sc-for list="{{ flow }}" as="s" hint-placeholder-count="4">
       <div style="opacity:{{ s.o }};transform:translateY({{ s.y }}px);border-radius:16px;padding:22px 20px;background:{{ s.bg }};color:{{ s.fg }};border:1px solid {{ s.bd }};min-height:200px;display:flex;flex-direction:column;gap:8px;position:relative;min-width:0">
-        <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:.12em;opacity:.7">{{ s.k }}</div>
-        <div style="font-weight:700;font-size:clamp(14px,1.5vw,19px);letter-spacing:-.01em;line-height:1.25">{{ s.n }}</div>
-        <div style="font-size:clamp(12px,1.15vw,14px);line-height:1.5;opacity:.85;text-wrap:pretty">{{ s.d }}</div>
+        <div class="home_where-it-sits_div-4">{{ s.k }}</div>
+        <div class="home_where-it-sits_div-5">{{ s.n }}</div>
+        <div class="home_where-it-sits_div-6">{{ s.d }}</div>
       </div>
     </sc-for>
   </div>
   <div class="rs-loop" style="margin-top:14px;height:34px;position:relative;opacity:{{ v.loopO }}">
-    <div style="position:absolute;left:12.5%;right:12.5%;top:16px;border:1.5px dashed rgba(31,78,61,.5);border-top:none;height:16px;border-radius:0 0 14px 14px"></div>
-    <div style="position:absolute;left:calc(12.5% - 6px);top:10px;width:0;height:0;border-bottom:9px solid var(--color-primary);border-left:6px solid transparent;border-right:6px solid transparent"></div>
-    <div style="position:absolute;left:50%;transform:translateX(-50%);top:22px;background:var(--color-bg);padding:0 10px;font-family:var(--font-mono);font-size:10.5px;letter-spacing:.1em;color:var(--color-primary)">THE GOVERNING LOOP FEEDS THE NEXT DECISION</div>
+    <div class="home_where-it-sits_div-7"></div>
+    <div class="home_where-it-sits_div-8"></div>
+    <div class="home_where-it-sits_div-9">THE GOVERNING LOOP FEEDS THE NEXT DECISION</div>
   </div>
 </section>
 
 <!-- Differentiation -->
-<section data-screen-label="Differentiation" ref="{{ r11 }}" style="background:#efeae0;border-top:1px solid rgba(30,28,25,.06);border-bottom:1px solid rgba(30,28,25,.06)">
-  <div style="max-width:var(--container-large);margin:0 auto;padding:clamp(55px,11vw,110px) var(--page-padding)">
-    <div style="max-width:720px;margin-bottom:48px">
-      <div style="font-family:var(--font-mono);font-size:12px;letter-spacing:.14em;color:var(--color-primary);margin-bottom:18px">WHAT YOU ALREADY OWN, AND WHAT IS MISSING</div>
-      <h3 style="font-size:clamp(28px,3vw,40px);line-height:1.1;letter-spacing:-.02em;font-weight:700;margin:0;text-wrap:balance">Your current tools are good at their job. Interfluent holds the part in between.</h3>
+<section data-screen-label="Differentiation" ref="{{ r11 }}" class="home_differentiation_section">
+  <div class="home_differentiation_div">
+    <div class="home_differentiation_div-2">
+      <div class="home_differentiation_div-3">WHAT YOU ALREADY OWN, AND WHAT IS MISSING</div>
+      <h3 class="home_differentiation_h3">Your current tools are good at their job. Interfluent holds the part in between.</h3>
     </div>
-    <div style="display:flex;flex-direction:column;gap:1px;border-radius:16px;overflow:hidden;border:1px solid rgba(30,28,25,.1)">
-      <div class="rs-diff rs-diffhead" style="display:grid;grid-template-columns:minmax(140px,1fr) minmax(160px,1.3fr) minmax(160px,1.6fr);gap:20px;padding:12px 22px;background:var(--color-bg);font-family:var(--font-mono);font-size:10.5px;letter-spacing:.12em;color:var(--color-text-muted)"><span>CATEGORY</span><span>WHAT IT DOES WELL</span><span style="color:var(--color-primary)">WHAT CODELENS HOLDS</span></div>
+    <div class="home_differentiation_div-4">
+      <div class="rs-diff rs-diffhead home_differentiation_div-5"><span>CATEGORY</span><span>WHAT IT DOES WELL</span><span class="home_differentiation_span">WHAT CODELENS HOLDS</span></div>
       <sc-for list="{{ diff }}" as="d" hint-placeholder-count="4">
-        <div class="rs-diff" style="display:grid;grid-template-columns:minmax(140px,1fr) minmax(160px,1.3fr) minmax(160px,1.6fr);gap:20px;padding:20px 22px;background:var(--color-surface);border-top:1px solid rgba(30,28,25,.08);font-size:14.5px;line-height:1.5;opacity:{{ d.o }};transform:translateY({{ d.y }}px)"><span data-l="CATEGORY" style="font-weight:700">{{ d.c }}</span><span data-l="WHAT IT DOES WELL" style="color:var(--color-text-soft)">{{ d.w }}</span><span data-l="WHAT CODELENS HOLDS" style="color:var(--color-primary);font-weight:500">{{ d.h }}</span></div>
+        <div class="rs-diff" style="display:grid;grid-template-columns:minmax(140px,1fr) minmax(160px,1.3fr) minmax(160px,1.6fr);gap:20px;padding:20px 22px;background:var(--color-surface);border-top:1px solid rgba(30,28,25,.08);font-size:14.5px;line-height:1.5;opacity:{{ d.o }};transform:translateY({{ d.y }}px)"><span data-l="CATEGORY" class="home_differentiation_span-2">{{ d.c }}</span><span data-l="WHAT IT DOES WELL" class="home_differentiation_span-3">{{ d.w }}</span><span data-l="WHAT CODELENS HOLDS" class="home_differentiation_span-4">{{ d.h }}</span></div>
       </sc-for>
     </div>
   </div>
 </section>
 
 <!-- Social proof -->
-<section data-screen-label="Social proof" style="max-width:var(--container-large);margin:0 auto;padding:clamp(45px,9vw,90px) var(--page-padding) 60px;text-align:center">
-  <div style="font-family:var(--font-mono);font-size:12px;letter-spacing:.14em;color:var(--color-text-muted);margin-bottom:28px">TEAMS BUILDING ON A SHARED PICTURE</div>
-  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(150px,100%),1fr));gap:14px">
-    <div style="height:56px;border-radius:10px;background:repeating-linear-gradient(135deg,var(--color-surface-soft) 0 6px,#f3efe6 6px 12px);display:grid;place-items:center;font-family:var(--font-mono);font-size:11px;color:var(--color-text-muted)">customer logo</div>
-    <div style="height:56px;border-radius:10px;background:repeating-linear-gradient(135deg,var(--color-surface-soft) 0 6px,#f3efe6 6px 12px);display:grid;place-items:center;font-family:var(--font-mono);font-size:11px;color:var(--color-text-muted)">customer logo</div>
-    <div style="height:56px;border-radius:10px;background:repeating-linear-gradient(135deg,var(--color-surface-soft) 0 6px,#f3efe6 6px 12px);display:grid;place-items:center;font-family:var(--font-mono);font-size:11px;color:var(--color-text-muted)">customer logo</div>
-    <div style="height:56px;border-radius:10px;background:repeating-linear-gradient(135deg,var(--color-surface-soft) 0 6px,#f3efe6 6px 12px);display:grid;place-items:center;font-family:var(--font-mono);font-size:11px;color:var(--color-text-muted)">customer logo</div>
-    <div style="height:56px;border-radius:10px;background:repeating-linear-gradient(135deg,var(--color-surface-soft) 0 6px,#f3efe6 6px 12px);display:grid;place-items:center;font-family:var(--font-mono);font-size:11px;color:var(--color-text-muted)">customer logo</div>
-    <div style="height:56px;border-radius:10px;background:repeating-linear-gradient(135deg,var(--color-surface-soft) 0 6px,#f3efe6 6px 12px);display:grid;place-items:center;font-family:var(--font-mono);font-size:11px;color:var(--color-text-muted)">customer logo</div>
+<section data-screen-label="Social proof" class="home_social-proof_section">
+  <div class="home_social-proof_div">TEAMS BUILDING ON A SHARED PICTURE</div>
+  <div class="home_social-proof_div-2">
+    <div class="home_social-proof_div-3">customer logo</div>
+    <div class="home_social-proof_div-4">customer logo</div>
+    <div class="home_social-proof_div-5">customer logo</div>
+    <div class="home_social-proof_div-6">customer logo</div>
+    <div class="home_social-proof_div-7">customer logo</div>
+    <div class="home_social-proof_div-8">customer logo</div>
   </div>
 </section>
 
 <!-- CTA -->
-<section id="cta" data-screen-label="CTA" style="max-width:var(--container-large);margin:0 auto 100px;padding:0 40px">
-  <div style="border-radius:28px;background:var(--color-primary);color:var(--color-bg);padding:64px 48px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:28px">
-    <div style="max-width:560px">
-      <h3 style="font-size:clamp(28px,3.4vw,44px);line-height:1.08;letter-spacing:-.025em;font-weight:700;margin:0 0 14px;text-wrap:balance">See the whole loop on your own codebase.</h3>
-      <p style="font-size:17px;line-height:1.55;color:rgba(246,243,236,.8);margin:0">Every screen in this story is a working prototype. We'll walk it live, from feature map to test plan.</p>
+<section id="cta" data-screen-label="CTA" class="home_cta_section">
+  <div class="home_cta_div">
+    <div class="home_cta_div-2">
+      <h3 class="home_cta_h3">See the whole loop on your own codebase.</h3>
+      <p class="home_cta_p">Every screen in this story is a working prototype. We'll walk it live, from feature map to test plan.</p>
     </div>
-    <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center">
-      <a href="./contact/" style="background:var(--color-accent);color:var(--color-text);padding:16px 26px;border-radius:999px;font-weight:700;font-size:16px;white-space:nowrap">Book a walkthrough</a>
-      <sc-if value="{{ showBeta }}" hint-placeholder-val="{{ true }}"><a href="./beta/" style="padding:16px 22px;border-radius:999px;font-weight:600;font-size:16px;white-space:nowrap;border:1px solid rgba(246,243,236,.4);color:var(--color-bg)">Request beta access</a></sc-if>
+    <div class="home_cta_div-3">
+      <a href="./contact/" class="home_cta_a">Book a walkthrough</a>
+      <sc-if value="{{ showBeta }}" hint-placeholder-val="{{ true }}"><a href="./beta/" class="home_cta_a-2">Request beta access</a></sc-if>
     </div>
   </div>
   </section>

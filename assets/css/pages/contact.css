@@ -1,0 +1,25 @@
+.contact_contact_dc-import{position:sticky;top:0;z-index:20}
+.contact_contact_section{max-width:var(--container-large);margin:0 auto;padding:clamp(40px,8vw,80px) var(--page-padding) clamp(60px,12vw,120px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:64px;align-items:start}
+.contact_contact_div{font-family:var(--font-mono);font-size:12px;letter-spacing:.14em;color:var(--color-primary);margin-bottom:18px}
+.contact_contact_h1{font-size:clamp(36px,4.4vw,56px);line-height:1.04;letter-spacing:-.03em;font-weight:700;margin:0 0 20px;text-wrap:balance}
+.contact_contact_p{font-size:18px;line-height:1.6;color:var(--color-text-soft);margin:0 0 40px;text-wrap:pretty}
+.contact_contact_div-2{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(200px,100%),1fr));gap:28px;font-size:15px;line-height:1.55;color:var(--color-text-soft)}
+.contact_contact_div-3{font-family:var(--font-mono);font-size:11px;letter-spacing:.12em;color:var(--color-text-muted);margin-bottom:8px}
+.contact_contact_a{font-weight:600}
+.contact_contact_div-4{font-family:var(--font-mono);font-size:11px;letter-spacing:.12em;color:var(--color-text-muted);margin-bottom:8px}
+.contact_contact_div-5{background:var(--color-surface);border:1px solid rgba(30,28,25,.1);border-radius:20px;padding:32px;box-shadow:0 24px 60px rgba(30,28,25,.08)}
+.contact_contact_form{display:flex;flex-direction:column;gap:16px}
+.contact_contact_div-6{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(180px,100%),1fr));gap:14px}
+.contact_contact_label{display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:600}
+.contact_contact_input{padding:12px 14px;border-radius:10px;border:1px solid rgba(30,28,25,.16);background:var(--color-bg);font-size:15px;outline:none}
+.contact_contact_label-2{display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:600}
+.contact_contact_input-2{padding:12px 14px;border-radius:10px;border:1px solid rgba(30,28,25,.16);background:var(--color-bg);font-size:15px;outline:none}
+.contact_contact_label-3{display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:600}
+.contact_contact_select{padding:12px 14px;border-radius:10px;border:1px solid rgba(30,28,25,.16);background:var(--color-bg);font-size:15px;outline:none}
+.contact_contact_label-4{display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:600}
+.contact_contact_textarea{padding:12px 14px;border-radius:10px;border:1px solid rgba(30,28,25,.16);background:var(--color-bg);font-size:15px;outline:none;resize:vertical}
+.contact_contact_button{margin-top:6px;background:var(--color-primary);color:var(--color-bg);padding:14px 22px;border-radius:999px;font-weight:600;font-size:15px;border:none;cursor:pointer}
+.contact_contact_div-7{display:flex;flex-direction:column;gap:14px;min-height:320px;justify-content:center;text-align:center;padding:20px}
+.contact_contact_div-8{width:48px;height:48px;border-radius:50%;background:var(--color-accent);margin:0 auto;display:grid;place-items:center;font-weight:700;font-size:20px}
+.contact_contact_div-9{font-size:24px;font-weight:700;letter-spacing:-.02em}
+.contact_contact_div-10{font-size:15px;line-height:1.55;color:var(--color-text-soft)}

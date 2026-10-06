@@ -7,48 +7,51 @@
 <script src="support.js"></script>
 </head>
 <body>
-<x-dc>
+<x-dc class="page-wrapper">
 <helmet>
 <link rel="stylesheet" href="responsive.css">
 <link rel="stylesheet" href="assets/css/global.css">
 <link rel="stylesheet" href="assets/css/components.css">
+<link rel="stylesheet" href="assets/css/pages/blog.css">
 <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
 <script src="site-config.js"></script>
 <style>body{margin:0;background:var(--color-bg);color:var(--color-text);font-family:var(--font-sans);-webkit-font-smoothing:antialiased}a{color:var(--color-primary);text-decoration:none}a:hover{color:var(--color-primary-hover)}*{box-sizing:border-box}</style>
 </helmet>
-<dc-import name="SiteNav" active="blog" hint-size="100%,64px" style="position:sticky;top:0;z-index:20"></dc-import>
+<dc-import name="SiteNav" active="blog" hint-size="100%,64px" class="blog_blog_dc-import"></dc-import>
+<main class="main-wrapper">
 
-<section data-screen-label="Blog · Intro" style="max-width:var(--container-large);margin:0 auto;padding:clamp(48px,9.6vw,96px) var(--page-padding) 48px">
-  <div style="font-family:var(--font-mono);font-size:12px;letter-spacing:.14em;color:var(--color-primary);margin-bottom:18px">BLOG</div>
-  <h1 style="font-size:clamp(38px,5vw,64px);line-height:1.03;letter-spacing:-.03em;font-weight:700;margin:0;max-width:760px;text-wrap:balance">Notes from the part in between.</h1>
+<section data-screen-label="Blog · Intro" class="blog_blog-intro_section">
+  <div class="blog_blog-intro_div">BLOG</div>
+  <h1 class="blog_blog-intro_h1">Notes from the part in between.</h1>
 </section>
 
-<section data-screen-label="Blog · Featured" style="max-width:var(--container-large);margin:0 auto;padding:0 40px 24px">
-  <a href="../blog-post/" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:40px;align-items:center;background:var(--color-primary);color:var(--color-bg);border-radius:24px;padding:clamp(22px,5vw,40px);color:var(--color-bg)">
-    <div style="aspect-ratio:16/10;border-radius:16px;background:repeating-linear-gradient(135deg,rgba(246,243,236,.08) 0 6px,rgba(246,243,236,.04) 6px 12px);display:grid;place-items:center;font-family:var(--font-mono);font-size:11px;color:rgba(246,243,236,.6)">cover image</div>
+<section data-screen-label="Blog · Featured" class="blog_blog-featured_section">
+  <a href="../blog-post/" class="blog_blog-featured_a">
+    <div class="blog_blog-featured_div">cover image</div>
     <div>
-      <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:.14em;color:var(--color-accent);margin-bottom:16px">ESSAY · 8 MIN</div>
-      <div style="font-size:clamp(26px,3vw,38px);font-weight:700;letter-spacing:-.025em;line-height:1.1;margin-bottom:14px;text-wrap:balance">Everyone ships fast now. Together, you still don't.</div>
-      <p style="margin:0 0 20px;font-size:16px;line-height:1.6;color:rgba(246,243,236,.82);text-wrap:pretty">AI made each function faster on its own. Cross-functional shipping got slower. Here's what we think is happening in the handoffs, and why the fix is a shared model rather than another meeting.</p>
-      <div style="font-size:13.5px;color:rgba(246,243,236,.7)">September 2026 · Interfluent team</div>
+      <div class="blog_blog-featured_div-2">ESSAY · 8 MIN</div>
+      <div class="blog_blog-featured_div-3">Everyone ships fast now. Together, you still don't.</div>
+      <p class="blog_blog-featured_p">AI made each function faster on its own. Cross-functional shipping got slower. Here's what we think is happening in the handoffs, and why the fix is a shared model rather than another meeting.</p>
+      <div class="blog_blog-featured_div-4">September 2026 · Interfluent team</div>
     </div>
   </a>
 </section>
 
-<section data-screen-label="Blog · Posts" style="max-width:var(--container-large);margin:0 auto;padding:24px var(--page-padding) clamp(60px,12vw,120px)">
-  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr));gap:24px">
+<section data-screen-label="Blog · Posts" class="blog_blog-posts_section">
+  <div class="blog_blog-posts_div">
     <sc-for list="{{ posts }}" as="p" hint-placeholder-count="3">
-      <a href="../blog-post/" style="display:flex;flex-direction:column;gap:14px;color:var(--color-text);padding:22px;border-radius:18px;background:var(--color-surface);border:1px solid rgba(30,28,25,.1)" style-hover="border-color:var(--color-primary)">
-        <div style="aspect-ratio:16/9;border-radius:12px;background:repeating-linear-gradient(135deg,var(--color-surface-soft) 0 6px,#f3efe6 6px 12px)"></div>
-        <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:.12em;color:var(--color-text-muted)">{{ p.k }}</div>
-        <div style="font-size:20px;font-weight:700;letter-spacing:-.015em;line-height:1.2;text-wrap:balance">{{ p.t }}</div>
-        <p style="margin:0;font-size:14.5px;line-height:1.55;color:var(--color-text-soft);text-wrap:pretty">{{ p.d }}</p>
-        <div style="margin-top:auto;font-size:13px;color:var(--color-text-muted)">{{ p.m }}</div>
+      <a href="../blog-post/" style-hover="border-color:var(--color-primary)" class="blog_blog-posts_a">
+        <div class="blog_blog-posts_div-2"></div>
+        <div class="blog_blog-posts_div-3">{{ p.k }}</div>
+        <div class="blog_blog-posts_div-4">{{ p.t }}</div>
+        <p class="blog_blog-posts_p">{{ p.d }}</p>
+        <div class="blog_blog-posts_div-5">{{ p.m }}</div>
       </a>
     </sc-for>
   </div>
 </section>
 
+</main>
 <dc-import name="SiteFooter" hint-size="100%,320px"></dc-import>
 </x-dc>
 <script type="text/x-dc" data-dc-script>
