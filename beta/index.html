@@ -85,7 +85,7 @@
 class Component extends DCLogic {
   state = { sent: false, withCode: false };
   renderVals() {
-    const cfg = window.CODELENS_CONFIG || {};
+    const cfg = window.INTERFLUENT_CONFIG || {};
     const beta = !!(this.props.betaEnabled ?? cfg.betaEnabled ?? true);
     const code = !!(this.props.accessCodeEnabled ?? cfg.accessCodeEnabled ?? true);
     const submit = e => { e.preventDefault(); const f = new FormData(e.target); this.setState({ sent: true, withCode: !!(f.get('referral') || '').trim() }); };

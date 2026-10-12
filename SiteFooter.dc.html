@@ -31,11 +31,11 @@
 <script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1200,&quot;height&quot;:320},&quot;betaEnabled&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;},&quot;accessCodeEnabled&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
 class Component extends DCLogic {
   renderVals() {
-    const cfg = window.CODELENS_CONFIG || {};
+    const cfg = window.INTERFLUENT_CONFIG || {};
     const isProjectPages = location.hostname.endsWith('github.io') && location.pathname.startsWith('/interfluent.ai');
     const base = isProjectPages ? '/interfluent.ai/' : '/';
     const r = {
-      product: base + '#codelens', pricing: base + 'pricing/', beta: base + 'beta/',
+      product: base + '#interfluent', pricing: base + 'pricing/', beta: base + 'beta/',
       about: base + 'about/', careers: base + 'careers/', contact: base + 'contact/',
       home: base, blog: base + 'blog/', signin: base + 'signin/', privacy: base + 'privacy/', terms: base + 'terms/',
       logo: base + 'assets/images/interfluent-logo.svg'

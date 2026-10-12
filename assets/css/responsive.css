@@ -1,4 +1,4 @@
-/* CodeLens responsive layer. Inline styles win by default, so overrides use !important. */
+/* Interfluent responsive layer. Inline styles win by default, so overrides use !important. */
 .rs-burger{display:none}
 .rs-burger input{position:absolute;opacity:0;pointer-events:none}
 img,svg,video{max-width:100%}

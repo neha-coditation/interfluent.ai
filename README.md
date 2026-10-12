@@ -1,4 +1,4 @@
-# Interfluent / CodeLens Website
+# Interfluent Website
 
 Static GitHub-ready build created from the supplied `Landing_Page_Responsive.zip` export.
 
@@ -10,7 +10,7 @@ The current Webflow implementation remains the visual/content reference:
 
 ## Main pages
 
-- `index.html` — current landing page (based on the supplied **CodeLens Landing v1** export, which most closely matches the live Webflow homepage)
+- `index.html` — current landing page (based on the supplied **Interfluent Landing v1** export, which most closely matches the live Webflow homepage)
 - `about.html`
 - `pricing.html`
 - `blog.html`

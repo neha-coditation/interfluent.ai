@@ -64,7 +64,7 @@
 <script type="text/x-dc" data-dc-script data-props="{&quot;betaEnabled&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Switches&quot;}}">
 class Component extends DCLogic {
   renderVals() {
-    const cfg = window.CODELENS_CONFIG || {};
+    const cfg = window.INTERFLUENT_CONFIG || {};
     const beta = !!(this.props.betaEnabled ?? cfg.betaEnabled ?? true);
     const light = { bg: 'var(--color-surface)', fg: 'var(--color-text)', bd: 'rgba(30,28,25,.1)', sh: 'none', line: 'rgba(30,28,25,.1)', btnBg: 'transparent', btnFg: 'var(--color-text)', btnBd: 'rgba(30,28,25,.18)' };
     const dark = { bg: 'var(--color-primary)', fg: 'var(--color-bg)', bd: 'var(--color-primary)', sh: '0 24px 60px rgba(31,78,61,.25)', line: 'rgba(246,243,236,.2)', btnBg: 'var(--color-accent)', btnFg: 'var(--color-text)', btnBd: 'var(--color-accent)' };

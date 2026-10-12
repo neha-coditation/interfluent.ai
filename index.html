@@ -196,10 +196,10 @@ a{color:var(--color-primary);text-decoration:none}a:hover{color:var(--color-prim
   </div>
 </section>
 
-<!-- ACT 3 · CODELENS -->
-<section id="codelens" data-screen-label="Act 3 · Interfluent" ref="{{ r3 }}" class="home_act-3-interfluent_section">
+<!-- ACT 3 · INTERFLUENT -->
+<section id="interfluent" data-screen-label="Act 3 · Interfluent" ref="{{ r3 }}" class="home_act-3-interfluent_section">
   <div class="home_act-3-interfluent_div">
-    <div class="home_act-3-interfluent_div-2">03 · CODELENS</div>
+    <div class="home_act-3-interfluent_div-2">03 · INTERFLUENT</div>
     <h2 class="home_act-3-interfluent_h2">Interfluent is that shared context. And the agents that work from it.</h2>
     <p class="home_act-3-interfluent_p">Product capabilities above the line, the services that implement them below it. Every node carries what the agents currently know about it: requirement status, documentation, debt and coverage. Select one and everything known about it opens in one place.</p>
   </div>
@@ -450,9 +450,9 @@ a{color:var(--color-primary);text-decoration:none}a:hover{color:var(--color-prim
       <h3 class="home_differentiation_h3">Your current tools are good at their job. Interfluent holds the part in between.</h3>
     </div>
     <div class="home_differentiation_div-4">
-      <div class="rs-diff rs-diffhead home_differentiation_div-5"><span>CATEGORY</span><span>WHAT IT DOES WELL</span><span class="home_differentiation_span">WHAT CODELENS HOLDS</span></div>
+      <div class="rs-diff rs-diffhead home_differentiation_div-5"><span>CATEGORY</span><span>WHAT IT DOES WELL</span><span class="home_differentiation_span">WHAT INTERFLUENT HOLDS</span></div>
       <sc-for list="{{ diff }}" as="d" hint-placeholder-count="4">
-        <div class="rs-diff" style="display:grid;grid-template-columns:minmax(140px,1fr) minmax(160px,1.3fr) minmax(160px,1.6fr);gap:20px;padding:20px 22px;background:var(--color-surface);border-top:1px solid rgba(30,28,25,.08);font-size:14.5px;line-height:1.5;opacity:{{ d.o }};transform:translateY({{ d.y }}px)"><span data-l="CATEGORY" class="home_differentiation_span-2">{{ d.c }}</span><span data-l="WHAT IT DOES WELL" class="home_differentiation_span-3">{{ d.w }}</span><span data-l="WHAT CODELENS HOLDS" class="home_differentiation_span-4">{{ d.h }}</span></div>
+        <div class="rs-diff" style="display:grid;grid-template-columns:minmax(140px,1fr) minmax(160px,1.3fr) minmax(160px,1.6fr);gap:20px;padding:20px 22px;background:var(--color-surface);border-top:1px solid rgba(30,28,25,.08);font-size:14.5px;line-height:1.5;opacity:{{ d.o }};transform:translateY({{ d.y }}px)"><span data-l="CATEGORY" class="home_differentiation_span-2">{{ d.c }}</span><span data-l="WHAT IT DOES WELL" class="home_differentiation_span-3">{{ d.w }}</span><span data-l="WHAT INTERFLUENT HOLDS" class="home_differentiation_span-4">{{ d.h }}</span></div>
       </sc-for>
     </div>
   </div>
@@ -593,14 +593,14 @@ class Component extends DCLogic {
     const U = [['Business and product', 'Reads the state of the product and the cost of a change without reading code.', 'FEATURE MAP · IMPACT · PULSE', 'var(--color-accent)'], ['Business analysts', 'Turns a request into a specified change with the evidence already attached.', 'PRDS · BRIEFS · CONTEXT GRAPH', 'var(--color-bg)'], ['Engineering', 'Enters the IDE knowing what to change, what it touches, and what to test.', 'BRIEFS · DEBT · COVERAGE · TEST PLANS', '#8fd3c7']];
     const audiences = U.map((u, i) => { const t = ease(seg(p9, 0.1 + i * 0.12, 0.4 + i * 0.12)); return { n: u[0], d: u[1], s: u[2], c: u[3], o: t, y: (1 - t) * 24 }; });
     // Where it sits
-    const W = [['INTENT', 'A business decision', 'A requirement, a defect, a modernisation mandate or a regulatory change.', 'var(--color-surface)', 'var(--color-text)', 'rgba(30,28,25,.12)'], ['CODELENS · DECIDE', 'Feature map, context graph, impact analysis, requirements, engineering brief.', 'Priced and approved before anyone commits.', 'var(--color-primary)', 'var(--color-bg)', 'var(--color-primary)'], ['EXECUTE', "The developer's IDE", 'Cursor or its equivalent writes the change, working from approved context.', 'var(--color-surface)', 'var(--color-text)', 'rgba(30,28,25,.12)'], ['CODELENS · GOVERN', 'Documentation sync, debt and security, coverage and test plans, activity feed.', 'The record is kept true after it ships.', 'var(--color-primary)', 'var(--color-bg)', 'var(--color-primary)']];
+    const W = [['INTENT', 'A business decision', 'A requirement, a defect, a modernisation mandate or a regulatory change.', 'var(--color-surface)', 'var(--color-text)', 'rgba(30,28,25,.12)'], ['INTERFLUENT · DECIDE', 'Feature map, context graph, impact analysis, requirements, engineering brief.', 'Priced and approved before anyone commits.', 'var(--color-primary)', 'var(--color-bg)', 'var(--color-primary)'], ['EXECUTE', "The developer's IDE", 'Cursor or its equivalent writes the change, working from approved context.', 'var(--color-surface)', 'var(--color-text)', 'rgba(30,28,25,.12)'], ['INTERFLUENT · GOVERN', 'Documentation sync, debt and security, coverage and test plans, activity feed.', 'The record is kept true after it ships.', 'var(--color-primary)', 'var(--color-bg)', 'var(--color-primary)']];
     const flow = W.map((w, i) => { const t = ease(seg(p10, 0.05 + i * 0.12, 0.35 + i * 0.12)); return { k: w[0], n: w[1], d: w[2], bg: w[3], fg: w[4], bd: w[5], o: t, y: (1 - t) * 20 }; });
     v.loopO = ease(seg(p10, 0.6, 0.85));
     // Differentiation
     const D = [['AI coding assistants', 'Produce the change quickly inside the editor', 'The approved requirement and the priced blast radius that make the change the right one'], ['Code intelligence platforms', 'Search and navigate code across repositories', 'Intent as first-class nodes, so search and impact cross from code into requirements and documentation'], ['Quality and security tools', 'Detect issues accurately at the file level', 'The line from a finding up to the product capability, which is what gets it funded'], ['Documentation tooling', 'Publishes and hosts what people write', 'Pages rewritten from the live model and held as a reviewable diff, so the record does not decay']];
     const diff = D.map((d, i) => { const t = ease(seg(p11, 0.05 + i * 0.1, 0.35 + i * 0.1)); return { c: d[0], w: d[1], h: d[2], o: t, y: (1 - t) * 14 }; });
 
-    const cfg = window.CODELENS_CONFIG || {};
+    const cfg = window.INTERFLUENT_CONFIG || {};
     const showBeta = !!(this.props.betaEnabled ?? cfg.betaEnabled ?? true), showSignIn = !!(this.props.accessCodeEnabled ?? cfg.accessCodeEnabled ?? true);
     return { showBeta, showWalk: !showBeta, showSignIn, v, leaks, nodes, edges, feats, svcs, agents, risks, tests, audiences, flow, diff, r1: this.r1, r2: this.r2, r3: this.r3, r4: this.r4, r5: this.r5, r6: this.r6, r7: this.r7, r8: this.r8, r9: this.r9, r10: this.r10, r11: this.r11 };
   }
