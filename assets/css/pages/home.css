@@ -306,3 +306,43 @@
 .home_cta_div-3{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
 .home_cta_a{background:var(--color-accent);color:var(--color-text);padding:16px 26px;border-radius:999px;font-weight:700;font-size:16px;white-space:nowrap}
 .home_cta_a-2{padding:16px 22px;border-radius:999px;font-weight:600;font-size:16px;white-space:nowrap;border:1px solid rgba(246,243,236,.4);color:var(--color-bg)}
+
+/* TODAY: keep the animated desktop cards inside the layout when the grid wraps. */
+@media (max-width:1100px){
+  .home_act-1-today_div-3{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:24px;
+    margin-top:40px;
+  }
+  .home_act-1-today_div-3 > div{
+    /* Override the runtime's inline drift and rotation after the grid wraps. */
+    transform:none!important;
+    transition:none!important;
+    min-width:0;
+    overflow-wrap:anywhere;
+  }
+  .home_act-1-today_div-3 > div:last-child{grid-column:1/-1}
+  .home_act-1-today_div-25{margin-top:56px}
+}
+
+@media (max-width:767px){
+  .home_act-1-today_div-3{
+    grid-template-columns:minmax(0,1fr);
+    gap:20px;
+    margin-top:32px;
+  }
+  .home_act-1-today_div-3 > div{padding:20px!important}
+  .home_act-1-today_p{font-size:17px}
+  .home_act-1-today_div-20,
+  .home_act-1-today_div-21,
+  .home_act-1-today_div-22,
+  .home_act-1-today_div-23{
+    white-space:normal;
+    overflow-wrap:anywhere;
+  }
+  .home_act-1-today_div-25{
+    grid-template-columns:minmax(0,1fr);
+    margin-top:40px;
+    gap:16px;
+  }
+}
