@@ -142,3 +142,10 @@ header a:is([href*="/pricing"],[href*="/careers"],[href*="/signin"],[href*="/sig
 [role="navigation"] a:is([href*="/pricing"],[href*="/careers"],[href*="/signin"],[href*="/sign-in"],[href*="/SignIn"]) {
   display: none !important;
 }
+
+/* Remove inactive links from the shared footer on every page. */
+footer a:is([href*="pricing" i],[href*="career" i],[href*="sign-in" i],[href*="signin" i],[href*="sign_in" i]),
+.site-footer a:is([href*="pricing" i],[href*="career" i],[href*="sign-in" i],[href*="signin" i],[href*="sign_in" i]),
+[class*="footer"] a:is([href*="pricing" i],[href*="career" i],[href*="sign-in" i],[href*="signin" i],[href*="sign_in" i]) {
+  display: none !important;
+}
