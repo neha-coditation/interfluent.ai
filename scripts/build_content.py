@@ -17,7 +17,7 @@ def markdown(text):
         elif line.strip():out.append("<p>"+esc(line)+"</p>")
     return "\n".join(out)
 def page(title,body,description=""):
-    return f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{esc(title)} | Interfluent</title><meta name="description" content="{esc(description)}"><link rel="stylesheet" href="../../assets/css/global.css"><link rel="stylesheet" href="../../assets/css/components.css"><style>main{{max-width:900px;margin:auto;padding:100px 24px 80px}}article{{line-height:1.7}}article h1{{font-size:clamp(2rem,5vw,3.5rem)}}.cms-card{{display:block;padding:24px;border:1px solid #ddd;border-radius:12px;margin:16px 0;color:inherit}}.cms-card:hover{{border-color:currentColor}}</style></head><body><main><nav><a href="../../">Interfluent</a> / <a href="../">Resources</a></nav>{body}</main></body></html>'''
+    return f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{esc(title)} | Interfluent</title><meta name="description" content="{esc(description)}"><link rel="stylesheet" href="/interfluent.ai/assets/css/global.css"><link rel="stylesheet" href="/interfluent.ai/assets/css/components.css"><style>main{{max-width:900px;margin:auto;padding:100px 24px 80px}}article{{line-height:1.7}}article h1{{font-size:clamp(2rem,5vw,3.5rem)}}.cms-card{{display:block;padding:24px;border:1px solid #ddd;border-radius:12px;margin:16px 0;color:inherit}}.cms-card:hover{{border-color:currentColor}}</style></head><body><main><nav><a href="/interfluent.ai/">Interfluent</a> / <a href="/interfluent.ai/blog/">Resources</a></nav>{body}</main></body></html>'''
 def build():
     if OUT.exists():shutil.rmtree(OUT)
     shutil.copytree(ROOT,OUT,ignore=shutil.ignore_patterns(".git","_site","node_modules","__pycache__"))
@@ -33,8 +33,8 @@ def build():
             dest.write_text(page(obj["title"],content,obj.get("description","")),encoding="utf-8")
             urls.append(f"https://neha-coditation.github.io/interfluent.ai/{route}/{ident}/")
         if items and kind=="articles":
-            # Keep the designed Blog page, but replace its placeholder cards
-            # with links to actual published article detail pages.
+            # Keep the designed Blog page and append published CMS cards
+            # with links to their own article detail pages.
             listing=OUT/"blog"/"index.html"
             if listing.exists():
                 markup=listing.read_text(encoding="utf-8")
