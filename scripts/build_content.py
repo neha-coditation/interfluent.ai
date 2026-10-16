@@ -43,11 +43,12 @@ def build():
                 end=start
                 if start!=-1:
                     cards_html="".join(
-                        '<a class="blog_blog-posts_a" href="blog/'+esc(slug(o["slug"]))+'/">'\n                        + ('<img src="/interfluent.ai/'+esc(o["image"])+'" alt="" loading="lazy" style="width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:12px">' if o.get("image") else '')
-                        '<div class="blog_blog-posts_div-3">'+esc(o.get("category","ARTICLE"))+'</div>'
-                        '<div class="blog_blog-posts_div-4">'+esc(o["title"])+'</div>'
-                        '<p class="blog_blog-posts_p">'+esc(o.get("description",""))+'</p>'
-                        '<div class="blog_blog-posts_div-5">'+esc(o.get("date",""))+'</div></a>'
+                        '<a class="blog_blog-posts_a" href="blog/'+esc(slug(o["slug"]))+'/">'
+                        + ('<img src="/interfluent.ai/'+esc(o["image"])+'" alt="" loading="lazy" style="width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:12px">' if o.get("image") else '')
+                        + '<div class="blog_blog-posts_div-3">'+esc(o.get("category","ARTICLE"))+'</div>'
+                        + '<div class="blog_blog-posts_div-4">'+esc(o["title"])+'</div>'
+                        + '<p class="blog_blog-posts_p">'+esc(o.get("description",""))+'</p>'
+                        + '<div class="blog_blog-posts_div-5">'+esc(o.get("date",""))+'</div></a>'
                         for o in sorted(items,key=lambda x:x.get("date",""),reverse=True))
                     section='<section class="blog_blog-posts_section"><div class="blog_blog-posts_div">'+cards_html+'</div></section>\n'
                     markup=markup[:start]+section+markup[end:]
