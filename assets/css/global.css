@@ -133,3 +133,12 @@ a.button-secondary:hover, a.button-accent:hover { color: var(--color-text) !impo
 a.button:hover *,
 .blog_blog-featured_a:hover *,
 .blog_blog-posts_a:hover * { color: inherit !important; }
+
+/* Hide inactive Pricing, Careers and Sign in navigation entries site-wide,
+   including the shared navigation and mobile menus. Keep pages themselves intact. */
+nav a:is([href*="/pricing"],[href*="/careers"],[href*="/signin"],[href*="/sign-in"],[href*="/SignIn"],[href="pricing"],[href="careers"],[href="signin"]),
+header a:is([href*="/pricing"],[href*="/careers"],[href*="/signin"],[href*="/sign-in"],[href*="/SignIn"],[href="pricing"],[href="careers"],[href="signin"]),
+.site-nav a:is([href*="/pricing"],[href*="/careers"],[href*="/signin"],[href*="/sign-in"],[href*="/SignIn"]),
+[role="navigation"] a:is([href*="/pricing"],[href*="/careers"],[href*="/signin"],[href*="/sign-in"],[href*="/SignIn"]) {
+  display: none !important;
+}
