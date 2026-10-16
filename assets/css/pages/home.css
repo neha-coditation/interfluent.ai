@@ -350,33 +350,38 @@
 
 /* Shared context and product demo: use document flow on tablet and phone. */
 @media (max-width:991px){
-  .home_act-2-shared-context_section{height:auto}
+  /* Keep the shared-context stage pinned through its scroll-driven steps. */
+  .home_act-2-shared-context_section{height:300vh;position:relative}
   .home_act-2-shared-context_div{
-    position:relative;
-    height:auto!important;
-    overflow:visible;
+    position:sticky;
+    top:0;
+    height:100vh!important;
+    height:100dvh!important;
+    overflow:hidden;
   }
   .home_act-2-shared-context_div-2{
-    height:auto;
+    height:100%;
+    min-height:0;
     grid-template-columns:minmax(0,1fr)!important;
-    grid-template-rows:auto auto!important;
-    gap:32px!important;
-    padding-top:56px!important;
-    padding-bottom:48px!important;
+    grid-template-rows:auto minmax(0,1fr)!important;
+    gap:12px!important;
+    padding-top:clamp(76px,10dvh,100px)!important;
+    padding-bottom:20px!important;
+    align-items:start!important;
   }
   .home_act-2-shared-context_div-3{min-height:0!important}
-  .home_act-2-shared-context_h2{font-size:clamp(28px,4.5vw,40px)!important}
-  .home_act-2-shared-context_div-5{height:auto!important;display:grid;gap:20px}
+  .home_act-2-shared-context_h2{font-size:clamp(24px,4.5vw,36px)!important;margin-bottom:14px!important}
+  .home_act-2-shared-context_div-5{height:clamp(130px,19dvh,170px)!important;display:block}
   .home_act-2-shared-context_div-5 > p{
-    position:static!important;
-    opacity:1!important;
-    transform:none!important;
-    font-size:16px!important;
-    line-height:1.6!important;
+    position:absolute!important;
+    inset:0;
+    font-size:clamp(13px,1.8vw,16px)!important;
+    line-height:1.5!important;
   }
-  .home_act-2-shared-context_div-6{display:none}
+  .home_act-2-shared-context_div-6{display:flex}
   .home_act-2-shared-context_div-7{
-    height:560px!important;
+    height:100%!important;
+    min-height:0;
     width:100%;
     max-width:680px;
     margin-inline:auto;
@@ -419,7 +424,11 @@
   .home_act-3-interfluent_div-51{flex-wrap:wrap}
 }
 @media (max-width:479px){
-  .home_act-2-shared-context_div-2{padding-top:40px!important;padding-bottom:40px!important}
+  .home_act-2-shared-context_div-2{padding-top:72px!important;padding-bottom:12px!important;gap:8px!important}
+  .home_act-2-shared-context_h2{font-size:clamp(22px,6vw,29px)!important;margin-bottom:12px!important}
+  .home_act-2-shared-context_div-5{height:clamp(142px,23dvh,190px)!important}
+  .home_act-2-shared-context_div-5 > p{font-size:13px!important;line-height:1.45!important}
+  .home_act-2-shared-context_div-7 > .home-context-model{font-size:9px!important}
   .home_act-2-shared-context_div-7 > .home-context-node{font-size:11px!important;padding:8px!important}
   .home_act-3-interfluent_p{font-size:17px}
   .home_act-3-interfluent_div-3{gap:6px;padding:12px}
