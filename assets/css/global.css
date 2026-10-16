@@ -102,25 +102,7 @@ p { line-height: var(--leading-body); }
 }
 
 
-/* Shared first-section combo class — matched to Webflow hero spacing */
+/* Consistent 100px hero top spacing on every page and breakpoint. */
 .is-first-section {
-  padding-top: 4rem !important;
-}
-
-@media (max-width: 991px) {
-  .is-first-section {
-    padding-top: 3rem !important;
-  }
-}
-
-@media (max-width: 767px) {
-  .is-first-section {
-    padding-top: 2.5rem !important;
-  }
-}
-
-@media (max-width: 479px) {
-  .is-first-section {
-    padding-top: 2rem !important;
-  }
+  padding-top: 100px !important;
 }
