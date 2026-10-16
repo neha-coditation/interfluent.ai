@@ -1,0 +1,28 @@
+name: Verify Cloudflare Pages build
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify-build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Build Pages output
+        run: npm run build
+      - name: Verify Pages output
+        run: |
+          test -f _site/index.html
+          test -f _site/cms-sitemap.xml
