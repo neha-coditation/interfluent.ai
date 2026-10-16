@@ -103,7 +103,15 @@ def build():
                 + '<div class="blog_blog-posts_div-5">' + esc(o.get("date", "")) + '</div></a>'
                 for o in sorted(items, key=lambda item: item.get("date", ""), reverse=True))
             section = '<section class="blog_blog-posts_section"><div class="blog_blog-posts_div">' + cards + '</div></section>\n'
-            if "<!-- CMS BLOG POSTS START -->" in markup:\n                markup = re.sub(r"<!-- CMS BLOG POSTS START -->.*?<!-- CMS BLOG POSTS END -->", "<!-- CMS BLOG POSTS START -->\\n" + section + "<!-- CMS BLOG POSTS END -->", markup, flags=re.S)\n            else:\n                markup = markup.replace("</main>", section + "</main>", 1)
+            if "<!-- CMS BLOG POSTS START -->" in markup:
+                markup = re.sub(
+                    r"<!-- CMS BLOG POSTS START -->.*?<!-- CMS BLOG POSTS END -->",
+                    lambda match: "<!-- CMS BLOG POSTS START -->" + section + "<!-- CMS BLOG POSTS END -->",
+                    markup,
+                    flags=re.S,
+                )
+            else:
+                markup = markup.replace("</main>", "<!-- CMS BLOG POSTS START -->" + section + "<!-- CMS BLOG POSTS END --></main>", 1)
             listing.write_text(markup, encoding="utf-8")
         elif items:
             cards = "".join('<a href="' + BASE + route + '/' + slug(o["slug"]) + '/"><h2>' + esc(o["title"]) + '</h2></a>' for o in items)
