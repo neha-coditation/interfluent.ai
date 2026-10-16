@@ -31,7 +31,7 @@ def build():
             dest=OUT/route/ident/"index.html";dest.parent.mkdir(parents=True,exist_ok=True)
             image_html=('<img src="/interfluent.ai/'+esc(obj["image"])+'" alt="'+esc(obj["title"])+'" style="width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:18px;margin:24px 0 40px">' if obj.get("image") else '')
             content=f'<article><p>{esc(obj.get("category",label))} · {esc(obj.get("date",""))}</p><h1>{esc(obj["title"])}</h1><p>{esc(obj.get("description",""))}</p>{image_html}{markdown(obj.get("body",""))}</article>'
-            dest.write_text(page(obj["title"],content,obj.get("description","")),encoding="utf-8")
+            if not dest.exists():\n                dest.write_text(page(obj["title"],content,obj.get("description","")),encoding="utf-8")
             urls.append(f"https://neha-coditation.github.io/interfluent.ai/{route}/{ident}/")
         if items and kind=="articles":
             # Keep the designed Blog page and append published CMS cards
