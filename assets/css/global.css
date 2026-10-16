@@ -163,3 +163,23 @@ footer a:is([href*="pricing" i],[href*="career" i],[href*="sign-in" i],[href*="s
 :where(.site-nav, nav, header, footer, .button, [class*="button"], [class*="cta"], [class*="card"], [class*="blog_blog-posts"], [class*="blog_blog-featured"]) :is(a,button):hover :is(span,strong,b,em) {
   color: inherit !important;
 }
+
+/* Navbar beta CTA: keep white text readable on its blue background on hover. */
+nav a[href*="/beta" i],
+header a[href*="/beta" i],
+.site-nav a[href*="/beta" i],
+[role="navigation"] a[href*="/beta" i],
+[class*="nav"] a[href*="/beta" i] {
+  color: var(--color-on-dark, #fff) !important;
+}
+nav a[href*="/beta" i]:is(:hover,:focus-visible),
+header a[href*="/beta" i]:is(:hover,:focus-visible),
+.site-nav a[href*="/beta" i]:is(:hover,:focus-visible),
+[role="navigation"] a[href*="/beta" i]:is(:hover,:focus-visible),
+[class*="nav"] a[href*="/beta" i]:is(:hover,:focus-visible),
+nav a[href*="/beta" i]:is(:hover,:focus-visible) *,
+header a[href*="/beta" i]:is(:hover,:focus-visible) *,
+.site-nav a[href*="/beta" i]:is(:hover,:focus-visible) *,
+[class*="nav"] a[href*="/beta" i]:is(:hover,:focus-visible) * {
+  color: var(--color-on-dark, #fff) !important;
+}
