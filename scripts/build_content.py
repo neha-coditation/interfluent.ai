@@ -94,7 +94,6 @@ def set_seo(page, title, description, url, image=None, kind="website"):
     return page.replace("</head>", seo_tags(title, description, url, image, kind) + "</head>", 1)
 
 def apply_site_seo():
-    import subprocess
     # The repository uses seo-config.js as the central metadata registry.
     config_source = (ROOT / "assets/js/seo-config.js").read_text(encoding="utf-8")
     match = re.search(r'pages:\\s*\\{', config_source)
