@@ -69,6 +69,79 @@ def generic_page(obj):
             '<main style="max-width:780px;margin:80px auto;padding:24px"><a href="' + BASE + '">Interfluent</a>'
             '<h1>' + esc(obj["title"]) + '</h1>' + image_tag + richtext(obj.get("body", "")) + '</main></body></html>')
 
+def seo_tags(title, description, url, image=None, kind="website"):
+    title, description = esc(title), esc(description)
+    image_url = SITE + (image or "assets/images/og/interfluent-og.svg").lstrip("/")
+    return ("<title>" + title + "</title>\n"
+            + '<meta name="description" content="' + description + '">\n'
+            + '<link rel="canonical" href="' + esc(url) + '">\n'
+            + '<meta property="og:type" content="' + kind + '">\n'
+            + '<meta property="og:site_name" content="Interfluent">\n'
+            + '<meta property="og:title" content="' + title + '">\n'
+            + '<meta property="og:description" content="' + description + '">\n'
+            + '<meta property="og:url" content="' + esc(url) + '">\n'
+            + '<meta property="og:image" content="' + esc(image_url) + '">\n'
+            + '<meta name="twitter:card" content="summary_large_image">\n'
+            + '<meta name="twitter:title" content="' + title + '">\n'
+            + '<meta name="twitter:description" content="' + description + '">\n'
+            + '<meta name="twitter:image" content="' + esc(image_url) + '">\n')
+
+def set_seo(page, title, description, url, image=None, kind="website"):
+    # Remove any stale, duplicate metadata before inserting canonical SEO values.
+    page = re.sub(r'<title[^>]*>.*?</title>', '', page, flags=re.I | re.S)
+    page = re.sub(r'<meta\\s+(?:name|property)="(?:description|robots|og:[^"]+|twitter:[^"]+)"[^>]*>', '', page, flags=re.I)
+    page = re.sub(r'<link\\s+rel="canonical"[^>]*>', '', page, flags=re.I)
+    return page.replace("</head>", seo_tags(title, description, url, image, kind) + "</head>", 1)
+
+def apply_site_seo():
+    import subprocess
+    # The repository uses seo-config.js as the central metadata registry.
+    config_source = (ROOT / "assets/js/seo-config.js").read_text(encoding="utf-8")
+    match = re.search(r'pages:\\s*\\{', config_source)
+    if not match:
+        raise ValueError("Missing SEO page registry")
+    # Parse the page registry via a limited key/value pattern; descriptions are plain strings.
+    records = {}
+    pattern = r'(?:"([^"]+)"|([a-zA-Z-]+)):\\s*\\{\\s*path:\\s*"([^"]+)",\\s*title:\\s*"([^"]+)",\\s*description:\\s*"([^"]+)"'
+    for m in re.finditer(pattern, config_source):
+        key = m.group(1) or m.group(2)
+        records[key] = dict(path=m.group(3), title=m.group(4), description=m.group(5))
+    for file in OUT.rglob("index.html"):
+        if "_site" in file.relative_to(OUT).parts:
+            continue
+        relative = file.relative_to(OUT)
+        route = "/" if relative.as_posix() == "index.html" else "/" + relative.parent.as_posix() + "/"
+        markup = file.read_text(encoding="utf-8")
+        page_match = re.search(r'<html[^>]*data-seo-page="([^"]+)"', markup)
+        key = page_match.group(1) if page_match else None
+        # CMS detail pages are populated directly from their JSON records.
+        if route.startswith("/blog/") and route != "/blog/" and route != "/blog/everyone-ships-fast-now/":
+            source = ROOT / "content/articles" / (relative.parent.name + ".json")
+        elif route.startswith("/case-studies/") and route != "/case-studies/":
+            source = ROOT / "content/case-studies" / (relative.parent.name + ".json")
+        else:
+            source = None
+        if source and source.exists():
+            record = json.loads(source.read_text(encoding="utf-8"))
+            title = record["title"] + " | Interfluent"
+            desc = record.get("description", "")
+            image = record.get("image")
+            kind = "article"
+        elif route == "/blog/everyone-ships-fast-now/":
+            title = "Everyone ships fast now. Together, you still don't. | Interfluent"
+            desc = "AI made each function faster on its own. Explore why cross-functional shipping needs shared context."
+            image = "assets/images/blog/everyone-ships-fast-now.svg"
+            kind = "article"
+        elif key in records:
+            title = records[key]["title"]
+            desc = records[key]["description"]
+            image = None
+            kind = "website"
+        else:
+            continue
+        markup = set_seo(markup, title, desc, SITE.rstrip("/") + route, image, kind)
+        file.write_text(markup, encoding="utf-8")
+
 def build():
     if OUT.exists():
         shutil.rmtree(OUT)
@@ -123,6 +196,7 @@ def build():
             listing = OUT / route / "index.html"
             if not listing.exists():
                 raise FileNotFoundError("Case studies listing template missing")
+    apply_site_seo()
     (OUT / "cms-sitemap.xml").write_text(
         '<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'
         + "".join("<url><loc>" + esc(url) + "</loc></url>" for url in urls) + "</urlset>", encoding="utf-8")
