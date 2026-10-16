@@ -89,7 +89,12 @@ def build():
             if kind == "articles":
                 dest.write_text(article_page(obj, blog_template), encoding="utf-8")
             else:
-                dest.write_text(generic_page(obj), encoding="utf-8")
+                # Preserve designed case study pages; use shared article layout for new records.
+                if not dest.exists():
+                    case_template = blog_template.replace('href="/interfluent.ai/blog/"', 'href="/interfluent.ai/case-studies/"')
+                    case_obj = dict(obj)
+                    case_obj["category"] = obj.get("category", "Case Study") + " · Illustrative scenario"
+                    dest.write_text(article_page(case_obj, case_template).replace("← All posts", "← All case studies").replace("More posts →", "More case studies →"), encoding="utf-8")
             urls.append(SITE + route + "/" + ident + "/")
         if kind == "articles":
             listing = OUT / "blog/index.html"
@@ -114,8 +119,10 @@ def build():
                 markup = markup.replace("</main>", "<!-- CMS BLOG POSTS START -->" + section + "<!-- CMS BLOG POSTS END --></main>", 1)
             listing.write_text(markup, encoding="utf-8")
         elif items:
-            cards = "".join('<a href="' + BASE + route + '/' + slug(o["slug"]) + '/"><h2>' + esc(o["title"]) + '</h2></a>' for o in items)
-            (OUT / route / "index.html").write_text(generic_page({"title": label, "body": ""}).replace("</main>", cards + "</main>"), encoding="utf-8")
+            # Keep the designed listing and shared navigation/footer.
+            listing = OUT / route / "index.html"
+            if not listing.exists():
+                raise FileNotFoundError("Case studies listing template missing")
     (OUT / "cms-sitemap.xml").write_text(
         '<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'
         + "".join("<url><loc>" + esc(url) + "</loc></url>" for url in urls) + "</urlset>", encoding="utf-8")
