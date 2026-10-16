@@ -154,6 +154,16 @@ def normalize_cloudflare_paths():
         updated = updated.replace("/interfluent.ai/", "/")
         # The legacy prefix also appears without a trailing slash in some links.
         updated = updated.replace('href="/interfluent.ai"', 'href="/"')
+        if file.suffix.lower() == ".html":
+            # Make the critical CSS available before the custom runtime hydrates
+            # <helmet> into the real document head. This prevents unstyled flashes.
+            critical = re.findall(r'<link\\s+rel="stylesheet"\\s+href="(assets/css/[^"]+)"[^>]*>', updated)
+            if critical:
+                preload = "\\n".join('<link rel="stylesheet" href="/' + css + '">' for css in dict.fromkeys(critical))
+                updated = updated.replace("</head>", preload + "\\n</head>", 1)
+            # Keep nested legacy URLs out of navigation and CMS cards.
+            updated = updated.replace('href="case-studies/', 'href="/case-studies/')
+            updated = updated.replace('href="blog/', 'href="/blog/')
         if updated != content:
             file.write_text(updated, encoding="utf-8")
 
