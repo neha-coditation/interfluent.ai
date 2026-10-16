@@ -2,6 +2,7 @@
 """Build Git-managed content using the existing Interfluent page templates."""
 import html
 import json
+import os
 import pathlib
 import re
 import shutil
@@ -141,6 +142,20 @@ def apply_site_seo():
         markup = set_seo(markup, title, desc, SITE.rstrip("/") + route, image, kind)
         file.write_text(markup, encoding="utf-8")
 
+def normalize_cloudflare_paths():
+    """Pages is hosted at the domain root; GitHub Pages uses /interfluent.ai/."""
+    if not os.environ.get("CF_PAGES"):
+        return
+    for file in OUT.rglob("*"):
+        if not file.is_file() or file.suffix.lower() not in {".html", ".css", ".js", ".xml", ".json"}:
+            continue
+        content = file.read_text(encoding="utf-8")
+        updated = content.replace("https://neha-coditation.github.io/interfluent.ai/", "https://interfluent-ai.pages.dev/")
+        updated = updated.replace("/interfluent.ai/", "/")
+        if updated != content:
+            file.write_text(updated, encoding="utf-8")
+
+
 def build():
     if OUT.exists():
         shutil.rmtree(OUT)
@@ -199,6 +214,7 @@ def build():
     (OUT / "cms-sitemap.xml").write_text(
         '<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'
         + "".join("<url><loc>" + esc(url) + "</loc></url>" for url in urls) + "</urlset>", encoding="utf-8")
+    normalize_cloudflare_paths()
 
 if __name__ == "__main__":
     build()
