@@ -1,0 +1,9 @@
+{
+  "name": "interfluent-ai",
+  "compatibility_date": "2026-10-16",
+  "assets": {
+    "directory": "./_site",
+    "binding": "ASSETS",
+    "not_found_handling": "404-page"
+  }
+}
