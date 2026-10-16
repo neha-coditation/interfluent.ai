@@ -22,8 +22,8 @@
 <script src="site-config.js"></script>
 <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
 <style>
-html{scroll-behavior:auto;overflow-x:hidden}
-body{margin:0;background:var(--color-bg);color:var(--color-text);font-family:var(--font-sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+html{scroll-behavior:auto;overflow-x:clip}
+body{margin:0;background:var(--color-bg);color:var(--color-text);font-family:var(--font-sans);-webkit-font-smoothing:antialiased;overflow-x:clip}
 a{color:var(--color-primary);text-decoration:none}a:hover{color:var(--color-primary-hover)}
 *{box-sizing:border-box}
 @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
@@ -181,7 +181,7 @@ a{color:var(--color-primary);text-decoration:none}a:hover{color:var(--color-prim
       <div class="rs-pin2-graph home_act-2-shared-context_div-7">
         <svg viewBox="0 0 100 100" preserveAspectRatio="none" class="home_act-2-shared-context_svg">
           <sc-for list="{{ edges }}" as="e" hint-placeholder-count="0">
-            <line x1="{{ e.x1 }}" y1="{{ e.y1 }}" x2="{{ e.x2 }}" y2="{{ e.y2 }}" pathLength="1" stroke="{{ e.c }}" stroke-width="1.5" vector-effect="non-scaling-stroke" stroke-linecap="round" style="stroke-dasharray:1;stroke-dashoffset:{{ e.off }};opacity:{{ e.o }}"></line>
+            <line x1="{{ e.x1 }}" y1="{{ e.y1 }}" x2="{{ e.x2 }}" y2="{{ e.y2 }}" pathLength="1" stroke="{{ e.c }}" stroke-width="1.5" vector-effect="non-scaling-stroke" stroke-linecap="round" style="stroke-dasharray:.015 .04;stroke-dashoffset:{{ e.off }};opacity:{{ e.o }}"></line>
           </sc-for>
         </svg>
         <div style="position:absolute;left:0;right:0;top:50%;height:1px;background:rgba(246,243,236,.18);opacity:{{ v.divider }}"></div>
