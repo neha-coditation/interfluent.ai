@@ -1,12 +1,24 @@
 window.INTERFLUENT_SEO = {
   site: {
     name: "Interfluent",
-    baseUrl: "https://interfluent.ai",
-    defaultImage: "/assets/images/webclip.png",
+    baseUrl: "https://neha-coditation.github.io/interfluent.ai",
+    defaultImage: "/assets/images/og/interfluent-og.svg",
     locale: "en_US",
     twitterCard: "summary_large_image"
   },
   pages: {
+    "case-studies": {
+      path: "/case-studies/",
+      title: "Case Studies | Interfluent",
+      description: "Explore illustrative engineering case studies on codebase understanding, software modernization and shared context across teams.",
+      robots: "index,follow"
+    },
+    "case-study": {
+      path: "/case-studies/",
+      title: "Engineering Case Studies | Interfluent",
+      description: "Explore how connected engineering context can support better decisions, safer changes and clearer software delivery.",
+      robots: "index,follow"
+    },
     home: {
       path: "/",
       title: "Interfluent — Shared context for product and engineering",
@@ -26,7 +38,7 @@ window.INTERFLUENT_SEO = {
       robots: "index,follow"
     },
     "blog-post": {
-      path: "/blog-post/",
+      path: "/blog/everyone-ships-fast-now/",
       title: "Everyone ships fast now. Together, you still don't. | Interfluent",
       description: "AI made each function faster on its own. Cross-functional shipping got slower. Interfluent explores what is happening in the handoffs and why a shared model matters.",
       robots: "index,follow"
