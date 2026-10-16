@@ -32,7 +32,26 @@ def build():
             content=f'<article><p>{esc(obj.get("category",label))} · {esc(obj.get("date",""))}</p><h1>{esc(obj["title"])}</h1><p>{esc(obj.get("description",""))}</p>{markdown(obj.get("body",""))}</article>'
             dest.write_text(page(obj["title"],content,obj.get("description","")),encoding="utf-8")
             urls.append(f"https://neha-coditation.github.io/interfluent.ai/{route}/{ident}/")
-        if items:
+        if items and kind=="articles":
+            # Keep the designed Blog page, but replace its placeholder cards
+            # with links to actual published article detail pages.
+            listing=OUT/"blog"/"index.html"
+            if listing.exists():
+                markup=listing.read_text(encoding="utf-8")
+                start=markup.find('<section data-screen-label="Blog · Featured"')
+                end=markup.find('</main>',start)
+                if start!=-1 and end!=-1:
+                    cards_html="".join(
+                        '<a class="blog_blog-posts_a" href="blog/'+esc(slug(o["slug"]))+'/">'
+                        '<div class="blog_blog-posts_div-3">'+esc(o.get("category","ARTICLE"))+'</div>'
+                        '<div class="blog_blog-posts_div-4">'+esc(o["title"])+'</div>'
+                        '<p class="blog_blog-posts_p">'+esc(o.get("description",""))+'</p>'
+                        '<div class="blog_blog-posts_div-5">'+esc(o.get("date",""))+'</div></a>'
+                        for o in sorted(items,key=lambda x:x.get("date",""),reverse=True))
+                    section='<section class="blog_blog-posts_section"><div class="blog_blog-posts_div">'+cards_html+'</div></section>\n'
+                    markup=markup[:start]+section+markup[end:]
+                    listing.write_text(markup,encoding="utf-8")
+        if items and kind!="articles":
             cards="".join(f'<a class="cms-card" href="{esc(slug(o["slug"]))}/"><h2>{esc(o["title"])}</h2><p>{esc(o.get("description",""))}</p></a>' for o in sorted(items,key=lambda x:x.get("date",""),reverse=True))
             target=OUT/route/"index.html"
             target.parent.mkdir(parents=True,exist_ok=True)
