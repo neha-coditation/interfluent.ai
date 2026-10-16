@@ -121,3 +121,15 @@ p { line-height: var(--leading-body); }
 .is-first-section {
   padding-top: 100px !important;
 }
+
+/* Keep navigation, buttons and blog cards at their normal text colors on hover. */
+.site-nav a:hover { color: inherit !important; }
+.button:hover { color: inherit; }
+a.button-primary:hover { color: var(--color-on-dark) !important; }
+a.button-secondary:hover, a.button-accent:hover { color: var(--color-text) !important; }
+.blog_blog-featured_a:hover { color: var(--color-bg) !important; }
+.blog_blog-posts_a:hover { color: var(--color-text) !important; }
+.site-nav a:hover *,
+a.button:hover *,
+.blog_blog-featured_a:hover *,
+.blog_blog-posts_a:hover * { color: inherit !important; }
