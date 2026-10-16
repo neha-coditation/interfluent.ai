@@ -15,7 +15,7 @@ body {
 img, svg, video { display: block; max-width: 100%; }
 a { color: var(--color-primary); text-decoration: none; }
 /* Preserve each button's readable foreground when its hover background changes. */
-a:hover { color: var(--color-primary-hover); }
+a:hover { color: inherit; }
 a.button-primary:hover,
 a.home_hero_a:hover,
 a[class*="_a"][style-hover*="background:var(--color-primary-hover)"]:hover {
@@ -148,4 +148,18 @@ footer a:is([href*="pricing" i],[href*="career" i],[href*="sign-in" i],[href*="s
 .site-footer a:is([href*="pricing" i],[href*="career" i],[href*="sign-in" i],[href*="signin" i],[href*="sign_in" i]),
 [class*="footer"] a:is([href*="pricing" i],[href*="career" i],[href*="sign-in" i],[href*="signin" i],[href*="sign_in" i]) {
   display: none !important;
+}
+
+/* Consistent interactive typography: hovering must not recolor text. */
+:where(a, button, [role="button"], [role="link"]):hover {
+  color: inherit;
+}
+/* Preserve normal foreground colors of buttons, nav links and card titles. */
+:where(.site-nav, nav, header, footer, .button, [class*="button"], [class*="cta"], [class*="card"], [class*="blog_blog-posts"], [class*="blog_blog-featured"]) :is(a,button):hover {
+  color: inherit !important;
+}
+/* Inherit the same color from each element's own non-hover state,
+   rather than overriding contrasting button/card child colors. */
+:where(.site-nav, nav, header, footer, .button, [class*="button"], [class*="cta"], [class*="card"], [class*="blog_blog-posts"], [class*="blog_blog-featured"]) :is(a,button):hover :is(span,strong,b,em) {
+  color: inherit !important;
 }
