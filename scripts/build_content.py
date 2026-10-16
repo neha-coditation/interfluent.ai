@@ -152,7 +152,7 @@ def normalize_cloudflare_paths():
     runtime_file = OUT / "support.js"
     if runtime_file.exists():
         runtime = runtime_file.read_text(encoding="utf-8")
-        start = runtime.find("    if (!window.__resources) {\\n      fetch(location.href)")
+        start = runtime.find("    if (!window.__resources) {\n      fetch(location.href)")
         if start != -1:
             end = runtime.find("    const dc = doc.querySelector", start)
             if end != -1:
