@@ -9,6 +9,8 @@
   var site = config.site;
   var baseUrl = (site.baseUrl || "").replace(/\/$/, "");
   var canonical = baseUrl + (page.path || "/");
+  // CMS detail URLs must use their real route, not a generic page key.
+  if (key === "blog-post" || key === "case-study") canonical = window.location.origin + window.location.pathname;
   var image = page.image || site.defaultImage || "";
   var imageUrl = /^https?:\/\//i.test(image) ? image : baseUrl + (image.charAt(0) === "/" ? image : "/" + image);
 
@@ -34,6 +36,8 @@
     el.setAttribute("href", href);
   }
 
+  // Static build provides the authoritative metadata. Avoid overwriting it.
+  if (document.head.querySelector('meta[property="og:url"]')) return;
   document.title = page.title || site.name || "";
   meta("description", page.description || "");
   meta("robots", page.robots || "index,follow");
