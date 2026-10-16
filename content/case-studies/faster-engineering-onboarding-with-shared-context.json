@@ -1,0 +1,16 @@
+{
+  "slug": "faster-engineering-onboarding-with-shared-context",
+  "title": "Helping New Engineers Navigate a Complex Codebase",
+  "category": "Developer Experience",
+  "industry": "SaaS Engineering",
+  "date": "2026-10-15",
+  "description": "An illustrative onboarding scenario where connected code and product context helps engineers ask better questions and find relevant system knowledge.",
+  "challenge": "New engineers could access the repository and onboarding documentation but still struggled to connect product behavior with the services implementing it. Experienced teammates spent significant time explaining architecture decisions and identifying the right people to ask.",
+  "approach": "The team created a guided path from a user-facing capability to its requirements, service boundaries, key modules and tests. They added reviewable explanations of common workflows and used real change requests as onboarding exercises.",
+  "outcome": "The illustrative approach gave newcomers a clearer starting point, made architecture discussions more concrete and encouraged self-service investigation before escalation. These outcomes are illustrative and are not presented as verified customer metrics.",
+  "body": "## The situation\n\nNew engineers could access the repository and onboarding documentation but still struggled to connect product behavior with the services implementing it. Experienced teammates spent significant time explaining architecture decisions and identifying the right people to ask.\n\n## The challenge\n\nOnboarding material often tells developers how to run a system without explaining why it is structured the way it is. Engineers can find code yet still lack the context needed to change it safely. When that context is held in conversations, every new joiner has to reconstruct it.\n\n## The approach\n\nThe team chose a representative customer workflow and traced it from a business capability through requirements, service boundaries, source files and tests. Engineers documented important architectural constraints and attached links to evidence. New team members used the map to investigate a small change and discuss its possible impact with a reviewer.\n\n## The outcome\n\nThis illustrative workflow created a more structured way to explore the codebase, encouraged independent discovery and gave mentors a shared reference for technical conversations. It does not imply measured improvements in onboarding time.\n\n## What this illustrates\n\nEffective onboarding requires more than repository search or a static knowledge base. Engineers benefit when product intent and implementation details are connected, inspectable and current. This is the kind of shared engineering understanding Interfluent aims to support.\n\n## Applying the pattern\n\nStart with one real workflow. Identify the product behavior, primary modules, important integrations and tests. Keep explanations short and source-linked. Ask new engineers to validate the map as they work so the onboarding material evolves with the system.",
+  "status": "published",
+  "author": "Interfluent team",
+  "image": "assets/images/case-studies/faster-engineering-onboarding-with-shared-context.svg",
+  "disclaimer": "Illustrative scenario, not a verified customer engagement."
+}
