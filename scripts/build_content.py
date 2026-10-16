@@ -215,6 +215,14 @@ def build():
         '<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'
         + "".join("<url><loc>" + esc(url) + "</loc></url>" for url in urls) + "</urlset>", encoding="utf-8")
     normalize_cloudflare_paths()
+    if os.environ.get("CF_PAGES"):
+        # Preserve old prefixed URLs with permanent redirects on Cloudflare Pages.
+        (OUT / "_redirects").write_text(
+            "/interfluent.ai / 301\\n"
+            "/interfluent.ai/ / 301\\n"
+            "/interfluent.ai/* /:splat 301\\n",
+            encoding="utf-8",
+        )
 
 if __name__ == "__main__":
     build()
