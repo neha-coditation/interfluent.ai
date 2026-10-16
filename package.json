@@ -1,0 +1,11 @@
+{
+  "name": "interfluent-ai",
+  "private": true,
+  "scripts": {
+    "build": "python3 scripts/build_content.py",
+    "deploy": "wrangler deploy"
+  },
+  "devDependencies": {
+    "wrangler": "^4.0.0"
+  }
+}
