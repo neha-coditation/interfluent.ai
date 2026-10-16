@@ -31,7 +31,7 @@
 </section>
 
 <section data-screen-label="Blog · Featured" class="blog_blog-featured_section">
-  <a href="blog-post/" class="blog_blog-featured_a">
+  <a href="blog/everyone-ships-fast-now/" class="blog_blog-featured_a">
     <div class="blog_blog-featured_div">cover image</div>
     <div>
       <div class="blog_blog-featured_div-2">ESSAY · 8 MIN</div>
@@ -42,34 +42,11 @@
   </a>
 </section>
 
-<section data-screen-label="Blog · Posts" class="blog_blog-posts_section">
-  <div class="blog_blog-posts_div">
-    <sc-for list="{{ posts }}" as="p" hint-placeholder-count="3">
-      <a href="blog-post/" style-hover="border-color:var(--color-primary)" class="blog_blog-posts_a">
-        <div class="blog_blog-posts_div-2"></div>
-        <div class="blog_blog-posts_div-3">{{ p.k }}</div>
-        <div class="blog_blog-posts_div-4">{{ p.t }}</div>
-        <p class="blog_blog-posts_p">{{ p.d }}</p>
-        <div class="blog_blog-posts_div-5">{{ p.m }}</div>
-      </a>
-    </sc-for>
-  </div>
-</section>
+
 
 </main>
 <dc-import name="SiteFooter" hint-size="100%,320px"></dc-import>
 </x-dc>
-<script type="text/x-dc" data-dc-script>
-class Component extends DCLogic {
-  renderVals() {
-    const posts = [
-      ['PRODUCT · 5 MIN', 'Why we put requirements in the same graph as code', 'Intent that lives in a separate tool drifts. Making PRDs and briefs first-class nodes changed what impact analysis could answer.', 'August 2026'],
-      ['ENGINEERING · 6 MIN', 'Pricing a change as a blast radius', 'Size bands are arguments. Files, tests and documents that will drift are evidence. How the Impact agent walks the graph.', 'July 2026'],
-      ['PILOTS · 4 MIN', 'What the first week looks like on a real codebase', 'Connect one repo, one document set. What surfaced on a P&ID conversion product, and what the team did with it.', 'June 2026']
-    ].map(p => ({ k: p[0], t: p[1], d: p[2], m: p[3] }));
-    return { posts };
-  }
-}
-</script>
+
 </body>
 </html>
