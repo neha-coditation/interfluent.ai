@@ -146,6 +146,18 @@ def normalize_cloudflare_paths():
     """Pages is hosted at the domain root; GitHub Pages uses /interfluent.ai/."""
     if not os.environ.get("CF_PAGES"):
         return
+    # Static Pages builds already embed the complete page template.
+    # Prevent the runtime from re-fetching the same document and replacing
+    # its template immediately after the first render.
+    runtime_file = OUT / "support.js"
+    if runtime_file.exists():
+        runtime = runtime_file.read_text(encoding="utf-8")
+        start = runtime.find("    if (!window.__resources) {\\n      fetch(location.href)")
+        if start != -1:
+            end = runtime.find("    const dc = doc.querySelector", start)
+            if end != -1:
+                runtime = runtime[:start] + runtime[end:]
+                runtime_file.write_text(runtime, encoding="utf-8")
     for file in OUT.rglob("*"):
         if not file.is_file() or file.suffix.lower() not in {".html", ".css", ".js", ".xml", ".json"}:
             continue
