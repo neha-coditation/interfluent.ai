@@ -7,32 +7,38 @@ window.INTERFLUENT_CONFIG = {
 };
 
 
-// Shared navigation/footer enhancement: keep Case Studies alongside Blog.
-// The DC components render asynchronously, so apply when their links appear.
+// Add the Case Studies destination to each rendered desktop/mobile nav and footer.
 (function addCaseStudiesLinks() {
-  if (typeof document === 'undefined') return;
-  const path = '/interfluent.ai/case-studies/';
+  const destination = '/interfluent.ai/case-studies/';
+  const isBlog = (link) => {
+    const raw = link.getAttribute('href') || '';
+    try {
+      const url = new URL(raw, document.baseURI);
+      return /\\/blog\\/?(?:index\\.html)?$/.test(url.pathname) && /blog/i.test(link.textContent || '');
+    } catch (_) { return false; }
+  };
+  let queued = false;
   function update() {
-    const candidates = document.querySelectorAll('a[href]');
-    for (const blogLink of candidates) {
-      const href = blogLink.getAttribute('href') || '';
-      const label = (blogLink.textContent || '').trim();
-      if (label !== 'Blog' || !/(?:^|\\/)blog\\/?(?:index\\.html)?(?:[?#].*)?$/.test(href)) continue;
-      const nav = blogLink.closest('nav, header, footer, [role="navigation"], [class*="nav"], [class*="footer"]');
-      if (!nav) continue;
-      const group = blogLink.parentElement;
-      if (!group || group.querySelector('a[href*="case-studies"]')) continue;
-      if (nav.querySelector('a[href*="case-studies"]')) continue;
-      const newLink = blogLink.cloneNode(true);
-      newLink.textContent = 'Case Studies';
-      newLink.setAttribute('href', path);
-      newLink.removeAttribute('aria-current');
-      newLink.classList.remove('w--current', 'is-active', 'active');
-      blogLink.insertAdjacentElement('afterend', newLink);
-    }
+    queued = false;
+    document.querySelectorAll('a[href]').forEach(link => {
+      if (!isBlog(link)) return;
+      const area = link.closest('nav, header, footer, [role="navigation"], [class*="nav"], [class*="footer"]');
+      if (!area) return;
+      if (area.querySelector('a[href*="case-studies"]')) return;
+      const next = link.cloneNode(true);
+      next.textContent = 'Case Studies';
+      next.href = destination;
+      next.removeAttribute('aria-current');
+      next.classList.remove('active', 'is-active', 'w--current');
+      link.insertAdjacentElement('afterend', next);
+    });
   }
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', update);
-  else update();
-  const observer = new MutationObserver(update);
-  observer.observe(document.documentElement, { childList: true, subtree: true });
+  function schedule() {
+    if (queued) return;
+    queued = true;
+    requestAnimationFrame(update);
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', schedule);
+  else schedule();
+  new MutationObserver(schedule).observe(document.documentElement, {childList:true, subtree:true});
 })();
