@@ -152,6 +152,8 @@ def normalize_cloudflare_paths():
         content = file.read_text(encoding="utf-8")
         updated = content.replace("https://neha-coditation.github.io/interfluent.ai/", "https://interfluent-ai.pages.dev/")
         updated = updated.replace("/interfluent.ai/", "/")
+        # The legacy prefix also appears without a trailing slash in some links.
+        updated = updated.replace('href="/interfluent.ai"', 'href="/"')
         if updated != content:
             file.write_text(updated, encoding="utf-8")
 
