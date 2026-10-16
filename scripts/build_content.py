@@ -101,7 +101,7 @@ def apply_site_seo():
         raise ValueError("Missing SEO page registry")
     # Parse the page registry via a limited key/value pattern; descriptions are plain strings.
     records = {}
-    pattern = r'(?:"([^"]+)"|([a-zA-Z-]+)):\\s*\\{\\s*path:\\s*"([^"]+)",\\s*title:\\s*"([^"]+)",\\s*description:\\s*"([^"]+)"'
+    pattern = r'(?:"([^"]+)"|([a-zA-Z-]+)):\s*\{\s*path:\s*"([^"]+)",\s*title:\s*"([^"]+)",\s*description:\s*"([^"]+)"'
     for m in re.finditer(pattern, config_source):
         key = m.group(1) or m.group(2)
         records[key] = dict(path=m.group(3), title=m.group(4), description=m.group(5))
