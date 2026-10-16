@@ -38,9 +38,9 @@ def build():
             listing=OUT/"blog"/"index.html"
             if listing.exists():
                 markup=listing.read_text(encoding="utf-8")
-                start=markup.find('<section data-screen-label="Blog · Featured"')
-                end=markup.find('</main>',start)
-                if start!=-1 and end!=-1:
+                start=markup.find('</main>')
+                end=start
+                if start!=-1:
                     cards_html="".join(
                         '<a class="blog_blog-posts_a" href="blog/'+esc(slug(o["slug"]))+'/">'
                         '<div class="blog_blog-posts_div-3">'+esc(o.get("category","ARTICLE"))+'</div>'
