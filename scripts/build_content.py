@@ -96,7 +96,7 @@ def set_seo(page, title, description, url, image=None, kind="website"):
 def apply_site_seo():
     # The repository uses seo-config.js as the central metadata registry.
     config_source = (ROOT / "assets/js/seo-config.js").read_text(encoding="utf-8")
-    match = re.search(r'pages:\\s*\\{', config_source)
+    match = re.search(r'pages:\s*\{', config_source)
     if not match:
         raise ValueError("Missing SEO page registry")
     # Parse the page registry via a limited key/value pattern; descriptions are plain strings.
