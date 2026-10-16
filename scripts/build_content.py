@@ -29,7 +29,8 @@ def build():
             if obj.get("status")!="published":continue
             ident=slug(obj["slug"]);items.append(obj)
             dest=OUT/route/ident/"index.html";dest.parent.mkdir(parents=True,exist_ok=True)
-            content=f'<article><p>{esc(obj.get("category",label))} · {esc(obj.get("date",""))}</p><h1>{esc(obj["title"])}</h1><p>{esc(obj.get("description",""))}</p>{markdown(obj.get("body",""))}</article>'
+            image_html=('<img src="/interfluent.ai/'+esc(obj["image"])+'" alt="'+esc(obj["title"])+'" style="width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:18px;margin:24px 0 40px">' if obj.get("image") else '')
+            content=f'<article><p>{esc(obj.get("category",label))} · {esc(obj.get("date",""))}</p><h1>{esc(obj["title"])}</h1><p>{esc(obj.get("description",""))}</p>{image_html}{markdown(obj.get("body",""))}</article>'
             dest.write_text(page(obj["title"],content,obj.get("description","")),encoding="utf-8")
             urls.append(f"https://neha-coditation.github.io/interfluent.ai/{route}/{ident}/")
         if items and kind=="articles":
@@ -42,7 +43,7 @@ def build():
                 end=start
                 if start!=-1:
                     cards_html="".join(
-                        '<a class="blog_blog-posts_a" href="blog/'+esc(slug(o["slug"]))+'/">'
+                        '<a class="blog_blog-posts_a" href="blog/'+esc(slug(o["slug"]))+'/">'\n                        + ('<img src="/interfluent.ai/'+esc(o["image"])+'" alt="" loading="lazy" style="width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:12px">' if o.get("image") else '')
                         '<div class="blog_blog-posts_div-3">'+esc(o.get("category","ARTICLE"))+'</div>'
                         '<div class="blog_blog-posts_div-4">'+esc(o["title"])+'</div>'
                         '<p class="blog_blog-posts_p">'+esc(o.get("description",""))+'</p>'
