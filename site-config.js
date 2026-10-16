@@ -7,38 +7,31 @@ window.INTERFLUENT_CONFIG = {
 };
 
 
-// Add the Case Studies destination to each rendered desktop/mobile nav and footer.
-(function addCaseStudiesLinks() {
+// Add Case Studies to each independently rendered navigation/footer menu.
+(function () {
   const destination = '/interfluent.ai/case-studies/';
-  const isBlog = (link) => {
-    const raw = link.getAttribute('href') || '';
+  function isBlog(link) {
     try {
-      const url = new URL(raw, document.baseURI);
-      return /\\/blog\\/?(?:index\\.html)?$/.test(url.pathname) && /blog/i.test(link.textContent || '');
+      const pathname = new URL(link.getAttribute('href'), document.baseURI).pathname;
+      return /\/blog\/?(?:index\.html)?$/.test(pathname) && /blog/i.test(link.textContent || '');
     } catch (_) { return false; }
-  };
-  let queued = false;
+  }
   function update() {
-    queued = false;
     document.querySelectorAll('a[href]').forEach(link => {
       if (!isBlog(link)) return;
-      const area = link.closest('nav, header, footer, [role="navigation"], [class*="nav"], [class*="footer"]');
-      if (!area) return;
-      if (area.querySelector('a[href*="case-studies"]')) return;
-      const next = link.cloneNode(true);
-      next.textContent = 'Case Studies';
-      next.href = destination;
-      next.removeAttribute('aria-current');
-      next.classList.remove('active', 'is-active', 'w--current');
-      link.insertAdjacentElement('afterend', next);
+      if (!link.closest('nav, header, footer, [role="navigation"], [class*="nav"], [class*="footer"], dc-import')) return;
+      const parent = link.parentElement;
+      if (!parent || Array.from(parent.children).some(el => el.matches('a[href*="case-studies"]'))) return;
+      const item = link.cloneNode(true);
+      item.textContent = 'Case Studies';
+      item.setAttribute('href', destination);
+      item.removeAttribute('aria-current');
+      item.classList.remove('active', 'is-active', 'w--current');
+      link.insertAdjacentElement('afterend', item);
     });
   }
-  function schedule() {
-    if (queued) return;
-    queued = true;
-    requestAnimationFrame(update);
-  }
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', schedule);
-  else schedule();
-  new MutationObserver(schedule).observe(document.documentElement, {childList:true, subtree:true});
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', update);
+  else update();
+  const observer = new MutationObserver(update);
+  observer.observe(document.documentElement, {childList: true, subtree: true});
 })();
