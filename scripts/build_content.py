@@ -38,14 +38,17 @@ def article_page(obj, template):
     image = obj.get("image", "")
     hero = ('<img class="blog-post_post_div-2" src="' + BASE + esc(image) +
             '" alt="' + esc(obj["title"]) + '" style="width:100%;object-fit:cover;display:block">' if image else "")
-    body = ('<article data-screen-label="Post" class="blog-post_post_article is-first-section">'
-            '<a href="' + BASE + 'blog/" class="blog-post_post_a">← All posts</a>'
-            '<div class="blog-post_post_div">' + esc(obj.get("category", "ARTICLE")).upper() + ' · ' + esc(obj.get("date", "")) + '</div>'
-            '<h1 class="blog-post_post_h1">' + esc(obj["title"]) + '</h1>'
-            '<p class="blog-post_post_p">' + esc(obj.get("description", "")) + '</p>'
-            + hero + '<div class="blog-post_post_div-3">' + richtext(obj.get("body", "")) + '</div>'
-            '<div class="blog-post_post_div-4"><div class="blog-post_post_div-5">Written by ' + esc(obj.get("author", "Interfluent team")) +
-            '.</div><a href="' + BASE + 'blog/" class="blog-post_post_a-3">More posts →</a></div></article>')
+    body = (
+        '<article data-screen-label="Post" class="blog-post_post_article is-first-section">'
+        + '<a href="' + BASE + 'blog/" class="blog-post_post_a">← All posts</a>'
+        + '<div class="blog-post_post_div">' + esc(obj.get("category", "ARTICLE")).upper() + ' · ' + esc(obj.get("date", "")) + '</div>'
+        + '<h1 class="blog-post_post_h1">' + esc(obj["title"]) + '</h1>'
+        + '<p class="blog-post_post_p">' + esc(obj.get("description", "")) + '</p>'
+        + hero
+        + '<div class="blog-post_post_div-3">' + richtext(obj.get("body", "")) + '</div>'
+        + '<div class="blog-post_post_div-4"><div class="blog-post_post_div-5">Written by ' + esc(obj.get("author", "Interfluent team"))
+        + '.</div><a href="' + BASE + 'blog/" class="blog-post_post_a-3">More posts →</a></div></article>'
+    )
     start = template.index('<article data-screen-label="Post"')
     end = template.index('</article>', start) + len('</article>')
     page = template[:start] + body + template[end:]
@@ -100,7 +103,7 @@ def build():
                 + '<div class="blog_blog-posts_div-5">' + esc(o.get("date", "")) + '</div></a>'
                 for o in sorted(items, key=lambda item: item.get("date", ""), reverse=True))
             section = '<section class="blog_blog-posts_section"><div class="blog_blog-posts_div">' + cards + '</div></section>\n'
-            markup = markup.replace("</main>", section + "</main>", 1)
+            if "<!-- CMS BLOG POSTS START -->" in markup:\n                markup = re.sub(r"<!-- CMS BLOG POSTS START -->.*?<!-- CMS BLOG POSTS END -->", "<!-- CMS BLOG POSTS START -->\\n" + section + "<!-- CMS BLOG POSTS END -->", markup, flags=re.S)\n            else:\n                markup = markup.replace("</main>", section + "</main>", 1)
             listing.write_text(markup, encoding="utf-8")
         elif items:
             cards = "".join('<a href="' + BASE + route + '/' + slug(o["slug"]) + '/"><h2>' + esc(o["title"]) + '</h2></a>' for o in items)
