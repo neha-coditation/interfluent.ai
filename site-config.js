@@ -19,9 +19,11 @@ window.INTERFLUENT_CONFIG = {
   function update() {
     document.querySelectorAll('a[href]').forEach(link => {
       if (!isBlog(link)) return;
-      if (!link.closest('nav, header, footer, [role="navigation"], [class*="nav"], [class*="footer"], dc-import')) return;
+      const footer = link.closest('footer, [class*="footer"], dc-import[name="SiteFooter"]');
+      const navigation = link.closest('nav, header, [role="navigation"], [class*="nav"], dc-import[name="SiteNav"]');
+      if (!footer && !navigation) return;
       const parent = link.parentElement;
-      if (!parent || Array.from(parent.children).some(el => el.matches('a[href*="case-studies"]'))) return;
+      if (!parent || Array.from(parent.querySelectorAll('a[href*="case-studies"]')).length) return;
       const item = link.cloneNode(true);
       item.textContent = 'Case Studies';
       item.setAttribute('href', destination);
